@@ -57,6 +57,7 @@
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox2.Location = new System.Drawing.Point(114, 111);
             this.textBox2.Name = "textBox2";
+            this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(134, 23);
             this.textBox2.TabIndex = 4;
             // 
@@ -104,6 +105,7 @@
             this.cmdLogin.Size = new System.Drawing.Size(70, 29);
             this.cmdLogin.TabIndex = 0;
             this.cmdLogin.UseVisualStyleBackColor = true;
+            this.cmdLogin.Click += new System.EventHandler(this.cmdLogin_Click);
             // 
             // frmLogin
             // 
@@ -112,6 +114,7 @@
             this.ClientSize = new System.Drawing.Size(278, 192);
             this.Controls.Add(this.panel1);
             this.Name = "frmLogin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmLogin";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

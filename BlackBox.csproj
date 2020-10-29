@@ -91,6 +91,9 @@
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMenu.resx">
       <DependentUpon>frmMenu.cs</DependentUpon>
     </EmbeddedResource>
@@ -154,6 +157,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\cmdCancelar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MainTemplate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MainTemplateV2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pnlInicio.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pnlAdmon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pnlInicioContent.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

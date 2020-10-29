@@ -55,7 +55,8 @@ namespace BlackBox
         {
             
             frmLogin login = new frmLogin();
-            login.Show();
+            login.ShowLogin(this);
+            
             frmMenu menu = new frmMenu();
             menu.Show();
             
