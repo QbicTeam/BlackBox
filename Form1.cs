@@ -39,10 +39,7 @@ namespace BlackBox
         private void cmdLogin_Click(object sender, EventArgs e)
         {
             frmLogin login = new frmLogin();
-            login.Show();
-            //string progFiles = @"C:\Program Files\Common Files\Microsoft Shared\ink";
-            //string onScreenKeyboardPath = System.IO.Path.Combine(progFiles, "TabTip.exe");
-            //var onScreenKeyboardProc = System.Diagnostics.Process.Start(onScreenKeyboardPath);
+            login.ShowLogin(this);
         }
     }
 }
