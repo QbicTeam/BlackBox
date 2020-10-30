@@ -23,6 +23,16 @@ namespace BlackBox
             string onScreenKeyboardPath = System.IO.Path.Combine(progFiles, "TabTip.exe");
             var onScreenKeyboardProc = System.Diagnostics.Process.Start(onScreenKeyboardPath);
 
+            CenterForm();
+            
+
+        }
+
+        private void CenterForm()
+        {
+            int swidth = Screen.PrimaryScreen.Bounds.Width;
+            int sheight = Screen.PrimaryScreen.Bounds.Height;
+            this.Location = new Point((swidth / 2) - this.Width / 2, (sheight) / 2 - 250);
         }
 
         private void cmdClose_Click(object sender, EventArgs e)

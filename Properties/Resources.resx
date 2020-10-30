@@ -118,8 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="CloseBtn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CloseBtn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Template" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Template.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pnlAdmon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pnlAdmon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Photo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Photo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -130,11 +133,23 @@
   <data name="cmdCancelar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cmdCancelar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="LoginHeader1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LoginHeader1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cmdMensajeria" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cmdMensajeria.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cmdEntrada" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cmdEntrada.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cmdEmpleados" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cmdEmpleados.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cmdHorario" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cmdHorario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="MainTemplateV2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MainTemplateV2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Template" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Template.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="MainTemplate" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MainTemplate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -145,28 +160,43 @@
   <data name="LoginIntro" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LoginIntro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="LoginHeader1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LoginHeader1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cmdResumen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cmdResumen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="pnlAdmon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pnlAdmon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="LoginHeader" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LoginHeader.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FaqBtn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FaqBtn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="CloseBtn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CloseBtn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="pnlInicio" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pnlInicio.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="LoginFotter" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LoginFotter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cmdImprimir" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cmdImprimir.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cmdCompletar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cmdCompletar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cmdDisponibilidad" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cmdDisponibilidad.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LoginHeader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LoginHeader.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Login" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Login.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="FaqBtn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FaqBtn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="pnlInicioContent" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pnlInicioContent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cmdHEntrada" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cmdHEntrada.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LoginFotter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LoginFotter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cmdOrdenes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cmdOrdenes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
