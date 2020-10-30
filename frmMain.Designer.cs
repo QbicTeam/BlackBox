@@ -31,6 +31,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.pnlInicio = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cmdOrdenes = new System.Windows.Forms.Button();
+            this.cmdMensajeriaV2 = new System.Windows.Forms.Button();
+            this.cmdCompletar = new System.Windows.Forms.Button();
+            this.cmdResumen = new System.Windows.Forms.Button();
+            this.cmdHorarioV2 = new System.Windows.Forms.Button();
+            this.cmdEmpleados = new System.Windows.Forms.Button();
+            this.cmdDisponibilidad = new System.Windows.Forms.Button();
+            this.cmdImprimir = new System.Windows.Forms.Button();
             this.cmdEntrada = new System.Windows.Forms.Button();
             this.cmdInicio = new System.Windows.Forms.Button();
             this.cmdAdmon = new System.Windows.Forms.Button();
@@ -60,14 +68,6 @@
             this.imgHCompletar = new System.Windows.Forms.PictureBox();
             this.imgHMensajeria = new System.Windows.Forms.PictureBox();
             this.imgHOrden = new System.Windows.Forms.PictureBox();
-            this.cmdImprimir = new System.Windows.Forms.Button();
-            this.cmdDisponibilidad = new System.Windows.Forms.Button();
-            this.cmdEmpleados = new System.Windows.Forms.Button();
-            this.cmdHorarioV2 = new System.Windows.Forms.Button();
-            this.cmdResumen = new System.Windows.Forms.Button();
-            this.cmdCompletar = new System.Windows.Forms.Button();
-            this.cmdMensajeriaV2 = new System.Windows.Forms.Button();
-            this.cmdOrdenes = new System.Windows.Forms.Button();
             this.pnlInicio.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgEntrada)).BeginInit();
@@ -112,10 +112,106 @@
             this.panel1.Controls.Add(this.cmdDisponibilidad);
             this.panel1.Controls.Add(this.cmdImprimir);
             this.panel1.Controls.Add(this.cmdEntrada);
-            this.panel1.Location = new System.Drawing.Point(20, 7);
+            this.panel1.Location = new System.Drawing.Point(20, 14);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(918, 560);
             this.panel1.TabIndex = 0;
+            // 
+            // cmdOrdenes
+            // 
+            this.cmdOrdenes.FlatAppearance.BorderSize = 0;
+            this.cmdOrdenes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdOrdenes.Location = new System.Drawing.Point(836, 477);
+            this.cmdOrdenes.Name = "cmdOrdenes";
+            this.cmdOrdenes.Size = new System.Drawing.Size(71, 71);
+            this.cmdOrdenes.TabIndex = 8;
+            this.cmdOrdenes.UseVisualStyleBackColor = true;
+            this.cmdOrdenes.MouseEnter += new System.EventHandler(this.cmdOrdenes_MouseEnter);
+            this.cmdOrdenes.MouseLeave += new System.EventHandler(this.cmdOrdenes_MouseLeave);
+            // 
+            // cmdMensajeriaV2
+            // 
+            this.cmdMensajeriaV2.FlatAppearance.BorderSize = 0;
+            this.cmdMensajeriaV2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdMensajeriaV2.Location = new System.Drawing.Point(836, 27);
+            this.cmdMensajeriaV2.Name = "cmdMensajeriaV2";
+            this.cmdMensajeriaV2.Size = new System.Drawing.Size(71, 71);
+            this.cmdMensajeriaV2.TabIndex = 7;
+            this.cmdMensajeriaV2.UseVisualStyleBackColor = true;
+            this.cmdMensajeriaV2.MouseEnter += new System.EventHandler(this.cmdMensajeriaV2_MouseEnter);
+            this.cmdMensajeriaV2.MouseLeave += new System.EventHandler(this.cmdMensajeriaV2_MouseLeave);
+            // 
+            // cmdCompletar
+            // 
+            this.cmdCompletar.FlatAppearance.BorderSize = 0;
+            this.cmdCompletar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdCompletar.Location = new System.Drawing.Point(759, 477);
+            this.cmdCompletar.Name = "cmdCompletar";
+            this.cmdCompletar.Size = new System.Drawing.Size(71, 71);
+            this.cmdCompletar.TabIndex = 6;
+            this.cmdCompletar.UseVisualStyleBackColor = true;
+            this.cmdCompletar.MouseEnter += new System.EventHandler(this.cmdCompletar_MouseEnter);
+            this.cmdCompletar.MouseLeave += new System.EventHandler(this.cmdCompletar_MouseLeave);
+            // 
+            // cmdResumen
+            // 
+            this.cmdResumen.FlatAppearance.BorderSize = 0;
+            this.cmdResumen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdResumen.Location = new System.Drawing.Point(681, 477);
+            this.cmdResumen.Name = "cmdResumen";
+            this.cmdResumen.Size = new System.Drawing.Size(71, 71);
+            this.cmdResumen.TabIndex = 5;
+            this.cmdResumen.UseVisualStyleBackColor = true;
+            this.cmdResumen.MouseEnter += new System.EventHandler(this.cmdResumen_MouseEnter);
+            this.cmdResumen.MouseLeave += new System.EventHandler(this.cmdResumen_MouseLeave);
+            // 
+            // cmdHorarioV2
+            // 
+            this.cmdHorarioV2.FlatAppearance.BorderSize = 0;
+            this.cmdHorarioV2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdHorarioV2.Location = new System.Drawing.Point(300, 477);
+            this.cmdHorarioV2.Name = "cmdHorarioV2";
+            this.cmdHorarioV2.Size = new System.Drawing.Size(71, 71);
+            this.cmdHorarioV2.TabIndex = 4;
+            this.cmdHorarioV2.UseVisualStyleBackColor = true;
+            this.cmdHorarioV2.MouseEnter += new System.EventHandler(this.cmdHorarioV2_MouseEnter);
+            this.cmdHorarioV2.MouseLeave += new System.EventHandler(this.cmdHorarioV2_MouseLeave);
+            // 
+            // cmdEmpleados
+            // 
+            this.cmdEmpleados.FlatAppearance.BorderSize = 0;
+            this.cmdEmpleados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdEmpleados.Location = new System.Drawing.Point(300, 381);
+            this.cmdEmpleados.Name = "cmdEmpleados";
+            this.cmdEmpleados.Size = new System.Drawing.Size(71, 71);
+            this.cmdEmpleados.TabIndex = 3;
+            this.cmdEmpleados.UseVisualStyleBackColor = true;
+            this.cmdEmpleados.MouseEnter += new System.EventHandler(this.cmdEmpleados_MouseEnter);
+            this.cmdEmpleados.MouseLeave += new System.EventHandler(this.cmdEmpleados_MouseLeave);
+            // 
+            // cmdDisponibilidad
+            // 
+            this.cmdDisponibilidad.FlatAppearance.BorderSize = 0;
+            this.cmdDisponibilidad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdDisponibilidad.Location = new System.Drawing.Point(300, 268);
+            this.cmdDisponibilidad.Name = "cmdDisponibilidad";
+            this.cmdDisponibilidad.Size = new System.Drawing.Size(71, 71);
+            this.cmdDisponibilidad.TabIndex = 2;
+            this.cmdDisponibilidad.UseVisualStyleBackColor = true;
+            this.cmdDisponibilidad.MouseEnter += new System.EventHandler(this.cmdDisponibilidad_MouseEnter);
+            this.cmdDisponibilidad.MouseLeave += new System.EventHandler(this.cmdDisponibilidad_MouseLeave);
+            // 
+            // cmdImprimir
+            // 
+            this.cmdImprimir.FlatAppearance.BorderSize = 0;
+            this.cmdImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdImprimir.Location = new System.Drawing.Point(300, 196);
+            this.cmdImprimir.Name = "cmdImprimir";
+            this.cmdImprimir.Size = new System.Drawing.Size(71, 71);
+            this.cmdImprimir.TabIndex = 1;
+            this.cmdImprimir.UseVisualStyleBackColor = true;
+            this.cmdImprimir.MouseEnter += new System.EventHandler(this.cmdImprimir_MouseEnter);
+            this.cmdImprimir.MouseLeave += new System.EventHandler(this.cmdImprimir_MouseLeave);
             // 
             // cmdEntrada
             // 
@@ -422,102 +518,6 @@
             this.imgHOrden.Size = new System.Drawing.Size(70, 70);
             this.imgHOrden.TabIndex = 28;
             this.imgHOrden.TabStop = false;
-            // 
-            // cmdImprimir
-            // 
-            this.cmdImprimir.FlatAppearance.BorderSize = 0;
-            this.cmdImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdImprimir.Location = new System.Drawing.Point(300, 196);
-            this.cmdImprimir.Name = "cmdImprimir";
-            this.cmdImprimir.Size = new System.Drawing.Size(71, 71);
-            this.cmdImprimir.TabIndex = 1;
-            this.cmdImprimir.UseVisualStyleBackColor = true;
-            this.cmdImprimir.MouseEnter += new System.EventHandler(this.cmdImprimir_MouseEnter);
-            this.cmdImprimir.MouseLeave += new System.EventHandler(this.cmdImprimir_MouseLeave);
-            // 
-            // cmdDisponibilidad
-            // 
-            this.cmdDisponibilidad.FlatAppearance.BorderSize = 0;
-            this.cmdDisponibilidad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdDisponibilidad.Location = new System.Drawing.Point(300, 268);
-            this.cmdDisponibilidad.Name = "cmdDisponibilidad";
-            this.cmdDisponibilidad.Size = new System.Drawing.Size(71, 71);
-            this.cmdDisponibilidad.TabIndex = 2;
-            this.cmdDisponibilidad.UseVisualStyleBackColor = true;
-            this.cmdDisponibilidad.MouseEnter += new System.EventHandler(this.cmdDisponibilidad_MouseEnter);
-            this.cmdDisponibilidad.MouseLeave += new System.EventHandler(this.cmdDisponibilidad_MouseLeave);
-            // 
-            // cmdEmpleados
-            // 
-            this.cmdEmpleados.FlatAppearance.BorderSize = 0;
-            this.cmdEmpleados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdEmpleados.Location = new System.Drawing.Point(300, 381);
-            this.cmdEmpleados.Name = "cmdEmpleados";
-            this.cmdEmpleados.Size = new System.Drawing.Size(71, 71);
-            this.cmdEmpleados.TabIndex = 3;
-            this.cmdEmpleados.UseVisualStyleBackColor = true;
-            this.cmdEmpleados.MouseEnter += new System.EventHandler(this.cmdEmpleados_MouseEnter);
-            this.cmdEmpleados.MouseLeave += new System.EventHandler(this.cmdEmpleados_MouseLeave);
-            // 
-            // cmdHorarioV2
-            // 
-            this.cmdHorarioV2.FlatAppearance.BorderSize = 0;
-            this.cmdHorarioV2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdHorarioV2.Location = new System.Drawing.Point(300, 477);
-            this.cmdHorarioV2.Name = "cmdHorarioV2";
-            this.cmdHorarioV2.Size = new System.Drawing.Size(71, 71);
-            this.cmdHorarioV2.TabIndex = 4;
-            this.cmdHorarioV2.UseVisualStyleBackColor = true;
-            this.cmdHorarioV2.MouseEnter += new System.EventHandler(this.cmdHorarioV2_MouseEnter);
-            this.cmdHorarioV2.MouseLeave += new System.EventHandler(this.cmdHorarioV2_MouseLeave);
-            // 
-            // cmdResumen
-            // 
-            this.cmdResumen.FlatAppearance.BorderSize = 0;
-            this.cmdResumen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdResumen.Location = new System.Drawing.Point(681, 477);
-            this.cmdResumen.Name = "cmdResumen";
-            this.cmdResumen.Size = new System.Drawing.Size(71, 71);
-            this.cmdResumen.TabIndex = 5;
-            this.cmdResumen.UseVisualStyleBackColor = true;
-            this.cmdResumen.MouseEnter += new System.EventHandler(this.cmdResumen_MouseEnter);
-            this.cmdResumen.MouseLeave += new System.EventHandler(this.cmdResumen_MouseLeave);
-            // 
-            // cmdCompletar
-            // 
-            this.cmdCompletar.FlatAppearance.BorderSize = 0;
-            this.cmdCompletar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdCompletar.Location = new System.Drawing.Point(759, 477);
-            this.cmdCompletar.Name = "cmdCompletar";
-            this.cmdCompletar.Size = new System.Drawing.Size(71, 71);
-            this.cmdCompletar.TabIndex = 6;
-            this.cmdCompletar.UseVisualStyleBackColor = true;
-            this.cmdCompletar.MouseEnter += new System.EventHandler(this.cmdCompletar_MouseEnter);
-            this.cmdCompletar.MouseLeave += new System.EventHandler(this.cmdCompletar_MouseLeave);
-            // 
-            // cmdMensajeriaV2
-            // 
-            this.cmdMensajeriaV2.FlatAppearance.BorderSize = 0;
-            this.cmdMensajeriaV2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdMensajeriaV2.Location = new System.Drawing.Point(836, 27);
-            this.cmdMensajeriaV2.Name = "cmdMensajeriaV2";
-            this.cmdMensajeriaV2.Size = new System.Drawing.Size(71, 71);
-            this.cmdMensajeriaV2.TabIndex = 7;
-            this.cmdMensajeriaV2.UseVisualStyleBackColor = true;
-            this.cmdMensajeriaV2.MouseEnter += new System.EventHandler(this.cmdMensajeriaV2_MouseEnter);
-            this.cmdMensajeriaV2.MouseLeave += new System.EventHandler(this.cmdMensajeriaV2_MouseLeave);
-            // 
-            // cmdOrdenes
-            // 
-            this.cmdOrdenes.FlatAppearance.BorderSize = 0;
-            this.cmdOrdenes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdOrdenes.Location = new System.Drawing.Point(836, 477);
-            this.cmdOrdenes.Name = "cmdOrdenes";
-            this.cmdOrdenes.Size = new System.Drawing.Size(71, 71);
-            this.cmdOrdenes.TabIndex = 8;
-            this.cmdOrdenes.UseVisualStyleBackColor = true;
-            this.cmdOrdenes.MouseEnter += new System.EventHandler(this.cmdOrdenes_MouseEnter);
-            this.cmdOrdenes.MouseLeave += new System.EventHandler(this.cmdOrdenes_MouseLeave);
             // 
             // frmMain
             // 
