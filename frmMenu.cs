@@ -22,67 +22,83 @@ namespace BlackBox
 
         private void frmMenu_Load(object sender, EventArgs e)
         {
-            var colorEncabezado = Color.FromArgb(255, 148, 0);
+            var colorEncabezado = Color.FromArgb(254, 159, 49); // 255, 148, 0
             var colorFondoGrid = Color.FromArgb(254, 200, 132);
 
+            // Definicion de Tamaños y formatos
+            AplicarFormato(grdRelojMarcador, colorEncabezado, colorFondoGrid);
 
-            grdRelojMarcador.ColumnHeadersDefaultCellStyle.BackColor = colorEncabezado;
-            grdRelojMarcador.EnableHeadersVisualStyles = false;
-            grdRelojMarcador.BackgroundColor = colorFondoGrid;
+            grdRelojMarcador.Columns[0].Width = 55;
+            grdRelojMarcador.Columns[1].Width = 55;
+            grdRelojMarcador.Columns[2].Width = 55;
+            grdRelojMarcador.Columns[3].Width = 55;
 
-            grdRelojMarcador.RowsDefaultCellStyle.BackColor = colorFondoGrid;
-            grdRelojMarcador.RowHeadersDefaultCellStyle.SelectionBackColor = colorFondoGrid;
-            grdRelojMarcador.ColumnHeadersDefaultCellStyle.SelectionBackColor = colorFondoGrid;
+            AplicarFormato(grdEventos, colorEncabezado, colorFondoGrid);
+
+            AplicarFormato(grdHorario, colorEncabezado, colorFondoGrid);
+            AplicarFormato(grdTrabajando, colorEncabezado, colorFondoGrid);
+            AplicarFormato(grdEventos, colorEncabezado, colorFondoGrid);
+            AplicarFormato(grdMensajeria, colorEncabezado, colorFondoGrid);
+            grdMensajeria.DefaultCellStyle.Font = new Font(grdMensajeria.Font.FontFamily.Name, 7, FontStyle.Bold);
             
-            grdRelojMarcador.ScrollBars = ScrollBars.None;
-            grdRelojMarcador.ReadOnly = true;
-            grdRelojMarcador.RowHeadersVisible = false;
-            grdRelojMarcador.DefaultCellStyle.SelectionBackColor = colorFondoGrid;
-            grdRelojMarcador.GridColor = colorFondoGrid;
 
-
+            // Lectura de Datos.
             var json = File.ReadAllText("appSettings.json");
             var datos = JsonConvert.DeserializeObject<ObjBlackBox>(json);
 
-            //var blRelojMarcador = new BindingList<RelojMarcador>(datos.Pantalla1.RelojMarcador);
-            //var sRelojMarcador = new BindingSource(blRelojMarcador, null);
-            //grdRelojMarcador.DataSource = sRelojMarcador;
-            //grdRelojMarcador.data;
 
+            // Asignacion de Valores.
             grdRelojMarcador.DataSource = datos.Pantalla1.RelojMarcador;
-            grdTest.DataSource = datos.Pantalla1.Eventos;
+            grdHorario.DataSource = datos.Pantalla1.Horario;
+            grdTrabajando.DataSource = datos.Pantalla1.TrabajandoHoy;
+            grdMensajeria.DataSource = datos.Pantalla1.Mesajeria;
+            grdEventos.DataSource = datos.Pantalla1.Eventos;
+
+            var it = datos.Pantalla1.TrabajandoHoy.Count();
+            for (var i = 1; i <= it; i++)
+            {
+                this.Controls.Add(
+                    new PictureBox() {
+                        Image = picBox.Image,
+                        Size = picBox.Size,
+                        Visible = true,
+                        Location = new Point(picBox.Location.X, picBox.Location.Y + (14 * i))
+                });
+                //PictureBox p1 = new PictureBox();
+                //p1.Image = picBox.Image;
+                //p1.Size = picBox.Size;
+                //p1.Visible = true;
+                //p1.Location = new Point(picBox.Location.X + 20, picBox.Location.Y + 20);
+                // this.Controls.Add(p1);
+            }
+
+
+
         }
 
-
-        static DataTable ConvertListToDataTable(List<string[]> list)
+        private void AplicarFormato(DataGridView grd, Color colorEncabezado, Color colorFondoGrid)
         {
-            // New table.
-            DataTable table = new DataTable();
+            grd.ColumnHeadersDefaultCellStyle.BackColor = colorEncabezado;
+            grd.EnableHeadersVisualStyles = false;
+            grd.BackgroundColor = colorFondoGrid;
 
-            // Get max columns.
-            int columns = 0;
-            foreach (var array in list)
-            {
-                if (array.Length > columns)
-                {
-                    columns = array.Length;
-                }
-            }
+            grd.RowsDefaultCellStyle.BackColor = colorFondoGrid;
+            grd.RowHeadersDefaultCellStyle.SelectionBackColor = colorFondoGrid;
+            grd.ColumnHeadersDefaultCellStyle.SelectionBackColor = colorFondoGrid;
+            grd.ColumnHeadersDefaultCellStyle.Font = new Font(grd.Font.FontFamily.Name, 7,FontStyle.Regular);
+            grd.DefaultCellStyle.Font = new Font(grd.Font.FontFamily.Name, 7, FontStyle.Regular);
 
-            // Add columns.
-            for (int i = 0; i < columns; i++)
-            {
-                table.Columns.Add();
-            }
-
-            // Add rows.
-            foreach (var array in list)
-            {
-                table.Rows.Add(array);
-            }
-
-            return table;
+            grd.ScrollBars = ScrollBars.None;
+            grd.ReadOnly = true;
+            grd.RowHeadersVisible = false;
+            grd.DefaultCellStyle.SelectionBackColor = colorFondoGrid;
+            grd.DefaultCellStyle.SelectionForeColor = SystemColors.ControlText;
+            grd.GridColor = colorFondoGrid;
+            grd.AllowUserToResizeColumns = false;
+            grd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            grd.AllowUserToResizeRows = false;
+            grd.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            grd.RowHeadersDefaultCellStyle.SelectionBackColor = Color.Empty;
         }
-
     }
 }

@@ -117,6 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="Fecha.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Entrada.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Salida.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Horas.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="backgroundWorker1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
@@ -126,4 +138,50 @@
   <metadata name="NombreEvento.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <metadata name="FechaH.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="EntradaH.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="SalidaH.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="HorasH.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="NombreT.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="TrabajoT.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="HorasT.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="DeM.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="AsuntoM.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="FechaM.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="picBox.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAA0AAAAOCAIAAAB7HQGFAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAAiRJREFUKFNj+HeiBY7+nmj9cbz3zrGdb4/PBbKBCC4FVff3RMuf463fj3XfOr7j
+        0qGdN47u/HBs6q/jHXClDEDW7xPt3452Xdo+b/XC7TMnHZvQeban/dj82QdO7d375XAXRClQXdvX4xN2
+        bT7c132st/PqtKl3pk++09F2LS/rVFb6oW1Lt/843gNUyvDrWNv5LQv7Og7VVV5YMO/u3Tsfbt9+e//e
+        55VLb8UGH8mM379v9bbPR/oYvh3pnNK3tTj3VFHG2Z7WKzMnXZ4+9erZs6/On3kc6rrb235vY+WJp3um
+        M1w+tK0ob09S3NGEsKN+jvsdtHaG2e9fu+rWgjlHLIQ2motvDXbfeXXNFIaLB7clBO3xtd5nLrFFj2uD
+        tcyWBXOvLZl/2s9qgx77Om22dRaK69bMP8xw9dCuSK/tRiIbNRjWarOs87fctXnD2XjfzZqsazQY12qx
+        rLVWWb9r4TqGN4emF6ZsM+RdD1SnxbzOWmZzcshOK5n1QEVAET2OteHOG2+sm8Tw40jb5hX7nVXWabGs
+        02ZdlxRxcM2ya3Gu+0CGMa+1klrTVLbx2e4JDMBo+Hykd1brNgupjXpc6/0dds+ccM7ffKsm01oDgbXZ
+        4atvbp/281gbOD6Ot7/YO2XphC15ETsDLba6GmzyNNoY7bSuvnDdhXUzgIqAZsHjt/3rqam3t8/fP3fe
+        1J7Da6atOrt6+pP9034dbwcpONECAJSmSENZUhIRAAAAAElFTkSuQmCC
+</value>
+  </data>
 </root>
