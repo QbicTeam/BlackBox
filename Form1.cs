@@ -20,6 +20,8 @@ namespace BlackBox
         public Form1()
         {
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.None;
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -27,7 +29,6 @@ namespace BlackBox
             var json = File.ReadAllText("appSettings.json");
             var datos = JsonConvert.DeserializeObject<ObjBlackBox>(json);
 
-            this.FormBorderStyle = FormBorderStyle.None;
             lblVersion.Parent = pnlHeader;
             lblVersion.BackColor = Color.Transparent;
 

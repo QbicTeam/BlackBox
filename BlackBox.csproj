@@ -173,6 +173,36 @@
   <ItemGroup>
     <None Include="Resources\pnlInicioContent.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdEntrada.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdHEntrada.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdImprimir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdDisponibilidad.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdEmpleados.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdHorario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdResumen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdCompletar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdMensajeria.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdOrdenes.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
