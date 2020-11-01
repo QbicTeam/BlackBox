@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlInicio = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.grdTrabajando = new System.Windows.Forms.DataGridView();
@@ -99,6 +100,7 @@
             this.TrabajoT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HorasT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VaciaT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pnlInicio.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdTrabajando)).BeginInit();
@@ -168,7 +170,7 @@
             this.TrabajoT,
             this.HorasT,
             this.VaciaT});
-            this.grdTrabajando.Location = new System.Drawing.Point(51, 384);
+            this.grdTrabajando.Location = new System.Drawing.Point(51, 406);
             this.grdTrabajando.Name = "grdTrabajando";
             this.grdTrabajando.Size = new System.Drawing.Size(272, 164);
             this.grdTrabajando.TabIndex = 12;
@@ -181,9 +183,9 @@
             this.AsuntoM,
             this.FechaM,
             this.VaciaM});
-            this.grdMensajeria.Location = new System.Drawing.Point(448, 27);
+            this.grdMensajeria.Location = new System.Drawing.Point(417, 51);
             this.grdMensajeria.Name = "grdMensajeria";
-            this.grdMensajeria.Size = new System.Drawing.Size(406, 125);
+            this.grdMensajeria.Size = new System.Drawing.Size(389, 125);
             this.grdMensajeria.TabIndex = 14;
             // 
             // DeM
@@ -223,14 +225,14 @@
             // 
             this.grdRelojMarcador.BackgroundColor = System.Drawing.Color.Black;
             this.grdRelojMarcador.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(148)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grdRelojMarcador.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(148)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle29.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdRelojMarcador.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle29;
             this.grdRelojMarcador.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdRelojMarcador.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Fecha,
@@ -238,17 +240,17 @@
             this.Salida,
             this.Horas,
             this.VaciaR});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdRelojMarcador.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdRelojMarcador.DefaultCellStyle = dataGridViewCellStyle30;
             this.grdRelojMarcador.EnableHeadersVisualStyles = false;
             this.grdRelojMarcador.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.grdRelojMarcador.Location = new System.Drawing.Point(17, 53);
+            this.grdRelojMarcador.Location = new System.Drawing.Point(16, 61);
             this.grdRelojMarcador.Name = "grdRelojMarcador";
             this.grdRelojMarcador.Size = new System.Drawing.Size(272, 115);
             this.grdRelojMarcador.TabIndex = 11;
@@ -301,7 +303,7 @@
             this.SalidaH,
             this.HorasH,
             this.VaciaH});
-            this.grdHorario.Location = new System.Drawing.Point(17, 246);
+            this.grdHorario.Location = new System.Drawing.Point(17, 245);
             this.grdHorario.Name = "grdHorario";
             this.grdHorario.Size = new System.Drawing.Size(271, 126);
             this.grdHorario.TabIndex = 10;
@@ -740,9 +742,9 @@
             // FechaH
             // 
             this.FechaH.DataPropertyName = "Fecha";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.FechaH.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.FechaH.DefaultCellStyle = dataGridViewCellStyle31;
             this.FechaH.HeaderText = "Fecha";
             this.FechaH.Name = "FechaH";
             // 
@@ -772,8 +774,8 @@
             // NombreT
             // 
             this.NombreT.DataPropertyName = "Nombre";
-            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.NombreT.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle32.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.NombreT.DefaultCellStyle = dataGridViewCellStyle32;
             this.NombreT.HeaderText = "Nombre";
             this.NombreT.Name = "NombreT";
             // 
@@ -793,6 +795,12 @@
             // 
             this.VaciaT.HeaderText = "";
             this.VaciaT.Name = "VaciaT";
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // frmMain
             // 
@@ -933,5 +941,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TrabajoT;
         private System.Windows.Forms.DataGridViewTextBoxColumn HorasT;
         private System.Windows.Forms.DataGridViewTextBoxColumn VaciaT;
+        private System.Windows.Forms.Timer timer1;
     }
 }
