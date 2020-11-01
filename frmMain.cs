@@ -63,7 +63,7 @@ namespace BlackBox
             // Definicion de Tamaños y formatos
             AplicarFormato(grdRelojMarcador, colorEncabezado, colorFondoGrid);
             grdRelojMarcador.Size = new Size(272, 115);
-            grdRelojMarcador.Location = new Point(50, 27); // Buena Point(17, 27); Libre Header Point(17, 53)
+            grdRelojMarcador.Location = new Point(17, 27); // Buena Point(17, 27); Libre Header Point(17, 53) Rows: 50, 27
             grdRelojMarcador.Columns[0].Width = 70;
             grdRelojMarcador.Columns[1].Width = 50;
             grdRelojMarcador.Columns[2].Width = 50;
@@ -73,7 +73,7 @@ namespace BlackBox
 
             AplicarFormato(grdHorario, colorEncabezado, colorFondoGrid);
             grdHorario.Size = new Size(272, 115);
-            grdHorario.Location = new Point(50, 220); // Buena Point(17, 220); Libre Header 17, 246
+            grdHorario.Location = new Point(17, 220); // Buena Point(17, 220); Libre Header 17, 246 Rows: 50, 220
             grdHorario.Columns[0].Width = 70;
             grdHorario.Columns[1].Width = 50;
             grdHorario.Columns[2].Width = 50;
@@ -81,20 +81,20 @@ namespace BlackBox
 
             AplicarFormato(grdTrabajando, colorEncabezado, colorFondoGrid);
             grdTrabajando.Size = new Size(272, 164);
-            grdTrabajando.Location = new Point(50, 382); // Buena Point(17, 382); Libre Header 17, 406
+            grdTrabajando.Location = new Point(17, 382); // Buena Point(17, 382); Libre Header 17, 406 Rows: 50, 382
             grdTrabajando.Columns[0].Width = 75;
             grdTrabajando.Columns[1].Width = 70;
             grdTrabajando.Columns[2].Width = 85;
 
             AplicarFormato(grdEventos, colorEncabezado, colorFondoGrid);
             grdEventos.Size = new Size(222, 177);
-            grdEventos.Location = new Point(457, 197); // Buena Point(417, 197); Libre Header 417, 222
+            grdEventos.Location = new Point(417, 197); // Buena Point(417, 197); Libre Header 417, 222 Rows: 457, 197
             grdEventos.Columns[0].Width = 60;
             grdEventos.Columns[1].Width = 135;
 
             AplicarFormato(grdMensajeria, colorEncabezado, colorFondoGrid);
             grdMensajeria.Size = new Size(406, 122);
-            grdMensajeria.Location = new Point(457, 28); // Buena Point(417, 28); Libre Header 417, 53
+            grdMensajeria.Location = new Point(417, 28); // Buena Point(417, 28); Libre Header 417, 53 Rows: 457, 28
             grdMensajeria.Columns[0].Width = 100;
             grdMensajeria.Columns[1].Width = 150;
             grdMensajeria.Columns[2].Width = 119;
@@ -126,10 +126,11 @@ namespace BlackBox
                     Size = picBox.Size,
                     Visible = true,
                     Location = new Point(grdTrabajando.Location.X + 5, grdTrabajando.Location.Y + 9 + (16 * i))
+                    //Location = new Point(picBox.Location.X + 5, picBox.Location.Y + 9 + (16 * i))
                 };
                 panel1.Controls.Add(nCtrl);
                 panel1.Controls.SetChildIndex(nCtrl, 1);
-
+                nCtrl.BringToFront();
             }
 
 
