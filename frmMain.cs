@@ -177,5 +177,11 @@ namespace BlackBox
         {
             cmdMensajeriaV2.Image = imgMensajeria.Image;
         }
+
+        private void cmdOrdenes_Click(object sender, EventArgs e)
+        {
+            frmMenu menu = new frmMenu();
+            menu.Show();
+        }
     }
 }

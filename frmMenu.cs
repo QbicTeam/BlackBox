@@ -1,4 +1,5 @@
-﻿using BlackBox.Model;
+﻿using BlackBox.Controls;
+using BlackBox.Model;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -22,83 +23,37 @@ namespace BlackBox
 
         private void frmMenu_Load(object sender, EventArgs e)
         {
-            var colorEncabezado = Color.FromArgb(254, 159, 49); // 255, 148, 0
-            var colorFondoGrid = Color.FromArgb(254, 200, 132);
+            LoadSideMenu();
+        }
 
-            // Definicion de Tamaños y formatos
-            AplicarFormato(grdRelojMarcador, colorEncabezado, colorFondoGrid);
-
-            grdRelojMarcador.Columns[0].Width = 55;
-            grdRelojMarcador.Columns[1].Width = 55;
-            grdRelojMarcador.Columns[2].Width = 55;
-            grdRelojMarcador.Columns[3].Width = 55;
-
-            AplicarFormato(grdEventos, colorEncabezado, colorFondoGrid);
-
-            AplicarFormato(grdHorario, colorEncabezado, colorFondoGrid);
-            AplicarFormato(grdTrabajando, colorEncabezado, colorFondoGrid);
-            AplicarFormato(grdEventos, colorEncabezado, colorFondoGrid);
-            AplicarFormato(grdMensajeria, colorEncabezado, colorFondoGrid);
-            grdMensajeria.DefaultCellStyle.Font = new Font(grdMensajeria.Font.FontFamily.Name, 7, FontStyle.Bold);
-            
-
-            // Lectura de Datos.
-            var json = File.ReadAllText("appSettings.json");
-            var datos = JsonConvert.DeserializeObject<ObjBlackBox>(json);
-
-
-            // Asignacion de Valores.
-            grdRelojMarcador.DataSource = datos.Pantalla1.RelojMarcador;
-            grdHorario.DataSource = datos.Pantalla1.Horario;
-            grdTrabajando.DataSource = datos.Pantalla1.TrabajandoHoy;
-            grdMensajeria.DataSource = datos.Pantalla1.Mesajeria;
-            grdEventos.DataSource = datos.Pantalla1.Eventos;
-
-            var it = datos.Pantalla1.TrabajandoHoy.Count();
-            for (var i = 1; i <= it; i++)
+        private void LoadSideMenu()
+        {
+            for (int x = 0; x <= 15; x++)
             {
-                this.Controls.Add(
-                    new PictureBox() {
-                        Image = picBox.Image,
-                        Size = picBox.Size,
-                        Visible = true,
-                        Location = new Point(picBox.Location.X, picBox.Location.Y + (14 * i))
-                });
-                //PictureBox p1 = new PictureBox();
-                //p1.Image = picBox.Image;
-                //p1.Size = picBox.Size;
-                //p1.Visible = true;
-                //p1.Location = new Point(picBox.Location.X + 20, picBox.Location.Y + 20);
-                // this.Controls.Add(p1);
+                //Button btn = new Button();
+                //btn.Text = "sample " + x.ToString();
+                //btn.Top = x * 100;
+
+                cmdSideBarButton btn = new cmdSideBarButton("Pizza", 135, imgSidebarButton.Image);
+                btn.Top = x * 50;
+                btn.MenuClicked += Btn_MenuClicked;
+                
+
+                pnlSideContainer.Controls.Add(btn);
+
             }
 
-
-
+            cmdMenuButton btnMenu = new cmdMenuButton();
+            pnlMenu.Controls.Add(btnMenu);
         }
 
-        private void AplicarFormato(DataGridView grd, Color colorEncabezado, Color colorFondoGrid)
+        private void Btn_MenuClicked(object sender)
         {
-            grd.ColumnHeadersDefaultCellStyle.BackColor = colorEncabezado;
-            grd.EnableHeadersVisualStyles = false;
-            grd.BackgroundColor = colorFondoGrid;
+            Articulo itm = (Articulo)sender;
 
-            grd.RowsDefaultCellStyle.BackColor = colorFondoGrid;
-            grd.RowHeadersDefaultCellStyle.SelectionBackColor = colorFondoGrid;
-            grd.ColumnHeadersDefaultCellStyle.SelectionBackColor = colorFondoGrid;
-            grd.ColumnHeadersDefaultCellStyle.Font = new Font(grd.Font.FontFamily.Name, 7,FontStyle.Regular);
-            grd.DefaultCellStyle.Font = new Font(grd.Font.FontFamily.Name, 7, FontStyle.Regular);
-
-            grd.ScrollBars = ScrollBars.None;
-            grd.ReadOnly = true;
-            grd.RowHeadersVisible = false;
-            grd.DefaultCellStyle.SelectionBackColor = colorFondoGrid;
-            grd.DefaultCellStyle.SelectionForeColor = SystemColors.ControlText;
-            grd.GridColor = colorFondoGrid;
-            grd.AllowUserToResizeColumns = false;
-            grd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            grd.AllowUserToResizeRows = false;
-            grd.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            grd.RowHeadersDefaultCellStyle.SelectionBackColor = Color.Empty;
+            MessageBox.Show(itm.Producto);
         }
+
+
     }
 }

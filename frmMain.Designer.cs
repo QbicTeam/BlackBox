@@ -126,6 +126,7 @@
             this.cmdOrdenes.Size = new System.Drawing.Size(71, 71);
             this.cmdOrdenes.TabIndex = 8;
             this.cmdOrdenes.UseVisualStyleBackColor = true;
+            this.cmdOrdenes.Click += new System.EventHandler(this.cmdOrdenes_Click);
             this.cmdOrdenes.MouseEnter += new System.EventHandler(this.cmdOrdenes_MouseEnter);
             this.cmdOrdenes.MouseLeave += new System.EventHandler(this.cmdOrdenes_MouseLeave);
             // 

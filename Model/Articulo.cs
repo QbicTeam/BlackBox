@@ -9,7 +9,7 @@ namespace BlackBox.Model
     public class Articulo
     {
         public string Producto { get; set; }
-        public double Presio { get; set; }
+        public double Precio { get; set; }
         public int Pendientes { get; set; }
         public string Tipo { get; set; }
     }
