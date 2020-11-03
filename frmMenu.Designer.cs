@@ -33,7 +33,7 @@
             this.pnlSideContainer = new System.Windows.Forms.Panel();
             this.imgSidebarButton = new System.Windows.Forms.PictureBox();
             this.pnlMenu = new System.Windows.Forms.Panel();
-            this.imgMenuButton = new System.Windows.Forms.PictureBox();
+            this.imgMenuHnr = new System.Windows.Forms.PictureBox();
             this.cmdHnr = new System.Windows.Forms.Button();
             this.cmdPizza = new System.Windows.Forms.Button();
             this.cmdPan = new System.Windows.Forms.Button();
@@ -43,10 +43,28 @@
             this.cmdNoComida = new System.Windows.Forms.Button();
             this.cmdOtrasComidas = new System.Windows.Forms.Button();
             this.cmdUber = new System.Windows.Forms.Button();
-            this.cmdRanni = new System.Windows.Forms.Button();
+            this.cmdRppi = new System.Windows.Forms.Button();
+            this.imgMenuPizza = new System.Windows.Forms.PictureBox();
+            this.imgMenuPan = new System.Windows.Forms.PictureBox();
+            this.imgMenuBebidas = new System.Windows.Forms.PictureBox();
+            this.imgMenuAlas = new System.Windows.Forms.PictureBox();
+            this.imgMenuComplementos = new System.Windows.Forms.PictureBox();
+            this.imgMenuNoComida = new System.Windows.Forms.PictureBox();
+            this.imgMenuOtrasComidas = new System.Windows.Forms.PictureBox();
+            this.imgMenuUber = new System.Windows.Forms.PictureBox();
+            this.imgMenuRappi = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgSidebarButton)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgMenuButton)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgMenuHnr)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgMenuPizza)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgMenuPan)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgMenuBebidas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgMenuAlas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgMenuComplementos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgMenuNoComida)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgMenuOtrasComidas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgMenuUber)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgMenuRappi)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -84,14 +102,14 @@
             this.pnlMenu.Size = new System.Drawing.Size(764, 663);
             this.pnlMenu.TabIndex = 2;
             // 
-            // imgMenuButton
+            // imgMenuHnr
             // 
-            this.imgMenuButton.Image = global::BlackBox.Properties.Resources.cmdMenuButtonV5;
-            this.imgMenuButton.Location = new System.Drawing.Point(1385, 145);
-            this.imgMenuButton.Name = "imgMenuButton";
-            this.imgMenuButton.Size = new System.Drawing.Size(100, 50);
-            this.imgMenuButton.TabIndex = 3;
-            this.imgMenuButton.TabStop = false;
+            this.imgMenuHnr.Image = global::BlackBox.Properties.Resources.cmdMenuButtonV5;
+            this.imgMenuHnr.Location = new System.Drawing.Point(1385, 145);
+            this.imgMenuHnr.Name = "imgMenuHnr";
+            this.imgMenuHnr.Size = new System.Drawing.Size(100, 50);
+            this.imgMenuHnr.TabIndex = 3;
+            this.imgMenuHnr.TabStop = false;
             // 
             // cmdHnr
             // 
@@ -183,15 +201,96 @@
             this.cmdUber.UseVisualStyleBackColor = true;
             this.cmdUber.Click += new System.EventHandler(this.cmdMenuSelected);
             // 
-            // cmdRanni
+            // cmdRppi
             // 
-            this.cmdRanni.Location = new System.Drawing.Point(985, 34);
-            this.cmdRanni.Name = "cmdRanni";
-            this.cmdRanni.Size = new System.Drawing.Size(53, 23);
-            this.cmdRanni.TabIndex = 13;
-            this.cmdRanni.Text = "button10";
-            this.cmdRanni.UseVisualStyleBackColor = true;
-            this.cmdRanni.Click += new System.EventHandler(this.cmdMenuSelected);
+            this.cmdRppi.Location = new System.Drawing.Point(985, 34);
+            this.cmdRppi.Name = "cmdRppi";
+            this.cmdRppi.Size = new System.Drawing.Size(53, 23);
+            this.cmdRppi.TabIndex = 13;
+            this.cmdRppi.Text = "button10";
+            this.cmdRppi.UseVisualStyleBackColor = true;
+            this.cmdRppi.Click += new System.EventHandler(this.cmdMenuSelected);
+            // 
+            // imgMenuPizza
+            // 
+            this.imgMenuPizza.Image = global::BlackBox.Properties.Resources.cmdMenuButtonV5;
+            this.imgMenuPizza.Location = new System.Drawing.Point(1385, 201);
+            this.imgMenuPizza.Name = "imgMenuPizza";
+            this.imgMenuPizza.Size = new System.Drawing.Size(100, 50);
+            this.imgMenuPizza.TabIndex = 14;
+            this.imgMenuPizza.TabStop = false;
+            // 
+            // imgMenuPan
+            // 
+            this.imgMenuPan.Image = global::BlackBox.Properties.Resources.cmdMenuButtonV5;
+            this.imgMenuPan.Location = new System.Drawing.Point(1385, 257);
+            this.imgMenuPan.Name = "imgMenuPan";
+            this.imgMenuPan.Size = new System.Drawing.Size(100, 50);
+            this.imgMenuPan.TabIndex = 15;
+            this.imgMenuPan.TabStop = false;
+            // 
+            // imgMenuBebidas
+            // 
+            this.imgMenuBebidas.Image = global::BlackBox.Properties.Resources.cmdMenuButtonV5;
+            this.imgMenuBebidas.Location = new System.Drawing.Point(1385, 313);
+            this.imgMenuBebidas.Name = "imgMenuBebidas";
+            this.imgMenuBebidas.Size = new System.Drawing.Size(100, 50);
+            this.imgMenuBebidas.TabIndex = 16;
+            this.imgMenuBebidas.TabStop = false;
+            // 
+            // imgMenuAlas
+            // 
+            this.imgMenuAlas.Image = global::BlackBox.Properties.Resources.cmdMenuButtonV5;
+            this.imgMenuAlas.Location = new System.Drawing.Point(1385, 369);
+            this.imgMenuAlas.Name = "imgMenuAlas";
+            this.imgMenuAlas.Size = new System.Drawing.Size(100, 50);
+            this.imgMenuAlas.TabIndex = 17;
+            this.imgMenuAlas.TabStop = false;
+            // 
+            // imgMenuComplementos
+            // 
+            this.imgMenuComplementos.Image = global::BlackBox.Properties.Resources.cmdMenuButtonV5;
+            this.imgMenuComplementos.Location = new System.Drawing.Point(1385, 425);
+            this.imgMenuComplementos.Name = "imgMenuComplementos";
+            this.imgMenuComplementos.Size = new System.Drawing.Size(100, 50);
+            this.imgMenuComplementos.TabIndex = 18;
+            this.imgMenuComplementos.TabStop = false;
+            // 
+            // imgMenuNoComida
+            // 
+            this.imgMenuNoComida.Image = global::BlackBox.Properties.Resources.cmdMenuButtonV5;
+            this.imgMenuNoComida.Location = new System.Drawing.Point(1385, 481);
+            this.imgMenuNoComida.Name = "imgMenuNoComida";
+            this.imgMenuNoComida.Size = new System.Drawing.Size(100, 50);
+            this.imgMenuNoComida.TabIndex = 19;
+            this.imgMenuNoComida.TabStop = false;
+            // 
+            // imgMenuOtrasComidas
+            // 
+            this.imgMenuOtrasComidas.Image = global::BlackBox.Properties.Resources.cmdMenuButtonV5;
+            this.imgMenuOtrasComidas.Location = new System.Drawing.Point(1385, 537);
+            this.imgMenuOtrasComidas.Name = "imgMenuOtrasComidas";
+            this.imgMenuOtrasComidas.Size = new System.Drawing.Size(100, 50);
+            this.imgMenuOtrasComidas.TabIndex = 20;
+            this.imgMenuOtrasComidas.TabStop = false;
+            // 
+            // imgMenuUber
+            // 
+            this.imgMenuUber.Image = global::BlackBox.Properties.Resources.cmdMenuButtonV5;
+            this.imgMenuUber.Location = new System.Drawing.Point(1385, 593);
+            this.imgMenuUber.Name = "imgMenuUber";
+            this.imgMenuUber.Size = new System.Drawing.Size(100, 50);
+            this.imgMenuUber.TabIndex = 21;
+            this.imgMenuUber.TabStop = false;
+            // 
+            // imgMenuRappi
+            // 
+            this.imgMenuRappi.Image = global::BlackBox.Properties.Resources.cmdMenuButtonV5;
+            this.imgMenuRappi.Location = new System.Drawing.Point(1385, 649);
+            this.imgMenuRappi.Name = "imgMenuRappi";
+            this.imgMenuRappi.Size = new System.Drawing.Size(100, 50);
+            this.imgMenuRappi.TabIndex = 22;
+            this.imgMenuRappi.TabStop = false;
             // 
             // frmMenu
             // 
@@ -200,7 +299,16 @@
             this.BackgroundImage = global::BlackBox.Properties.Resources.MenuTemplateV3;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1430, 841);
-            this.Controls.Add(this.cmdRanni);
+            this.Controls.Add(this.imgMenuRappi);
+            this.Controls.Add(this.imgMenuUber);
+            this.Controls.Add(this.imgMenuOtrasComidas);
+            this.Controls.Add(this.imgMenuNoComida);
+            this.Controls.Add(this.imgMenuComplementos);
+            this.Controls.Add(this.imgMenuAlas);
+            this.Controls.Add(this.imgMenuBebidas);
+            this.Controls.Add(this.imgMenuPan);
+            this.Controls.Add(this.imgMenuPizza);
+            this.Controls.Add(this.cmdRppi);
             this.Controls.Add(this.cmdUber);
             this.Controls.Add(this.cmdOtrasComidas);
             this.Controls.Add(this.cmdNoComida);
@@ -210,7 +318,7 @@
             this.Controls.Add(this.cmdPan);
             this.Controls.Add(this.cmdPizza);
             this.Controls.Add(this.cmdHnr);
-            this.Controls.Add(this.imgMenuButton);
+            this.Controls.Add(this.imgMenuHnr);
             this.Controls.Add(this.pnlMenu);
             this.Controls.Add(this.imgSidebarButton);
             this.Controls.Add(this.panel1);
@@ -219,7 +327,16 @@
             this.Load += new System.EventHandler(this.frmMenu_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imgSidebarButton)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgMenuButton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgMenuHnr)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgMenuPizza)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgMenuPan)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgMenuBebidas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgMenuAlas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgMenuComplementos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgMenuNoComida)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgMenuOtrasComidas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgMenuUber)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgMenuRappi)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -230,7 +347,7 @@
         private System.Windows.Forms.Panel pnlSideContainer;
         private System.Windows.Forms.PictureBox imgSidebarButton;
         private System.Windows.Forms.Panel pnlMenu;
-        private System.Windows.Forms.PictureBox imgMenuButton;
+        private System.Windows.Forms.PictureBox imgMenuHnr;
         private System.Windows.Forms.Button cmdHnr;
         private System.Windows.Forms.Button cmdPizza;
         private System.Windows.Forms.Button cmdPan;
@@ -240,6 +357,15 @@
         private System.Windows.Forms.Button cmdNoComida;
         private System.Windows.Forms.Button cmdOtrasComidas;
         private System.Windows.Forms.Button cmdUber;
-        private System.Windows.Forms.Button cmdRanni;
+        private System.Windows.Forms.Button cmdRppi;
+        private System.Windows.Forms.PictureBox imgMenuPizza;
+        private System.Windows.Forms.PictureBox imgMenuPan;
+        private System.Windows.Forms.PictureBox imgMenuBebidas;
+        private System.Windows.Forms.PictureBox imgMenuAlas;
+        private System.Windows.Forms.PictureBox imgMenuComplementos;
+        private System.Windows.Forms.PictureBox imgMenuNoComida;
+        private System.Windows.Forms.PictureBox imgMenuOtrasComidas;
+        private System.Windows.Forms.PictureBox imgMenuUber;
+        private System.Windows.Forms.PictureBox imgMenuRappi;
     }
 }

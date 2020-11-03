@@ -64,7 +64,7 @@ namespace BlackBox
                 }
 
 
-                cmdMenuButton btn = new cmdMenuButton("Pizza " + x.ToString(), 135, imgMenuButton.Image);
+                cmdMenuButton btn = new cmdMenuButton("Pizza " + x.ToString(), 135, imgMenuHnr.Image);
                 if (x < 13)
                 {
                     btn.Top = x * 50;
