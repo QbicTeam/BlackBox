@@ -17,6 +17,7 @@ namespace BlackBox
 {
     public partial class Form1 : Form
     {
+        private string dia;
         public Form1()
         {
             InitializeComponent();
@@ -51,7 +52,7 @@ namespace BlackBox
 
             string[] dias = { "Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab" };
             var diai = (int)DateTime.Today.DayOfWeek;
-            var dia = dias[diai];
+            dia = dias[diai];
 
 
             lblFooter2.Text = dia + " " + DateTime.Now.ToString("hh:mm") + (DateTime.Now.Hour <= 12 ? "am":"pm"); // "Lun 11:57 am";  spa-es ddd
@@ -77,6 +78,12 @@ namespace BlackBox
             //string progFiles = @"C:\Program Files\Common Files\Microsoft Shared\ink";
             //string onScreenKeyboardPath = System.IO.Path.Combine(progFiles, "TabTip.exe");
             //var onScreenKeyboardProc = System.Diagnostics.Process.Start(onScreenKeyboardPath);
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lblFooter2.Text = dia + " " + DateTime.Now.ToString("hh:mm") + (DateTime.Now.Hour <= 12 ? "am" : "pm"); // "Lun 11:57 am";  spa-es ddd
+            
         }
     }
 }

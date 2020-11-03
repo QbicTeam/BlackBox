@@ -16,6 +16,7 @@ namespace BlackBox
     public partial class frmMain : Form
     {
         Form _entryForm;
+        private string[] dias = { "Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab" };
 
         public frmMain()
         {
@@ -56,14 +57,18 @@ namespace BlackBox
             cmdOrdenes.Image = imgOrden.Image;
             cmdMensajeriaV2.Image = imgMensajeria.Image;
 
+            //string[] dias = { "Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab" };
+            //var diai = (int)DateTime.Today.DayOfWeek;
+            //dia = dias[diai];
 
             var colorEncabezado = Color.FromArgb(254, 159, 49); // 255, 148, 0
             var colorFondoGrid = Color.FromArgb(254, 200, 132);
 
             // Definicion de Tamaños y formatos
             AplicarFormato(grdRelojMarcador, colorEncabezado, colorFondoGrid);
-            grdRelojMarcador.Size = new Size(272, 115);
-            grdRelojMarcador.Location = new Point(17, 27); // Buena Point(17, 27); Libre Header Point(17, 53) Rows: 50, 27
+            grdRelojMarcador.Size = new Size(272, 88); // Con Headers 272, 115
+            grdRelojMarcador.Location = new Point(17, 53); 
+            //Con Headers Buena Point(17, 27); Libre Header Point(17, 53) Rows: 50, 27
             grdRelojMarcador.Columns[0].Width = 70;
             grdRelojMarcador.Columns[1].Width = 50;
             grdRelojMarcador.Columns[2].Width = 50;
@@ -72,34 +77,38 @@ namespace BlackBox
             //AplicarFormato(grdEventos, colorEncabezado, colorFondoGrid);
 
             AplicarFormato(grdHorario, colorEncabezado, colorFondoGrid);
-            grdHorario.Size = new Size(272, 115);
-            grdHorario.Location = new Point(17, 220); // Buena Point(17, 220); Libre Header 17, 246 Rows: 50, 220
+            grdHorario.Size = new Size(272, 90); // Con Headers 272, 115
+            grdHorario.Location = new Point(17, 245); 
+            // Con Headres Buena Point(17, 220); Libre Header 17, 246 Rows: 50, 220
             grdHorario.Columns[0].Width = 70;
             grdHorario.Columns[1].Width = 50;
             grdHorario.Columns[2].Width = 50;
             grdHorario.Columns[3].Width = 50;
 
             AplicarFormato(grdTrabajando, colorEncabezado, colorFondoGrid);
-            grdTrabajando.Size = new Size(272, 164);
-            grdTrabajando.Location = new Point(17, 382); // Buena Point(17, 382); Libre Header 17, 406 Rows: 50, 382
+            grdTrabajando.Size = new Size(272, 140); // Con Headers 272, 164
+            grdTrabajando.Location = new Point(17, 407); 
+            // Con Headers Buena Point(17, 382); Libre Header 17, 406 Rows: 50, 382
             grdTrabajando.Columns[0].Width = 75;
             grdTrabajando.Columns[1].Width = 70;
             grdTrabajando.Columns[2].Width = 85;
 
             AplicarFormato(grdEventos, colorEncabezado, colorFondoGrid);
-            grdEventos.Size = new Size(222, 177);
-            grdEventos.Location = new Point(417, 197); // Buena Point(417, 197); Libre Header 417, 222 Rows: 457, 197
+            grdEventos.Size = new Size(222, 152); // Con Headers 222, 177
+            grdEventos.Location = new Point(417, 222); 
+            // Con Headers Buena Point(417, 197); Libre Header 417, 222 Rows: 457, 197
             grdEventos.Columns[0].Width = 60;
             grdEventos.Columns[1].Width = 135;
 
             AplicarFormato(grdMensajeria, colorEncabezado, colorFondoGrid);
-            grdMensajeria.Size = new Size(406, 122);
-            grdMensajeria.Location = new Point(417, 28); // Buena Point(417, 28); Libre Header 417, 53 Rows: 457, 28
+            grdMensajeria.Size = new Size(388, 97); // Con Headers 406, 122
+            grdMensajeria.Location = new Point(417, 53); 
+            //Con Headers Buena Point(417, 28); Libre Header 417, 53 Rows: 457, 28
             grdMensajeria.Columns[0].Width = 100;
             grdMensajeria.Columns[1].Width = 150;
             grdMensajeria.Columns[2].Width = 119;
 
-            grdMensajeria.ScrollBars = ScrollBars.Vertical;
+            //grdMensajeria.ScrollBars = ScrollBars.Vertical; // Con Headers
             //grdMensajeria.DefaultCellStyle.Font = new Font(grdMensajeria.Font.FontFamily.Name, 7, FontStyle.Bold);
             grdMensajeria.DefaultCellStyle.Font = new Font(grdMensajeria.Font.FontFamily.Name, 8, FontStyle.Bold);
             grdMensajeria.RowTemplate.Height = 20;
@@ -125,7 +134,8 @@ namespace BlackBox
                     Image = picBox.Image,
                     Size = picBox.Size,
                     Visible = true,
-                    Location = new Point(grdTrabajando.Location.X + 5, grdTrabajando.Location.Y + 9 + (16 * i))
+                    Location = new Point(grdTrabajando.Location.X + 5, grdTrabajando.Location.Y + 3 + (16 * (i - 1)))
+                    // Location = new Point(grdTrabajando.Location.X + 5, grdTrabajando.Location.Y + 9 + (16 * i)) Con Headers
                     //Location = new Point(picBox.Location.X + 5, picBox.Location.Y + 9 + (16 * i))
                 };
                 panel1.Controls.Add(nCtrl);
@@ -280,6 +290,7 @@ namespace BlackBox
             grd.ScrollBars = ScrollBars.None;
             grd.ReadOnly = true;
             grd.RowHeadersVisible = false;
+            grd.ColumnHeadersVisible = false;
             grd.DefaultCellStyle.SelectionBackColor = colorFondoGrid;
             grd.DefaultCellStyle.SelectionForeColor = SystemColors.ControlText;            
             grd.GridColor = colorFondoGrid;
@@ -300,6 +311,14 @@ namespace BlackBox
         private void grdRelojMarcador_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
        
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            var diai = (int)DateTime.Today.DayOfWeek;
+            var dia = dias[diai];
+
+            lblHora.Text = dia + " " + DateTime.Now.ToString("hh:mm") + (DateTime.Now.Hour <= 12 ? "am" : "pm"); // "Lun 11:57 am";  spa-es ddd
         }
 
         //private void button1_Click(object sender, EventArgs e)
