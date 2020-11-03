@@ -24,6 +24,7 @@ namespace BlackBox
         private void frmMenu_Load(object sender, EventArgs e)
         {
             LoadSideMenu();
+            LoadMenu("sample");
         }
 
         private void LoadSideMenu()
@@ -43,17 +44,48 @@ namespace BlackBox
 
             }
 
-            cmdMenuButton btnMenu = new cmdMenuButton();
-            pnlMenu.Controls.Add(btnMenu);
         }
 
         private void Btn_MenuClicked(object sender)
         {
             Articulo itm = (Articulo)sender;
-
             MessageBox.Show(itm.Producto);
         }
 
+        private void LoadMenu(string menuId)
+        {
+            int left = 0;
 
+            for (int x = 0; x <= 16; x++)
+            {
+                if (x >= 13)
+                {
+                    left = 382;
+                }
+
+
+                cmdMenuButton btn = new cmdMenuButton("Pizza " + x.ToString(), 135, imgMenuButton.Image);
+                if (x < 13)
+                {
+                    btn.Top = x * 50;
+                }
+                else
+                {
+                    btn.Top = (x-13) * 50;
+                }
+                    
+                btn.Left = left;
+                btn.MenuClicked += Btn_MenuClicked;
+
+                pnlMenu.Controls.Add(btn);
+
+            }
+
+        }
+
+        private void cmdMenuSelected(object sender, EventArgs e)
+        {
+
+        }
     }
 }

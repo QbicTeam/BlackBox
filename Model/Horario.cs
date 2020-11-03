@@ -8,7 +8,7 @@ namespace BlackBox.Model
 {
     public class Horario
     {
-        public DateTime Fecha { get; set; }
+        public string Fecha { get; set; }
         public string Entrada { get; set; }
         public string Salida { get; set; }
         public string Horas { get; set; }

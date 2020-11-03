@@ -27,7 +27,17 @@ namespace BlackBox
         private void Form1_Load(object sender, EventArgs e)
         {
             var json = File.ReadAllText("appSettings.json");
-            var datos = JsonConvert.DeserializeObject<ObjBlackBox>(json);
+
+            ObjBlackBox datos = new ObjBlackBox();
+            try
+            {
+                datos = JsonConvert.DeserializeObject<ObjBlackBox>(json);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            
 
             lblVersion.Parent = pnlHeader;
             lblVersion.BackColor = Color.Transparent;

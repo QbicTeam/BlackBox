@@ -183,6 +183,56 @@ namespace BlackBox.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cmdMenuButton1 {
+            get {
+                object obj = ResourceManager.GetObject("cmdMenuButton1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cmdMenuButtonV2 {
+            get {
+                object obj = ResourceManager.GetObject("cmdMenuButtonV2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cmdMenuButtonV3 {
+            get {
+                object obj = ResourceManager.GetObject("cmdMenuButtonV3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cmdMenuButtonV4 {
+            get {
+                object obj = ResourceManager.GetObject("cmdMenuButtonV4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cmdMenuButtonV5 {
+            get {
+                object obj = ResourceManager.GetObject("cmdMenuButtonV5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cmdOrdenes {
             get {
                 object obj = ResourceManager.GetObject("cmdOrdenes", resourceCulture);
@@ -336,6 +386,26 @@ namespace BlackBox.Properties {
         internal static System.Drawing.Bitmap MenuTemplate {
             get {
                 object obj = ResourceManager.GetObject("MenuTemplate", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MenuTemplateV2 {
+            get {
+                object obj = ResourceManager.GetObject("MenuTemplateV2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MenuTemplateV3 {
+            get {
+                object obj = ResourceManager.GetObject("MenuTemplateV3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

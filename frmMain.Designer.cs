@@ -29,8 +29,30 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlInicio = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.grdTrabajando = new System.Windows.Forms.DataGridView();
+            this.grdMensajeria = new System.Windows.Forms.DataGridView();
+            this.DeM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AsuntoM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VaciaM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.picBox = new System.Windows.Forms.PictureBox();
+            this.grdRelojMarcador = new System.Windows.Forms.DataGridView();
+            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Entrada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Salida = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Horas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VaciaR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.grdHorario = new System.Windows.Forms.DataGridView();
+            this.grdEventos = new System.Windows.Forms.DataGridView();
+            this.Comienza = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombreEvento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VaciaE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmdOrdenes = new System.Windows.Forms.Button();
             this.cmdMensajeriaV2 = new System.Windows.Forms.Button();
             this.cmdCompletar = new System.Windows.Forms.Button();
@@ -68,8 +90,23 @@
             this.imgHCompletar = new System.Windows.Forms.PictureBox();
             this.imgHMensajeria = new System.Windows.Forms.PictureBox();
             this.imgHOrden = new System.Windows.Forms.PictureBox();
+            this.FechaH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EntradaH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SalidaH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HorasH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VaciaH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombreT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TrabajoT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HorasT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VaciaT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlInicio.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdTrabajando)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdMensajeria)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdRelojMarcador)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdHorario)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdEventos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgEntrada)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgHEntrada)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgImprimir)).BeginInit();
@@ -95,14 +132,20 @@
             this.pnlInicio.BackgroundImage = global::BlackBox.Properties.Resources.pnlInicio;
             this.pnlInicio.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pnlInicio.Controls.Add(this.panel1);
+            this.pnlInicio.Controls.Add(this.picBox);
             this.pnlInicio.Location = new System.Drawing.Point(86, 166);
             this.pnlInicio.Name = "pnlInicio";
-            this.pnlInicio.Size = new System.Drawing.Size(569, 234);
+            this.pnlInicio.Size = new System.Drawing.Size(874, 440);
             this.pnlInicio.TabIndex = 0;
             // 
             // panel1
             // 
             this.panel1.BackgroundImage = global::BlackBox.Properties.Resources.pnlInicioContent;
+            this.panel1.Controls.Add(this.grdTrabajando);
+            this.panel1.Controls.Add(this.grdMensajeria);
+            this.panel1.Controls.Add(this.grdRelojMarcador);
+            this.panel1.Controls.Add(this.grdHorario);
+            this.panel1.Controls.Add(this.grdEventos);
             this.panel1.Controls.Add(this.cmdOrdenes);
             this.panel1.Controls.Add(this.cmdMensajeriaV2);
             this.panel1.Controls.Add(this.cmdCompletar);
@@ -116,6 +159,181 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(918, 560);
             this.panel1.TabIndex = 0;
+            // 
+            // grdTrabajando
+            // 
+            this.grdTrabajando.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdTrabajando.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NombreT,
+            this.TrabajoT,
+            this.HorasT,
+            this.VaciaT});
+            this.grdTrabajando.Location = new System.Drawing.Point(51, 384);
+            this.grdTrabajando.Name = "grdTrabajando";
+            this.grdTrabajando.Size = new System.Drawing.Size(272, 164);
+            this.grdTrabajando.TabIndex = 12;
+            // 
+            // grdMensajeria
+            // 
+            this.grdMensajeria.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdMensajeria.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.DeM,
+            this.AsuntoM,
+            this.FechaM,
+            this.VaciaM});
+            this.grdMensajeria.Location = new System.Drawing.Point(448, 27);
+            this.grdMensajeria.Name = "grdMensajeria";
+            this.grdMensajeria.Size = new System.Drawing.Size(406, 125);
+            this.grdMensajeria.TabIndex = 14;
+            // 
+            // DeM
+            // 
+            this.DeM.DataPropertyName = "De";
+            this.DeM.HeaderText = "De";
+            this.DeM.Name = "DeM";
+            // 
+            // AsuntoM
+            // 
+            this.AsuntoM.DataPropertyName = "Asunto";
+            this.AsuntoM.HeaderText = "Asunto:";
+            this.AsuntoM.Name = "AsuntoM";
+            // 
+            // FechaM
+            // 
+            this.FechaM.DataPropertyName = "Fecha";
+            this.FechaM.HeaderText = "Fecha";
+            this.FechaM.Name = "FechaM";
+            // 
+            // VaciaM
+            // 
+            this.VaciaM.HeaderText = "";
+            this.VaciaM.Name = "VaciaM";
+            // 
+            // picBox
+            // 
+            this.picBox.Image = ((System.Drawing.Image)(resources.GetObject("picBox.Image")));
+            this.picBox.Location = new System.Drawing.Point(3, 347);
+            this.picBox.Name = "picBox";
+            this.picBox.Size = new System.Drawing.Size(16, 16);
+            this.picBox.TabIndex = 13;
+            this.picBox.TabStop = false;
+            this.picBox.Visible = false;
+            // 
+            // grdRelojMarcador
+            // 
+            this.grdRelojMarcador.BackgroundColor = System.Drawing.Color.Black;
+            this.grdRelojMarcador.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(148)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdRelojMarcador.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.grdRelojMarcador.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdRelojMarcador.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Fecha,
+            this.Entrada,
+            this.Salida,
+            this.Horas,
+            this.VaciaR});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdRelojMarcador.DefaultCellStyle = dataGridViewCellStyle3;
+            this.grdRelojMarcador.EnableHeadersVisualStyles = false;
+            this.grdRelojMarcador.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.grdRelojMarcador.Location = new System.Drawing.Point(17, 53);
+            this.grdRelojMarcador.Name = "grdRelojMarcador";
+            this.grdRelojMarcador.Size = new System.Drawing.Size(272, 115);
+            this.grdRelojMarcador.TabIndex = 11;
+            this.grdRelojMarcador.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdRelojMarcador_CellContentClick);
+            this.grdRelojMarcador.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.grdRelojMarcador_CellPainting);
+            // 
+            // Fecha
+            // 
+            this.Fecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Fecha.DataPropertyName = "Fecha";
+            this.Fecha.HeaderText = "Fecha:";
+            this.Fecha.Name = "Fecha";
+            this.Fecha.Width = 70;
+            // 
+            // Entrada
+            // 
+            this.Entrada.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Entrada.DataPropertyName = "Entrada";
+            this.Entrada.HeaderText = "Entrada";
+            this.Entrada.Name = "Entrada";
+            this.Entrada.Width = 50;
+            // 
+            // Salida
+            // 
+            this.Salida.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Salida.DataPropertyName = "Salida";
+            this.Salida.HeaderText = "Salida";
+            this.Salida.Name = "Salida";
+            this.Salida.Width = 50;
+            // 
+            // Horas
+            // 
+            this.Horas.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Horas.DataPropertyName = "Horas";
+            this.Horas.HeaderText = "Horas";
+            this.Horas.Name = "Horas";
+            this.Horas.Width = 50;
+            // 
+            // VaciaR
+            // 
+            this.VaciaR.HeaderText = "";
+            this.VaciaR.Name = "VaciaR";
+            // 
+            // grdHorario
+            // 
+            this.grdHorario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdHorario.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.FechaH,
+            this.EntradaH,
+            this.SalidaH,
+            this.HorasH,
+            this.VaciaH});
+            this.grdHorario.Location = new System.Drawing.Point(17, 246);
+            this.grdHorario.Name = "grdHorario";
+            this.grdHorario.Size = new System.Drawing.Size(271, 126);
+            this.grdHorario.TabIndex = 10;
+            // 
+            // grdEventos
+            // 
+            this.grdEventos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdEventos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Comienza,
+            this.NombreEvento,
+            this.VaciaE});
+            this.grdEventos.Location = new System.Drawing.Point(417, 222);
+            this.grdEventos.Name = "grdEventos";
+            this.grdEventos.Size = new System.Drawing.Size(222, 177);
+            this.grdEventos.TabIndex = 9;
+            // 
+            // Comienza
+            // 
+            this.Comienza.DataPropertyName = "Comienza";
+            this.Comienza.HeaderText = "Comienza:";
+            this.Comienza.Name = "Comienza";
+            // 
+            // NombreEvento
+            // 
+            this.NombreEvento.DataPropertyName = "NombreEvento";
+            this.NombreEvento.HeaderText = "Nombre del Evento";
+            this.NombreEvento.Name = "NombreEvento";
+            // 
+            // VaciaE
+            // 
+            this.VaciaE.HeaderText = "";
+            this.VaciaE.Name = "VaciaE";
             // 
             // cmdOrdenes
             // 
@@ -520,6 +738,63 @@
             this.imgHOrden.TabIndex = 28;
             this.imgHOrden.TabStop = false;
             // 
+            // FechaH
+            // 
+            this.FechaH.DataPropertyName = "Fecha";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.FechaH.DefaultCellStyle = dataGridViewCellStyle4;
+            this.FechaH.HeaderText = "Fecha";
+            this.FechaH.Name = "FechaH";
+            // 
+            // EntradaH
+            // 
+            this.EntradaH.DataPropertyName = "Entrada";
+            this.EntradaH.HeaderText = "Entrada";
+            this.EntradaH.Name = "EntradaH";
+            // 
+            // SalidaH
+            // 
+            this.SalidaH.DataPropertyName = "Salida";
+            this.SalidaH.HeaderText = "Salida";
+            this.SalidaH.Name = "SalidaH";
+            // 
+            // HorasH
+            // 
+            this.HorasH.DataPropertyName = "Horas";
+            this.HorasH.HeaderText = "Horas";
+            this.HorasH.Name = "HorasH";
+            // 
+            // VaciaH
+            // 
+            this.VaciaH.HeaderText = "";
+            this.VaciaH.Name = "VaciaH";
+            // 
+            // NombreT
+            // 
+            this.NombreT.DataPropertyName = "Nombre";
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.NombreT.DefaultCellStyle = dataGridViewCellStyle1;
+            this.NombreT.HeaderText = "Nombre";
+            this.NombreT.Name = "NombreT";
+            // 
+            // TrabajoT
+            // 
+            this.TrabajoT.DataPropertyName = "Trabajo";
+            this.TrabajoT.HeaderText = "Trabajo";
+            this.TrabajoT.Name = "TrabajoT";
+            // 
+            // HorasT
+            // 
+            this.HorasT.DataPropertyName = "Horas";
+            this.HorasT.HeaderText = "Horas";
+            this.HorasT.Name = "HorasT";
+            // 
+            // VaciaT
+            // 
+            this.VaciaT.HeaderText = "";
+            this.VaciaT.Name = "VaciaT";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -562,6 +837,12 @@
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.pnlInicio.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grdTrabajando)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdMensajeria)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdRelojMarcador)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdHorario)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdEventos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgEntrada)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgHEntrada)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgImprimir)).EndInit();
@@ -626,5 +907,32 @@
         private System.Windows.Forms.Button cmdEmpleados;
         private System.Windows.Forms.Button cmdDisponibilidad;
         private System.Windows.Forms.Button cmdImprimir;
+        private System.Windows.Forms.DataGridView grdEventos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Comienza;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NombreEvento;
+        private System.Windows.Forms.DataGridView grdHorario;
+        private System.Windows.Forms.DataGridView grdRelojMarcador;
+        private System.Windows.Forms.DataGridView grdTrabajando;
+        private System.Windows.Forms.PictureBox picBox;
+        private System.Windows.Forms.DataGridView grdMensajeria;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DeM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AsuntoM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FechaM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VaciaM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VaciaE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Entrada;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Salida;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Horas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VaciaR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FechaH;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EntradaH;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SalidaH;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HorasH;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VaciaH;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NombreT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TrabajoT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HorasT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VaciaT;
     }
 }
