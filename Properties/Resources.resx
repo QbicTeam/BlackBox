@@ -130,11 +130,20 @@
   <data name="cmdResumen" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cmdResumen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="LoginTemplate" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LoginTemplate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cmdHEntrada1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cmdHEntrada1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CloseBtn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CloseBtn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cmdHOrdenes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cmdHOrdenes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cmdSideBar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cmdSideBar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cmdHorario" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cmdHorario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="MenuTemplateV3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MenuTemplateV3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -148,6 +157,9 @@
   <data name="cmdOrdenes" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cmdOrdenes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="cmdHDisponibilidad" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cmdHDisponibilidad.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Photo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Photo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -160,14 +172,14 @@
   <data name="cmdMenuButton" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cmdMenuButton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="MenuTemplate" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MenuTemplate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cmdCompletar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cmdCompletar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cmdMenuButtonV2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cmdMenuButtonV2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="LoginFotter" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LoginFotter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cmdMenuButtonV5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cmdMenuButtonV5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Login" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Login.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -181,17 +193,23 @@
   <data name="LoginHeader" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LoginHeader.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cmdCompletar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cmdCompletar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cmdHEmpleados" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cmdHEmpleados.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LoginFotter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LoginFotter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cmdImprimir" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cmdImprimir.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lblSideBarPrice" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lblSideBarPrice.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="MenuTemplateV2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MenuTemplateV2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cmdMenuButtonV4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cmdMenuButtonV4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="lblSidebarName" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\lblSidebarName.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cmdHImprimir" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cmdHImprimir.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cmdCancelar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cmdCancelar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -199,17 +217,26 @@
   <data name="cmdMenuButton1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cmdMenuButton1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CloseBtn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CloseBtn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="lblSidebarName" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lblSidebarName.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LoginTemplate" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LoginTemplate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="FaqBtn" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FaqBtn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cmdImprimir" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cmdImprimir.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cmdHHorario" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cmdHHorario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cmdHorario" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cmdHorario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cmdMenuButtonV4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cmdMenuButtonV4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cmdHResumen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cmdHResumen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cmdHMensajeria" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cmdHMensajeria.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cmdDisponibilidad" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cmdDisponibilidad.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -220,6 +247,9 @@
   <data name="cmdEntrada" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cmdEntrada.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="pnlInicio" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pnlInicio.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="cmdEmpleados" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cmdEmpleados.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -229,16 +259,13 @@
   <data name="cmdAcceso" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cmdAcceso.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="pnlInicio" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pnlInicio.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="pnlInicioContent" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pnlInicioContent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="lblSideBarPrice" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\lblSideBarPrice.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="MenuTemplate" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MenuTemplate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cmdMenuButtonV5" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cmdMenuButtonV5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="pnlHorario" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pnlHorario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

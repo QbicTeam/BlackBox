@@ -263,6 +263,33 @@
   <ItemGroup>
     <None Include="Resources\cmdMenuButtonV5.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdHEntrada1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdHImprimir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdHDisponibilidad.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdHEmpleados.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdHHorario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdHResumen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdHMensajeria.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdHOrdenes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pnlHorario.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

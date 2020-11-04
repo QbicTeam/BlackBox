@@ -69,15 +69,6 @@ namespace BlackBox
             frmLogin login = new frmLogin();
             login.ShowLogin(this);
             
-            frmMenu menu = new frmMenu();
-            menu.Show();
-            
-
-            
-
-            //string progFiles = @"C:\Program Files\Common Files\Microsoft Shared\ink";
-            //string onScreenKeyboardPath = System.IO.Path.Combine(progFiles, "TabTip.exe");
-            //var onScreenKeyboardProc = System.Diagnostics.Process.Start(onScreenKeyboardPath);
         }
 
         private void timer1_Tick(object sender, EventArgs e)

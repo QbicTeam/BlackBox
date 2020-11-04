@@ -133,6 +133,26 @@ namespace BlackBox.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cmdHDisponibilidad {
+            get {
+                object obj = ResourceManager.GetObject("cmdHDisponibilidad", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cmdHEmpleados {
+            get {
+                object obj = ResourceManager.GetObject("cmdHEmpleados", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cmdHEntrada {
             get {
                 object obj = ResourceManager.GetObject("cmdHEntrada", resourceCulture);
@@ -143,9 +163,69 @@ namespace BlackBox.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cmdHEntrada1 {
+            get {
+                object obj = ResourceManager.GetObject("cmdHEntrada1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cmdHHorario {
+            get {
+                object obj = ResourceManager.GetObject("cmdHHorario", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cmdHImprimir {
+            get {
+                object obj = ResourceManager.GetObject("cmdHImprimir", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cmdHMensajeria {
+            get {
+                object obj = ResourceManager.GetObject("cmdHMensajeria", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cmdHorario {
             get {
                 object obj = ResourceManager.GetObject("cmdHorario", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cmdHOrdenes {
+            get {
+                object obj = ResourceManager.GetObject("cmdHOrdenes", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cmdHResumen {
+            get {
+                object obj = ResourceManager.GetObject("cmdHResumen", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -426,6 +506,16 @@ namespace BlackBox.Properties {
         internal static System.Drawing.Bitmap pnlAdmon {
             get {
                 object obj = ResourceManager.GetObject("pnlAdmon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pnlHorario {
+            get {
+                object obj = ResourceManager.GetObject("pnlHorario", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
