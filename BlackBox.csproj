@@ -61,9 +61,7 @@
     <Compile Include="Controls\cmdSideBarButton.Designer.cs">
       <DependentUpon>cmdSideBarButton.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\pnlArtVendido.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Controls\pnlArtVendido.cs" />
     <Compile Include="Controls\pnlArtVendido.Designer.cs">
       <DependentUpon>pnlArtVendido.cs</DependentUpon>
     </Compile>
@@ -305,6 +303,33 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\MenuTemplateV4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdHNR.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdSHnr.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdPizzaV2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdPizzaV21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdSPizza.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdBebidasV2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdSBebidas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdPizza.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdBebidas.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
