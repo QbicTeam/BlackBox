@@ -61,6 +61,12 @@
     <Compile Include="Controls\cmdSideBarButton.Designer.cs">
       <DependentUpon>cmdSideBarButton.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\pnlArtVendido.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\pnlArtVendido.Designer.cs">
+      <DependentUpon>pnlArtVendido.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +92,7 @@
       <DependentUpon>frmMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Articulo.cs" />
+    <Compile Include="Model\Comanda.cs" />
     <Compile Include="Model\ObjBlackBox.cs" />
     <Compile Include="Model\Evento.cs" />
     <Compile Include="Model\Horario.cs" />
@@ -102,6 +109,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\cmdSideBarButton.resx">
       <DependentUpon>cmdSideBarButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\pnlArtVendido.resx">
+      <DependentUpon>pnlArtVendido.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

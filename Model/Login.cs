@@ -12,5 +12,6 @@ namespace BlackBox.Model
         public string FechaVersion { get; set; }
         public string Sitio { get; set; }
         public string Computadora { get; set; }
+        public double Taza { get; set; }
     }
 }

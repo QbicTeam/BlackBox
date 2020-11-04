@@ -19,7 +19,7 @@ namespace BlackBox.Model
         public List<Articulo> Uber { get; set; }
         public List<Articulo> Especiales { get; set; }
         public List<Articulo> EnEspera { get; set; }
-
-
+        public List<Articulo> Rappi { get; set; }
+        
     }
 }
