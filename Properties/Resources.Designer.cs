@@ -193,6 +193,16 @@ namespace BlackBox.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cmdHCompletar {
+            get {
+                object obj = ResourceManager.GetObject("cmdHCompletar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cmdHDisponibilidad {
             get {
                 object obj = ResourceManager.GetObject("cmdHDisponibilidad", resourceCulture);
@@ -806,6 +816,26 @@ namespace BlackBox.Properties {
         internal static System.Drawing.Bitmap pnlInicioContent {
             get {
                 object obj = ResourceManager.GetObject("pnlInicioContent", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pnlMensajeria {
+            get {
+                object obj = ResourceManager.GetObject("pnlMensajeria", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap tabHorarios {
+            get {
+                object obj = ResourceManager.GetObject("tabHorarios", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
