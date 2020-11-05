@@ -141,35 +141,54 @@ namespace BlackBox
 
             Image imagen = GetImagen(menuId + tamano);
 
+            var tamanoN = 0;
+            if (tamano != "")
+                tamanoN = Convert.ToInt32(tamano);
+
             Image imagenF = imagen;
             int left = 0;
-
+            int top = -1;
+            // 2 col: 382; 3 col: 255 w 
             for (int x = 0; x < menu.Count; x++)
             {
                 var art = menu[x];
-                if (x >= 13)
-                {
+                if (x >= 13 && x < 26 && tamanoN == 0 )
                     left = 382;
-                }
+
+                if (x >= 13 && x < 26 && tamanoN == 3)
+                    left = 255;
+
+                if (x >= 26 && tamanoN == 3)
+                    left = 510;
 
                 if (!string.IsNullOrEmpty(art.Tipo))
                 {
                     imagenF = GetImagen(art.Tipo + tamano);
                 }
                 // cmdMenuButton btn = new cmdMenuButton("Pizza " + x.ToString(), 135, imgMenuHnr.Image);
-                cmdMenuButton btn = new cmdMenuButton(art.Producto, art.Precio, imagenF);
+                cmdMenuButton btn = new cmdMenuButton(art.Producto, art.Precio, imagenF, tamanoN);
                 imagenF = imagen;
 
-                if (x < 13)
-                {
-                    btn.Top = x * 50;
-                }
-                else
-                {
-                    btn.Top = (x-13) * 50;
-                }
-                    
+                //if (x < 13)
+                //{
+                //    btn.Top = x * 50;
+                //}
+                //else
+                //{
+                //    btn.Top = (x-13) * 50;
+                //}
+
+                if (top >= 12)
+                    top = -1;
+
+                top++;
+                
+                btn.Top = top * 50;                    
                 btn.Left = left;
+                
+                //if (tamano == "3")
+                //    btn.Width = 255;
+
                 btn.MenuClicked += Btn_MenuClicked;
 
                 pnlMenu.Controls.Add(btn);
