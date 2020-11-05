@@ -246,7 +246,7 @@ namespace BlackBox
         {
             //this.Controls.Find("imgMenu" + nombre, true);
 
-            foreach(Control child in Controls)
+            foreach(Control child in pnlMenuColores.Controls)
             {
                 if (child.Name.ToLower() == ("imgMenu" + nombre).ToLower())
                 {
