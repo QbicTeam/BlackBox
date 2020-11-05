@@ -266,6 +266,19 @@ namespace BlackBox
             return imgMenuHnr.Image;
         }
 
+        public void ComandaNueva()
+        {
+            pnlComanda.Controls.Clear();
+
+            comanda = new Comanda();
+
+            lblNumArts.Text = comanda.Articulos.Count().ToString();
+            lblSubTotal.Text = string.Format("{0:C}", comanda.SubTotal);
+            lblImpu.Text = string.Format("{0:C}", comanda.Impuesto);
+            lblTotal.Text = string.Format("{0:C}", comanda.Total);
+
+        }
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             lblHoraActual.Text = DateTime.Now.ToString("hh : mm") + (DateTime.Now.Hour <= 12 ? "a" : "p"); // "11:57a";  spa-es ddd
@@ -275,6 +288,8 @@ namespace BlackBox
         {
             frmPagos pagos = new frmPagos();
             pagos.Show();
+
+            ComandaNueva();
         }
     }
 }
