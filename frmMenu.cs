@@ -42,18 +42,8 @@ namespace BlackBox
             pnlPie.Location = new Point(44, 729);
             pnlPie.Size = new Size(1321, 39);
 
-            pnlArtVendido artVta = new pnlArtVendido("Articulo", 123);
-            pnlComanda.Controls.Add(artVta);
-            artVta.Top = 0;
-            artVta.ToRegular();
-
-            pnlArtVendido artVta2 = new pnlArtVendido("Articulo2", 56.35);
-            artVta2.Top = 27;
-            pnlComanda.Controls.Add(artVta2);
-            
-            pnlArtVendido artVta3 = new pnlArtVendido("Articulo3", 1356);
-            artVta3.Top = 54;
-            pnlComanda.Controls.Add(artVta3);
+            lblCajero.Text = _datos.Login.Cajero;
+            lblArticulosPie.Text = _datos.PantallaVentas.ArticulosVencidosPie;
 
             comanda = new Comanda();
         }
@@ -141,35 +131,54 @@ namespace BlackBox
 
             Image imagen = GetImagen(menuId + tamano);
 
+            var tamanoN = 0;
+            if (tamano != "")
+                tamanoN = Convert.ToInt32(tamano);
+
             Image imagenF = imagen;
             int left = 0;
-
+            int top = -1;
+            // 2 col: 382; 3 col: 255 w 
             for (int x = 0; x < menu.Count; x++)
             {
                 var art = menu[x];
-                if (x >= 13)
-                {
+                if (x >= 13 && x < 26 && tamanoN == 0 )
                     left = 382;
-                }
+
+                if (x >= 13 && x < 26 && tamanoN == 3)
+                    left = 255;
+
+                if (x >= 26 && tamanoN == 3)
+                    left = 510;
 
                 if (!string.IsNullOrEmpty(art.Tipo))
                 {
                     imagenF = GetImagen(art.Tipo + tamano);
                 }
                 // cmdMenuButton btn = new cmdMenuButton("Pizza " + x.ToString(), 135, imgMenuHnr.Image);
-                cmdMenuButton btn = new cmdMenuButton(art.Producto, art.Precio, imagenF);
+                cmdMenuButton btn = new cmdMenuButton(art.Producto, art.Precio, imagenF, tamanoN);
                 imagenF = imagen;
 
-                if (x < 13)
-                {
-                    btn.Top = x * 50;
-                }
-                else
-                {
-                    btn.Top = (x-13) * 50;
-                }
-                    
+                //if (x < 13)
+                //{
+                //    btn.Top = x * 50;
+                //}
+                //else
+                //{
+                //    btn.Top = (x-13) * 50;
+                //}
+
+                if (top >= 12)
+                    top = -1;
+
+                top++;
+                
+                btn.Top = top * 50;                    
                 btn.Left = left;
+                
+                //if (tamano == "3")
+                //    btn.Width = 255;
+
                 btn.MenuClicked += Btn_MenuClicked;
 
                 pnlMenu.Controls.Add(btn);

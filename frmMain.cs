@@ -117,6 +117,7 @@ namespace BlackBox
             var json = File.ReadAllText("appSettings.json");
             var datos = JsonConvert.DeserializeObject<ObjBlackBox>(json);
 
+            lblName.Text = datos.Login.Cajero;
 
             // Asignacion de Valores.
             grdRelojMarcador.DataSource = datos.Pantalla1.RelojMarcador;

@@ -24,7 +24,7 @@ namespace BlackBox.Controls
             InitializeComponent();
         }
 
-        public cmdMenuButton(string description, double price, Image backImg)
+        public cmdMenuButton(string description, double price, Image backImg, int cols)
         {
             InitializeComponent();
             pnlButton.BackgroundImage = backImg;
@@ -35,6 +35,13 @@ namespace BlackBox.Controls
             item = new Articulo();
             item.Producto = description;
             item.Precio = price;
+
+            if(cols == 3)
+            {
+                lblTitle.Width = 255;
+                lblPrice.Width = 255;
+                this.Width = 255;
+            }
         }
 
         private void lblTitle_Click(object sender, EventArgs e)
