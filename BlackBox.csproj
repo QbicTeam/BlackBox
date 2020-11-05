@@ -61,7 +61,9 @@
     <Compile Include="Controls\cmdSideBarButton.Designer.cs">
       <DependentUpon>cmdSideBarButton.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\pnlArtVendido.cs" />
+    <Compile Include="Controls\pnlArtVendido.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Controls\pnlArtVendido.Designer.cs">
       <DependentUpon>pnlArtVendido.cs</DependentUpon>
     </Compile>
@@ -330,6 +332,54 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\cmdBebidas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdAlasV2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdSAlas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdComplementosV2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdPanV2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdSPan.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdOtrasComidas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdSOtrasComidas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdUber.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdSUber.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdRappi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdSRappi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdSComplementos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdNoComida.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdSNoComida.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdAlas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdComplementos.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

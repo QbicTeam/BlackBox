@@ -26,6 +26,7 @@ namespace BlackBox
 
         private void frmMenu_Load(object sender, EventArgs e)
         {
+            resetMenuButtons();
 
             // Lectura de Datos.
             var json = File.ReadAllText("appSettings.json");
@@ -33,6 +34,7 @@ namespace BlackBox
 
             LoadSideMenu();
             LoadMenu("HNR");
+            cmdHnr.Image = imgSHnr.Image;
 
             pnlTotal.Location = new Point(1200, 643);
             pnlTotal.Size = new Size(308, 574);
@@ -54,6 +56,20 @@ namespace BlackBox
             pnlComanda.Controls.Add(artVta3);
 
             comanda = new Comanda();
+        }
+
+        private void resetMenuButtons()
+        {
+            cmdHnr.Image = imgHnr.Image;
+            cmdPizza.Image = imgPizza.Image;
+            cmdPan.Image = imgPan.Image;
+            cmdBebidas.Image = imgBebidas.Image;
+            cmdAlas.Image = imgAlas.Image;
+            cmdComplementos.Image = imgComplementos.Image;
+            cmdNoComida.Image = imgNoComida.Image;
+            cmdOtrasComidas.Image = imgOtrasComidas.Image;
+            cmdUber.Image = imgUber.Image;
+            cmdRappi.Image = imgRappi.Image;
         }
 
         private void LoadSideMenu()
@@ -167,7 +183,47 @@ namespace BlackBox
             // Console.WriteLine(sender.ToString());
             var menuTipo = ((Button)sender).Name.Substring(3);
             LoadMenu(menuTipo);
+            SetMenuButton(menuTipo);
+        }
 
+        private void SetMenuButton(string mnu)
+        {
+            resetMenuButtons();
+            switch (mnu.ToLower())
+            {
+                case "hnr":
+                    cmdHnr.Image = imgSHnr.Image;
+                    break;
+                case "pizza":
+                    cmdPizza.Image = imgSPizza.Image;
+                    break;
+                case "pan":
+                    cmdPan.Image = imgSPan.Image;
+                    break;
+                case "bebidas":
+                    cmdBebidas.Image = imgSBebidas.Image;
+                    break;
+                case "alas":
+                    cmdAlas.Image = imgSAlas.Image;
+                    break;
+                case "complementos":
+                    cmdComplementos.Image = imgSComplementos.Image;
+                    break;
+                case "nocomida":
+                    cmdNoComida.Image = imgSNoComida.Image;
+                    break;
+                case "otrascomidas":
+                    cmdOtrasComidas.Image = imgSOtrasComidas.Image;
+                    break;
+                case "uber":
+                    cmdUber.Image = imgSUber.Image;
+                    break;
+                case "rappi":
+                    cmdRappi.Image = imgSRappi.Image;
+                    break;
+                default:
+                    break;
+            }
         }
 
 
