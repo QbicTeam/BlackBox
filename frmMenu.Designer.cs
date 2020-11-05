@@ -97,6 +97,7 @@
             this.imgMenuOtrasComidas3 = new System.Windows.Forms.PictureBox();
             this.imgMenuUber3 = new System.Windows.Forms.PictureBox();
             this.imgMenuRappi3 = new System.Windows.Forms.PictureBox();
+            this.cmdPagos = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgSidebarButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgMenuHnr)).BeginInit();
@@ -805,6 +806,16 @@
             this.imgMenuRappi3.TabIndex = 33;
             this.imgMenuRappi3.TabStop = false;
             // 
+            // cmdPagos
+            // 
+            this.cmdPagos.Location = new System.Drawing.Point(195, 19);
+            this.cmdPagos.Name = "cmdPagos";
+            this.cmdPagos.Size = new System.Drawing.Size(75, 23);
+            this.cmdPagos.TabIndex = 47;
+            this.cmdPagos.Text = "button1";
+            this.cmdPagos.UseVisualStyleBackColor = true;
+            this.cmdPagos.Click += new System.EventHandler(this.cmdPagos_Click);
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -812,6 +823,7 @@
             this.BackgroundImage = global::BlackBox.Properties.Resources.MenuTemplateV5;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1577, 841);
+            this.Controls.Add(this.cmdPagos);
             this.Controls.Add(this.pnlMenuColores);
             this.Controls.Add(this.imgComplementos);
             this.Controls.Add(this.imgSComplementos);
@@ -970,5 +982,6 @@
         private System.Windows.Forms.PictureBox imgMenuOtrasComidas3;
         private System.Windows.Forms.PictureBox imgMenuUber3;
         private System.Windows.Forms.PictureBox imgMenuRappi3;
+        private System.Windows.Forms.Button cmdPagos;
     }
 }

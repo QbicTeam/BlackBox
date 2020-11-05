@@ -280,5 +280,11 @@ namespace BlackBox
         {
             lblHoraActual.Text = DateTime.Now.ToString("hh : mm") + (DateTime.Now.Hour <= 12 ? "a" : "p"); // "11:57a";  spa-es ddd
         }
+
+        private void cmdPagos_Click(object sender, EventArgs e)
+        {
+            frmPagos pagos = new frmPagos();
+            pagos.Show();
+        }
     }
 }
