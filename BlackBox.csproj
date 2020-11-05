@@ -91,6 +91,12 @@
     <Compile Include="frmMenu.Designer.cs">
       <DependentUpon>frmMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmPagos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPagos.Designer.cs">
+      <DependentUpon>frmPagos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Articulo.cs" />
     <Compile Include="Model\Comanda.cs" />
     <Compile Include="Model\ObjBlackBox.cs" />
@@ -389,6 +395,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\pnlMensajeria.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuTemplateV5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdPAN_3.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
