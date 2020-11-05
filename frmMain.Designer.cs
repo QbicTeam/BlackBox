@@ -574,8 +574,8 @@
             // 
             // pnlHorario
             // 
-            this.pnlHorario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.pnlHorario.BackgroundImage = global::BlackBox.Properties.Resources.pnlHorario;
+            this.pnlHorario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(148)))), ((int)(((byte)(0)))));
+            this.pnlHorario.BackgroundImage = global::BlackBox.Properties.Resources.tabHorarios;
             this.pnlHorario.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pnlHorario.Location = new System.Drawing.Point(481, 513);
             this.pnlHorario.Name = "pnlHorario";
@@ -585,7 +585,9 @@
             // 
             // pnlMensajeria
             // 
-            this.pnlMensajeria.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.pnlMensajeria.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(148)))), ((int)(((byte)(0)))));
+            this.pnlMensajeria.BackgroundImage = global::BlackBox.Properties.Resources.pnlMensajeria;
+            this.pnlMensajeria.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pnlMensajeria.Location = new System.Drawing.Point(738, 542);
             this.pnlMensajeria.Name = "pnlMensajeria";
             this.pnlMensajeria.Size = new System.Drawing.Size(200, 100);
@@ -774,7 +776,7 @@
             // 
             // imgHCompletar
             // 
-            this.imgHCompletar.Image = global::BlackBox.Properties.Resources.cmdHEntrada;
+            this.imgHCompletar.Image = global::BlackBox.Properties.Resources.cmdHCompletar;
             this.imgHCompletar.Location = new System.Drawing.Point(1073, 460);
             this.imgHCompletar.Name = "imgHCompletar";
             this.imgHCompletar.Size = new System.Drawing.Size(70, 70);
