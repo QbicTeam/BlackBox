@@ -131,6 +131,9 @@
     <EmbeddedResource Include="frmMenu.resx">
       <DependentUpon>frmMenu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmPagos.resx">
+      <DependentUpon>frmPagos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -401,6 +404,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\cmdPAN_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pago.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdPizza_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdHNR_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdComplementos_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdBebidas_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdAlas_3.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

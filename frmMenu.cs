@@ -265,7 +265,15 @@ namespace BlackBox
         private void cmdPagos_Click(object sender, EventArgs e)
         {
             frmPagos pagos = new frmPagos();
-            pagos.Show();
+            if (pagos.PaySale())
+            {
+                PrintSale();
+            }
+        }
+
+        private void PrintSale()
+        {
+            MessageBox.Show("printing sale...");
         }
     }
 }

@@ -16,5 +16,16 @@ namespace BlackBox
         {
             InitializeComponent();
         }
+
+        public bool PaySale()
+        {
+            bool result = false;
+
+            this.ShowDialog();
+
+            result = true;
+
+            return result;
+        }
     }
 }
