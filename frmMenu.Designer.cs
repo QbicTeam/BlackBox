@@ -67,24 +67,24 @@
             this.lblCajero = new System.Windows.Forms.Label();
             this.imgHnr = new System.Windows.Forms.PictureBox();
             this.imgSHnr = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
-            this.pictureBox11 = new System.Windows.Forms.PictureBox();
-            this.pictureBox12 = new System.Windows.Forms.PictureBox();
-            this.pictureBox13 = new System.Windows.Forms.PictureBox();
-            this.pictureBox14 = new System.Windows.Forms.PictureBox();
-            this.pictureBox15 = new System.Windows.Forms.PictureBox();
-            this.pictureBox16 = new System.Windows.Forms.PictureBox();
-            this.pictureBox17 = new System.Windows.Forms.PictureBox();
-            this.pictureBox18 = new System.Windows.Forms.PictureBox();
-            this.pictureBox19 = new System.Windows.Forms.PictureBox();
-            this.pictureBox20 = new System.Windows.Forms.PictureBox();
+            this.imgPizza = new System.Windows.Forms.PictureBox();
+            this.imgSPizza = new System.Windows.Forms.PictureBox();
+            this.imgPan = new System.Windows.Forms.PictureBox();
+            this.imgSPan = new System.Windows.Forms.PictureBox();
+            this.imgBebidas = new System.Windows.Forms.PictureBox();
+            this.imgSBebidas = new System.Windows.Forms.PictureBox();
+            this.imgAlas = new System.Windows.Forms.PictureBox();
+            this.imgSAlas = new System.Windows.Forms.PictureBox();
+            this.imgSRappi = new System.Windows.Forms.PictureBox();
+            this.imgRappi = new System.Windows.Forms.PictureBox();
+            this.imgSUber = new System.Windows.Forms.PictureBox();
+            this.imgUber = new System.Windows.Forms.PictureBox();
+            this.imgSOtrasComidas = new System.Windows.Forms.PictureBox();
+            this.imgOtrasComidas = new System.Windows.Forms.PictureBox();
+            this.imgSNoComida = new System.Windows.Forms.PictureBox();
+            this.imgNoComida = new System.Windows.Forms.PictureBox();
+            this.imgSComplementos = new System.Windows.Forms.PictureBox();
+            this.imgComplementos = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgSidebarButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgMenuHnr)).BeginInit();
@@ -101,24 +101,24 @@
             this.pnlPie.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgHnr)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgSHnr)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgPizza)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgSPizza)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgPan)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgSPan)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgBebidas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgSBebidas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgAlas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgSAlas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgSRappi)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgRappi)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgSUber)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgUber)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgSOtrasComidas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgOtrasComidas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgSNoComida)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgNoComida)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgSComplementos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgComplementos)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -179,91 +179,109 @@
             // 
             // cmdPizza
             // 
-            this.cmdPizza.Location = new System.Drawing.Point(378, 34);
+            this.cmdPizza.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.cmdPizza.FlatAppearance.BorderSize = 0;
+            this.cmdPizza.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdPizza.Location = new System.Drawing.Point(369, 6);
             this.cmdPizza.Name = "cmdPizza";
-            this.cmdPizza.Size = new System.Drawing.Size(53, 23);
+            this.cmdPizza.Size = new System.Drawing.Size(73, 49);
             this.cmdPizza.TabIndex = 5;
-            this.cmdPizza.Text = "button2";
             this.cmdPizza.UseVisualStyleBackColor = true;
             this.cmdPizza.Click += new System.EventHandler(this.cmdMenuSelected);
             // 
             // cmdPan
             // 
-            this.cmdPan.Location = new System.Drawing.Point(448, 34);
+            this.cmdPan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.cmdPan.FlatAppearance.BorderSize = 0;
+            this.cmdPan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdPan.Location = new System.Drawing.Point(445, 6);
             this.cmdPan.Name = "cmdPan";
-            this.cmdPan.Size = new System.Drawing.Size(53, 23);
+            this.cmdPan.Size = new System.Drawing.Size(73, 49);
             this.cmdPan.TabIndex = 6;
-            this.cmdPan.Text = "button3";
             this.cmdPan.UseVisualStyleBackColor = true;
             this.cmdPan.Click += new System.EventHandler(this.cmdMenuSelected);
             // 
             // cmdBebidas
             // 
-            this.cmdBebidas.Location = new System.Drawing.Point(528, 34);
+            this.cmdBebidas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.cmdBebidas.FlatAppearance.BorderSize = 0;
+            this.cmdBebidas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdBebidas.Location = new System.Drawing.Point(521, 7);
             this.cmdBebidas.Name = "cmdBebidas";
-            this.cmdBebidas.Size = new System.Drawing.Size(53, 23);
+            this.cmdBebidas.Size = new System.Drawing.Size(73, 49);
             this.cmdBebidas.TabIndex = 7;
-            this.cmdBebidas.Text = "button4";
             this.cmdBebidas.UseVisualStyleBackColor = true;
             this.cmdBebidas.Click += new System.EventHandler(this.cmdMenuSelected);
             // 
             // cmdAlas
             // 
-            this.cmdAlas.Location = new System.Drawing.Point(609, 34);
+            this.cmdAlas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.cmdAlas.FlatAppearance.BorderSize = 0;
+            this.cmdAlas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdAlas.Location = new System.Drawing.Point(597, 6);
             this.cmdAlas.Name = "cmdAlas";
-            this.cmdAlas.Size = new System.Drawing.Size(53, 23);
+            this.cmdAlas.Size = new System.Drawing.Size(73, 49);
             this.cmdAlas.TabIndex = 8;
-            this.cmdAlas.Text = "button5";
             this.cmdAlas.UseVisualStyleBackColor = true;
             this.cmdAlas.Click += new System.EventHandler(this.cmdMenuSelected);
             // 
             // cmdComplementos
             // 
-            this.cmdComplementos.Location = new System.Drawing.Point(686, 34);
+            this.cmdComplementos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.cmdComplementos.FlatAppearance.BorderSize = 0;
+            this.cmdComplementos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdComplementos.Location = new System.Drawing.Point(673, 7);
             this.cmdComplementos.Name = "cmdComplementos";
-            this.cmdComplementos.Size = new System.Drawing.Size(53, 23);
+            this.cmdComplementos.Size = new System.Drawing.Size(73, 49);
             this.cmdComplementos.TabIndex = 9;
-            this.cmdComplementos.Text = "button6";
             this.cmdComplementos.UseVisualStyleBackColor = true;
             this.cmdComplementos.Click += new System.EventHandler(this.cmdMenuSelected);
             // 
             // cmdNoComida
             // 
-            this.cmdNoComida.Location = new System.Drawing.Point(767, 34);
+            this.cmdNoComida.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.cmdNoComida.FlatAppearance.BorderSize = 0;
+            this.cmdNoComida.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdNoComida.Location = new System.Drawing.Point(749, 6);
             this.cmdNoComida.Name = "cmdNoComida";
-            this.cmdNoComida.Size = new System.Drawing.Size(53, 23);
+            this.cmdNoComida.Size = new System.Drawing.Size(73, 49);
             this.cmdNoComida.TabIndex = 10;
-            this.cmdNoComida.Text = "button7";
             this.cmdNoComida.UseVisualStyleBackColor = true;
             this.cmdNoComida.Click += new System.EventHandler(this.cmdMenuSelected);
             // 
             // cmdOtrasComidas
             // 
-            this.cmdOtrasComidas.Location = new System.Drawing.Point(841, 34);
+            this.cmdOtrasComidas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.cmdOtrasComidas.FlatAppearance.BorderSize = 0;
+            this.cmdOtrasComidas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdOtrasComidas.Location = new System.Drawing.Point(825, 6);
             this.cmdOtrasComidas.Name = "cmdOtrasComidas";
-            this.cmdOtrasComidas.Size = new System.Drawing.Size(53, 23);
+            this.cmdOtrasComidas.Size = new System.Drawing.Size(73, 49);
             this.cmdOtrasComidas.TabIndex = 11;
-            this.cmdOtrasComidas.Text = "button8";
             this.cmdOtrasComidas.UseVisualStyleBackColor = true;
             this.cmdOtrasComidas.Click += new System.EventHandler(this.cmdMenuSelected);
             // 
             // cmdUber
             // 
-            this.cmdUber.Location = new System.Drawing.Point(914, 34);
+            this.cmdUber.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.cmdUber.FlatAppearance.BorderSize = 0;
+            this.cmdUber.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdUber.Location = new System.Drawing.Point(901, 6);
             this.cmdUber.Name = "cmdUber";
-            this.cmdUber.Size = new System.Drawing.Size(53, 23);
+            this.cmdUber.Size = new System.Drawing.Size(73, 49);
             this.cmdUber.TabIndex = 12;
-            this.cmdUber.Text = "button9";
             this.cmdUber.UseVisualStyleBackColor = true;
             this.cmdUber.Click += new System.EventHandler(this.cmdMenuSelected);
             // 
             // cmdRappi
             // 
-            this.cmdRappi.Location = new System.Drawing.Point(985, 34);
+            this.cmdRappi.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.cmdRappi.FlatAppearance.BorderSize = 0;
+            this.cmdRappi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdRappi.Location = new System.Drawing.Point(977, 6);
             this.cmdRappi.Name = "cmdRappi";
-            this.cmdRappi.Size = new System.Drawing.Size(53, 23);
+            this.cmdRappi.Size = new System.Drawing.Size(73, 49);
             this.cmdRappi.TabIndex = 13;
-            this.cmdRappi.Text = "button10";
             this.cmdRappi.UseVisualStyleBackColor = true;
             this.cmdRappi.Click += new System.EventHandler(this.cmdMenuSelected);
             // 
@@ -296,7 +314,7 @@
             // 
             // imgMenuAlas
             // 
-            this.imgMenuAlas.Image = global::BlackBox.Properties.Resources.cmdMenuButtonV5;
+            this.imgMenuAlas.Image = global::BlackBox.Properties.Resources.cmdAlas;
             this.imgMenuAlas.Location = new System.Drawing.Point(1385, 369);
             this.imgMenuAlas.Name = "imgMenuAlas";
             this.imgMenuAlas.Size = new System.Drawing.Size(100, 50);
@@ -305,7 +323,7 @@
             // 
             // imgMenuComplementos
             // 
-            this.imgMenuComplementos.Image = global::BlackBox.Properties.Resources.cmdMenuButtonV5;
+            this.imgMenuComplementos.Image = global::BlackBox.Properties.Resources.cmdComplementos;
             this.imgMenuComplementos.Location = new System.Drawing.Point(1385, 425);
             this.imgMenuComplementos.Name = "imgMenuComplementos";
             this.imgMenuComplementos.Size = new System.Drawing.Size(100, 50);
@@ -472,167 +490,167 @@
             this.imgSHnr.TabIndex = 27;
             this.imgSHnr.TabStop = false;
             // 
-            // pictureBox3
+            // imgPizza
             // 
-            this.pictureBox3.Image = global::BlackBox.Properties.Resources.cmdPizzaV2;
-            this.pictureBox3.Location = new System.Drawing.Point(160, 779);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(66, 50);
-            this.pictureBox3.TabIndex = 28;
-            this.pictureBox3.TabStop = false;
+            this.imgPizza.Image = global::BlackBox.Properties.Resources.cmdPizzaV2;
+            this.imgPizza.Location = new System.Drawing.Point(160, 779);
+            this.imgPizza.Name = "imgPizza";
+            this.imgPizza.Size = new System.Drawing.Size(66, 50);
+            this.imgPizza.TabIndex = 28;
+            this.imgPizza.TabStop = false;
             // 
-            // pictureBox4
+            // imgSPizza
             // 
-            this.pictureBox4.Image = global::BlackBox.Properties.Resources.cmdSPizza;
-            this.pictureBox4.Location = new System.Drawing.Point(226, 779);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(66, 50);
-            this.pictureBox4.TabIndex = 29;
-            this.pictureBox4.TabStop = false;
+            this.imgSPizza.Image = global::BlackBox.Properties.Resources.cmdSPizza;
+            this.imgSPizza.Location = new System.Drawing.Point(226, 779);
+            this.imgSPizza.Name = "imgSPizza";
+            this.imgSPizza.Size = new System.Drawing.Size(66, 50);
+            this.imgSPizza.TabIndex = 29;
+            this.imgSPizza.TabStop = false;
             // 
-            // pictureBox5
+            // imgPan
             // 
-            this.pictureBox5.Image = global::BlackBox.Properties.Resources.cmdPanV2;
-            this.pictureBox5.Location = new System.Drawing.Point(298, 779);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(66, 50);
-            this.pictureBox5.TabIndex = 30;
-            this.pictureBox5.TabStop = false;
+            this.imgPan.Image = global::BlackBox.Properties.Resources.cmdPanV2;
+            this.imgPan.Location = new System.Drawing.Point(298, 779);
+            this.imgPan.Name = "imgPan";
+            this.imgPan.Size = new System.Drawing.Size(66, 50);
+            this.imgPan.TabIndex = 30;
+            this.imgPan.TabStop = false;
             // 
-            // pictureBox6
+            // imgSPan
             // 
-            this.pictureBox6.Image = global::BlackBox.Properties.Resources.cmdSPan;
-            this.pictureBox6.Location = new System.Drawing.Point(364, 779);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(66, 50);
-            this.pictureBox6.TabIndex = 31;
-            this.pictureBox6.TabStop = false;
+            this.imgSPan.Image = global::BlackBox.Properties.Resources.cmdSPan;
+            this.imgSPan.Location = new System.Drawing.Point(364, 779);
+            this.imgSPan.Name = "imgSPan";
+            this.imgSPan.Size = new System.Drawing.Size(66, 50);
+            this.imgSPan.TabIndex = 31;
+            this.imgSPan.TabStop = false;
             // 
-            // pictureBox7
+            // imgBebidas
             // 
-            this.pictureBox7.Image = global::BlackBox.Properties.Resources.cmdBebidasV2;
-            this.pictureBox7.Location = new System.Drawing.Point(436, 779);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(66, 50);
-            this.pictureBox7.TabIndex = 32;
-            this.pictureBox7.TabStop = false;
+            this.imgBebidas.Image = global::BlackBox.Properties.Resources.cmdBebidasV2;
+            this.imgBebidas.Location = new System.Drawing.Point(436, 779);
+            this.imgBebidas.Name = "imgBebidas";
+            this.imgBebidas.Size = new System.Drawing.Size(66, 50);
+            this.imgBebidas.TabIndex = 32;
+            this.imgBebidas.TabStop = false;
             // 
-            // pictureBox8
+            // imgSBebidas
             // 
-            this.pictureBox8.Image = global::BlackBox.Properties.Resources.cmdSBebidas;
-            this.pictureBox8.Location = new System.Drawing.Point(502, 779);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(66, 50);
-            this.pictureBox8.TabIndex = 33;
-            this.pictureBox8.TabStop = false;
+            this.imgSBebidas.Image = global::BlackBox.Properties.Resources.cmdSBebidas;
+            this.imgSBebidas.Location = new System.Drawing.Point(502, 779);
+            this.imgSBebidas.Name = "imgSBebidas";
+            this.imgSBebidas.Size = new System.Drawing.Size(66, 50);
+            this.imgSBebidas.TabIndex = 33;
+            this.imgSBebidas.TabStop = false;
             // 
-            // pictureBox9
+            // imgAlas
             // 
-            this.pictureBox9.Image = global::BlackBox.Properties.Resources.cmdAlasV2;
-            this.pictureBox9.Location = new System.Drawing.Point(574, 779);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(66, 50);
-            this.pictureBox9.TabIndex = 34;
-            this.pictureBox9.TabStop = false;
+            this.imgAlas.Image = global::BlackBox.Properties.Resources.cmdAlasV2;
+            this.imgAlas.Location = new System.Drawing.Point(574, 779);
+            this.imgAlas.Name = "imgAlas";
+            this.imgAlas.Size = new System.Drawing.Size(66, 50);
+            this.imgAlas.TabIndex = 34;
+            this.imgAlas.TabStop = false;
             // 
-            // pictureBox10
+            // imgSAlas
             // 
-            this.pictureBox10.Image = global::BlackBox.Properties.Resources.cmdSAlas;
-            this.pictureBox10.Location = new System.Drawing.Point(641, 779);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(66, 50);
-            this.pictureBox10.TabIndex = 35;
-            this.pictureBox10.TabStop = false;
+            this.imgSAlas.Image = global::BlackBox.Properties.Resources.cmdSAlas;
+            this.imgSAlas.Location = new System.Drawing.Point(641, 779);
+            this.imgSAlas.Name = "imgSAlas";
+            this.imgSAlas.Size = new System.Drawing.Size(66, 50);
+            this.imgSAlas.TabIndex = 35;
+            this.imgSAlas.TabStop = false;
             // 
-            // pictureBox11
+            // imgSRappi
             // 
-            this.pictureBox11.Image = global::BlackBox.Properties.Resources.cmdSRappi;
-            this.pictureBox11.Location = new System.Drawing.Point(1334, 779);
-            this.pictureBox11.Name = "pictureBox11";
-            this.pictureBox11.Size = new System.Drawing.Size(66, 50);
-            this.pictureBox11.TabIndex = 36;
-            this.pictureBox11.TabStop = false;
+            this.imgSRappi.Image = global::BlackBox.Properties.Resources.cmdSRappi;
+            this.imgSRappi.Location = new System.Drawing.Point(1334, 779);
+            this.imgSRappi.Name = "imgSRappi";
+            this.imgSRappi.Size = new System.Drawing.Size(66, 50);
+            this.imgSRappi.TabIndex = 36;
+            this.imgSRappi.TabStop = false;
             // 
-            // pictureBox12
+            // imgRappi
             // 
-            this.pictureBox12.Image = global::BlackBox.Properties.Resources.cmdRappi;
-            this.pictureBox12.Location = new System.Drawing.Point(1267, 779);
-            this.pictureBox12.Name = "pictureBox12";
-            this.pictureBox12.Size = new System.Drawing.Size(66, 50);
-            this.pictureBox12.TabIndex = 37;
-            this.pictureBox12.TabStop = false;
+            this.imgRappi.Image = global::BlackBox.Properties.Resources.cmdRappi;
+            this.imgRappi.Location = new System.Drawing.Point(1267, 779);
+            this.imgRappi.Name = "imgRappi";
+            this.imgRappi.Size = new System.Drawing.Size(66, 50);
+            this.imgRappi.TabIndex = 37;
+            this.imgRappi.TabStop = false;
             // 
-            // pictureBox13
+            // imgSUber
             // 
-            this.pictureBox13.Image = global::BlackBox.Properties.Resources.cmdSUber;
-            this.pictureBox13.Location = new System.Drawing.Point(1195, 779);
-            this.pictureBox13.Name = "pictureBox13";
-            this.pictureBox13.Size = new System.Drawing.Size(66, 50);
-            this.pictureBox13.TabIndex = 38;
-            this.pictureBox13.TabStop = false;
+            this.imgSUber.Image = global::BlackBox.Properties.Resources.cmdSUber;
+            this.imgSUber.Location = new System.Drawing.Point(1195, 779);
+            this.imgSUber.Name = "imgSUber";
+            this.imgSUber.Size = new System.Drawing.Size(66, 50);
+            this.imgSUber.TabIndex = 38;
+            this.imgSUber.TabStop = false;
             // 
-            // pictureBox14
+            // imgUber
             // 
-            this.pictureBox14.Image = global::BlackBox.Properties.Resources.cmdUber;
-            this.pictureBox14.Location = new System.Drawing.Point(1129, 779);
-            this.pictureBox14.Name = "pictureBox14";
-            this.pictureBox14.Size = new System.Drawing.Size(66, 50);
-            this.pictureBox14.TabIndex = 39;
-            this.pictureBox14.TabStop = false;
+            this.imgUber.Image = global::BlackBox.Properties.Resources.cmdUber;
+            this.imgUber.Location = new System.Drawing.Point(1129, 779);
+            this.imgUber.Name = "imgUber";
+            this.imgUber.Size = new System.Drawing.Size(66, 50);
+            this.imgUber.TabIndex = 39;
+            this.imgUber.TabStop = false;
             // 
-            // pictureBox15
+            // imgSOtrasComidas
             // 
-            this.pictureBox15.Image = global::BlackBox.Properties.Resources.cmdSOtrasComidas;
-            this.pictureBox15.Location = new System.Drawing.Point(1057, 779);
-            this.pictureBox15.Name = "pictureBox15";
-            this.pictureBox15.Size = new System.Drawing.Size(66, 50);
-            this.pictureBox15.TabIndex = 40;
-            this.pictureBox15.TabStop = false;
+            this.imgSOtrasComidas.Image = global::BlackBox.Properties.Resources.cmdSOtrasComidas;
+            this.imgSOtrasComidas.Location = new System.Drawing.Point(1057, 779);
+            this.imgSOtrasComidas.Name = "imgSOtrasComidas";
+            this.imgSOtrasComidas.Size = new System.Drawing.Size(66, 50);
+            this.imgSOtrasComidas.TabIndex = 40;
+            this.imgSOtrasComidas.TabStop = false;
             // 
-            // pictureBox16
+            // imgOtrasComidas
             // 
-            this.pictureBox16.Image = global::BlackBox.Properties.Resources.cmdOtrasComidas;
-            this.pictureBox16.Location = new System.Drawing.Point(990, 779);
-            this.pictureBox16.Name = "pictureBox16";
-            this.pictureBox16.Size = new System.Drawing.Size(66, 50);
-            this.pictureBox16.TabIndex = 41;
-            this.pictureBox16.TabStop = false;
+            this.imgOtrasComidas.Image = global::BlackBox.Properties.Resources.cmdOtrasComidas;
+            this.imgOtrasComidas.Location = new System.Drawing.Point(990, 779);
+            this.imgOtrasComidas.Name = "imgOtrasComidas";
+            this.imgOtrasComidas.Size = new System.Drawing.Size(66, 50);
+            this.imgOtrasComidas.TabIndex = 41;
+            this.imgOtrasComidas.TabStop = false;
             // 
-            // pictureBox17
+            // imgSNoComida
             // 
-            this.pictureBox17.Image = global::BlackBox.Properties.Resources.cmdSNoComida;
-            this.pictureBox17.Location = new System.Drawing.Point(918, 779);
-            this.pictureBox17.Name = "pictureBox17";
-            this.pictureBox17.Size = new System.Drawing.Size(66, 50);
-            this.pictureBox17.TabIndex = 42;
-            this.pictureBox17.TabStop = false;
+            this.imgSNoComida.Image = global::BlackBox.Properties.Resources.cmdSNoComida;
+            this.imgSNoComida.Location = new System.Drawing.Point(918, 779);
+            this.imgSNoComida.Name = "imgSNoComida";
+            this.imgSNoComida.Size = new System.Drawing.Size(66, 50);
+            this.imgSNoComida.TabIndex = 42;
+            this.imgSNoComida.TabStop = false;
             // 
-            // pictureBox18
+            // imgNoComida
             // 
-            this.pictureBox18.Image = global::BlackBox.Properties.Resources.cmdNoComida;
-            this.pictureBox18.Location = new System.Drawing.Point(852, 779);
-            this.pictureBox18.Name = "pictureBox18";
-            this.pictureBox18.Size = new System.Drawing.Size(66, 50);
-            this.pictureBox18.TabIndex = 43;
-            this.pictureBox18.TabStop = false;
+            this.imgNoComida.Image = global::BlackBox.Properties.Resources.cmdNoComida;
+            this.imgNoComida.Location = new System.Drawing.Point(852, 779);
+            this.imgNoComida.Name = "imgNoComida";
+            this.imgNoComida.Size = new System.Drawing.Size(66, 50);
+            this.imgNoComida.TabIndex = 43;
+            this.imgNoComida.TabStop = false;
             // 
-            // pictureBox19
+            // imgSComplementos
             // 
-            this.pictureBox19.Image = global::BlackBox.Properties.Resources.cmdSComplementos;
-            this.pictureBox19.Location = new System.Drawing.Point(780, 779);
-            this.pictureBox19.Name = "pictureBox19";
-            this.pictureBox19.Size = new System.Drawing.Size(66, 50);
-            this.pictureBox19.TabIndex = 44;
-            this.pictureBox19.TabStop = false;
+            this.imgSComplementos.Image = global::BlackBox.Properties.Resources.cmdSComplementos;
+            this.imgSComplementos.Location = new System.Drawing.Point(780, 779);
+            this.imgSComplementos.Name = "imgSComplementos";
+            this.imgSComplementos.Size = new System.Drawing.Size(66, 50);
+            this.imgSComplementos.TabIndex = 44;
+            this.imgSComplementos.TabStop = false;
             // 
-            // pictureBox20
+            // imgComplementos
             // 
-            this.pictureBox20.Image = global::BlackBox.Properties.Resources.cmdComplementosV2;
-            this.pictureBox20.Location = new System.Drawing.Point(713, 779);
-            this.pictureBox20.Name = "pictureBox20";
-            this.pictureBox20.Size = new System.Drawing.Size(66, 50);
-            this.pictureBox20.TabIndex = 45;
-            this.pictureBox20.TabStop = false;
+            this.imgComplementos.Image = global::BlackBox.Properties.Resources.cmdComplementosV2;
+            this.imgComplementos.Location = new System.Drawing.Point(713, 779);
+            this.imgComplementos.Name = "imgComplementos";
+            this.imgComplementos.Size = new System.Drawing.Size(66, 50);
+            this.imgComplementos.TabIndex = 45;
+            this.imgComplementos.TabStop = false;
             // 
             // frmMenu
             // 
@@ -641,24 +659,24 @@
             this.BackgroundImage = global::BlackBox.Properties.Resources.MenuTemplateV4;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1577, 841);
-            this.Controls.Add(this.pictureBox20);
-            this.Controls.Add(this.pictureBox19);
-            this.Controls.Add(this.pictureBox18);
-            this.Controls.Add(this.pictureBox17);
-            this.Controls.Add(this.pictureBox16);
-            this.Controls.Add(this.pictureBox15);
-            this.Controls.Add(this.pictureBox14);
-            this.Controls.Add(this.pictureBox13);
-            this.Controls.Add(this.pictureBox12);
-            this.Controls.Add(this.pictureBox11);
-            this.Controls.Add(this.pictureBox10);
-            this.Controls.Add(this.pictureBox9);
-            this.Controls.Add(this.pictureBox8);
-            this.Controls.Add(this.pictureBox7);
-            this.Controls.Add(this.pictureBox6);
-            this.Controls.Add(this.pictureBox5);
-            this.Controls.Add(this.pictureBox4);
-            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.imgComplementos);
+            this.Controls.Add(this.imgSComplementos);
+            this.Controls.Add(this.imgNoComida);
+            this.Controls.Add(this.imgSNoComida);
+            this.Controls.Add(this.imgOtrasComidas);
+            this.Controls.Add(this.imgSOtrasComidas);
+            this.Controls.Add(this.imgUber);
+            this.Controls.Add(this.imgSUber);
+            this.Controls.Add(this.imgRappi);
+            this.Controls.Add(this.imgSRappi);
+            this.Controls.Add(this.imgSAlas);
+            this.Controls.Add(this.imgAlas);
+            this.Controls.Add(this.imgSBebidas);
+            this.Controls.Add(this.imgBebidas);
+            this.Controls.Add(this.imgSPan);
+            this.Controls.Add(this.imgPan);
+            this.Controls.Add(this.imgSPizza);
+            this.Controls.Add(this.imgPizza);
             this.Controls.Add(this.imgSHnr);
             this.Controls.Add(this.imgHnr);
             this.Controls.Add(this.pnlPie);
@@ -706,24 +724,24 @@
             this.pnlPie.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imgHnr)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgSHnr)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgPizza)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgSPizza)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgPan)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgSPan)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgBebidas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgSBebidas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgAlas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgSAlas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgSRappi)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgRappi)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgSUber)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgUber)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgSOtrasComidas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgOtrasComidas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgSNoComida)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgNoComida)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgSComplementos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgComplementos)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -767,23 +785,23 @@
         private System.Windows.Forms.Label lblHoraActual;
         private System.Windows.Forms.PictureBox imgHnr;
         private System.Windows.Forms.PictureBox imgSHnr;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.PictureBox pictureBox7;
-        private System.Windows.Forms.PictureBox pictureBox8;
-        private System.Windows.Forms.PictureBox pictureBox9;
-        private System.Windows.Forms.PictureBox pictureBox10;
-        private System.Windows.Forms.PictureBox pictureBox11;
-        private System.Windows.Forms.PictureBox pictureBox12;
-        private System.Windows.Forms.PictureBox pictureBox13;
-        private System.Windows.Forms.PictureBox pictureBox14;
-        private System.Windows.Forms.PictureBox pictureBox15;
-        private System.Windows.Forms.PictureBox pictureBox16;
-        private System.Windows.Forms.PictureBox pictureBox17;
-        private System.Windows.Forms.PictureBox pictureBox18;
-        private System.Windows.Forms.PictureBox pictureBox19;
-        private System.Windows.Forms.PictureBox pictureBox20;
+        private System.Windows.Forms.PictureBox imgPizza;
+        private System.Windows.Forms.PictureBox imgSPizza;
+        private System.Windows.Forms.PictureBox imgPan;
+        private System.Windows.Forms.PictureBox imgSPan;
+        private System.Windows.Forms.PictureBox imgBebidas;
+        private System.Windows.Forms.PictureBox imgSBebidas;
+        private System.Windows.Forms.PictureBox imgAlas;
+        private System.Windows.Forms.PictureBox imgSAlas;
+        private System.Windows.Forms.PictureBox imgSRappi;
+        private System.Windows.Forms.PictureBox imgRappi;
+        private System.Windows.Forms.PictureBox imgSUber;
+        private System.Windows.Forms.PictureBox imgUber;
+        private System.Windows.Forms.PictureBox imgSOtrasComidas;
+        private System.Windows.Forms.PictureBox imgOtrasComidas;
+        private System.Windows.Forms.PictureBox imgSNoComida;
+        private System.Windows.Forms.PictureBox imgNoComida;
+        private System.Windows.Forms.PictureBox imgSComplementos;
+        private System.Windows.Forms.PictureBox imgComplementos;
     }
 }
