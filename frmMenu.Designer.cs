@@ -718,7 +718,7 @@
             // 
             // imgMenuHnr3
             // 
-            this.imgMenuHnr3.Image = global::BlackBox.Properties.Resources.cmdMenuButtonV5;
+            this.imgMenuHnr3.Image = global::BlackBox.Properties.Resources.cmdHNR_3;
             this.imgMenuHnr3.Location = new System.Drawing.Point(108, 79);
             this.imgMenuHnr3.Name = "imgMenuHnr3";
             this.imgMenuHnr3.Size = new System.Drawing.Size(100, 50);
@@ -727,7 +727,7 @@
             // 
             // imgMenuPizza3
             // 
-            this.imgMenuPizza3.Image = global::BlackBox.Properties.Resources.cmdPizza;
+            this.imgMenuPizza3.Image = global::BlackBox.Properties.Resources.cmdPizza_3;
             this.imgMenuPizza3.Location = new System.Drawing.Point(108, 135);
             this.imgMenuPizza3.Name = "imgMenuPizza3";
             this.imgMenuPizza3.Size = new System.Drawing.Size(100, 50);
@@ -745,7 +745,7 @@
             // 
             // imgMenuBebidas3
             // 
-            this.imgMenuBebidas3.Image = global::BlackBox.Properties.Resources.cmdBebidas;
+            this.imgMenuBebidas3.Image = global::BlackBox.Properties.Resources.cmdBebidas_3;
             this.imgMenuBebidas3.Location = new System.Drawing.Point(108, 247);
             this.imgMenuBebidas3.Name = "imgMenuBebidas3";
             this.imgMenuBebidas3.Size = new System.Drawing.Size(100, 50);
@@ -754,7 +754,7 @@
             // 
             // imgMenuAlas3
             // 
-            this.imgMenuAlas3.Image = global::BlackBox.Properties.Resources.cmdAlas;
+            this.imgMenuAlas3.Image = global::BlackBox.Properties.Resources.cmdAlas_3;
             this.imgMenuAlas3.Location = new System.Drawing.Point(108, 303);
             this.imgMenuAlas3.Name = "imgMenuAlas3";
             this.imgMenuAlas3.Size = new System.Drawing.Size(100, 50);
@@ -763,7 +763,7 @@
             // 
             // imgMenuComplementos3
             // 
-            this.imgMenuComplementos3.Image = global::BlackBox.Properties.Resources.cmdComplementos;
+            this.imgMenuComplementos3.Image = global::BlackBox.Properties.Resources.cmdComplementos_3;
             this.imgMenuComplementos3.Location = new System.Drawing.Point(108, 359);
             this.imgMenuComplementos3.Name = "imgMenuComplementos3";
             this.imgMenuComplementos3.Size = new System.Drawing.Size(100, 50);
