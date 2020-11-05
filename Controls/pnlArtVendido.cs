@@ -19,6 +19,7 @@ namespace BlackBox.Controls
         public pnlArtVendido(string nombre, double precio)
         {
             InitializeComponent();
+
             string precioF = string.Empty;
             precioF = string.Format("{0:C}", precio);
 
@@ -29,6 +30,9 @@ namespace BlackBox.Controls
             lblPrecio.RightToLeft = RightToLeft.Yes;
             */
             lblArticulo.Font = new Font(lblArticulo.Font, FontStyle.Bold);
+            lblFondo.BackColor = SystemColors.ControlDark;
+            lblArticulo.BackColor = SystemColors.ControlDark;
+            lblPrecio.BackColor = SystemColors.ControlDark;
 
             lblArticulo.Text = nombre;
             lblPrecio.Text = precioF;
@@ -39,11 +43,15 @@ namespace BlackBox.Controls
 
         public void ToRegular()
         {
+            lblFondo.BackColor = Color.White;
+            lblArticulo.BackColor = Color.White;
+            lblPrecio.BackColor = Color.White;
+
             lblArticulo.Font = new Font(lblArticulo.Font, FontStyle.Regular);
             lblPrecio.Font = new Font(lblPrecio.Font, FontStyle.Regular);
 
-            lblArticulo.ForeColor = SystemColors.InactiveCaptionText;
-            lblPrecio.ForeColor = SystemColors.InactiveCaptionText;
+            lblArticulo.ForeColor = SystemColors.GrayText;
+            lblPrecio.ForeColor = SystemColors.GrayText;
         }
     }
 }
