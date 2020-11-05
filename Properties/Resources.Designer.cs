@@ -93,6 +93,16 @@ namespace BlackBox.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cmdAlas_3 {
+            get {
+                object obj = ResourceManager.GetObject("cmdAlas_3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cmdAlasV2 {
             get {
                 object obj = ResourceManager.GetObject("cmdAlasV2", resourceCulture);
@@ -106,6 +116,16 @@ namespace BlackBox.Properties {
         internal static System.Drawing.Bitmap cmdBebidas {
             get {
                 object obj = ResourceManager.GetObject("cmdBebidas", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cmdBebidas_3 {
+            get {
+                object obj = ResourceManager.GetObject("cmdBebidas_3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -136,6 +156,16 @@ namespace BlackBox.Properties {
         internal static System.Drawing.Bitmap cmdComplementos {
             get {
                 object obj = ResourceManager.GetObject("cmdComplementos", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cmdComplementos_3 {
+            get {
+                object obj = ResourceManager.GetObject("cmdComplementos_3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -276,6 +306,16 @@ namespace BlackBox.Properties {
         internal static System.Drawing.Bitmap cmdHNR {
             get {
                 object obj = ResourceManager.GetObject("cmdHNR", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cmdHNR_3 {
+            get {
+                object obj = ResourceManager.GetObject("cmdHNR_3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -456,6 +496,16 @@ namespace BlackBox.Properties {
         internal static System.Drawing.Bitmap cmdPizza {
             get {
                 object obj = ResourceManager.GetObject("cmdPizza", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cmdPizza_3 {
+            get {
+                object obj = ResourceManager.GetObject("cmdPizza_3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -786,6 +836,16 @@ namespace BlackBox.Properties {
         internal static System.Drawing.Bitmap MenuTemplateV5 {
             get {
                 object obj = ResourceManager.GetObject("MenuTemplateV5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Pago {
+            get {
+                object obj = ResourceManager.GetObject("Pago", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
