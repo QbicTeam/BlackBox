@@ -42,18 +42,8 @@ namespace BlackBox
             pnlPie.Location = new Point(44, 729);
             pnlPie.Size = new Size(1321, 39);
 
-            pnlArtVendido artVta = new pnlArtVendido("Articulo", 123);
-            pnlComanda.Controls.Add(artVta);
-            artVta.Top = 0;
-            artVta.ToRegular();
-
-            pnlArtVendido artVta2 = new pnlArtVendido("Articulo2", 56.35);
-            artVta2.Top = 27;
-            pnlComanda.Controls.Add(artVta2);
-            
-            pnlArtVendido artVta3 = new pnlArtVendido("Articulo3", 1356);
-            artVta3.Top = 54;
-            pnlComanda.Controls.Add(artVta3);
+            lblCajero.Text = _datos.Login.Cajero;
+            lblArticulosPie.Text = _datos.PantallaVentas.ArticulosVencidosPie;
 
             comanda = new Comanda();
         }

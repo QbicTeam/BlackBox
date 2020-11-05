@@ -447,7 +447,7 @@
             this.lblNumArts.Name = "lblNumArts";
             this.lblNumArts.Size = new System.Drawing.Size(93, 12);
             this.lblNumArts.TabIndex = 0;
-            this.lblNumArts.Text = "Items 0";
+            this.lblNumArts.Text = "0";
             this.lblNumArts.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // timer1
@@ -790,7 +790,7 @@
             // 
             // imgMenuUber3
             // 
-            this.imgMenuUber3.Image = global::BlackBox.Properties.Resources.cmdPan;
+            this.imgMenuUber3.Image = global::BlackBox.Properties.Resources.cmdPAN_3;
             this.imgMenuUber3.Location = new System.Drawing.Point(108, 527);
             this.imgMenuUber3.Name = "imgMenuUber3";
             this.imgMenuUber3.Size = new System.Drawing.Size(100, 50);
@@ -799,7 +799,7 @@
             // 
             // imgMenuRappi3
             // 
-            this.imgMenuRappi3.Image = global::BlackBox.Properties.Resources.cmdPan;
+            this.imgMenuRappi3.Image = global::BlackBox.Properties.Resources.cmdPAN_3;
             this.imgMenuRappi3.Location = new System.Drawing.Point(108, 583);
             this.imgMenuRappi3.Name = "imgMenuRappi3";
             this.imgMenuRappi3.Size = new System.Drawing.Size(100, 50);

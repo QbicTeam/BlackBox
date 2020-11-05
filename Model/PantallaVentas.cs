@@ -8,6 +8,7 @@ namespace BlackBox.Model
 {
     public class PantallaVentas
     {
+        public string ArticulosVencidosPie { get; set; }
         public List<Articulo> HNR { get; set; }
         public List<Articulo> Pizza { get; set; }
         public List<Articulo> Pan { get; set; }
