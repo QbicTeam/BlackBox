@@ -19,14 +19,22 @@ namespace BlackBox
     {
         private ObjBlackBox _datos;
         private Comanda comanda;
+        private Form _entryForm;
+
         public frmMenu()
         {
             InitializeComponent();
         }
 
+        public void SetEntryForm(Form entryForm)
+        {
+            this._entryForm = entryForm;
+        }
+
         private void frmMenu_Load(object sender, EventArgs e)
         {
             resetMenuButtons();
+            this.FormBorderStyle = FormBorderStyle.None;
 
             // Lectura de Datos.
             var json = File.ReadAllText("appSettings.json");
@@ -283,6 +291,11 @@ namespace BlackBox
         private void PrintSale()
         {
             MessageBox.Show("printing sale...");
+        }
+
+        private void cmdClose_Click(object sender, EventArgs e)
+        {
+            this._entryForm.Close();
         }
     }
 }

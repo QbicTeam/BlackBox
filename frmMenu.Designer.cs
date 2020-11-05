@@ -98,6 +98,7 @@
             this.imgMenuUber3 = new System.Windows.Forms.PictureBox();
             this.imgMenuRappi3 = new System.Windows.Forms.PictureBox();
             this.cmdPagos = new System.Windows.Forms.Button();
+            this.cmdClose = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgSidebarButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgMenuHnr)).BeginInit();
@@ -816,13 +817,24 @@
             this.cmdPagos.UseVisualStyleBackColor = true;
             this.cmdPagos.Click += new System.EventHandler(this.cmdPagos_Click);
             // 
+            // cmdClose
+            // 
+            this.cmdClose.Location = new System.Drawing.Point(1265, 31);
+            this.cmdClose.Name = "cmdClose";
+            this.cmdClose.Size = new System.Drawing.Size(75, 23);
+            this.cmdClose.TabIndex = 48;
+            this.cmdClose.Text = "button1";
+            this.cmdClose.UseVisualStyleBackColor = true;
+            this.cmdClose.Click += new System.EventHandler(this.cmdClose_Click);
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::BlackBox.Properties.Resources.MenuTemplateV5;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(1577, 841);
+            this.ClientSize = new System.Drawing.Size(1366, 768);
+            this.Controls.Add(this.cmdClose);
             this.Controls.Add(this.cmdPagos);
             this.Controls.Add(this.pnlMenuColores);
             this.Controls.Add(this.imgComplementos);
@@ -861,6 +873,7 @@
             this.Controls.Add(this.pnlMenu);
             this.Controls.Add(this.panel1);
             this.Name = "frmMenu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmMenu";
             this.Load += new System.EventHandler(this.frmMenu_Load);
             this.panel1.ResumeLayout(false);
@@ -983,5 +996,6 @@
         private System.Windows.Forms.PictureBox imgMenuUber3;
         private System.Windows.Forms.PictureBox imgMenuRappi3;
         private System.Windows.Forms.Button cmdPagos;
+        private System.Windows.Forms.Button cmdClose;
     }
 }

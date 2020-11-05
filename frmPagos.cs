@@ -27,5 +27,20 @@ namespace BlackBox
 
             return result;
         }
+
+        private void TipoPago(object sender, EventArgs e)
+        {
+            string name = ((Button)sender).Name;
+
+
+        }
+
+        private void Importe(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            decimal importe = Convert.ToDecimal(btn.Tag);
+
+
+        }
     }
 }
