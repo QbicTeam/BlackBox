@@ -433,6 +433,16 @@ namespace BlackBox.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cmdPAN_3 {
+            get {
+                object obj = ResourceManager.GetObject("cmdPAN_3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cmdPanV2 {
             get {
                 object obj = ResourceManager.GetObject("cmdPanV2", resourceCulture);
@@ -766,6 +776,16 @@ namespace BlackBox.Properties {
         internal static System.Drawing.Bitmap MenuTemplateV4 {
             get {
                 object obj = ResourceManager.GetObject("MenuTemplateV4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MenuTemplateV5 {
+            get {
+                object obj = ResourceManager.GetObject("MenuTemplateV5", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

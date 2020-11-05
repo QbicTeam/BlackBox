@@ -735,7 +735,7 @@
             // 
             // imgMenuPan3
             // 
-            this.imgMenuPan3.Image = global::BlackBox.Properties.Resources.cmdPan;
+            this.imgMenuPan3.Image = global::BlackBox.Properties.Resources.cmdPAN_3;
             this.imgMenuPan3.Location = new System.Drawing.Point(108, 191);
             this.imgMenuPan3.Name = "imgMenuPan3";
             this.imgMenuPan3.Size = new System.Drawing.Size(100, 50);
@@ -809,7 +809,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::BlackBox.Properties.Resources.MenuTemplateV4;
+            this.BackgroundImage = global::BlackBox.Properties.Resources.MenuTemplateV5;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1577, 841);
             this.Controls.Add(this.pnlMenuColores);
