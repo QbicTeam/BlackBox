@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlTabs = new System.Windows.Forms.Panel();
             this.pnlSideContainer = new System.Windows.Forms.Panel();
             this.imgSidebarButton = new System.Windows.Forms.PictureBox();
             this.pnlMenu = new System.Windows.Forms.Panel();
@@ -99,7 +99,15 @@
             this.imgMenuRappi3 = new System.Windows.Forms.PictureBox();
             this.cmdPagos = new System.Windows.Forms.Button();
             this.cmdClose = new System.Windows.Forms.Button();
-            this.panel1.SuspendLayout();
+            this.imgEspeciales = new System.Windows.Forms.PictureBox();
+            this.imgEnEspera = new System.Windows.Forms.PictureBox();
+            this.imgOnline = new System.Windows.Forms.PictureBox();
+            this.imgRecientes = new System.Windows.Forms.PictureBox();
+            this.cmdEspeciales = new System.Windows.Forms.Button();
+            this.cmdEnEspera = new System.Windows.Forms.Button();
+            this.cmdOnline = new System.Windows.Forms.Button();
+            this.cmdReciente = new System.Windows.Forms.Button();
+            this.pnlTabs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgSidebarButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgMenuHnr)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgMenuPizza)).BeginInit();
@@ -145,24 +153,32 @@
             ((System.ComponentModel.ISupportInitialize)(this.imgMenuOtrasComidas3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgMenuUber3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgMenuRappi3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgEspeciales)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgEnEspera)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgOnline)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgRecientes)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
+            // pnlTabs
             // 
-            this.panel1.BackgroundImage = global::BlackBox.Properties.Resources.tabPopular;
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.panel1.Controls.Add(this.pnlSideContainer);
-            this.panel1.Location = new System.Drawing.Point(11, 62);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(277, 577);
-            this.panel1.TabIndex = 0;
+            this.pnlTabs.BackgroundImage = global::BlackBox.Properties.Resources.tabEspeciales;
+            this.pnlTabs.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pnlTabs.Controls.Add(this.cmdReciente);
+            this.pnlTabs.Controls.Add(this.cmdOnline);
+            this.pnlTabs.Controls.Add(this.cmdEnEspera);
+            this.pnlTabs.Controls.Add(this.cmdEspeciales);
+            this.pnlTabs.Controls.Add(this.pnlSideContainer);
+            this.pnlTabs.Location = new System.Drawing.Point(9, 62);
+            this.pnlTabs.Name = "pnlTabs";
+            this.pnlTabs.Size = new System.Drawing.Size(277, 628);
+            this.pnlTabs.TabIndex = 0;
             // 
             // pnlSideContainer
             // 
             this.pnlSideContainer.AutoScroll = true;
-            this.pnlSideContainer.Location = new System.Drawing.Point(32, 3);
+            this.pnlSideContainer.Location = new System.Drawing.Point(35, 5);
             this.pnlSideContainer.Name = "pnlSideContainer";
-            this.pnlSideContainer.Size = new System.Drawing.Size(239, 571);
+            this.pnlSideContainer.Size = new System.Drawing.Size(239, 614);
             this.pnlSideContainer.TabIndex = 0;
             // 
             // imgSidebarButton
@@ -827,13 +843,109 @@
             this.cmdClose.UseVisualStyleBackColor = true;
             this.cmdClose.Click += new System.EventHandler(this.cmdClose_Click);
             // 
+            // imgEspeciales
+            // 
+            this.imgEspeciales.Image = global::BlackBox.Properties.Resources.tabEspeciales1;
+            this.imgEspeciales.Location = new System.Drawing.Point(12, 846);
+            this.imgEspeciales.Name = "imgEspeciales";
+            this.imgEspeciales.Size = new System.Drawing.Size(100, 50);
+            this.imgEspeciales.TabIndex = 49;
+            this.imgEspeciales.TabStop = false;
+            // 
+            // imgEnEspera
+            // 
+            this.imgEnEspera.Image = global::BlackBox.Properties.Resources.tabEnEspera;
+            this.imgEnEspera.Location = new System.Drawing.Point(118, 846);
+            this.imgEnEspera.Name = "imgEnEspera";
+            this.imgEnEspera.Size = new System.Drawing.Size(100, 50);
+            this.imgEnEspera.TabIndex = 50;
+            this.imgEnEspera.TabStop = false;
+            // 
+            // imgOnline
+            // 
+            this.imgOnline.Image = global::BlackBox.Properties.Resources.tabOnline;
+            this.imgOnline.Location = new System.Drawing.Point(224, 846);
+            this.imgOnline.Name = "imgOnline";
+            this.imgOnline.Size = new System.Drawing.Size(100, 50);
+            this.imgOnline.TabIndex = 51;
+            this.imgOnline.TabStop = false;
+            // 
+            // imgRecientes
+            // 
+            this.imgRecientes.Image = global::BlackBox.Properties.Resources.tabRecientes;
+            this.imgRecientes.Location = new System.Drawing.Point(330, 846);
+            this.imgRecientes.Name = "imgRecientes";
+            this.imgRecientes.Size = new System.Drawing.Size(100, 50);
+            this.imgRecientes.TabIndex = 52;
+            this.imgRecientes.TabStop = false;
+            // 
+            // cmdEspeciales
+            // 
+            this.cmdEspeciales.BackColor = System.Drawing.Color.Transparent;
+            this.cmdEspeciales.FlatAppearance.BorderSize = 0;
+            this.cmdEspeciales.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.cmdEspeciales.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.cmdEspeciales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdEspeciales.Location = new System.Drawing.Point(5, 5);
+            this.cmdEspeciales.Name = "cmdEspeciales";
+            this.cmdEspeciales.Size = new System.Drawing.Size(24, 145);
+            this.cmdEspeciales.TabIndex = 1;
+            this.cmdEspeciales.UseVisualStyleBackColor = false;
+            this.cmdEspeciales.Click += new System.EventHandler(this.cmdEspeciales_Click);
+            // 
+            // cmdEnEspera
+            // 
+            this.cmdEnEspera.BackColor = System.Drawing.Color.Transparent;
+            this.cmdEnEspera.FlatAppearance.BorderSize = 0;
+            this.cmdEnEspera.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.cmdEnEspera.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.cmdEnEspera.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdEnEspera.Location = new System.Drawing.Point(5, 158);
+            this.cmdEnEspera.Name = "cmdEnEspera";
+            this.cmdEnEspera.Size = new System.Drawing.Size(24, 145);
+            this.cmdEnEspera.TabIndex = 2;
+            this.cmdEnEspera.UseVisualStyleBackColor = false;
+            this.cmdEnEspera.Click += new System.EventHandler(this.cmdEnEspera_Click);
+            // 
+            // cmdOnline
+            // 
+            this.cmdOnline.BackColor = System.Drawing.Color.Transparent;
+            this.cmdOnline.FlatAppearance.BorderSize = 0;
+            this.cmdOnline.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.cmdOnline.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.cmdOnline.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdOnline.Location = new System.Drawing.Point(5, 310);
+            this.cmdOnline.Name = "cmdOnline";
+            this.cmdOnline.Size = new System.Drawing.Size(24, 145);
+            this.cmdOnline.TabIndex = 3;
+            this.cmdOnline.UseVisualStyleBackColor = false;
+            this.cmdOnline.Click += new System.EventHandler(this.cmdOnline_Click);
+            // 
+            // cmdReciente
+            // 
+            this.cmdReciente.BackColor = System.Drawing.Color.Transparent;
+            this.cmdReciente.FlatAppearance.BorderSize = 0;
+            this.cmdReciente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.cmdReciente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.cmdReciente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdReciente.Location = new System.Drawing.Point(5, 461);
+            this.cmdReciente.Name = "cmdReciente";
+            this.cmdReciente.Size = new System.Drawing.Size(24, 145);
+            this.cmdReciente.TabIndex = 4;
+            this.cmdReciente.UseVisualStyleBackColor = false;
+            this.cmdReciente.Click += new System.EventHandler(this.cmdReciente_Click);
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::BlackBox.Properties.Resources.MenuTemplateV5;
+            this.BackgroundImage = global::BlackBox.Properties.Resources.MenuTemplateV6;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(1366, 768);
+            this.ClientSize = new System.Drawing.Size(1366, 908);
+            this.Controls.Add(this.imgRecientes);
+            this.Controls.Add(this.imgOnline);
+            this.Controls.Add(this.imgEnEspera);
+            this.Controls.Add(this.imgEspeciales);
             this.Controls.Add(this.cmdClose);
             this.Controls.Add(this.cmdPagos);
             this.Controls.Add(this.pnlMenuColores);
@@ -871,12 +983,12 @@
             this.Controls.Add(this.cmdPizza);
             this.Controls.Add(this.cmdHnr);
             this.Controls.Add(this.pnlMenu);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnlTabs);
             this.Name = "frmMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmMenu";
             this.Load += new System.EventHandler(this.frmMenu_Load);
-            this.panel1.ResumeLayout(false);
+            this.pnlTabs.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imgSidebarButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgMenuHnr)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgMenuPizza)).EndInit();
@@ -922,13 +1034,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.imgMenuOtrasComidas3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgMenuUber3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgMenuRappi3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgEspeciales)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgEnEspera)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgOnline)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgRecientes)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlTabs;
         private System.Windows.Forms.Panel pnlSideContainer;
         private System.Windows.Forms.PictureBox imgSidebarButton;
         private System.Windows.Forms.Panel pnlMenu;
@@ -997,5 +1113,13 @@
         private System.Windows.Forms.PictureBox imgMenuRappi3;
         private System.Windows.Forms.Button cmdPagos;
         private System.Windows.Forms.Button cmdClose;
+        private System.Windows.Forms.PictureBox imgEspeciales;
+        private System.Windows.Forms.PictureBox imgEnEspera;
+        private System.Windows.Forms.PictureBox imgOnline;
+        private System.Windows.Forms.PictureBox imgRecientes;
+        private System.Windows.Forms.Button cmdReciente;
+        private System.Windows.Forms.Button cmdOnline;
+        private System.Windows.Forms.Button cmdEnEspera;
+        private System.Windows.Forms.Button cmdEspeciales;
     }
 }

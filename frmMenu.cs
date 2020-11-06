@@ -297,5 +297,25 @@ namespace BlackBox
         {
             this._entryForm.Close();
         }
+
+        private void cmdEspeciales_Click(object sender, EventArgs e)
+        {
+            pnlTabs.BackgroundImage = imgEspeciales.Image;
+        }
+
+        private void cmdEnEspera_Click(object sender, EventArgs e)
+        {
+            pnlTabs.BackgroundImage = imgEnEspera.Image;
+        }
+
+        private void cmdOnline_Click(object sender, EventArgs e)
+        {
+            pnlTabs.BackgroundImage = imgOnline.Image;
+        }
+
+        private void cmdReciente_Click(object sender, EventArgs e)
+        {
+            pnlTabs.BackgroundImage = imgRecientes.Image;
+        }
     }
 }

@@ -62,6 +62,12 @@
             this.imgSTarjeta = new System.Windows.Forms.PictureBox();
             this.imgSCheque = new System.Windows.Forms.PictureBox();
             this.imgSEfectivo = new System.Windows.Forms.PictureBox();
+            this.lblSubtotal = new System.Windows.Forms.Label();
+            this.lblImpuesto = new System.Windows.Forms.Label();
+            this.lblPagos = new System.Windows.Forms.Label();
+            this.lblTotalOrden = new System.Windows.Forms.Label();
+            this.lblSaldo = new System.Windows.Forms.Label();
+            this.lblTotal = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.imgEfectivo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgCheque)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgTarjeta)).BeginInit();
@@ -367,97 +373,175 @@
             // 
             this.imgEfectivo.Location = new System.Drawing.Point(492, 12);
             this.imgEfectivo.Name = "imgEfectivo";
-            this.imgEfectivo.Size = new System.Drawing.Size(100, 50);
+            this.imgEfectivo.Size = new System.Drawing.Size(63, 38);
             this.imgEfectivo.TabIndex = 22;
             this.imgEfectivo.TabStop = false;
             // 
             // imgCheque
             // 
-            this.imgCheque.Location = new System.Drawing.Point(492, 68);
+            this.imgCheque.Image = global::BlackBox.Properties.Resources.cmdPagosCheque;
+            this.imgCheque.Location = new System.Drawing.Point(492, 56);
             this.imgCheque.Name = "imgCheque";
-            this.imgCheque.Size = new System.Drawing.Size(100, 50);
+            this.imgCheque.Size = new System.Drawing.Size(63, 38);
             this.imgCheque.TabIndex = 23;
             this.imgCheque.TabStop = false;
             // 
             // imgTarjeta
             // 
-            this.imgTarjeta.Location = new System.Drawing.Point(492, 124);
+            this.imgTarjeta.Image = global::BlackBox.Properties.Resources.cmdPagosTarjeta;
+            this.imgTarjeta.Location = new System.Drawing.Point(492, 101);
             this.imgTarjeta.Name = "imgTarjeta";
-            this.imgTarjeta.Size = new System.Drawing.Size(100, 50);
+            this.imgTarjeta.Size = new System.Drawing.Size(63, 38);
             this.imgTarjeta.TabIndex = 24;
             this.imgTarjeta.TabStop = false;
             // 
             // imgRegalo
             // 
-            this.imgRegalo.Location = new System.Drawing.Point(492, 186);
+            this.imgRegalo.Image = global::BlackBox.Properties.Resources.cmdPagosRegalo;
+            this.imgRegalo.Location = new System.Drawing.Point(492, 145);
             this.imgRegalo.Name = "imgRegalo";
-            this.imgRegalo.Size = new System.Drawing.Size(100, 50);
+            this.imgRegalo.Size = new System.Drawing.Size(63, 38);
             this.imgRegalo.TabIndex = 25;
             this.imgRegalo.TabStop = false;
             // 
             // imgMas
             // 
-            this.imgMas.Location = new System.Drawing.Point(492, 247);
+            this.imgMas.Image = global::BlackBox.Properties.Resources.cmdPagosMas;
+            this.imgMas.Location = new System.Drawing.Point(492, 189);
             this.imgMas.Name = "imgMas";
-            this.imgMas.Size = new System.Drawing.Size(100, 50);
+            this.imgMas.Size = new System.Drawing.Size(63, 38);
             this.imgMas.TabIndex = 26;
             this.imgMas.TabStop = false;
             // 
             // imgTipo
             // 
-            this.imgTipo.Location = new System.Drawing.Point(492, 306);
+            this.imgTipo.Image = global::BlackBox.Properties.Resources.cmdPagosTipo;
+            this.imgTipo.Location = new System.Drawing.Point(492, 233);
             this.imgTipo.Name = "imgTipo";
-            this.imgTipo.Size = new System.Drawing.Size(100, 50);
+            this.imgTipo.Size = new System.Drawing.Size(63, 38);
             this.imgTipo.TabIndex = 27;
             this.imgTipo.TabStop = false;
             // 
             // imgSTipo
             // 
-            this.imgSTipo.Location = new System.Drawing.Point(610, 306);
+            this.imgSTipo.Location = new System.Drawing.Point(561, 233);
             this.imgSTipo.Name = "imgSTipo";
-            this.imgSTipo.Size = new System.Drawing.Size(100, 50);
+            this.imgSTipo.Size = new System.Drawing.Size(63, 38);
             this.imgSTipo.TabIndex = 33;
             this.imgSTipo.TabStop = false;
             // 
             // imgSMas
             // 
-            this.imgSMas.Location = new System.Drawing.Point(610, 247);
+            this.imgSMas.Location = new System.Drawing.Point(561, 189);
             this.imgSMas.Name = "imgSMas";
-            this.imgSMas.Size = new System.Drawing.Size(100, 50);
+            this.imgSMas.Size = new System.Drawing.Size(63, 38);
             this.imgSMas.TabIndex = 32;
             this.imgSMas.TabStop = false;
             // 
             // imgSRegalo
             // 
-            this.imgSRegalo.Location = new System.Drawing.Point(610, 186);
+            this.imgSRegalo.Location = new System.Drawing.Point(561, 145);
             this.imgSRegalo.Name = "imgSRegalo";
-            this.imgSRegalo.Size = new System.Drawing.Size(100, 50);
+            this.imgSRegalo.Size = new System.Drawing.Size(63, 38);
             this.imgSRegalo.TabIndex = 31;
             this.imgSRegalo.TabStop = false;
             // 
             // imgSTarjeta
             // 
-            this.imgSTarjeta.Location = new System.Drawing.Point(610, 124);
+            this.imgSTarjeta.Location = new System.Drawing.Point(561, 101);
             this.imgSTarjeta.Name = "imgSTarjeta";
-            this.imgSTarjeta.Size = new System.Drawing.Size(100, 50);
+            this.imgSTarjeta.Size = new System.Drawing.Size(63, 38);
             this.imgSTarjeta.TabIndex = 30;
             this.imgSTarjeta.TabStop = false;
             // 
             // imgSCheque
             // 
-            this.imgSCheque.Location = new System.Drawing.Point(610, 68);
+            this.imgSCheque.Location = new System.Drawing.Point(561, 56);
             this.imgSCheque.Name = "imgSCheque";
-            this.imgSCheque.Size = new System.Drawing.Size(100, 50);
+            this.imgSCheque.Size = new System.Drawing.Size(63, 38);
             this.imgSCheque.TabIndex = 29;
             this.imgSCheque.TabStop = false;
             // 
             // imgSEfectivo
             // 
-            this.imgSEfectivo.Location = new System.Drawing.Point(610, 12);
+            this.imgSEfectivo.Image = global::BlackBox.Properties.Resources.cmdPagosSEfectivo;
+            this.imgSEfectivo.Location = new System.Drawing.Point(561, 12);
             this.imgSEfectivo.Name = "imgSEfectivo";
-            this.imgSEfectivo.Size = new System.Drawing.Size(100, 50);
+            this.imgSEfectivo.Size = new System.Drawing.Size(63, 38);
             this.imgSEfectivo.TabIndex = 28;
             this.imgSEfectivo.TabStop = false;
+            // 
+            // lblSubtotal
+            // 
+            this.lblSubtotal.BackColor = System.Drawing.Color.Transparent;
+            this.lblSubtotal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblSubtotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSubtotal.Location = new System.Drawing.Point(108, 42);
+            this.lblSubtotal.Name = "lblSubtotal";
+            this.lblSubtotal.Size = new System.Drawing.Size(118, 23);
+            this.lblSubtotal.TabIndex = 34;
+            this.lblSubtotal.Text = "$73.15";
+            this.lblSubtotal.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // lblImpuesto
+            // 
+            this.lblImpuesto.BackColor = System.Drawing.Color.Transparent;
+            this.lblImpuesto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblImpuesto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblImpuesto.Location = new System.Drawing.Point(109, 79);
+            this.lblImpuesto.Name = "lblImpuesto";
+            this.lblImpuesto.Size = new System.Drawing.Size(118, 23);
+            this.lblImpuesto.TabIndex = 35;
+            this.lblImpuesto.Text = "$5.85";
+            this.lblImpuesto.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // lblPagos
+            // 
+            this.lblPagos.BackColor = System.Drawing.Color.Transparent;
+            this.lblPagos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblPagos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPagos.Location = new System.Drawing.Point(109, 116);
+            this.lblPagos.Name = "lblPagos";
+            this.lblPagos.Size = new System.Drawing.Size(118, 23);
+            this.lblPagos.TabIndex = 36;
+            this.lblPagos.Text = "$0.00";
+            this.lblPagos.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // lblTotalOrden
+            // 
+            this.lblTotalOrden.BackColor = System.Drawing.Color.Transparent;
+            this.lblTotalOrden.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblTotalOrden.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalOrden.Location = new System.Drawing.Point(109, 151);
+            this.lblTotalOrden.Name = "lblTotalOrden";
+            this.lblTotalOrden.Size = new System.Drawing.Size(118, 23);
+            this.lblTotalOrden.TabIndex = 37;
+            this.lblTotalOrden.Text = "$79.00";
+            this.lblTotalOrden.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // lblSaldo
+            // 
+            this.lblSaldo.BackColor = System.Drawing.Color.Transparent;
+            this.lblSaldo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblSaldo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSaldo.Location = new System.Drawing.Point(345, 41);
+            this.lblSaldo.Name = "lblSaldo";
+            this.lblSaldo.Size = new System.Drawing.Size(118, 23);
+            this.lblSaldo.TabIndex = 38;
+            this.lblSaldo.Text = "$79.00";
+            this.lblSaldo.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.BackColor = System.Drawing.Color.Transparent;
+            this.lblTotal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.Location = new System.Drawing.Point(345, 112);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(118, 23);
+            this.lblTotal.TabIndex = 39;
+            this.lblTotal.Text = "$79.00";
+            this.lblTotal.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // frmPagos
             // 
@@ -466,6 +550,12 @@
             this.BackgroundImage = global::BlackBox.Properties.Resources.Pago;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(738, 600);
+            this.Controls.Add(this.lblTotal);
+            this.Controls.Add(this.lblSaldo);
+            this.Controls.Add(this.lblTotalOrden);
+            this.Controls.Add(this.lblPagos);
+            this.Controls.Add(this.lblImpuesto);
+            this.Controls.Add(this.lblSubtotal);
             this.Controls.Add(this.imgSTipo);
             this.Controls.Add(this.imgSMas);
             this.Controls.Add(this.imgSRegalo);
@@ -554,5 +644,11 @@
         private System.Windows.Forms.PictureBox imgSTarjeta;
         private System.Windows.Forms.PictureBox imgSCheque;
         private System.Windows.Forms.PictureBox imgSEfectivo;
+        private System.Windows.Forms.Label lblSubtotal;
+        private System.Windows.Forms.Label lblImpuesto;
+        private System.Windows.Forms.Label lblPagos;
+        private System.Windows.Forms.Label lblTotalOrden;
+        private System.Windows.Forms.Label lblSaldo;
+        private System.Windows.Forms.Label lblTotal;
     }
 }
