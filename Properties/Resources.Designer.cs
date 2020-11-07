@@ -463,6 +463,36 @@ namespace BlackBox.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cmdPagarOff {
+            get {
+                object obj = ResourceManager.GetObject("cmdPagarOff", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cmdPagarOff1 {
+            get {
+                object obj = ResourceManager.GetObject("cmdPagarOff1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cmdPagarOn {
+            get {
+                object obj = ResourceManager.GetObject("cmdPagarOn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cmdPagosCheque {
             get {
                 object obj = ResourceManager.GetObject("cmdPagosCheque", resourceCulture);
@@ -926,6 +956,16 @@ namespace BlackBox.Properties {
         internal static System.Drawing.Bitmap Pago {
             get {
                 object obj = ResourceManager.GetObject("Pago", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PagoV2 {
+            get {
+                object obj = ResourceManager.GetObject("PagoV2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

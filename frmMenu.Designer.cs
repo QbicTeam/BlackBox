@@ -116,9 +116,8 @@
             this.pnlOtrasComidas = new System.Windows.Forms.Panel();
             this.pnlUbers = new System.Windows.Forms.Panel();
             this.pnlRappis = new System.Windows.Forms.Panel();
-            this.pnlTabs.SuspendLayout();
             this.prtdImprimir = new System.Drawing.Printing.PrintDocument();
-            
+            this.pnlTabs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgSidebarButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgMenuHnr)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgMenuPizza)).BeginInit();
@@ -504,6 +503,7 @@
             this.lblTotal.TabIndex = 3;
             this.lblTotal.Text = "$0.00";
             this.lblTotal.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lblTotal.Click += new System.EventHandler(this.cmdPagos_Click);
             // 
             // lblImpu
             // 
@@ -514,6 +514,7 @@
             this.lblImpu.TabIndex = 2;
             this.lblImpu.Text = "$0.00";
             this.lblImpu.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lblImpu.Click += new System.EventHandler(this.cmdPagos_Click);
             // 
             // lblSubTotal
             // 
@@ -524,6 +525,7 @@
             this.lblSubTotal.TabIndex = 1;
             this.lblSubTotal.Text = "$0.00";
             this.lblSubTotal.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lblSubTotal.Click += new System.EventHandler(this.cmdPagos_Click);
             // 
             // lblNumArts
             // 
@@ -533,6 +535,7 @@
             this.lblNumArts.TabIndex = 0;
             this.lblNumArts.Text = "0";
             this.lblNumArts.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lblNumArts.Click += new System.EventHandler(this.cmdPagos_Click);
             // 
             // timer1
             // 
@@ -899,19 +902,23 @@
             this.cmdPagos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmdPagos.Location = new System.Drawing.Point(1060, 642);
             this.cmdPagos.Name = "cmdPagos";
-            this.cmdPagos.Size = new System.Drawing.Size(305, 80);
+            this.cmdPagos.Size = new System.Drawing.Size(194, 80);
             this.cmdPagos.TabIndex = 47;
             this.cmdPagos.UseVisualStyleBackColor = false;
             this.cmdPagos.Click += new System.EventHandler(this.cmdPagos_Click);
             // 
             // cmdClose
             // 
-            this.cmdClose.Location = new System.Drawing.Point(1265, 31);
+            this.cmdClose.BackColor = System.Drawing.Color.Transparent;
+            this.cmdClose.FlatAppearance.BorderSize = 0;
+            this.cmdClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.cmdClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.cmdClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdClose.Location = new System.Drawing.Point(14, 14);
             this.cmdClose.Name = "cmdClose";
-            this.cmdClose.Size = new System.Drawing.Size(75, 23);
+            this.cmdClose.Size = new System.Drawing.Size(35, 33);
             this.cmdClose.TabIndex = 48;
-            this.cmdClose.Text = "button1";
-            this.cmdClose.UseVisualStyleBackColor = true;
+            this.cmdClose.UseVisualStyleBackColor = false;
             this.cmdClose.Click += new System.EventHandler(this.cmdClose_Click);
             // 
             // imgEspeciales
