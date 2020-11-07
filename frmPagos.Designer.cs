@@ -67,6 +67,13 @@
             this.lblTotalOrden = new System.Windows.Forms.Label();
             this.lblSaldo = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.txtCliente = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.imgEfectivo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgCheque)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgTarjeta)).BeginInit();
@@ -79,6 +86,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.imgSTarjeta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgSCheque)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgSEfectivo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // cmdEfectivo
@@ -343,22 +352,26 @@
             // 
             // cmdPagar
             // 
-            this.cmdPagar.Location = new System.Drawing.Point(85, 550);
+            this.cmdPagar.FlatAppearance.BorderSize = 0;
+            this.cmdPagar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdPagar.Image = global::BlackBox.Properties.Resources.cmdPagarOn;
+            this.cmdPagar.Location = new System.Drawing.Point(22, 515);
             this.cmdPagar.Name = "cmdPagar";
-            this.cmdPagar.Size = new System.Drawing.Size(75, 23);
+            this.cmdPagar.Size = new System.Drawing.Size(138, 50);
             this.cmdPagar.TabIndex = 20;
-            this.cmdPagar.Text = "button1";
             this.cmdPagar.UseVisualStyleBackColor = true;
             this.cmdPagar.Click += new System.EventHandler(this.cmdPagar_Click);
             // 
             // cmdCancelar
             // 
-            this.cmdCancelar.Location = new System.Drawing.Point(387, 550);
+            this.cmdCancelar.BackColor = System.Drawing.Color.Transparent;
+            this.cmdCancelar.FlatAppearance.BorderSize = 0;
+            this.cmdCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdCancelar.Location = new System.Drawing.Point(367, 516);
             this.cmdCancelar.Name = "cmdCancelar";
-            this.cmdCancelar.Size = new System.Drawing.Size(75, 23);
+            this.cmdCancelar.Size = new System.Drawing.Size(73, 48);
             this.cmdCancelar.TabIndex = 21;
-            this.cmdCancelar.Text = "button2";
-            this.cmdCancelar.UseVisualStyleBackColor = true;
+            this.cmdCancelar.UseVisualStyleBackColor = false;
             this.cmdCancelar.Click += new System.EventHandler(this.cmdCancelar_Click);
             // 
             // imgEfectivo
@@ -535,13 +548,94 @@
             this.lblTotal.Text = "$79.00";
             this.lblTotal.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::BlackBox.Properties.Resources.cmdPagarOff;
+            this.pictureBox1.Location = new System.Drawing.Point(492, 277);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox1.TabIndex = 40;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::BlackBox.Properties.Resources.cmdPagarOn;
+            this.pictureBox2.Location = new System.Drawing.Point(492, 333);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox2.TabIndex = 41;
+            this.pictureBox2.TabStop = false;
+            // 
+            // txtCliente
+            // 
+            this.txtCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(236)))), ((int)(((byte)(217)))));
+            this.txtCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCliente.Location = new System.Drawing.Point(120, 435);
+            this.txtCliente.Name = "txtCliente";
+            this.txtCliente.Size = new System.Drawing.Size(182, 33);
+            this.txtCliente.TabIndex = 42;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(255)))), ((int)(((byte)(223)))));
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(337, 146);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(125, 31);
+            this.textBox1.TabIndex = 43;
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Navy;
+            this.label1.Location = new System.Drawing.Point(324, 255);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(118, 23);
+            this.label1.TabIndex = 44;
+            this.label1.Text = "$79.00";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Navy;
+            this.label2.Location = new System.Drawing.Point(325, 383);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(118, 23);
+            this.label2.TabIndex = 45;
+            this.label2.Text = "$79.00";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label3
+            // 
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Navy;
+            this.label3.Location = new System.Drawing.Point(325, 316);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(118, 23);
+            this.label3.TabIndex = 46;
+            this.label3.Text = "$0.00";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // frmPagos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::BlackBox.Properties.Resources.Pago;
+            this.BackgroundImage = global::BlackBox.Properties.Resources.PagoV2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(502, 600);
+            this.ClientSize = new System.Drawing.Size(477, 587);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtCliente);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.lblSaldo);
             this.Controls.Add(this.lblTotalOrden);
@@ -595,7 +689,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.imgSTarjeta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgSCheque)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgSEfectivo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -640,5 +737,12 @@
         private System.Windows.Forms.Label lblTotalOrden;
         private System.Windows.Forms.Label lblSaldo;
         private System.Windows.Forms.Label lblTotal;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.TextBox txtCliente;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

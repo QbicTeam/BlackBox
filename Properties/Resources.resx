@@ -181,8 +181,14 @@
   <data name="cmdComplementosV2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cmdComplementosV2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="cmdHDisponibilidad" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cmdHDisponibilidad.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="LoginIntro" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LoginIntro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MainTemplate" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MainTemplate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="LoginTemplate" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LoginTemplate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -208,8 +214,11 @@
   <data name="cmdDisponibilidad" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cmdDisponibilidad.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cmdPanV2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cmdPanV2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cmdOrdenes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cmdOrdenes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cmdHEmpleados" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cmdHEmpleados.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cmdComplementos" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cmdComplementos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -226,17 +235,20 @@
   <data name="cmdImprimir" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cmdImprimir.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cmdOrdenes" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cmdOrdenes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cmdHorario" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cmdHorario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cmdHCompletar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cmdHCompletar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="cmdPagarOff" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cmdPagarOff.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="cmdResumen" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cmdResumen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cmdHorario" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cmdHorario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="pnlHorario" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pnlHorario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cmdPagosCheque" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cmdPagosCheque.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -247,6 +259,9 @@
   <data name="cmdCompletar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cmdCompletar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="cmdPagarOff1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cmdPagarOff1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="cmdHEntrada1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cmdHEntrada1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -256,8 +271,8 @@
   <data name="cmdAcceso" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cmdAcceso.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="MainTemplate" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MainTemplate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="tabRecientes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tabRecientes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cmdAlasV2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cmdAlasV2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -268,8 +283,8 @@
   <data name="cmdSOtrasComidas" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cmdSOtrasComidas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cmdHDisponibilidad" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cmdHDisponibilidad.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cmdBebidasV2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cmdBebidasV2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tabEnEspera" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\tabEnEspera.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -277,8 +292,8 @@
   <data name="pnlAdmon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pnlAdmon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cmdHEmpleados" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cmdHEmpleados.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cmdUber" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cmdUber.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cmdHMensajeria" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cmdHMensajeria.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -288,6 +303,9 @@
   </data>
   <data name="tabEspeciales" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\tabEspeciales.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cmdPagarOn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cmdPagarOn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cmdPizza_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cmdPizza_3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -306,9 +324,6 @@
   </data>
   <data name="cmdBebidas_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cmdBebidas_3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="tabRecientes" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\tabRecientes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cmdSPizza" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cmdSPizza.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -330,6 +345,9 @@
   </data>
   <data name="cmdPagosTarjeta" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cmdPagosTarjeta.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MenuTemplateV7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MenuTemplateV7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="LoginHeader" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LoginHeader.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -355,9 +373,6 @@
   <data name="cmdPizza" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cmdPizza.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cmdBebidasV2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cmdBebidasV2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="cmdPagosMas" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cmdPagosMas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -369,9 +384,6 @@
   </data>
   <data name="lblSideBarPrice" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\lblSideBarPrice.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="pnlHorario" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pnlHorario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tabPopular" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\tabPopular.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -394,8 +406,8 @@
   <data name="Pago" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Pago.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cmdUber" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cmdUber.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cmdPanV2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cmdPanV2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cmdPAN_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cmdPAN_3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -418,7 +430,7 @@
   <data name="lblSidebarName" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\lblSidebarName.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="MenuTemplateV7" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MenuTemplateV7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="PagoV2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PagoV2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
