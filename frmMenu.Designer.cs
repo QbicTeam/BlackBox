@@ -98,6 +98,7 @@
             this.imgMenuUber3 = new System.Windows.Forms.PictureBox();
             this.imgMenuRappi3 = new System.Windows.Forms.PictureBox();
             this.cmdPagos = new System.Windows.Forms.Button();
+            this.prtdImprimir = new System.Drawing.Printing.PrintDocument();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgSidebarButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgMenuHnr)).BeginInit();
@@ -983,5 +984,6 @@
         private System.Windows.Forms.PictureBox imgMenuUber3;
         private System.Windows.Forms.PictureBox imgMenuRappi3;
         private System.Windows.Forms.Button cmdPagos;
+        private System.Drawing.Printing.PrintDocument prtdImprimir;
     }
 }

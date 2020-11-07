@@ -1,4 +1,5 @@
 ﻿using BlackBox.Controls;
+using BlackBox.Helper;
 using BlackBox.Model;
 using Newtonsoft.Json;
 using System;
@@ -6,6 +7,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -287,9 +290,97 @@ namespace BlackBox
         private void cmdPagos_Click(object sender, EventArgs e)
         {
             frmPagos pagos = new frmPagos();
-            pagos.Show();
+            if (pagos.PaySale())
+            {
+                PrintSale();
+            }
+        }
 
-            ComandaNueva();
+        private void PrintSale()
+        {
+            MessageBox.Show("printing sale...");
+
+            var strRecibo = new StringBuilder();
+
+            strRecibo.AppendLine("Store ID 04122-00007"); // Centrar.
+            strRecibo.AppendLine("Phone");// Centrar
+            strRecibo.AppendLine("");
+            strRecibo.AppendLine("LITTLE CAESARS PIZZA");
+            strRecibo.AppendLine("GRUPO LICA BAJA S.A DE C.V");
+            strRecibo.AppendLine("RFC GLB150904CU1");
+            strRecibo.AppendLine("BLCD. DIAZ ORDAZ #12678 EL PRADO");
+            strRecibo.AppendLine("TIJUANA BAJA CALIFORNIA C.P. 22105");
+            strRecibo.AppendLine("");
+            strRecibo.AppendLine("Orden #13 121 "); // Centrar
+            strRecibo.AppendLine("LUIS"); // Centrar
+            strRecibo.AppendLine("Vie. Oct. 30. 2020 08:11pm");
+            strRecibo.AppendLine("Estimado para Vie, Oct 30, 2020 08:11pm");
+            strRecibo.AppendLine("Su cajero del dia de hoy es SAMANTA Q.");
+            strRecibo.AppendLine("");
+            strRecibo.AppendLine("SALE");
+            strRecibo.AppendLine("");
+            strRecibo.AppendLine("Articulo                             Precio");
+            foreach (Articulo art in comanda.Articulos)
+            {
+                strRecibo.AppendLine(art.Producto + new string(' ' , 5) + art.Precio.ToString());
+            }
+
+            strRecibo.AppendLine("Conteo de Art                             " + comanda.Articulos.Count.ToString());
+            strRecibo.AppendLine("Taxble Total                             " + comanda.SubTotal.ToString());
+            strRecibo.AppendLine("");
+            strRecibo.AppendLine("Ventas Imp.                             " + comanda.Impuesto.ToString());
+            strRecibo.AppendLine("");
+            strRecibo.AppendLine("TOTAL                             " + comanda.Total.ToString());
+            strRecibo.AppendLine("Efectivo                             " + comanda.Total.ToString());
+            strRecibo.AppendLine("2334                             000033");
+
+
+            var printText = new PrintText(strRecibo.ToString(), new Font("Monospace Please...", 8));
+
+            var AvailableWidth = 80;
+
+            if (PrinterSettings.InstalledPrinters.Count == 0)
+                return;
+
+            var printerList = new List<string>();
+            foreach (String printer in PrinterSettings.InstalledPrinters)
+            {
+                // printersList.Itmes.Add(printer.ToString());
+                printerList.Add(printer.ToString());
+            }
+
+            prtdImprimir = new PrintDocument();
+            var ps = new PrinterSettings();
+            prtdImprimir.PrinterSettings = ps;
+            prtdImprimir.PrintPage += Imprimir;
+            prtdImprimir.Print();
+
+           /* var e = PrinterSettings.InstalledPrinters[0];
+            var layoutArea = new SizeF(AvailableWidth, 0);
+            e.
+            Graphics g = e.Graphics;
+            SizeF stringSize = g.MeasureString(printText.Text, printText.Font, layoutArea, printText.StringFormat);
+
+            RectangleF rectf = new RectangleF(new PointF(), new SizeF(AvailableWidth, stringSize.Height));
+
+            g.DrawString(printText.Text, printText.Font, Brushes.Black, rectf, printText.StringFormat);
+
+
+            g.SmoothingMode = SmoothingMode.AntiAlias;
+            g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+            g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+
+
+            ComandaNueva();*/
+        }
+
+        private void Imprimir(object sender, PrintPageEventArgs e)
+        {
+            Font font = new Font("Aria", 14, FontStyle.Regular, GraphicsUnit.Point);
+            int width = 200;
+            int y = 20;
+            e.Graphics.DrawString("Un ticket Felix", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("Un ticket Felix 2", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
         }
     }
 }

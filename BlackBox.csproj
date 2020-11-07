@@ -97,6 +97,7 @@
     <Compile Include="frmPagos.Designer.cs">
       <DependentUpon>frmPagos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper\PrintText .cs" />
     <Compile Include="Model\Articulo.cs" />
     <Compile Include="Model\Comanda.cs" />
     <Compile Include="Model\ObjBlackBox.cs" />
@@ -130,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMenu.resx">
       <DependentUpon>frmMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPagos.resx">
+      <DependentUpon>frmPagos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -402,6 +406,25 @@
   <ItemGroup>
     <None Include="Resources\cmdPAN_3.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pago.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdPizza_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdHNR_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdComplementos_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdBebidas_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdAlas_3.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
