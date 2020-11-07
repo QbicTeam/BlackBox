@@ -12,6 +12,8 @@ namespace BlackBox
 {
     public partial class frmPagos : Form
     {
+        bool result = false;
+
         public frmPagos()
         {
             InitializeComponent();
@@ -19,12 +21,8 @@ namespace BlackBox
 
         public bool PaySale()
         {
-            bool result = false;
 
             this.ShowDialog();
-
-            result = true;
-
             return result;
         }
 
@@ -41,6 +39,17 @@ namespace BlackBox
             decimal importe = Convert.ToDecimal(btn.Tag);
 
 
+        }
+
+        private void cmdCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void cmdPagar_Click(object sender, EventArgs e)
+        {
+            result = true;
+            this.Close();
         }
     }
 }

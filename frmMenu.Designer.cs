@@ -31,6 +31,10 @@
             this.components = new System.ComponentModel.Container();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.pnlTabs = new System.Windows.Forms.Panel();
+            this.cmdReciente = new System.Windows.Forms.Button();
+            this.cmdOnline = new System.Windows.Forms.Button();
+            this.cmdEnEspera = new System.Windows.Forms.Button();
+            this.cmdEspeciales = new System.Windows.Forms.Button();
             this.pnlSideContainer = new System.Windows.Forms.Panel();
             this.imgSidebarButton = new System.Windows.Forms.PictureBox();
             this.pnlMenu = new System.Windows.Forms.Panel();
@@ -103,10 +107,15 @@
             this.imgEnEspera = new System.Windows.Forms.PictureBox();
             this.imgOnline = new System.Windows.Forms.PictureBox();
             this.imgRecientes = new System.Windows.Forms.PictureBox();
-            this.cmdEspeciales = new System.Windows.Forms.Button();
-            this.cmdEnEspera = new System.Windows.Forms.Button();
-            this.cmdOnline = new System.Windows.Forms.Button();
-            this.cmdReciente = new System.Windows.Forms.Button();
+            this.pnlPizzas = new System.Windows.Forms.Panel();
+            this.pnlPanes = new System.Windows.Forms.Panel();
+            this.pnlBebidas = new System.Windows.Forms.Panel();
+            this.pnlAlas = new System.Windows.Forms.Panel();
+            this.pnlComplementos = new System.Windows.Forms.Panel();
+            this.pnlNoComidas = new System.Windows.Forms.Panel();
+            this.pnlOtrasComidas = new System.Windows.Forms.Panel();
+            this.pnlUbers = new System.Windows.Forms.Panel();
+            this.pnlRappis = new System.Windows.Forms.Panel();
             this.pnlTabs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgSidebarButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgMenuHnr)).BeginInit();
@@ -172,6 +181,62 @@
             this.pnlTabs.Name = "pnlTabs";
             this.pnlTabs.Size = new System.Drawing.Size(277, 628);
             this.pnlTabs.TabIndex = 0;
+            // 
+            // cmdReciente
+            // 
+            this.cmdReciente.BackColor = System.Drawing.Color.Transparent;
+            this.cmdReciente.FlatAppearance.BorderSize = 0;
+            this.cmdReciente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.cmdReciente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.cmdReciente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdReciente.Location = new System.Drawing.Point(5, 461);
+            this.cmdReciente.Name = "cmdReciente";
+            this.cmdReciente.Size = new System.Drawing.Size(24, 145);
+            this.cmdReciente.TabIndex = 4;
+            this.cmdReciente.UseVisualStyleBackColor = false;
+            this.cmdReciente.Click += new System.EventHandler(this.cmdReciente_Click);
+            // 
+            // cmdOnline
+            // 
+            this.cmdOnline.BackColor = System.Drawing.Color.Transparent;
+            this.cmdOnline.FlatAppearance.BorderSize = 0;
+            this.cmdOnline.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.cmdOnline.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.cmdOnline.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdOnline.Location = new System.Drawing.Point(5, 310);
+            this.cmdOnline.Name = "cmdOnline";
+            this.cmdOnline.Size = new System.Drawing.Size(24, 145);
+            this.cmdOnline.TabIndex = 3;
+            this.cmdOnline.UseVisualStyleBackColor = false;
+            this.cmdOnline.Click += new System.EventHandler(this.cmdOnline_Click);
+            // 
+            // cmdEnEspera
+            // 
+            this.cmdEnEspera.BackColor = System.Drawing.Color.Transparent;
+            this.cmdEnEspera.FlatAppearance.BorderSize = 0;
+            this.cmdEnEspera.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.cmdEnEspera.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.cmdEnEspera.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdEnEspera.Location = new System.Drawing.Point(5, 158);
+            this.cmdEnEspera.Name = "cmdEnEspera";
+            this.cmdEnEspera.Size = new System.Drawing.Size(24, 145);
+            this.cmdEnEspera.TabIndex = 2;
+            this.cmdEnEspera.UseVisualStyleBackColor = false;
+            this.cmdEnEspera.Click += new System.EventHandler(this.cmdEnEspera_Click);
+            // 
+            // cmdEspeciales
+            // 
+            this.cmdEspeciales.BackColor = System.Drawing.Color.Transparent;
+            this.cmdEspeciales.FlatAppearance.BorderSize = 0;
+            this.cmdEspeciales.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.cmdEspeciales.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.cmdEspeciales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdEspeciales.Location = new System.Drawing.Point(5, 5);
+            this.cmdEspeciales.Name = "cmdEspeciales";
+            this.cmdEspeciales.Size = new System.Drawing.Size(24, 145);
+            this.cmdEspeciales.TabIndex = 1;
+            this.cmdEspeciales.UseVisualStyleBackColor = false;
+            this.cmdEspeciales.Click += new System.EventHandler(this.cmdEspeciales_Click);
             // 
             // pnlSideContainer
             // 
@@ -825,12 +890,16 @@
             // 
             // cmdPagos
             // 
-            this.cmdPagos.Location = new System.Drawing.Point(195, 19);
+            this.cmdPagos.BackColor = System.Drawing.Color.Transparent;
+            this.cmdPagos.FlatAppearance.BorderSize = 0;
+            this.cmdPagos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.cmdPagos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.cmdPagos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdPagos.Location = new System.Drawing.Point(1060, 642);
             this.cmdPagos.Name = "cmdPagos";
-            this.cmdPagos.Size = new System.Drawing.Size(75, 23);
+            this.cmdPagos.Size = new System.Drawing.Size(305, 80);
             this.cmdPagos.TabIndex = 47;
-            this.cmdPagos.Text = "button1";
-            this.cmdPagos.UseVisualStyleBackColor = true;
+            this.cmdPagos.UseVisualStyleBackColor = false;
             this.cmdPagos.Click += new System.EventHandler(this.cmdPagos_Click);
             // 
             // cmdClose
@@ -879,75 +948,109 @@
             this.imgRecientes.TabIndex = 52;
             this.imgRecientes.TabStop = false;
             // 
-            // cmdEspeciales
+            // pnlPizzas
             // 
-            this.cmdEspeciales.BackColor = System.Drawing.Color.Transparent;
-            this.cmdEspeciales.FlatAppearance.BorderSize = 0;
-            this.cmdEspeciales.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.cmdEspeciales.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.cmdEspeciales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdEspeciales.Location = new System.Drawing.Point(5, 5);
-            this.cmdEspeciales.Name = "cmdEspeciales";
-            this.cmdEspeciales.Size = new System.Drawing.Size(24, 145);
-            this.cmdEspeciales.TabIndex = 1;
-            this.cmdEspeciales.UseVisualStyleBackColor = false;
-            this.cmdEspeciales.Click += new System.EventHandler(this.cmdEspeciales_Click);
+            this.pnlPizzas.BackColor = System.Drawing.Color.Transparent;
+            this.pnlPizzas.Location = new System.Drawing.Point(160, 915);
+            this.pnlPizzas.Name = "pnlPizzas";
+            this.pnlPizzas.Size = new System.Drawing.Size(200, 100);
+            this.pnlPizzas.TabIndex = 53;
+            this.pnlPizzas.Visible = false;
             // 
-            // cmdEnEspera
+            // pnlPanes
             // 
-            this.cmdEnEspera.BackColor = System.Drawing.Color.Transparent;
-            this.cmdEnEspera.FlatAppearance.BorderSize = 0;
-            this.cmdEnEspera.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.cmdEnEspera.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.cmdEnEspera.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdEnEspera.Location = new System.Drawing.Point(5, 158);
-            this.cmdEnEspera.Name = "cmdEnEspera";
-            this.cmdEnEspera.Size = new System.Drawing.Size(24, 145);
-            this.cmdEnEspera.TabIndex = 2;
-            this.cmdEnEspera.UseVisualStyleBackColor = false;
-            this.cmdEnEspera.Click += new System.EventHandler(this.cmdEnEspera_Click);
+            this.pnlPanes.BackColor = System.Drawing.Color.Transparent;
+            this.pnlPanes.Location = new System.Drawing.Point(366, 915);
+            this.pnlPanes.Name = "pnlPanes";
+            this.pnlPanes.Size = new System.Drawing.Size(200, 100);
+            this.pnlPanes.TabIndex = 54;
+            this.pnlPanes.Visible = false;
             // 
-            // cmdOnline
+            // pnlBebidas
             // 
-            this.cmdOnline.BackColor = System.Drawing.Color.Transparent;
-            this.cmdOnline.FlatAppearance.BorderSize = 0;
-            this.cmdOnline.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.cmdOnline.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.cmdOnline.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdOnline.Location = new System.Drawing.Point(5, 310);
-            this.cmdOnline.Name = "cmdOnline";
-            this.cmdOnline.Size = new System.Drawing.Size(24, 145);
-            this.cmdOnline.TabIndex = 3;
-            this.cmdOnline.UseVisualStyleBackColor = false;
-            this.cmdOnline.Click += new System.EventHandler(this.cmdOnline_Click);
+            this.pnlBebidas.BackColor = System.Drawing.Color.Transparent;
+            this.pnlBebidas.Location = new System.Drawing.Point(574, 915);
+            this.pnlBebidas.Name = "pnlBebidas";
+            this.pnlBebidas.Size = new System.Drawing.Size(200, 100);
+            this.pnlBebidas.TabIndex = 55;
+            this.pnlBebidas.Visible = false;
             // 
-            // cmdReciente
+            // pnlAlas
             // 
-            this.cmdReciente.BackColor = System.Drawing.Color.Transparent;
-            this.cmdReciente.FlatAppearance.BorderSize = 0;
-            this.cmdReciente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.cmdReciente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.cmdReciente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdReciente.Location = new System.Drawing.Point(5, 461);
-            this.cmdReciente.Name = "cmdReciente";
-            this.cmdReciente.Size = new System.Drawing.Size(24, 145);
-            this.cmdReciente.TabIndex = 4;
-            this.cmdReciente.UseVisualStyleBackColor = false;
-            this.cmdReciente.Click += new System.EventHandler(this.cmdReciente_Click);
+            this.pnlAlas.BackColor = System.Drawing.Color.Transparent;
+            this.pnlAlas.Location = new System.Drawing.Point(784, 915);
+            this.pnlAlas.Name = "pnlAlas";
+            this.pnlAlas.Size = new System.Drawing.Size(200, 100);
+            this.pnlAlas.TabIndex = 56;
+            this.pnlAlas.Visible = false;
+            // 
+            // pnlComplementos
+            // 
+            this.pnlComplementos.BackColor = System.Drawing.Color.Transparent;
+            this.pnlComplementos.Location = new System.Drawing.Point(995, 915);
+            this.pnlComplementos.Name = "pnlComplementos";
+            this.pnlComplementos.Size = new System.Drawing.Size(200, 100);
+            this.pnlComplementos.TabIndex = 57;
+            this.pnlComplementos.Visible = false;
+            // 
+            // pnlNoComidas
+            // 
+            this.pnlNoComidas.BackColor = System.Drawing.Color.Transparent;
+            this.pnlNoComidas.Location = new System.Drawing.Point(9, 1021);
+            this.pnlNoComidas.Name = "pnlNoComidas";
+            this.pnlNoComidas.Size = new System.Drawing.Size(200, 100);
+            this.pnlNoComidas.TabIndex = 58;
+            this.pnlNoComidas.Visible = false;
+            // 
+            // pnlOtrasComidas
+            // 
+            this.pnlOtrasComidas.BackColor = System.Drawing.Color.Transparent;
+            this.pnlOtrasComidas.Location = new System.Drawing.Point(215, 1021);
+            this.pnlOtrasComidas.Name = "pnlOtrasComidas";
+            this.pnlOtrasComidas.Size = new System.Drawing.Size(200, 100);
+            this.pnlOtrasComidas.TabIndex = 59;
+            this.pnlOtrasComidas.Visible = false;
+            // 
+            // pnlUbers
+            // 
+            this.pnlUbers.BackColor = System.Drawing.Color.Transparent;
+            this.pnlUbers.Location = new System.Drawing.Point(421, 1021);
+            this.pnlUbers.Name = "pnlUbers";
+            this.pnlUbers.Size = new System.Drawing.Size(200, 100);
+            this.pnlUbers.TabIndex = 60;
+            this.pnlUbers.Visible = false;
+            // 
+            // pnlRappis
+            // 
+            this.pnlRappis.BackColor = System.Drawing.Color.Transparent;
+            this.pnlRappis.Location = new System.Drawing.Point(627, 1021);
+            this.pnlRappis.Name = "pnlRappis";
+            this.pnlRappis.Size = new System.Drawing.Size(200, 100);
+            this.pnlRappis.TabIndex = 61;
+            this.pnlRappis.Visible = false;
             // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::BlackBox.Properties.Resources.MenuTemplateV6;
+            this.BackgroundImage = global::BlackBox.Properties.Resources.MenuTemplateV7;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(1366, 908);
+            this.ClientSize = new System.Drawing.Size(1366, 768);
+            this.Controls.Add(this.pnlRappis);
+            this.Controls.Add(this.pnlUbers);
+            this.Controls.Add(this.pnlOtrasComidas);
+            this.Controls.Add(this.pnlNoComidas);
+            this.Controls.Add(this.pnlComplementos);
+            this.Controls.Add(this.pnlAlas);
+            this.Controls.Add(this.pnlBebidas);
+            this.Controls.Add(this.pnlPanes);
+            this.Controls.Add(this.pnlPizzas);
+            this.Controls.Add(this.cmdPagos);
             this.Controls.Add(this.imgRecientes);
             this.Controls.Add(this.imgOnline);
             this.Controls.Add(this.imgEnEspera);
             this.Controls.Add(this.imgEspeciales);
             this.Controls.Add(this.cmdClose);
-            this.Controls.Add(this.cmdPagos);
             this.Controls.Add(this.pnlMenuColores);
             this.Controls.Add(this.imgComplementos);
             this.Controls.Add(this.imgSComplementos);
@@ -1121,5 +1224,14 @@
         private System.Windows.Forms.Button cmdOnline;
         private System.Windows.Forms.Button cmdEnEspera;
         private System.Windows.Forms.Button cmdEspeciales;
+        private System.Windows.Forms.Panel pnlPizzas;
+        private System.Windows.Forms.Panel pnlPanes;
+        private System.Windows.Forms.Panel pnlBebidas;
+        private System.Windows.Forms.Panel pnlAlas;
+        private System.Windows.Forms.Panel pnlComplementos;
+        private System.Windows.Forms.Panel pnlNoComidas;
+        private System.Windows.Forms.Panel pnlOtrasComidas;
+        private System.Windows.Forms.Panel pnlUbers;
+        private System.Windows.Forms.Panel pnlRappis;
     }
 }

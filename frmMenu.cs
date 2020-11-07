@@ -34,6 +34,7 @@ namespace BlackBox
         private void frmMenu_Load(object sender, EventArgs e)
         {
             resetMenuButtons();
+            SetMenuSettings();
             this.FormBorderStyle = FormBorderStyle.None;
 
             // Lectura de Datos.
@@ -41,8 +42,8 @@ namespace BlackBox
             _datos = JsonConvert.DeserializeObject<ObjBlackBox>(json);
 
             LoadSideMenu();
-            LoadMenu("HNR");
             cmdHnr.Image = imgSHnr.Image;
+            FillMenus();
 
             pnlTotal.Location = new Point(1200, 643);
             pnlTotal.Size = new Size(308, 574);
@@ -54,6 +55,118 @@ namespace BlackBox
             lblArticulosPie.Text = _datos.PantallaVentas.ArticulosVencidosPie;
 
             comanda = new Comanda();
+        }
+
+        private void SetMenuSettings()
+        {
+
+            pnlMenu.Height = 663;
+            pnlMenu.Width = 764;
+            pnlMenu.Location = new Point(290, 63);
+
+            pnlPizzas.Height = 663;
+            pnlPizzas.Width = 764;
+            pnlPizzas.Location = new Point(290, 63);
+
+            pnlPanes.Height = 663;
+            pnlPanes.Width = 764;
+            pnlPanes.Location = new Point(290, 63);
+
+            pnlBebidas.Height = 663;
+            pnlBebidas.Width = 764;
+            pnlBebidas.Location = new Point(290, 63);
+
+            pnlAlas.Height = 663;
+            pnlAlas.Width = 764;
+            pnlAlas.Location = new Point(290, 63);
+
+            pnlComplementos.Height = 663;
+            pnlComplementos.Width = 764;
+            pnlComplementos.Location = new Point(290, 63);
+
+            pnlNoComidas.Height = 663;
+            pnlNoComidas.Width = 764;
+            pnlNoComidas.Location = new Point(290, 63);
+
+            pnlOtrasComidas.Height = 663;
+            pnlOtrasComidas.Width = 764;
+            pnlOtrasComidas.Location = new Point(290, 63);
+
+            pnlUbers.Height = 663;
+            pnlUbers.Width = 764;
+            pnlUbers.Location = new Point(290, 63);
+
+            pnlRappis.Height = 663;
+            pnlRappis.Width = 764;
+            pnlRappis.Location = new Point(290, 63);
+
+        }
+
+        private void FillMenus()
+        {
+            LoadMenu("HNR", pnlMenu);
+            LoadMenu("Pizza", pnlPizzas);
+            LoadMenu("Pan", pnlPanes);
+            LoadMenu("Bebidas", pnlBebidas);
+            LoadMenu("Alas", pnlAlas);
+            LoadMenu("Complementos", pnlComplementos);
+            LoadMenu("NoComida", pnlNoComidas);
+            LoadMenu("OtrasComidas", pnlOtrasComidas);
+            LoadMenu("Uber", pnlUbers);
+            LoadMenu("Rappi", pnlRappis);
+        }
+
+        private void TurnOffMenus()
+        {
+            pnlMenu.Visible = false;
+            pnlPizzas.Visible = false;
+            pnlPanes.Visible = false;
+            pnlBebidas.Visible = false;
+            pnlAlas.Visible = false;
+            pnlComplementos.Visible = false;
+            pnlNoComidas.Visible = false;
+            pnlOtrasComidas.Visible = false;
+            pnlUbers.Visible = false;
+            pnlRappis.Visible = false;
+        }
+
+        private void TurnOnMenu(string menu)
+        {
+            switch (menu)
+            {
+                case "Hnr":
+                    pnlMenu.Visible = true;
+                    break;
+                case "Pizza":
+                    pnlPizzas.Visible = true;
+                    break;
+                case "Pan":
+                    pnlPanes.Visible = true;
+                    break;
+                case "Bebidas":
+                    pnlBebidas.Visible = true;
+                    break;
+                case "Alas":
+                    pnlAlas.Visible = true;
+                    break;
+                case "Complementos":
+                    pnlComplementos.Visible = true;
+                    break;
+                case "NoComida":
+                    pnlNoComidas.Visible = true;
+                    break;
+                case "OtrasComidas":
+                    pnlOtrasComidas.Visible = true;
+                    break;
+                case "Uber":
+                    pnlUbers.Visible = true;
+                    break;
+                case "Rappi":
+                    pnlRappis.Visible = true;
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void resetMenuButtons()
@@ -127,9 +240,9 @@ namespace BlackBox
 
         }
 
-        private void LoadMenu(string menuId)
+        private void LoadMenu(string menuId, Panel container)
         {
-            pnlMenu.Controls.Clear();
+            // container.Controls.Clear();
             var menu = GetMenu(menuId);
             var tamano = "";
             if (menu.Count > 26) // Si son mas de 2 Columnas
@@ -189,7 +302,7 @@ namespace BlackBox
 
                 btn.MenuClicked += Btn_MenuClicked;
 
-                pnlMenu.Controls.Add(btn);
+                container.Controls.Add(btn);
 
             }
 
@@ -197,9 +310,12 @@ namespace BlackBox
 
         private void cmdMenuSelected(object sender, EventArgs e)
         {
-            // Console.WriteLine(sender.ToString());
+            //Console.WriteLine(sender.ToString());
             var menuTipo = ((Button)sender).Name.Substring(3);
-            LoadMenu(menuTipo);
+            //MessageBox.Show(menuTipo);
+            TurnOffMenus();
+            TurnOnMenu(menuTipo);
+            // LoadMenu(menuTipo);
             SetMenuButton(menuTipo);
         }
 

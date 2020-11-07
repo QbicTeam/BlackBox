@@ -47,7 +47,6 @@
             this.cmdRegalo = new System.Windows.Forms.Button();
             this.cmdTarjeta = new System.Windows.Forms.Button();
             this.cmdCheque = new System.Windows.Forms.Button();
-            this.cmdRecibo = new System.Windows.Forms.Button();
             this.cmdPagar = new System.Windows.Forms.Button();
             this.cmdCancelar = new System.Windows.Forms.Button();
             this.imgEfectivo = new System.Windows.Forms.PictureBox();
@@ -342,15 +341,6 @@
             this.cmdCheque.UseVisualStyleBackColor = false;
             this.cmdCheque.Click += new System.EventHandler(this.TipoPago);
             // 
-            // cmdRecibo
-            // 
-            this.cmdRecibo.Location = new System.Drawing.Point(387, 483);
-            this.cmdRecibo.Name = "cmdRecibo";
-            this.cmdRecibo.Size = new System.Drawing.Size(48, 23);
-            this.cmdRecibo.TabIndex = 19;
-            this.cmdRecibo.Text = "button20";
-            this.cmdRecibo.UseVisualStyleBackColor = true;
-            // 
             // cmdPagar
             // 
             this.cmdPagar.Location = new System.Drawing.Point(85, 550);
@@ -359,6 +349,7 @@
             this.cmdPagar.TabIndex = 20;
             this.cmdPagar.Text = "button1";
             this.cmdPagar.UseVisualStyleBackColor = true;
+            this.cmdPagar.Click += new System.EventHandler(this.cmdPagar_Click);
             // 
             // cmdCancelar
             // 
@@ -368,6 +359,7 @@
             this.cmdCancelar.TabIndex = 21;
             this.cmdCancelar.Text = "button2";
             this.cmdCancelar.UseVisualStyleBackColor = true;
+            this.cmdCancelar.Click += new System.EventHandler(this.cmdCancelar_Click);
             // 
             // imgEfectivo
             // 
@@ -549,7 +541,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::BlackBox.Properties.Resources.Pago;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(738, 600);
+            this.ClientSize = new System.Drawing.Size(502, 600);
             this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.lblSaldo);
             this.Controls.Add(this.lblTotalOrden);
@@ -570,7 +562,6 @@
             this.Controls.Add(this.imgEfectivo);
             this.Controls.Add(this.cmdCancelar);
             this.Controls.Add(this.cmdPagar);
-            this.Controls.Add(this.cmdRecibo);
             this.Controls.Add(this.cmdCheque);
             this.Controls.Add(this.cmdTarjeta);
             this.Controls.Add(this.cmdRegalo);
@@ -629,7 +620,6 @@
         private System.Windows.Forms.Button cmdRegalo;
         private System.Windows.Forms.Button cmdTarjeta;
         private System.Windows.Forms.Button cmdCheque;
-        private System.Windows.Forms.Button cmdRecibo;
         private System.Windows.Forms.Button cmdPagar;
         private System.Windows.Forms.Button cmdCancelar;
         private System.Windows.Forms.PictureBox imgEfectivo;
