@@ -424,7 +424,45 @@
   <ItemGroup>
     <None Include="Resources\cmdAlas_3.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\cmdPagosSEfectivo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdPagosCheque.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdPagosTarjeta.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdPagosRegalo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdPagosMas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdPagosTipo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tabEspeciales.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuTemplateV6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tabEspeciales1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tabEnEspera.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tabOnline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tabRecientes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuTemplateV7.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

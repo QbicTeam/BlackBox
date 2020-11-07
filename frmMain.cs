@@ -25,6 +25,8 @@ namespace BlackBox
 
         private void frmMain_Load(object sender, EventArgs e)
         {
+            this.FormBorderStyle = FormBorderStyle.None;
+
             pnlInicio.Location = new Point(15, 96);
             pnlAdmon.Location = new Point(15, 96);
             pnlHorario.Location = new Point(15, 96);
@@ -331,7 +333,9 @@ namespace BlackBox
         private void cmdOrdenes_Click(object sender, EventArgs e)
         {
             frmMenu menu = new frmMenu();
+            menu.SetEntryForm(this._entryForm);
             menu.Show();
+            this.Close();
         }
     }
 }

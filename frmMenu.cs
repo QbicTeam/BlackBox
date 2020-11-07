@@ -22,22 +22,31 @@ namespace BlackBox
     {
         private ObjBlackBox _datos;
         private Comanda comanda;
+        private Form _entryForm;
+
         public frmMenu()
         {
             InitializeComponent();
         }
 
+        public void SetEntryForm(Form entryForm)
+        {
+            this._entryForm = entryForm;
+        }
+
         private void frmMenu_Load(object sender, EventArgs e)
         {
             resetMenuButtons();
+            SetMenuSettings();
+            this.FormBorderStyle = FormBorderStyle.None;
 
             // Lectura de Datos.
             var json = File.ReadAllText("appSettings.json");
             _datos = JsonConvert.DeserializeObject<ObjBlackBox>(json);
 
             LoadSideMenu();
-            LoadMenu("HNR");
             cmdHnr.Image = imgSHnr.Image;
+            FillMenus();
 
             pnlTotal.Location = new Point(1200, 643);
             pnlTotal.Size = new Size(308, 574);
@@ -49,6 +58,118 @@ namespace BlackBox
             lblArticulosPie.Text = _datos.PantallaVentas.ArticulosVencidosPie;
 
             comanda = new Comanda();
+        }
+
+        private void SetMenuSettings()
+        {
+
+            pnlMenu.Height = 663;
+            pnlMenu.Width = 764;
+            pnlMenu.Location = new Point(290, 63);
+
+            pnlPizzas.Height = 663;
+            pnlPizzas.Width = 764;
+            pnlPizzas.Location = new Point(290, 63);
+
+            pnlPanes.Height = 663;
+            pnlPanes.Width = 764;
+            pnlPanes.Location = new Point(290, 63);
+
+            pnlBebidas.Height = 663;
+            pnlBebidas.Width = 764;
+            pnlBebidas.Location = new Point(290, 63);
+
+            pnlAlas.Height = 663;
+            pnlAlas.Width = 764;
+            pnlAlas.Location = new Point(290, 63);
+
+            pnlComplementos.Height = 663;
+            pnlComplementos.Width = 764;
+            pnlComplementos.Location = new Point(290, 63);
+
+            pnlNoComidas.Height = 663;
+            pnlNoComidas.Width = 764;
+            pnlNoComidas.Location = new Point(290, 63);
+
+            pnlOtrasComidas.Height = 663;
+            pnlOtrasComidas.Width = 764;
+            pnlOtrasComidas.Location = new Point(290, 63);
+
+            pnlUbers.Height = 663;
+            pnlUbers.Width = 764;
+            pnlUbers.Location = new Point(290, 63);
+
+            pnlRappis.Height = 663;
+            pnlRappis.Width = 764;
+            pnlRappis.Location = new Point(290, 63);
+
+        }
+
+        private void FillMenus()
+        {
+            LoadMenu("HNR", pnlMenu);
+            LoadMenu("Pizza", pnlPizzas);
+            LoadMenu("Pan", pnlPanes);
+            LoadMenu("Bebidas", pnlBebidas);
+            LoadMenu("Alas", pnlAlas);
+            LoadMenu("Complementos", pnlComplementos);
+            LoadMenu("NoComida", pnlNoComidas);
+            LoadMenu("OtrasComidas", pnlOtrasComidas);
+            LoadMenu("Uber", pnlUbers);
+            LoadMenu("Rappi", pnlRappis);
+        }
+
+        private void TurnOffMenus()
+        {
+            pnlMenu.Visible = false;
+            pnlPizzas.Visible = false;
+            pnlPanes.Visible = false;
+            pnlBebidas.Visible = false;
+            pnlAlas.Visible = false;
+            pnlComplementos.Visible = false;
+            pnlNoComidas.Visible = false;
+            pnlOtrasComidas.Visible = false;
+            pnlUbers.Visible = false;
+            pnlRappis.Visible = false;
+        }
+
+        private void TurnOnMenu(string menu)
+        {
+            switch (menu)
+            {
+                case "Hnr":
+                    pnlMenu.Visible = true;
+                    break;
+                case "Pizza":
+                    pnlPizzas.Visible = true;
+                    break;
+                case "Pan":
+                    pnlPanes.Visible = true;
+                    break;
+                case "Bebidas":
+                    pnlBebidas.Visible = true;
+                    break;
+                case "Alas":
+                    pnlAlas.Visible = true;
+                    break;
+                case "Complementos":
+                    pnlComplementos.Visible = true;
+                    break;
+                case "NoComida":
+                    pnlNoComidas.Visible = true;
+                    break;
+                case "OtrasComidas":
+                    pnlOtrasComidas.Visible = true;
+                    break;
+                case "Uber":
+                    pnlUbers.Visible = true;
+                    break;
+                case "Rappi":
+                    pnlRappis.Visible = true;
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void resetMenuButtons()
@@ -122,9 +243,9 @@ namespace BlackBox
 
         }
 
-        private void LoadMenu(string menuId)
+        private void LoadMenu(string menuId, Panel container)
         {
-            pnlMenu.Controls.Clear();
+            // container.Controls.Clear();
             var menu = GetMenu(menuId);
             var tamano = "";
             if (menu.Count > 26) // Si son mas de 2 Columnas
@@ -184,7 +305,7 @@ namespace BlackBox
 
                 btn.MenuClicked += Btn_MenuClicked;
 
-                pnlMenu.Controls.Add(btn);
+                container.Controls.Add(btn);
 
             }
 
@@ -192,9 +313,12 @@ namespace BlackBox
 
         private void cmdMenuSelected(object sender, EventArgs e)
         {
-            // Console.WriteLine(sender.ToString());
+            //Console.WriteLine(sender.ToString());
             var menuTipo = ((Button)sender).Name.Substring(3);
-            LoadMenu(menuTipo);
+            //MessageBox.Show(menuTipo);
+            TurnOffMenus();
+            TurnOnMenu(menuTipo);
+            // LoadMenu(menuTipo);
             SetMenuButton(menuTipo);
         }
 
@@ -376,11 +500,67 @@ namespace BlackBox
 
         private void Imprimir(object sender, PrintPageEventArgs e)
         {
-            Font font = new Font("Aria", 14, FontStyle.Regular, GraphicsUnit.Point);
-            int width = 200;
+            Font font = new Font("Courier New", 14, FontStyle.Regular, GraphicsUnit.Point);
+            int width = 400;
             int y = 20;
-            e.Graphics.DrawString("Un ticket Felix", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
-            e.Graphics.DrawString("Un ticket Felix 2", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("12345678901234567890123456789012345678901234567890123456XXX", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("Store ID 04122-00007", font, Brushes.Black, new RectangleF(0, y += 20, width, 20)); // Centrar.
+            e.Graphics.DrawString("Phone", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));// Centrar
+            e.Graphics.DrawString("", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("LITTLE CAESARS PIZZA", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("GRUPO LICA BAJA S.A DE C.V", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("RFC GLB150904CU1", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("BLCD. DIAZ ORDAZ #12678 EL PRADO", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("TIJUANA BAJA CALIFORNIA C.P. 22105", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("Orden #13 121 ", font, Brushes.Black, new RectangleF(0, y += 20, width, 20)); // Centrar
+            e.Graphics.DrawString("LUIS", font, Brushes.Black, new RectangleF(0, y += 20, width, 20)); // Centrar
+            e.Graphics.DrawString("Vie. Oct. 30. 2020 08:11pm", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("Estimado para Vie, Oct 30, 2020 08:11pm", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("Su cajero del dia de hoy es SAMANTA Q.", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("SALE", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("Articulo                             Precio", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            foreach (Articulo art in comanda.Articulos)
+            {
+                e.Graphics.DrawString(art.Producto + new string(' ', 5) + art.Precio.ToString(), font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            }
+
+            e.Graphics.DrawString("Conteo de Art                             " + comanda.Articulos.Count.ToString(), font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("Taxble Total                             " + comanda.SubTotal.ToString(), font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("Ventas Imp.                             " + comanda.Impuesto.ToString(), font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("TOTAL                             " + comanda.Total.ToString(), font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("Efectivo                             " + comanda.Total.ToString(), font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("2334                             000033", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("12345678901234567890123456789012345678901234567890123456XXX", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+        }
+
+        private void cmdClose_Click(object sender, EventArgs e)
+        {
+            this._entryForm.Close();
+        }
+
+        private void cmdEspeciales_Click(object sender, EventArgs e)
+        {
+            pnlTabs.BackgroundImage = imgEspeciales.Image;
+        }
+
+        private void cmdEnEspera_Click(object sender, EventArgs e)
+        {
+            pnlTabs.BackgroundImage = imgEnEspera.Image;
+        }
+
+        private void cmdOnline_Click(object sender, EventArgs e)
+        {
+            pnlTabs.BackgroundImage = imgOnline.Image;
+        }
+
+        private void cmdReciente_Click(object sender, EventArgs e)
+        {
+            pnlTabs.BackgroundImage = imgRecientes.Image;
         }
     }
 }
