@@ -551,7 +551,7 @@ namespace BlackBox
                 e.Graphics.DrawString(RenglonProductoRecibo(art.Producto, art.Precio), font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
             }
 
-            e.Graphics.DrawString(RenglonProductoTextosRecibo(" "," "), fontS, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString(new string('_', caracteresMaximos), font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
             e.Graphics.DrawString(RenglonProductoRecibo("Conteo de Art", comanda.Articulos.Count()), font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
             e.Graphics.DrawString(RenglonProductoRecibo("Taxble Total", comanda.SubTotal), fontS, Brushes.Black, new RectangleF(0, y += 20, width, 20));
             e.Graphics.DrawString("", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
