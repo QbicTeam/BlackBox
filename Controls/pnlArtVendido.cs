@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BlackBox.Enum;
 
 namespace BlackBox.Controls
 {
@@ -16,7 +17,7 @@ namespace BlackBox.Controls
         {
             InitializeComponent();
         }
-        public pnlArtVendido(string nombre, double precio)
+        public pnlArtVendido(string nombre, double precio, List<string> articulos = null, ComboTipo tipo = ComboTipo.Normal)
         {
             InitializeComponent();
 
@@ -33,12 +34,21 @@ namespace BlackBox.Controls
             lblFondo.BackColor = SystemColors.ControlDark;
             lblArticulo.BackColor = SystemColors.ControlDark;
             lblPrecio.BackColor = SystemColors.ControlDark;
-
+            /*
+            if (precio < 100)
+                lblPrecio.Size = new Size(72, 25);
+            if (precio >= 100 & precio < 1000)
+                lblPrecio.Size = new Size(83, 25);
+            if (precio >= 1000)
+                lblPrecio.Size = new Size(102, 25);
+            */
             lblArticulo.Text = nombre;
             lblPrecio.Text = precioF;
+
+            this.Size = new Size(309, 27);
             
 
-            
+
         }
 
         public void ToRegular()

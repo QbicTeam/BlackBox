@@ -67,6 +67,7 @@
     <Compile Include="Controls\pnlArtVendido.Designer.cs">
       <DependentUpon>pnlArtVendido.cs</DependentUpon>
     </Compile>
+    <Compile Include="Enum\ComboTipo.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
