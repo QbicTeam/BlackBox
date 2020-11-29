@@ -23,6 +23,9 @@ namespace BlackBox
         private ObjBlackBox _datos;
         private Comanda comanda;
         private Form _entryForm;
+        private int caracteresMaximos = 56;
+        private string[] dias = { "Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab" };
+        private string[] meses = { "Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic" };
 
         public frmMenu()
         {
@@ -422,7 +425,7 @@ namespace BlackBox
 
         private void PrintSale()
         {
-            MessageBox.Show("printing sale...");
+            // MessageBox.Show("printing sale...");
 
             var strRecibo = new StringBuilder();
 
@@ -500,44 +503,103 @@ namespace BlackBox
 
         private void Imprimir(object sender, PrintPageEventArgs e)
         {
-            Font font = new Font("Courier New", 14, FontStyle.Regular, GraphicsUnit.Point);
-            int width = 400;
+            Font font = new Font("Courier New", 10, FontStyle.Regular, GraphicsUnit.Point);
+            Font fontBold = new Font("Courier New", 11, FontStyle.Bold, GraphicsUnit.Point);
+            Font fontS = new Font("Courier New", 10, FontStyle.Underline, GraphicsUnit.Point);
+            Font font_1 = new Font("Courier New", 9, FontStyle.Regular, GraphicsUnit.Point);
+            Font font1 = new Font("Courier New", 11, FontStyle.Regular, GraphicsUnit.Point);
+            Font font2 = new Font("Courier New", 12, FontStyle.Regular, GraphicsUnit.Point);
+
+            // int caracteresMaximos = 56;
+            int width = 490;
             int y = 20;
-            e.Graphics.DrawString("12345678901234567890123456789012345678901234567890123456XXX", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
-            e.Graphics.DrawString("Store ID 04122-00007", font, Brushes.Black, new RectangleF(0, y += 20, width, 20)); // Centrar.
-            e.Graphics.DrawString("Phone", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));// Centrar
+            string txt = string.Empty;
+
+            //string hoy = string.Empty;
+            var diai = (int)DateTime.Today.DayOfWeek;
+            var dia = dias[diai];
+            var mes = meses[DateTime.Today.Month - 1];
+
+
+            var hoy = string.Format("{0}, {1} {2}, {3} {4}{5}",dia,mes, DateTime.Today.Day, DateTime.Today.Year, DateTime.Now.ToString("hh:mm"), (DateTime.Now.Hour <= 12 ? "am" : "pm"));  // dia + " " + DateTime.Now.ToString("hh:mm") + (DateTime.Now.Hour <= 12 ? "am" : "pm"); // "Lun 11:57 am";  spa-es ddd
+
+            // e.Graphics.DrawString("12345678901234567890123456789012345678901234567890123456XXX", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            txt = "Store ID 04122 - 00007";
+            e.Graphics.DrawString(CentrarRenglonRecibo(txt), font, Brushes.Black, new RectangleF(0, y += 20, width, 20)); // Centrar.
+            e.Graphics.DrawString(CentrarRenglonRecibo("Phone"), font, Brushes.Black, new RectangleF(0, y += 21, width, 20));// Centrar
             e.Graphics.DrawString("", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
-            e.Graphics.DrawString("LITTLE CAESARS PIZZA", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("LITTLE CAESARS PIZZA", font1, Brushes.Black, new RectangleF(0, y += 20, width, 20));
             e.Graphics.DrawString("GRUPO LICA BAJA S.A DE C.V", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
             e.Graphics.DrawString("RFC GLB150904CU1", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
             e.Graphics.DrawString("BLCD. DIAZ ORDAZ #12678 EL PRADO", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
             e.Graphics.DrawString("TIJUANA BAJA CALIFORNIA C.P. 22105", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
             e.Graphics.DrawString("", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
-            e.Graphics.DrawString("Orden #13 121 ", font, Brushes.Black, new RectangleF(0, y += 20, width, 20)); // Centrar
-            e.Graphics.DrawString("LUIS", font, Brushes.Black, new RectangleF(0, y += 20, width, 20)); // Centrar
-            e.Graphics.DrawString("Vie. Oct. 30. 2020 08:11pm", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
-            e.Graphics.DrawString("Estimado para Vie, Oct 30, 2020 08:11pm", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
-            e.Graphics.DrawString("Su cajero del dia de hoy es SAMANTA Q.", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString(CentrarRenglonRecibo("Orden #13 121 "), font, Brushes.Black, new RectangleF(0, y += 20, width, 20)); // Centrar
+            e.Graphics.DrawString(CentrarRenglonRecibo("nombre cliente pelon"), font, Brushes.Black, new RectangleF(0, y += 20, width, 20)); // Centrar
+            e.Graphics.DrawString(CentrarRenglonRecibo(hoy), font, Brushes.Black, new RectangleF(0, y += 20, width, 20)); // "Vie. Oct. 30. 2020 08:11pm"
+            e.Graphics.DrawString(CentrarRenglonRecibo("Estimado para " + hoy, 2), font2, Brushes.Black, new RectangleF(0, y += 22, width, 20)); // Vie, Oct 30, 2020 08:11pm"
+            e.Graphics.DrawString(CentrarRenglonRecibo("Su cajero del dia de hoy es " + _datos.Login.Cajero, -1), font_1, Brushes.Black, new RectangleF(0, y += 19, width, 20));
             e.Graphics.DrawString("", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
-            e.Graphics.DrawString("SALE", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
             e.Graphics.DrawString("", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
-            e.Graphics.DrawString("Articulo                             Precio", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString(CentrarRenglonRecibo("SALE"), font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString(RenglonProductoTextosRecibo("Articulo","Precio"), fontS, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            
             foreach (Articulo art in comanda.Articulos)
             {
-                e.Graphics.DrawString(art.Producto + new string(' ', 5) + art.Precio.ToString(), font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+                e.Graphics.DrawString(RenglonProductoRecibo(art.Producto, art.Precio), font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
             }
 
-            e.Graphics.DrawString("Conteo de Art                             " + comanda.Articulos.Count.ToString(), font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
-            e.Graphics.DrawString("Taxble Total                             " + comanda.SubTotal.ToString(), font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString(new string('_', caracteresMaximos), font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString(RenglonProductoRecibo("Conteo de Art", comanda.Articulos.Count()), font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString(RenglonProductoRecibo("Taxble Total", comanda.SubTotal), fontS, Brushes.Black, new RectangleF(0, y += 20, width, 20));
             e.Graphics.DrawString("", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
-            e.Graphics.DrawString("Ventas Imp.                             " + comanda.Impuesto.ToString(), font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString(RenglonProductoRecibo("Ventas Imp.", comanda.Impuesto), font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
             e.Graphics.DrawString("", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
-            e.Graphics.DrawString("TOTAL                             " + comanda.Total.ToString(), font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
-            e.Graphics.DrawString("Efectivo                             " + comanda.Total.ToString(), font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
-            e.Graphics.DrawString("2334                             000033", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
-            e.Graphics.DrawString("12345678901234567890123456789012345678901234567890123456XXX", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString(RenglonProductoRecibo("TOTAL", comanda.Total, 1), fontBold, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString(RenglonProductoRecibo("Efectivo", comanda.Total), font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString(RenglonProductoTextosRecibo("2334" , "000033", -1), font_1, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            // e.Graphics.DrawString("12345678901234567890123456789012345678901234567890123456XXX", fontBold, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            // e.Graphics.DrawString("123456789012345678901234567890123456789012345678901234567890123456789", font_1, Brushes.Black, new RectangleF(0, y += 20, width, 20));
         }
 
+        private string CentrarRenglonRecibo(string text, int tipo = 0)
+        {
+            var len = text.Length;
+            if (tipo == -1)
+                len = (int)(len / 1.4);
+            if (tipo == 1)
+                len = (int)(len * 1.1);
+            if (tipo == 2)
+                len = (int)(len * 1.2);
+
+
+            var libre = caracteresMaximos - len;
+            var mitad = libre / 2;
+
+            return new string(' ', mitad) + text;
+        }
+
+        private string RenglonProductoRecibo(string nombre, double precio, int tipo = 0)
+        {
+            var precioS = string.Format("{0:C}", precio);
+            var cUsados = precioS.Length + nombre.Length;
+            var espacios = caracteresMaximos - cUsados;
+
+            if (tipo == 1)
+                espacios = espacios - (caracteresMaximos - 51);
+
+            return nombre + new string(' ', espacios) + precioS;
+        }
+        private string RenglonProductoTextosRecibo(string texto1, string texto2, int tipo = 0)
+        {
+            var espacios = caracteresMaximos - (texto1.Length + texto2.Length);
+            if (tipo == -1)
+                espacios = espacios + (62 - caracteresMaximos);
+
+            return texto1 + new string(' ', espacios) + texto2;
+        }
         private void cmdClose_Click(object sender, EventArgs e)
         {
             this._entryForm.Close();
