@@ -24,7 +24,7 @@ namespace BlackBox.Controls
             InitializeComponent();
         }
 
-        public cmdMenuButton(string description, double price, Image backImg, int cols)
+        public cmdMenuButton(string description, decimal price, Image backImg, int cols)
         {
             InitializeComponent();
             pnlButton.BackgroundImage = backImg;

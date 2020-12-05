@@ -24,7 +24,7 @@ namespace BlackBox.Controls
             InitializeComponent();
         }
 
-        public cmdSideBarButton(string description, double price, Image backImg)
+        public cmdSideBarButton(string description, decimal price, Image backImg)
         {
             InitializeComponent();
             cmdOption.BackgroundImage = backImg;

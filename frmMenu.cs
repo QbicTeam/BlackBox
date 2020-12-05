@@ -23,6 +23,8 @@ namespace BlackBox
         private ObjBlackBox _datos;
         private Comanda comanda;
         private Form _entryForm;
+        private pnlArtVendido _artVendidoSeleccionado;
+
         private int caracteresMaximos = 56;
         private string[] dias = { "Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab" };
         private string[] meses = { "Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic" };
@@ -216,15 +218,167 @@ namespace BlackBox
         {
             Articulo itm = (Articulo)sender;
             //MessageBox.Show(itm.Producto);
-            double taza = _datos.Login.Taza + 1;
+            decimal taza = _datos.Login.Taza + 1;
+            // TODO Remover, es temporal
+            if (itm.Producto.ToLower() == "combo crazy crunsh")
+            {
+                itm.Opciones = new List<ArticuloOpcion>();
+                itm.Opciones.Add(new ArticuloOpcion() { 
+                     ArticuloOp = new Articulo() { Producto = "Crazy Crunch"},
+                     Intercambiable = false
+                });
+                itm.Opciones.Add(new ArticuloOpcion()
+                {
+                    ArticuloOp = new Articulo() { Producto = "Crazy Bread Relleno" },
+                    Intercambiable = false
+                });
+                itm.ComboTipo = "Combo";
+            }
+            if (itm.Producto.ToLower() == "combo cu4tro2.0")
+            {
+                itm.Opciones = new List<ArticuloOpcion>();
+                itm.Opciones.Add(new ArticuloOpcion()
+                {
+                    ArticuloOp = new Articulo() { Producto = "Cu4tro2.0" },
+                    Intercambiable = false
+                });
+                itm.Opciones.Add(new ArticuloOpcion()
+                {
+                    ArticuloOp = new Articulo() { Producto = "Crazy Bread Relleno" },
+                    Intercambiable = false
+                });
+                itm.ComboTipo = "Combo";
+            }
+            if (itm.Producto.ToLower() == "italian pack")
+            {
+                itm.Opciones = new List<ArticuloOpcion>();
+                itm.Opciones.Add(new ArticuloOpcion()
+                {
+                    ArticuloOp = new Articulo() { Producto = "Classic Pepperoni", 
+                         Opciones = new List<ArticuloOpcion>() { 
+                             new ArticuloOpcion() { Default = false, Intercambiable = true, Articulo = new Articulo() { Producto = "Classic Pepperoni" } },
+                             new ArticuloOpcion() { Default = false, Intercambiable = true, Articulo = new Articulo() { Producto = "3 Meat" } },
+                             new ArticuloOpcion() { Default = false, Intercambiable = true, Articulo = new Articulo() { Producto = "Cu4tro2.0" } }
+                         }
+                    },
+                    Intercambiable = true,
+                    Default = true
+                });
+                itm.Opciones.Add(new ArticuloOpcion()
+                {
+                    ArticuloOp = new Articulo() { Producto = "ICB" },
+                    Intercambiable = false
+                });
+                itm.Opciones.Add(new ArticuloOpcion()
+                {
+                    ArticuloOp = new Articulo() { Producto = "Refresco 2L" },
+                    Intercambiable = false
+                });
+                itm.ComboTipo = "Combo";
+            }
+            if (itm.Producto.ToLower() == "2x15 aderezos")
+            {
+                itm.Opciones = new List<ArticuloOpcion>();
+                itm.Opciones.Add(new ArticuloOpcion()
+                {
+                    ArticuloOp = new Articulo()
+                    {
+                        Producto = "[ADEREZOS]",
+                        Opciones = new List<ArticuloOpcion>() {
+                             new ArticuloOpcion() { Default = false, Intercambiable = true, Articulo = new Articulo() { Producto = "Buffalo Ranch Dip" } },
+                             new ArticuloOpcion() { Default = false, Intercambiable = true, Articulo = new Articulo() { Producto = "Ranch Dip" } },
+                             new ArticuloOpcion() { Default = false, Intercambiable = true, Articulo = new Articulo() { Producto = "Buffalo Dip" } },
+                             new ArticuloOpcion() { Default = false, Intercambiable = true, Articulo = new Articulo() { Producto = "Cheesy Jalapeno Dip" } }
+                         }
+                    },
+                    Intercambiable = true,
+                    Default = false
+                });
+                itm.Opciones.Add(new ArticuloOpcion()
+                {
+                    ArticuloOp = new Articulo()
+                    {
+                        Producto = "[ADEREZOS]",
+                        Opciones = new List<ArticuloOpcion>() {
+                             new ArticuloOpcion() { Default = false, Intercambiable = true, Articulo = new Articulo() { Producto = "Buffalo Ranch Dip" } },
+                             new ArticuloOpcion() { Default = false, Intercambiable = true, Articulo = new Articulo() { Producto = "Ranch Dip" } },
+                             new ArticuloOpcion() { Default = false, Intercambiable = true, Articulo = new Articulo() { Producto = "Buffalo Dip" } },
+                             new ArticuloOpcion() { Default = false, Intercambiable = true, Articulo = new Articulo() { Producto = "Cheesy Jalapeno Dip" } }
+                         }
+                    },
+                    Intercambiable = true,
+                    Default = false
+                });
+                itm.ComboTipo = "Combo";
+            }
+            if (itm.Producto.ToLower() == "3x20 aderezos")
+            {
+                itm.Opciones = new List<ArticuloOpcion>();
+                itm.Opciones.Add(new ArticuloOpcion()
+                {
+                    ArticuloOp = new Articulo()
+                    {
+                        Producto = "[ADEREZOS]",
+                        Opciones = new List<ArticuloOpcion>() {
+                             new ArticuloOpcion() { Default = false, Intercambiable = true, Articulo = new Articulo() { Producto = "Buffalo Ranch Dip" } },
+                             new ArticuloOpcion() { Default = false, Intercambiable = true, Articulo = new Articulo() { Producto = "Ranch Dip" } },
+                             new ArticuloOpcion() { Default = false, Intercambiable = true, Articulo = new Articulo() { Producto = "Buffalo Dip" } },
+                             new ArticuloOpcion() { Default = false, Intercambiable = true, Articulo = new Articulo() { Producto = "Cheesy Jalapeno Dip" } }
+                         }
+                    },
+                    Intercambiable = true,
+                    Default = false
+                });
+                itm.Opciones.Add(new ArticuloOpcion()
+                {
+                    ArticuloOp = new Articulo()
+                    {
+                        Producto = "[ADEREZOS]",
+                        Opciones = new List<ArticuloOpcion>() {
+                             new ArticuloOpcion() { Default = false, Intercambiable = true, Articulo = new Articulo() { Producto = "Buffalo Ranch Dip" } },
+                             new ArticuloOpcion() { Default = false, Intercambiable = true, Articulo = new Articulo() { Producto = "Ranch Dip" } },
+                             new ArticuloOpcion() { Default = false, Intercambiable = true, Articulo = new Articulo() { Producto = "Buffalo Dip" } },
+                             new ArticuloOpcion() { Default = false, Intercambiable = true, Articulo = new Articulo() { Producto = "Cheesy Jalapeno Dip" } }
+                         }
+                    },
+                    Intercambiable = true,
+                    Default = false
+                });
+                itm.Opciones.Add(new ArticuloOpcion()
+                {
+                    ArticuloOp = new Articulo()
+                    {
+                        Producto = "[ADEREZOS]",
+                        Opciones = new List<ArticuloOpcion>() {
+                             new ArticuloOpcion() { Default = false, Intercambiable = true, Articulo = new Articulo() { Producto = "Buffalo Ranch Dip" } },
+                             new ArticuloOpcion() { Default = false, Intercambiable = true, Articulo = new Articulo() { Producto = "Ranch Dip" } },
+                             new ArticuloOpcion() { Default = false, Intercambiable = true, Articulo = new Articulo() { Producto = "Buffalo Dip" } },
+                             new ArticuloOpcion() { Default = false, Intercambiable = true, Articulo = new Articulo() { Producto = "Cheesy Jalapeno Dip" } }
+                         }
+                    },
+                    Intercambiable = true,
+                    Default = false
+                });
+                itm.ComboTipo = "Combo";
+            }
+            //--
 
-            pnlArtVendido artVta = new pnlArtVendido(itm.Producto, itm.Precio);
 
+            pnlArtVendido artVta = new pnlArtVendido(itm); // itm.Producto, itm.Precio);
+
+            int height = 0;
             foreach(Control ctrl in pnlComanda.Controls)
+            {
                 ((pnlArtVendido)ctrl).ToRegular();
+                height += ctrl.Height;
+            }
 
-            artVta.Top = pnlComanda.Controls.Count * 27;
+
+            artVta.Top = height; // pnlComanda.Controls.Count * 27;
+            artVta.OpcionClicked += OpcionClicked;
+
             pnlComanda.Controls.Add(artVta);
+            _artVendidoSeleccionado = artVta;
 
             comanda.Articulos.Add(itm);
 
@@ -581,7 +735,7 @@ namespace BlackBox
             return new string(' ', mitad) + text;
         }
 
-        private string RenglonProductoRecibo(string nombre, double precio, int tipo = 0)
+        private string RenglonProductoRecibo(string nombre, decimal precio, int tipo = 0)
         {
             var precioS = string.Format("{0:C}", precio);
             var cUsados = precioS.Length + nombre.Length;
@@ -623,6 +777,18 @@ namespace BlackBox
         private void cmdReciente_Click(object sender, EventArgs e)
         {
             pnlTabs.BackgroundImage = imgRecientes.Image;
+        }
+
+        private void OpcionClicked(object sender, int y, int i)
+        {
+            Console.WriteLine("Click en opcion Comanda - frmMenu");
+            foreach (Control ctrl in pnlComanda.Controls)
+            {
+                ((pnlArtVendido)ctrl).ToRegular();
+                if (((pnlArtVendido)ctrl).Location.Y == y) 
+                    _artVendidoSeleccionado = ((pnlArtVendido)ctrl);
+            }
+            _artVendidoSeleccionado.ToSelected(i);
         }
     }
 }

@@ -15,9 +15,9 @@ namespace BlackBox.Model
 
         public List<Articulo> Articulos { get; set; }
 
-        public double SubTotal { get; set; }
-        public double Impuesto { get; set; }
-        public double Total { get; set; }
+        public decimal SubTotal { get; set; }
+        public decimal Impuesto { get; set; }
+        public decimal Total { get; set; }
         public DateTime FechaHora { get; set; }
         public string Cajero { get; set; }
     }
