@@ -14,6 +14,7 @@ namespace BlackBox.Model
         public decimal Precio { get; set; }
         public int Pendientes { get; set; }
         public string Tipo { get; set; }
+        public int Cantidad { get; set; }
         public string ComboTipo { get; set; }
         public string Grupo { get; set; }
         public List<ArticuloOpcion> Opciones { get; set; }

@@ -14,20 +14,37 @@ namespace BlackBox.Controls
 {
     public partial class pnlArtVendido : UserControl
     {
-        public delegate void onArticuloSelected(object sender, int y, int i);
-
+        public delegate void onArticuloSelected(object sender, int articuloPadreLocacionY, int intercambiableLocacionY);
         public event onArticuloSelected OpcionClicked;
 
-        private decimal _precioBase = 0;
+        public delegate void onArticuloMasMenos();
+        public event onArticuloMasMenos ArticuloMasMenosChange;
+
+        public delegate void onArticuloCambioYs(int y, int altura, bool mas);
+        public event onArticuloCambioYs ArticuloYsChange;
+
+        private decimal _precioAdicional = 0;
         private int _cantidad = 1;
+        
         private int _renglonAlturaNormal = 27;
         private int _renglonAlturaCustom = 24;
         private int _opcionAlturaInicial = 27;
+        
         private Color _verdeFuerte = Color.FromArgb(0, 128, 0);
         private Color _verdeClaro = Color.FromArgb(127, 191, 127);
-        private Articulo _articulo;
-        private bool _intercambiables;
-        public List<int> _sinAsignar;
+
+        public Articulo _articulo;
+        // private bool _intercambiables;
+        private List<int> _sinAsignar;
+        /// <summary>
+        /// Localizacion Y del Intercambiable dentro del Articulo Padre
+        /// </summary>
+        public List<int> _intercambiablesY;
+        /// <summary>
+        /// Nombre de las Opciones soportadas por los Intercambiables.
+        /// </summary>
+        public List<string> _intercambiablesNombres;
+
 
         public pnlArtVendido()
         {
@@ -68,15 +85,19 @@ namespace BlackBox.Controls
             */
 
             string precioF = string.Empty;
-            _precioBase = articulo.Precio;
-            precioF = string.Format("{0:C}", _precioBase);  //precio);
+            precioF = string.Format("{0:C}", articulo.Precio);  //precio);
 
             // Valore Iniciales
             lblFondo.Location = new Point(0, 0);
             lblOpcion.Location = new Point(13, 27);
             _articulo = articulo;
-            _intercambiables = false;
+            _intercambiablesY = new List<int>();
+            _intercambiablesNombres = new List<string>();
             _sinAsignar = new List<int>();
+
+
+            lblArticulo.Text = articulo.Producto; // nombre;
+            lblPrecio.Text = precioF;
 
             /* Normal, Combo, Custom, CustomEst */
             articulo.ComboTipo = articulo.ComboTipo == null ? "normal" : articulo.ComboTipo;
@@ -88,10 +109,10 @@ namespace BlackBox.Controls
                     this.Size = new Size(309, _renglonAlturaNormal * (articulo.Opciones.Count + 1));
                     break;
                 case "custom":
-                    this.Size = new Size(309, _renglonAlturaNormal + (_renglonAlturaCustom * articulo.Opciones.Count));
+                    this.Size = new Size(309, _renglonAlturaNormal + (_renglonAlturaCustom * articulo.Opciones.Count(o => o.Default)));
                     break;
                 case "customesp":
-                    this.Size = new Size(309, _renglonAlturaNormal + (_renglonAlturaCustom * articulo.Opciones.Count));
+                    this.Size = new Size(309, _renglonAlturaNormal + (_renglonAlturaCustom * articulo.Opciones.Count(o => o.Default)));
                     break;
                 default:  // Los Normales... si no esta definido es tratado como Normal
                     this.Size = new Size(309, _renglonAlturaNormal); // 27 Altura base Normal
@@ -99,7 +120,7 @@ namespace BlackBox.Controls
             }
             lblFondo.Size = this.Size;
 
-            // Articulos Opciones
+            // Articulos Opciones con Combo
             if (articulo.ComboTipo.ToLower() == "combo")
             {
                 for (var i = 1; i <= articulo.Opciones.Count; i++)
@@ -119,8 +140,10 @@ namespace BlackBox.Controls
                     
                     if (articulo.Opciones[i - 1].Intercambiable)
                     {
-                        _intercambiables = true;
+                        _intercambiablesY.Add(nCtrl.Location.Y);
                         _articulo.Opciones[i - 1].LocationY = nCtrl.Location.Y;
+                        _intercambiablesNombres.AddRange(_articulo.Opciones[i - 1].ArticuloOp.Opciones.Select(o => o.Articulo.Producto).ToList());
+
                         if (articulo.Opciones[i - 1].Default)
                         {
                             nCtrl.ForeColor = _verdeFuerte;
@@ -142,6 +165,11 @@ namespace BlackBox.Controls
                 }
             }
 
+            // Articulos Opciones con Custom y CustomEsp
+            if (articulo.ComboTipo.ToLower().StartsWith("custom"))
+            {
+
+            }
 
             //pnlArtVendido.DefaultBackColor = SystemColors.ControlDark;
             /*
@@ -153,12 +181,6 @@ namespace BlackBox.Controls
             */
 
             ToSelected();
-
-            lblArticulo.Text = articulo.Producto; // nombre;
-            lblPrecio.Text = precioF;
-
-
-
 
 
         }
@@ -197,7 +219,7 @@ namespace BlackBox.Controls
         public void ToSelected(int i = -1)
         {
             Color backColor;
-            if (_intercambiables)
+            if (_intercambiablesY.Count > 0)
                 backColor = Color.White;
             else
                 backColor = SystemColors.ControlDark;
@@ -226,8 +248,114 @@ namespace BlackBox.Controls
             }
                 
 
-        }        
+        }       
+        
+        public bool OpcionesSinAsignar()
+        {
+            return _sinAsignar.Count > 0 ? true : false;
+        }
+        public void MasUno()
+        {
+            _cantidad++;
+            ArticuloMasMenosChange();
+        }
+        public void MenosUno()
+        {
+            if (_cantidad == 1)
+                return;
 
+            _cantidad--;
+            ArticuloMasMenosChange();
+        }
+        public int CantidadArticulosTotal()
+        {
+            return _cantidad * (_articulo.Cantidad == 0 ? 1 : _articulo.Cantidad);
+        }
+        public decimal PrecioArticuloTotal()
+        {
+            return _cantidad * (_articulo.Precio + _precioAdicional);
+            
+        }
+        public void ArticuloOpcion(Articulo articuloOp, int locacionY, bool mas)
+        {
+            if (!((_articulo.ComboTipo.ToLower() == "combo" && _intercambiablesY.Count > 0)
+                || (_articulo.ComboTipo.ToLower() == "custom" || _articulo.ComboTipo.ToLower() == "customesp")))
+                return;
+            
+            List<ArticuloOpcion> artOps = _articulo.Opciones;
+
+            foreach(ArticuloOpcion artOp in _articulo.Opciones) // for (var i = 1; i <= artOps.Count; i++)
+            {
+                // Opcion Padre 
+                if (artOp.LocationY == locacionY) // if (artOps[i - 1].LocationY == locacionY) // && artOps[i - 1].Intercambiable) Verificar si realmente es necesario validar el intercambiable.
+                {
+                    if (_articulo.ComboTipo.ToLower() != "combo") // Significa que se trata de un Custom / CustomEsp
+                    {
+                        var ingrediente = artOp.Opciones.Where(i => i.Articulo.Producto == articuloOp.Producto).FirstOrDefault();
+                        if (mas)
+                        {
+                            var nCtrl = new Label()
+                            {
+                                Size = lblOpcion.Size, //picBox.Size,
+                                Visible = true,
+                                Text = articuloOp.Producto,
+                                Font = new Font(lblArticulo.Font.FontFamily, 12 , FontStyle.Regular),
+                                //Name = articulo.Opciones[i - 1].ArticuloOp.Producto + "_" + i.ToString(),
+                                //BackColor = SystemColors.ControlDark,
+                                //AutoSize = true,
+                                Location = new Point(0, _opcionAlturaInicial + (_renglonAlturaCustom * (this.Controls.Count - 3))),
+                                Padding = new Padding(13, 0, 0, 0)
+                            };
+                            _articulo.Opciones.Find(o => o.ArticuloOp.Producto == articuloOp.Producto).Default = true;
+                            this.Size = new Size(309, _renglonAlturaNormal + (_renglonAlturaCustom * _articulo.Opciones.Count(o => o.Default)));
+                            nCtrl.Click += lblOpcion_Click;
+
+                            this.Controls.Add(nCtrl);
+                            this.Controls.SetChildIndex(nCtrl, 1);
+                            nCtrl.BringToFront();
+
+                            _precioAdicional += ingrediente.Costo;
+                            ArticuloYsChange(this.Location.Y, _renglonAlturaCustom, true);
+                        }
+                        else
+                        {
+                            _precioAdicional -= ingrediente.Costo;
+                            _articulo.Opciones.Find(o => o.ArticuloOp.Producto == articuloOp.Producto).Default = false;
+                            foreach (Control child in this.Controls)
+                            {
+                                if (((Label)child).Text == articuloOp.Producto)
+                                {
+                                    this.Controls.Remove(child);
+                                    this.Size = new Size(309, _renglonAlturaNormal + (_renglonAlturaCustom * _articulo.Opciones.Count(o => o.Default)));
+                                    ArticuloYsChange(this.Location.Y, _renglonAlturaCustom, false);
+                                    break;
+                                }
+
+                            }
+                        }
+                            
+                    }
+                    else
+                    {
+                        artOp.ArticuloOp.Producto = articuloOp.Producto; //artOps[i - 1].ArticuloOp.Producto = articuloOp.Producto;
+                        foreach (Control child in this.Controls)
+                        {                             
+                            if (child.Location.Y == locacionY)
+                            {
+                                ((Label)child).Text = articuloOp.Producto;
+                                ((Label)child).Font = new Font(lblArticulo.Font, FontStyle.Bold);
+                                ((Label)child).CausesValidation = false;
+                                break;
+                            }
+                        }
+
+                        _sinAsignar.Remove(locacionY);                        
+                    }
+                    break;
+                }
+            }
+            
+        }
         private void pnlArtVendido_Click(object sender, EventArgs e)
         {
             // ToSelected();
@@ -239,7 +367,7 @@ namespace BlackBox.Controls
             // ToSelected();
             // TODO: Cambiar por el subMenu a desplegar si se trata de un intercambiable o un "Custom"
             var optInter = _articulo.Opciones.Where(op => 
-                (op.Intercambiable || op.ArticuloOp.ComboTipo.ToLower() == "customesp") 
+                (op.Intercambiable || (op.ArticuloOp.ComboTipo != null && op.ArticuloOp.ComboTipo.ToLower() == "customesp"))
                 && op.LocationY == ((Label)sender).Location.Y).FirstOrDefault();
 
             if (optInter == null)

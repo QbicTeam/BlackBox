@@ -24,6 +24,7 @@ namespace BlackBox
         private Comanda comanda;
         private Form _entryForm;
         private pnlArtVendido _artVendidoSeleccionado;
+        private int _opcionLocationY;
 
         private int caracteresMaximos = 56;
         private string[] dias = { "Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab" };
@@ -218,10 +219,12 @@ namespace BlackBox
         {
             Articulo itm = (Articulo)sender;
             //MessageBox.Show(itm.Producto);
-            decimal taza = _datos.Login.Taza + 1;
+            // decimal taza = _datos.Login.Taza + 1;
+
             // TODO Remover, es temporal
             if (itm.Producto.ToLower() == "combo crazy crunsh")
             {
+                itm.Cantidad = 2;
                 itm.Opciones = new List<ArticuloOpcion>();
                 itm.Opciones.Add(new ArticuloOpcion() { 
                      ArticuloOp = new Articulo() { Producto = "Crazy Crunch"},
@@ -236,6 +239,7 @@ namespace BlackBox
             }
             if (itm.Producto.ToLower() == "combo cu4tro2.0")
             {
+                itm.Cantidad = 2;
                 itm.Opciones = new List<ArticuloOpcion>();
                 itm.Opciones.Add(new ArticuloOpcion()
                 {
@@ -251,6 +255,7 @@ namespace BlackBox
             }
             if (itm.Producto.ToLower() == "italian pack")
             {
+                itm.Cantidad = 3;
                 itm.Opciones = new List<ArticuloOpcion>();
                 itm.Opciones.Add(new ArticuloOpcion()
                 {
@@ -364,10 +369,18 @@ namespace BlackBox
             //--
 
 
+            if (_artVendidoSeleccionado != null && _opcionLocationY > 0) // Aqui validar que se trate de un sub Menu
+            {
+                _artVendidoSeleccionado.ArticuloOpcion(itm, _opcionLocationY, true);
+                // TODO: Validar si se sale o no.
+                return;
+            }
+
+
             pnlArtVendido artVta = new pnlArtVendido(itm); // itm.Producto, itm.Precio);
 
             int height = 0;
-            foreach(Control ctrl in pnlComanda.Controls)
+            foreach (Control ctrl in pnlComanda.Controls)
             {
                 ((pnlArtVendido)ctrl).ToRegular();
                 height += ctrl.Height;
@@ -376,13 +389,17 @@ namespace BlackBox
 
             artVta.Top = height; // pnlComanda.Controls.Count * 27;
             artVta.OpcionClicked += OpcionClicked;
+            artVta.ArticuloYsChange += ArticuloYsChange;
+            artVta.ArticuloMasMenosChange += ArticuloMasMenosChange;
 
             pnlComanda.Controls.Add(artVta);
             _artVendidoSeleccionado = artVta;
 
             comanda.Articulos.Add(itm);
 
-            
+            CalcularTotal();
+
+            /*
             comanda.Total += itm.Precio;
             comanda.SubTotal = comanda.Total / taza;
             comanda.Impuesto = comanda.Total - comanda.SubTotal;
@@ -397,7 +414,7 @@ namespace BlackBox
             Console.WriteLine("Impuesto " + lblImpu.Text);
             Console.WriteLine("Total " + lblTotal.Text);
             Console.WriteLine("- - - - - ");
-
+            */
         }
 
         private void LoadMenu(string menuId, Panel container)
@@ -779,16 +796,62 @@ namespace BlackBox
             pnlTabs.BackgroundImage = imgRecientes.Image;
         }
 
-        private void OpcionClicked(object sender, int y, int i)
+        private void OpcionClicked(object sender, int articuloPadreLocacionY, int intercambiableLocacionY)
         {
             Console.WriteLine("Click en opcion Comanda - frmMenu");
             foreach (Control ctrl in pnlComanda.Controls)
             {
                 ((pnlArtVendido)ctrl).ToRegular();
-                if (((pnlArtVendido)ctrl).Location.Y == y) 
+
+                if (((pnlArtVendido)ctrl).Location.Y == articuloPadreLocacionY) 
                     _artVendidoSeleccionado = ((pnlArtVendido)ctrl);
             }
-            _artVendidoSeleccionado.ToSelected(i);
+            _artVendidoSeleccionado.ToSelected(intercambiableLocacionY);
+            if (intercambiableLocacionY > 0)
+                _opcionLocationY = intercambiableLocacionY;
+            else
+                _opcionLocationY = 0;
+        }
+
+        private void ArticuloMasMenosChange()
+        {
+            CalcularTotal();
+        }
+        private void ArticuloYsChange(int y, int altura, bool mas)
+        {
+            // TODO: Reorganizar los articulos de acuerdo a las nuevas Ys
+        }
+        private void CalcularTotal()
+        {
+            pnlArtVendido art;
+            decimal taza = _datos.Login.Taza + 1;
+
+            decimal total = 0;
+            int cantArts = 0;
+
+            foreach (Control ctrl in pnlComanda.Controls)
+            {
+                art = (pnlArtVendido)ctrl;
+                total += art.PrecioArticuloTotal();
+                cantArts += art.CantidadArticulosTotal();
+            }
+
+            comanda.Total = total;
+            comanda.SubTotal = comanda.Total / taza;
+            comanda.Impuesto = comanda.Total - comanda.SubTotal;
+
+            lblNumArts.Text = cantArts.ToString();
+            lblSubTotal.Text = string.Format("{0:C}", comanda.SubTotal);
+            lblImpu.Text = string.Format("{0:C}", comanda.Impuesto);
+            lblTotal.Text = string.Format("{0:C}", comanda.Total);
+
+            Console.WriteLine("NumArt " + lblNumArts.Text);
+            Console.WriteLine("SubTotal " + lblSubTotal.Text);
+            Console.WriteLine("Impuesto " + lblImpu.Text);
+            Console.WriteLine("Total " + lblTotal.Text);
+            Console.WriteLine("- - - - - ");
+
+
         }
     }
 }
