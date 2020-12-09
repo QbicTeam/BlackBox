@@ -141,6 +141,8 @@ namespace BlackBox
 
         private void TurnOnMenu(string menu)
         {
+            _artVendidoSeleccionado = null;
+            _opcionLocationY = 0;
             switch (menu)
             {
                 case "Hnr":
@@ -365,6 +367,90 @@ namespace BlackBox
                     Default = false
                 });
                 itm.ComboTipo = "Combo";
+            }
+            if (itm.Producto.ToLower() == "custom pizza")
+            {
+                itm.Cantidad = 1;
+                itm.Opciones = new List<ArticuloOpcion>();
+                itm.Opciones.Add(new ArticuloOpcion()
+                {
+                    ArticuloOp = new Articulo() { Producto = "Salsa" },
+                    Intercambiable = true,
+                    Default = true
+                });
+                itm.Opciones.Add(new ArticuloOpcion()
+                {
+                    ArticuloOp = new Articulo() { Producto = "Queso" },
+                    Intercambiable = false,
+                    Default = true
+                });
+                itm.Opciones.Add(new ArticuloOpcion()
+                {
+                    ArticuloOp = new Articulo() { Producto = "Extra Queso" },
+                    Intercambiable = false,
+                    Default = false
+                });
+                itm.Opciones.Add(new ArticuloOpcion()
+                {
+                    ArticuloOp = new Articulo() { Producto = "Pepperoni" },
+                    Intercambiable = false,
+                    Default = false
+                });
+                itm.Opciones.Add(new ArticuloOpcion()
+                {
+                    ArticuloOp = new Articulo() { Producto = "Salchicha Italiana" },
+                    Intercambiable = false,
+                    Default = false
+                });
+                itm.Opciones.Add(new ArticuloOpcion()
+                {
+                    ArticuloOp = new Articulo() { Producto = "Jamon" },
+                    Intercambiable = false,
+                    Default = false
+                });
+                itm.Opciones.Add(new ArticuloOpcion()
+                {
+                    ArticuloOp = new Articulo() { Producto = "Pimento Verde" },
+                    Intercambiable = false,
+                    Default = false
+                });
+                itm.Opciones.Add(new ArticuloOpcion()
+                {
+                    ArticuloOp = new Articulo() { Producto = "Champinones" },
+                    Intercambiable = false,
+                    Default = false
+                });
+                itm.Opciones.Add(new ArticuloOpcion()
+                {
+                    ArticuloOp = new Articulo() { Producto = "Cebolla" },
+                    Intercambiable = false,
+                    Default = false
+                });
+                itm.Opciones.Add(new ArticuloOpcion()
+                {
+                    ArticuloOp = new Articulo() { Producto = "Aceitunas Negras" },
+                    Intercambiable = false,
+                    Default = false
+                });
+                itm.Opciones.Add(new ArticuloOpcion()
+                {
+                    ArticuloOp = new Articulo() { Producto = "Jalapeno" },
+                    Intercambiable = false,
+                    Default = false
+                });
+                itm.Opciones.Add(new ArticuloOpcion()
+                {
+                    ArticuloOp = new Articulo() { Producto = "Pina" },
+                    Intercambiable = false,
+                    Default = false
+                });
+                itm.Opciones.Add(new ArticuloOpcion()
+                {
+                    ArticuloOp = new Articulo() { Producto = "Chorizo" },
+                    Intercambiable = false,
+                    Default = false
+                });
+                itm.ComboTipo = "Custom";
             }
             //--
 
@@ -779,16 +865,31 @@ namespace BlackBox
         private void cmdEspeciales_Click(object sender, EventArgs e)
         {
             pnlTabs.BackgroundImage = imgEspeciales.Image;
+            if (_artVendidoSeleccionado != null)
+                _artVendidoSeleccionado.MasUno();
         }
 
         private void cmdEnEspera_Click(object sender, EventArgs e)
         {
             pnlTabs.BackgroundImage = imgEnEspera.Image;
+            if (_artVendidoSeleccionado != null)
+                _artVendidoSeleccionado.MenosUno();
+
         }
 
         private void cmdOnline_Click(object sender, EventArgs e)
         {
             pnlTabs.BackgroundImage = imgOnline.Image;
+            if (_artVendidoSeleccionado != null)
+            {
+                var altura = _artVendidoSeleccionado.Height;
+                var locationY = _artVendidoSeleccionado.Location.Y;
+                pnlComanda.Controls.Remove(_artVendidoSeleccionado);
+                _artVendidoSeleccionado = null;
+
+                ArticuloYsChange(locationY, altura, false);
+                CalcularTotal();
+            }
         }
 
         private void cmdReciente_Click(object sender, EventArgs e)
@@ -796,9 +897,11 @@ namespace BlackBox
             pnlTabs.BackgroundImage = imgRecientes.Image;
         }
 
-        private void OpcionClicked(object sender, int articuloPadreLocacionY, int intercambiableLocacionY)
+        private void OpcionClicked(object sender, int articuloPadreLocacionY, int intercambiableLocacionY, Articulo artOp)
         {
             Console.WriteLine("Click en opcion Comanda - frmMenu");
+            var artVdo = (Articulo)sender;
+
             foreach (Control ctrl in pnlComanda.Controls)
             {
                 ((pnlArtVendido)ctrl).ToRegular();
@@ -811,6 +914,44 @@ namespace BlackBox
                 _opcionLocationY = intercambiableLocacionY;
             else
                 _opcionLocationY = 0;
+
+            if (_opcionLocationY > 0)
+            {
+                pnlSideContainer.Controls.Clear(); // TODO: esto debe de ser el panel del submenu.
+                List<Articulo> arts;
+                if (artVdo.ComboTipo.ToLower().StartsWith("custom")) // Si es un Custom
+                {
+                    arts = artVdo.Opciones.Select(ar => ar.ArticuloOp).ToList();
+                }
+                else // Si es un Intercambiable
+                {
+                    if (artOp == null)
+                        return;
+
+                    arts = artOp.Opciones.Select(ar => ar.Articulo).ToList();
+                }
+
+                // var arts = _datos.PantallaVentas.Especiales;
+                // Definir la imagen a utilizar.
+                var img = imgSidebarButton.Image;
+
+                for (int x = 0; x < arts.Count; x++)
+                {
+                    //Button btn = new Button();
+                    //btn.Text = "sample " + x.ToString();
+                    //btn.Top = x * 100;
+
+                    cmdSideBarButton btn = new cmdSideBarButton(arts[x].Producto, arts[x].Precio, img);
+                    btn.Top = x * 50;
+                    btn.MenuClicked += Btn_MenuClicked;
+
+
+                    pnlSideContainer.Controls.Add(btn);
+
+                }
+
+            }
+            
         }
 
         private void ArticuloMasMenosChange()
@@ -820,6 +961,16 @@ namespace BlackBox
         private void ArticuloYsChange(int y, int altura, bool mas)
         {
             // TODO: Reorganizar los articulos de acuerdo a las nuevas Ys
+            foreach (Control ctrl in pnlComanda.Controls)
+            {
+                if (ctrl.Location.Y > y)
+                {
+                    if (mas)
+                        ctrl.Location = new Point(ctrl.Location.X, ctrl.Location.Y + altura);
+                    else
+                        ctrl.Location = new Point(ctrl.Location.X, ctrl.Location.Y - altura);
+                }
+            }
         }
         private void CalcularTotal()
         {
