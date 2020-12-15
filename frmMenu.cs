@@ -73,6 +73,12 @@ namespace BlackBox
             pnlMenu.Width = 764;
             pnlMenu.Location = new Point(290, 63);
 
+            pnlSubMenu.Height = 663;
+            pnlSubMenu.Width = 764;
+            pnlSubMenu.Location = new Point(290, 63);
+            pnlSubMenu.Visible = false;
+            
+
             pnlPizzas.Height = 663;
             pnlPizzas.Width = 764;
             pnlPizzas.Location = new Point(290, 63);
@@ -128,6 +134,7 @@ namespace BlackBox
         private void TurnOffMenus()
         {
             pnlMenu.Visible = false;
+            pnlSubMenu.Visible = false;
             pnlPizzas.Visible = false;
             pnlPanes.Visible = false;
             pnlBebidas.Visible = false;
@@ -278,8 +285,18 @@ namespace BlackBox
                 });
                 itm.Opciones.Add(new ArticuloOpcion()
                 {
-                    ArticuloOp = new Articulo() { Producto = "Refresco 2L" },
-                    Intercambiable = false
+                    ArticuloOp = new Articulo() { Producto = "Refresco 2L", ComboTipo = "CustomEsp", Validar = true,
+                        Opciones = new List<ArticuloOpcion>() { 
+                            new ArticuloOpcion() { Articulo = new Articulo() { Producto = "Pepsi" } }
+                            ,new ArticuloOpcion() { Articulo = new Articulo() { Producto = "Pepsi Light" } }
+                            ,new ArticuloOpcion() { Articulo = new Articulo() { Producto = "7 Up" } }
+                            ,new ArticuloOpcion() { Articulo = new Articulo() { Producto = "Manzanita Sol" } }
+                            ,new ArticuloOpcion() { Articulo = new Articulo() { Producto = "Mirinda" } }
+                            ,new ArticuloOpcion() { Articulo = new Articulo() { Producto = "Sangria" } }
+                            ,new ArticuloOpcion() { Articulo = new Articulo() { Producto = "Squirt" } }
+                        } 
+                    },
+                    Intercambiable = true
                 });
                 itm.ComboTipo = "Combo";
             }
@@ -455,7 +472,7 @@ namespace BlackBox
             //--
 
 
-            if (_artVendidoSeleccionado != null && _opcionLocationY > 0) // Aqui validar que se trate de un sub Menu
+            if (_artVendidoSeleccionado != null && _opcionLocationY > 0 && pnlSubMenu.Visible) // Aqui validar que se trate de un sub Menu
             {
                 _artVendidoSeleccionado.ArticuloOpcion(itm, _opcionLocationY, true);
                 // TODO: Validar si se sale o no.
@@ -482,6 +499,8 @@ namespace BlackBox
             _artVendidoSeleccionado = artVta;
 
             comanda.Articulos.Add(itm);
+
+            _artVendidoSeleccionado.ToSelected(_artVendidoSeleccionado._opAutoSelectLocationY, true);
 
             CalcularTotal();
 
@@ -901,6 +920,7 @@ namespace BlackBox
         {
             Console.WriteLine("Click en opcion Comanda - frmMenu");
             var artVdo = (Articulo)sender;
+            pnlSubMenu.Visible = false;
 
             foreach (Control ctrl in pnlComanda.Controls)
             {
@@ -917,7 +937,7 @@ namespace BlackBox
 
             if (_opcionLocationY > 0)
             {
-                pnlSideContainer.Controls.Clear(); // TODO: esto debe de ser el panel del submenu.
+                pnlSubMenu.Controls.Clear(); // TODO: esto debe de ser el panel del submenu.
                 List<Articulo> arts;
                 if (artVdo.ComboTipo.ToLower().StartsWith("custom")) // Si es un Custom
                 {
@@ -946,10 +966,10 @@ namespace BlackBox
                     btn.MenuClicked += Btn_MenuClicked;
 
 
-                    pnlSideContainer.Controls.Add(btn);
+                    pnlSubMenu.Controls.Add(btn);
 
                 }
-
+                pnlSubMenu.Visible = true;
             }
             
         }

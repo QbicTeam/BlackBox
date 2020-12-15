@@ -117,6 +117,7 @@
             this.pnlUbers = new System.Windows.Forms.Panel();
             this.pnlRappis = new System.Windows.Forms.Panel();
             this.prtdImprimir = new System.Drawing.Printing.PrintDocument();
+            this.pnlSubMenu = new System.Windows.Forms.Panel();
             this.pnlTabs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgSidebarButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgMenuHnr)).BeginInit();
@@ -259,7 +260,7 @@
             // pnlMenu
             // 
             this.pnlMenu.BackColor = System.Drawing.Color.Transparent;
-            this.pnlMenu.Location = new System.Drawing.Point(290, 63);
+            this.pnlMenu.Location = new System.Drawing.Point(290, 62);
             this.pnlMenu.Name = "pnlMenu";
             this.pnlMenu.Size = new System.Drawing.Size(764, 663);
             this.pnlMenu.TabIndex = 2;
@@ -1038,6 +1039,14 @@
             this.pnlRappis.TabIndex = 61;
             this.pnlRappis.Visible = false;
             // 
+            // pnlSubMenu
+            // 
+            this.pnlSubMenu.BackColor = System.Drawing.Color.Transparent;
+            this.pnlSubMenu.Location = new System.Drawing.Point(289, 61);
+            this.pnlSubMenu.Name = "pnlSubMenu";
+            this.pnlSubMenu.Size = new System.Drawing.Size(764, 663);
+            this.pnlSubMenu.TabIndex = 62;
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1045,6 +1054,7 @@
             this.BackgroundImage = global::BlackBox.Properties.Resources.MenuTemplateV7;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1366, 768);
+            this.Controls.Add(this.pnlSubMenu);
             this.Controls.Add(this.pnlRappis);
             this.Controls.Add(this.pnlUbers);
             this.Controls.Add(this.pnlOtrasComidas);
@@ -1243,5 +1253,6 @@
         private System.Windows.Forms.Panel pnlUbers;
         private System.Windows.Forms.Panel pnlRappis;
         private System.Drawing.Printing.PrintDocument prtdImprimir;
+        private System.Windows.Forms.Panel pnlSubMenu;
     }
 }

@@ -16,6 +16,10 @@ namespace BlackBox.Model
         public string Tipo { get; set; }
         public int Cantidad { get; set; }
         public string ComboTipo { get; set; }
+        /// <summary>
+        /// Va con la opcion de CustomEsp
+        /// </summary>
+        public bool Validar { get; set; }
         public string Grupo { get; set; }
         public List<ArticuloOpcion> Opciones { get; set; }
         /// <summary>
