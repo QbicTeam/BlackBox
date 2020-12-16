@@ -469,6 +469,36 @@ namespace BlackBox
                 });
                 itm.ComboTipo = "Custom";
             }
+            if (itm.Producto.ToLower() == "caesar wings")
+            {
+                itm.Cantidad = 1;
+                itm.Opciones = new List<ArticuloOpcion>();
+                itm.Opciones.Add(new ArticuloOpcion()
+                {
+                    ArticuloOp = new Articulo() { Producto = "Over Roasted" },
+                    Intercambiable = true,
+                    Default = false
+                });
+                itm.Opciones.Add(new ArticuloOpcion()
+                {
+                    ArticuloOp = new Articulo() { Producto = "Buffalo" },
+                    Intercambiable = false,
+                    Default = false
+                });
+                itm.Opciones.Add(new ArticuloOpcion()
+                {
+                    ArticuloOp = new Articulo() { Producto = "BBQ" },
+                    Intercambiable = false,
+                    Default = false
+                });
+                itm.Opciones.Add(new ArticuloOpcion()
+                {
+                    ArticuloOp = new Articulo() { Producto = "Spicy BBQ" },
+                    Intercambiable = false,
+                    Default = false
+                });
+                itm.ComboTipo = "Custom";
+            }
             //--
 
 

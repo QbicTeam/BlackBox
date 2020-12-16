@@ -224,10 +224,11 @@ namespace BlackBox.Controls
                         Visible = true,
                         Text = articulo.Opciones[z - 1].ArticuloOp.Producto,
                         Font = fontCustom, // new Font(lblArticulo.Font, FontStyle.Bold),
-                        Name = articulo.Opciones[z - 1].ArticuloOp.Producto + "_" + z.ToString(),
+                        //Name = articulo.Opciones[z - 1].ArticuloOp.Producto + "_" + z.ToString(),
                         Location = new Point(0, _opcionAlturaInicial + (_renglonAlturaCustom * (z - 1))),
                         Padding = new Padding(_OpcionPaddin, 0, 0, 0)
                     };
+                    nCtrl.Name = nCtrl.Location.Y.ToString() + "_" + articulo.Opciones[z - 1].ArticuloOp.Producto;
 
                     nCtrl.Click += lblOpcion_Click;
 
@@ -237,7 +238,7 @@ namespace BlackBox.Controls
                 }
             }
 
-            ToSelected();
+            //ToSelected();
 
 
         }
@@ -316,7 +317,12 @@ namespace BlackBox.Controls
                 if (child.ForeColor == Color.White)
                     ForeInWhite = child;
 
-                if (_articulo.ComboTipo.ToLower() == "combo" && child.Name.StartsWith(locationY.ToString())) //if (_articulo.ComboTipo.ToLower() == "combo" &&  i < 0 && child.Location.Y < _opcionAlturaInicial)
+                //if (_articulo.ComboTipo.ToLower() == "combo" &&  i < 0 && child.Location.Y < _opcionAlturaInicial)
+                if (_articulo.ComboTipo.ToLower() == "combo" // && child.Name.StartsWith(locationY.ToString()) )
+                    && (child.Name.StartsWith(locationY.ToString()) 
+                        || (locationY < _opcionAlturaInicial && child.Location.Y < _opcionAlturaInicial )
+                        )
+                    ) 
                     child.BackColor = SystemColors.ControlDark;
                 else
                     child.BackColor = backColor;
@@ -380,11 +386,11 @@ namespace BlackBox.Controls
             ForecolorInWhite(ForeInWhite);
             if (init)
             {
-                var optInter = _articulo.Opciones.Where(op =>
-                (op.LocationY == locationY && op.ArticuloOp.Opciones.Count > 0
-                )).FirstOrDefault();
-
-
+                ArticuloOpcion optInter = null;
+                if (_articulo.Opciones != null)
+                    optInter = _articulo.Opciones.Where(op =>
+                        (op.LocationY == locationY && op.ArticuloOp.Opciones.Count > 0
+                        )).FirstOrDefault();
 
                 if (optInter != null)
                     OpcionClicked(_articulo, this.Location.Y, locationY, optInter.ArticuloOp);
@@ -477,23 +483,28 @@ namespace BlackBox.Controls
                 || (_articulo.ComboTipo.ToLower().StartsWith("custom")))) // == "custom" || _articulo.ComboTipo.ToLower() == "customesp")))
                 return;
 
+            int locacionYsoN = 0; // Locacion Y de la nueva opcion si se esta agregando.
+
             if (_articulo.ComboTipo.ToLower().StartsWith("custom")) // Significa que se trata de un Custom / CustomEsp
             {
                 var ingrediente = _articulo.Opciones.Where(i => i.ArticuloOp.Producto == articuloOp.Producto).FirstOrDefault();
                 if (mas)
                 {
-                    
+                    //_articulo.Opciones.Find(o => o.ArticuloOp.Producto == articuloOp.Producto).Default = true;
+                    ingrediente.Default = true;
+                    /*
                     var nCtrl = new Label()
                     {
                         Size = lblOpcion.Size, //picBox.Size,
                         Visible = true,
                         Text = articuloOp.Producto,
                         Font = fontCustom, // new Font(lblArticulo.Font.FontFamily, 12 , FontStyle.Regular),
-                        Location = new Point(0, _opcionAlturaInicial + (_renglonAlturaCustom * (_articulo.Opciones.Count(o => o.Default)))),
+                        Location = new Point(0, _opcionAlturaInicial + (_renglonAlturaCustom * (_articulo.Opciones.Count(o => o.Default) -1))),
                         BackColor = SystemColors.ControlDark,
-                        Padding = new Padding(_OpcionPaddin, 0, 0, 0)
+                        Padding = new Padding(_OpcionPaddin, 0, 0, 0),
+                        Name = locacionY.ToString() + "_" + articuloOp.Producto
                     };
-                    _articulo.Opciones.Find(o => o.ArticuloOp.Producto == articuloOp.Producto).Default = true;
+                    //_articulo.Opciones.Find(o => o.ArticuloOp.Producto == articuloOp.Producto).Default = true;
                     this.Size = new Size(309, _renglonAlturaNormal + (_renglonAlturaCustom * _articulo.Opciones.Count(o => o.Default) + _marginBottonCustom));
                     nCtrl.Click += lblOpcion_Click;
 
@@ -503,6 +514,13 @@ namespace BlackBox.Controls
 
                     _precioAdicional += ingrediente.Costo;
                     ArticuloYsChange(this.Location.Y, _renglonAlturaCustom, true);
+                    */
+                    //--
+                    _precioAdicional += ingrediente.Costo;
+                    locacionYsoN = _opcionAlturaInicial + (_renglonAlturaCustom * (_articulo.Opciones.Count(o => o.Default) -1));//locacionY + _renglonAlturaNormal - _marginBottonCustom + (_renglonAlturaCustom * (artOp.ArticuloOp.Opciones.Count(o => o.Default) - 1)); // locacionY + _renglonAlturaNormal + (_renglonAlturaCustom * (artOp.ArticuloOp.Opciones.Count(o => o.Default) - 1));                                                   
+                    AddSubOpcionCtrl(articuloOp, locacionY, locacionYsoN, _OpcionPaddin);
+                    ingrediente.LocationY = locacionY; // Locacion del padre.
+                    ArticuloYsChangeInterno(locacionYsoN, _renglonAlturaCustom, true);
                 }
                 else
                 {
@@ -529,31 +547,11 @@ namespace BlackBox.Controls
                 }
                 return;
             }
-            /*
-            foreach (ArticuloOpcion artOp in _articulo.Opciones) // for (var i = 1; i <= artOps.Count; i++)
-            {
-                // Opcion Padre 
-                if (artOp.LocationY == locacionY) // if (artOps[i - 1].LocationY == locacionY) // && artOps[i - 1].Intercambiable) Verificar si realmente es necesario validar el intercambiable.
-                {
-                        artOp.ArticuloOp.Producto = articuloOp.Producto; //artOps[i - 1].ArticuloOp.Producto = articuloOp.Producto;
-                        foreach (Control child in this.Controls)
-                        {
-                            if (child.Location.Y == locacionY)
-                            {
-                                ((Label)child).Text = articuloOp.Producto;
-                                ((Label)child).Font = new Font(lblArticulo.Font, FontStyle.Bold);
-                                ((Label)child).CausesValidation = false;
-                                break;
-                            }
-                        }
-
-                        _sinAsignar.Remove(locacionY);
-                    break;
-                }
-            }*/
+            // Si se trata de una SubOpcion de otra Opcion... Ejemplo Refresco en un Combo.
 
             // locacionY para las subOpciones tipo CustomEsp sera el LocationY del padre.
             int locacionYsOp = 0;
+            
             Control csOp = null; // Control SubOpcion 
             Control cOp = null; // Control Opcion
             var artOp = _articulo.Opciones.Where(op => op.LocationY == locacionY).FirstOrDefault();
@@ -596,6 +594,7 @@ namespace BlackBox.Controls
 
                                 if(locacionYsOp == 0) // Si no se ha puesto ninguna subOpcion, hay que agregarla.
                                 {
+                                    /*
                                     var nCtrl = new Label()
                                     {
                                         Size = lblOpcion.Size, 
@@ -607,7 +606,7 @@ namespace BlackBox.Controls
                                         BackColor = SystemColors.ControlDark,
                                         Padding = new Padding(_SubOpcionPaddin, 0, 0, 0),
                                         Name = locacionY.ToString() + "_" + articuloOp.Producto
-                                };
+                                    };
                                     nCtrl.CausesValidation = false;
                                     this.Size = new Size(309,  this.Size.Height + _renglonAlturaCustom + _marginBottonCustom);
                                     nCtrl.Click += lblOpcion_Click;
@@ -623,6 +622,15 @@ namespace BlackBox.Controls
                                     sOpAc.LocationY = locacionY; // Locacion del padre.
                                     ArticuloYsChangeInterno(nCtrl.Location.Y, _renglonAlturaCustom, true);
                                     ArticuloYsChange(this.Location.Y, _renglonAlturaCustom, true);
+                                    */
+                                    //--
+                                    locacionYsoN = locacionY + _renglonAlturaNormal - _marginBottonCustom + (_renglonAlturaCustom * (artOp.ArticuloOp.Opciones.Count(o => o.Default) - 1)); // locacionY + _renglonAlturaNormal + (_renglonAlturaCustom * (artOp.ArticuloOp.Opciones.Count(o => o.Default) - 1));                                                   
+                                    AddSubOpcionCtrl(articuloOp, locacionY, locacionYsoN, _SubOpcionPaddin);
+                                    sOpAc.LocationY = locacionY; // Locacion del padre.
+                                    ArticuloYsChangeInterno(locacionYsoN, _renglonAlturaCustom, true);
+
+                                    cOp.BackColor = SystemColors.ControlDark;
+                                    cOp.ForeColor = SystemColors.ControlText;
                                 }
                                 else // Si ya existia uno anterior, se sobre escribe.
                                 {
@@ -667,62 +675,44 @@ namespace BlackBox.Controls
                         }
                     }
                     else // Si puede tener varias opciones y no requiere validacion.
-                    {
-                        // Preguntar si existe alguno seleccionado antes
+                    {                        
                         if (mas)
                         {
-                            //_sinAsignar.Remove(locacionY);
-                            //var sOpO = artOp.ArticuloOp.Opciones.Where(o2 => o2.Default).FirstOrDefault(); // SubOpcion Seleccionada anteriormente
-                            //if (sOpO != null)
-                            //    sOpO.Default = false;
-
                             var sOpAc = artOp.ArticuloOp.Opciones.Where(o3 => o3.ArticuloOp.Producto.ToLower() == articuloOp.Producto.ToLower()).FirstOrDefault(); // SubOpcion Actual
                             if (sOpAc != null)
                             {
                                 sOpAc.Default = true;
                                 // Agregar el nuevo articulo
-                               /* foreach (Control child in this.Controls)
+                                /*
+                                var nCtrl = new Label()
                                 {
-                                    if (child.Name.StartsWith(locacionY.ToString()))
-                                    {
-                                        if (child.Location.Y > locacionY)
-                                        {
-                                            //csOp = child;
-                                            locacionYsOp = child.Location.Y;
-                                        }
-                                    }
-                                }
+                                    Size = lblOpcion.Size,
+                                    Visible = true,
+                                    Text = articuloOp.Producto,
+                                    Font = fontCustom,
+                                    Location = new Point(0, locacionY + _renglonAlturaNormal + (_renglonAlturaCustom * (artOp.ArticuloOp.Opciones.Count(o => o.Default) - 1))),
+                                    BackColor = SystemColors.ControlDark,
+                                    Padding = new Padding(_SubOpcionPaddin, 0, 0, 0),
+                                    Name = locacionY.ToString() + "_" + articuloOp.Producto
+                                };
+                                nCtrl.CausesValidation = false;
+                                this.Size = new Size(309, this.Size.Height + _renglonAlturaCustom + _marginBottonCustom);
+                                nCtrl.Click += lblOpcion_Click;
 
-                                if (locacionYsOp == 0) // Si no se ha puesto ninguna subOpcion, hay que agregarla.
-                                {*/
-                                    var nCtrl = new Label()
-                                    {
-                                        Size = lblOpcion.Size,
-                                        Visible = true,
-                                        Text = articuloOp.Producto,
-                                        Font = fontCustom,
-                                        Location = new Point(0, locacionY + _renglonAlturaNormal + (_renglonAlturaCustom * (artOp.ArticuloOp.Opciones.Count(o => o.Default) - 1))),
-                                        BackColor = SystemColors.ControlDark,
-                                        Padding = new Padding(_SubOpcionPaddin, 0, 0, 0),
-                                        Name = locacionY.ToString() + "_" + articuloOp.Producto
-                                    };
-                                    nCtrl.CausesValidation = false;
-                                    this.Size = new Size(309, this.Size.Height + _renglonAlturaCustom + _marginBottonCustom);
-                                    nCtrl.Click += lblOpcion_Click;
+                                this.Controls.Add(nCtrl);
+                                this.Controls.SetChildIndex(nCtrl, 1);
+                                nCtrl.BringToFront();
 
-                                    this.Controls.Add(nCtrl);
-                                    this.Controls.SetChildIndex(nCtrl, 1);
-                                    nCtrl.BringToFront();
+                                // Aqui se debe de reacomodar los elementos internos tambien.
+                                sOpAc.LocationY = locacionY; // Locacion del padre.
+                                ArticuloYsChangeInterno(nCtrl.Location.Y, _renglonAlturaCustom, true);
+                                ArticuloYsChange(this.Location.Y, _renglonAlturaCustom, true);
+                                */
 
-                                    // Aqui se debe de reacomodar los elementos internos tambien.
-                                    sOpAc.LocationY = locacionY; // Locacion del padre.
-                                    ArticuloYsChangeInterno(nCtrl.Location.Y, _renglonAlturaCustom, true);
-                                    ArticuloYsChange(this.Location.Y, _renglonAlturaCustom, true);
-                               /* }
-                                else // Si ya existia uno anterior, se sobre escribe.
-                                {
-                                    ((Label)csOp).Text = articuloOp.Producto;
-                                }*/
+                                locacionYsoN = locacionY + _renglonAlturaNormal + (_renglonAlturaCustom * (artOp.ArticuloOp.Opciones.Count(o => o.Default) - 1));
+                                AddSubOpcionCtrl(articuloOp, locacionY, locacionYsoN, _SubOpcionPaddin);
+                                sOpAc.LocationY = locacionY; // Locacion del padre.
+                                ArticuloYsChangeInterno(locacionYsoN, _renglonAlturaCustom, true);
                             }
 
                         }
@@ -738,11 +728,8 @@ namespace BlackBox.Controls
                                 {
                                     if (child.Name.StartsWith(locacionY.ToString()) && child.Text == articuloOp.Producto)
                                     {
-                                        //if (child.Location.Y > locacionY)
-                                        //{
-                                            csOp = child;
-                                            locacionYsOp = child.Location.Y;
-                                        //}
+                                        csOp = child;
+                                        locacionYsOp = child.Location.Y;
                                         break;
                                     }
                                 }
@@ -776,6 +763,31 @@ namespace BlackBox.Controls
                 }
             }
         }
+        private void AddSubOpcionCtrl(Articulo articuloOp, int locacionY, int locacionYso, int paddingLeft, bool causesValidation = false)
+        {
+            var nCtrl = new Label()
+            {
+                Size = lblOpcion.Size, //picBox.Size,
+                Visible = true,
+                Text = articuloOp.Producto,
+                Font = fontCustom, // new Font(lblArticulo.Font.FontFamily, 12 , FontStyle.Regular),
+                Location = new Point(0, locacionYso), // _opcionAlturaInicial + (_renglonAlturaCustom * (_articulo.Opciones.Count(o => o.Default)))),
+                BackColor = SystemColors.ControlDark,
+                Padding = new Padding(paddingLeft, 0, 0, 0),
+                Name = locacionY.ToString() + "_" + articuloOp.Producto,
+                CausesValidation = causesValidation
+            };
+            //_articulo.Opciones.Find(o => o.ArticuloOp.Producto == articuloOp.Producto).Default = true;
+            //this.Size = new Size(309, _renglonAlturaNormal + (_renglonAlturaCustom * _articulo.Opciones.Count(o => o.Default) + _marginBottonCustom));
+            this.Size = new Size(309, this.Size.Height + _renglonAlturaCustom);
+            nCtrl.Click += lblOpcion_Click;
+
+            this.Controls.Add(nCtrl);
+            this.Controls.SetChildIndex(nCtrl, 1);
+            nCtrl.BringToFront();
+            
+            ArticuloYsChange(this.Location.Y, _renglonAlturaCustom, true);
+        }
         private void ArticuloYsChangeInterno(int locationY, int altura, bool mas)
         {
             foreach (Control ctrl in this.Controls)
@@ -792,10 +804,15 @@ namespace BlackBox.Controls
         private void onClick(object sender)
         {
             // ToSelected();  Esto se hace desde fuera, ya que primero se pasan todos a Regular.
+            //if (_articulo.ComboTipo.ToLower().StartsWith("custom"))
+            //    OpcionClicked(_articulo, ((Label)sender).Parent.Location.Y, 2, null); //((Label)sender).Location.Y, null);
+            //else
+            //    OpcionClicked(_articulo, ((Label)sender).Parent.Location.Y, -1, null);
+
             if (_articulo.ComboTipo.ToLower().StartsWith("custom"))
-                OpcionClicked(_articulo, ((Label)sender).Parent.Location.Y, ((Label)sender).Location.Y, null);
+                OpcionClicked(_articulo, this.Location.Y, 2, null); //((Label)sender).Location.Y, null);
             else
-                OpcionClicked(_articulo, ((Label)sender).Parent.Location.Y, -1, null);
+                OpcionClicked(_articulo, this.Location.Y, -1, null);
         }
         private void pnlArtVendido_Click(object sender, EventArgs e)
         {            
@@ -804,31 +821,23 @@ namespace BlackBox.Controls
 
         private void lblOpcion_Click(object sender, EventArgs e)
         {
-            // ToSelected();
-            // TODO: Cambiar por el subMenu a desplegar si se trata de un intercambiable o un "Custom"
-            //var optInter = _articulo.Opciones.Where(op => 
-            //    ((op.Intercambiable && op.LocationY == ((Label)sender).Location.Y)
-            //        // || (op.ArticuloOp.ComboTipo != null && op.ArticuloOp.ComboTipo.ToLower() == "customesp"))
-            //    )).FirstOrDefault();
-
-            
             int locationY;
-            // Si es clic en una opcion. 
-            //if (((Label)sender).Location.Y >= _renglonAlturaNormal) 
-                locationY = Convert.ToInt32(((Label)sender).Name.Split('_')[0]);
-            //else
-            //    locationY = ((Label)sender).Location.Y;
+            locationY = Convert.ToInt32(((Label)sender).Name.Split('_')[0]);
             
             var optInter = _articulo.Opciones.Where(op =>
                 (op.LocationY == locationY && op.ArticuloOp.Opciones.Count > 0
                 )).FirstOrDefault();
 
 
+            //if (optInter != null)
+            //    OpcionClicked(_articulo, ((Label)sender).Parent.Location.Y, locationY, optInter.ArticuloOp);
+            //else
+            //    OpcionClicked(_articulo, ((Label)sender).Parent.Location.Y, locationY, null);
 
             if (optInter != null)
-                OpcionClicked(_articulo, ((Label)sender).Parent.Location.Y, locationY, optInter.ArticuloOp);
+                OpcionClicked(_articulo, this.Location.Y, locationY, optInter.ArticuloOp);
             else
-                OpcionClicked(_articulo, ((Label)sender).Parent.Location.Y, locationY, null);
+                OpcionClicked(_articulo, this.Location.Y, locationY, null);
         }
 
         private void lblArticulo_Click(object sender, EventArgs e)
