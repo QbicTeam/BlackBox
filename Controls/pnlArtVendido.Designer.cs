@@ -54,11 +54,11 @@
             this.lblPrecio.BackColor = System.Drawing.Color.Transparent;
             this.lblPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
             this.lblPrecio.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblPrecio.Location = new System.Drawing.Point(209, 0);
+            this.lblPrecio.Location = new System.Drawing.Point(206, 0);
             this.lblPrecio.Margin = new System.Windows.Forms.Padding(0);
             this.lblPrecio.Name = "lblPrecio";
             this.lblPrecio.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lblPrecio.Size = new System.Drawing.Size(100, 25);
+            this.lblPrecio.Size = new System.Drawing.Size(103, 25);
             this.lblPrecio.TabIndex = 1;
             this.lblPrecio.Text = "$982.00";
             this.lblPrecio.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;

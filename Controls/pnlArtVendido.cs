@@ -22,7 +22,17 @@ namespace BlackBox.Controls
 
         public delegate void onArticuloCambioYs(int y, int altura, bool mas);
         public event onArticuloCambioYs ArticuloYsChange;
+        
+        private string _format = "{0:$#######.00}";
+        
+        private int _cantidadXprecio4Sel = 5;
+        private int _canidadX1Sel = 175;
+        private int _canidadX2Sel = 9;
 
+        private int _cantidadXprecio4Reg = 11;
+        private int _canidadX1Reg = 195;
+        private int _canidadX2Reg = 11;
+        
         private decimal _precioAdicional = 0;
         private int _cantidad = 1;
         
@@ -92,14 +102,14 @@ namespace BlackBox.Controls
             */
 
             string precioF = string.Empty;
-            precioF = string.Format("{0:C}", articulo.Precio);  //precio);
+            precioF = string.Format(_format, articulo.Precio);  //precio); "{0:C}"
             fontCustom = new Font(lblArticulo.Font.FontFamily, 10, FontStyle.Regular);
 
             // Valore Iniciales
             lblFondo.Location = new Point(0, 0);
             lblOpcion.Location = new Point(13, 27);
-            lblCantidad.Location = new Point(185, -1);
-            lblPrecio.Location = new Point(209, 0);
+            lblCantidad.Location = new Point(_canidadX1Sel, -1);
+            lblPrecio.Location = new Point(206, 0);
             lblCantidad.Font = new Font(lblArticulo.Font, FontStyle.Bold);
 
             articulo.ComboTipo = articulo.ComboTipo == null ? "normal" : articulo.ComboTipo;
@@ -121,7 +131,7 @@ namespace BlackBox.Controls
                 //case "normal":
                 //    break;
                 case "combo":
-                    this.Size = new Size(309, _renglonAlturaNormal * (articulo.Opciones.Count + 1));
+                    this.Size = new Size(309, _renglonAlturaNormal * (articulo.Opciones.Count + 1)); 
                     break;
                 case "custom":
                     this.Size = new Size(309, _renglonAlturaNormal + (_renglonAlturaCustom * articulo.Opciones.Count(o => o.Default) + _marginBottonCustom));
@@ -220,11 +230,10 @@ namespace BlackBox.Controls
                 {
                     var nCtrl = new Label()
                     {
-                        Size = lblOpcion.Size, //picBox.Size,
+                        Size = lblOpcion.Size, 
                         Visible = true,
                         Text = articulo.Opciones[z - 1].ArticuloOp.Producto,
-                        Font = fontCustom, // new Font(lblArticulo.Font, FontStyle.Bold),
-                        //Name = articulo.Opciones[z - 1].ArticuloOp.Producto + "_" + z.ToString(),
+                        Font = fontCustom, 
                         Location = new Point(0, _opcionAlturaInicial + (_renglonAlturaCustom * (z - 1))),
                         Padding = new Padding(_OpcionPaddin, 0, 0, 0)
                     };
@@ -239,7 +248,6 @@ namespace BlackBox.Controls
             }
 
             //ToSelected();
-
 
         }
         /// <summary>
@@ -282,6 +290,7 @@ namespace BlackBox.Controls
             }
 
             ForecolorInWhite(ForeInWhite);
+            CandidadLocationX();
         }
         /// <summary>                                                                                                                             
         /// Da la apariciencia de "Seleccionado" al articulo venta o su detalle.
@@ -330,16 +339,7 @@ namespace BlackBox.Controls
 
                 if (locationY >= 0 && child.Location.Y == locationY)
                 {
-                    /*
-                    var op = _articulo.Opciones.Where(o => o.LocationY == i && o.Intercambiable).FirstOrDefault();
-                    if (op == null)
-                        child.BackColor = SystemColors.ControlDark;
-                    else
-                    {
-                        child.BackColor = _verdeClaro;
-                        child.ForeColor = Color.White;
-                    }
-                    */
+
                     var op = _articulo.Opciones.Where(o => o.LocationY == locationY).FirstOrDefault();
                     if (op == null)
                     {
@@ -363,8 +363,7 @@ namespace BlackBox.Controls
                                 {
                                     child.BackColor = _rojo;
                                     child.ForeColor = Color.White;
-                                }
-                                
+                                }   
                             }
                             else
                             {
@@ -395,6 +394,8 @@ namespace BlackBox.Controls
                 if (optInter != null)
                     OpcionClicked(_articulo, this.Location.Y, locationY, optInter.ArticuloOp);
             }
+
+            CandidadLocationX();
         }       
         private void ForecolorInWhite (Control ForeInWhite)
         {
@@ -431,9 +432,13 @@ namespace BlackBox.Controls
         public void MasUno()
         {
             _cantidad++;
+            var precio = _cantidad * _articulo.Precio;
+            
             lblCantidad.Text = string.Format("({0})", _cantidad);
             lblCantidad.Visible = true;
-            lblPrecio.Text = string.Format("{0:C}", _cantidad * _articulo.Precio);
+            lblPrecio.Text = string.Format(_format, precio); //"{0:C}"
+
+            CandidadLocationX();
 
             ArticuloMasMenosChange();
         }
@@ -444,15 +449,42 @@ namespace BlackBox.Controls
         {
             if (_cantidad == 1)
                 return;
-
+            
             _cantidad--;
-            if(_cantidad == 1)
+            var precio = _cantidad * _articulo.Precio;
+
+            if (_cantidad == 1)
                 lblCantidad.Visible = false;
 
             lblCantidad.Text = string.Format("({0})", _cantidad);
-            lblPrecio.Text = string.Format("{0:C}", _cantidad * _articulo.Precio);
+            lblPrecio.Text = string.Format("{0:C}", precio);
 
+            CandidadLocationX();
             ArticuloMasMenosChange();
+        }
+
+        private void CandidadLocationX()
+        {
+            var precio = _cantidad * _articulo.Precio;
+
+            int cX;
+            if (lblCantidad.Font.Bold)
+            {
+                cX = _canidadX1Sel;
+                if (precio >= 1000)
+                    cX -= _cantidadXprecio4Sel;
+                if (_cantidad >= 10)
+                    cX -= _canidadX2Sel;                
+            }
+            else
+            {
+                cX = _canidadX1Reg;
+                if (precio >= 1000)
+                    cX -= _cantidadXprecio4Reg;
+                if (_cantidad >= 10)
+                    cX -= _canidadX2Reg;
+            }
+            lblCantidad.Location = new Point(cX, -1);
         }
         /// <summary>
         /// Numero total de Articulos de acuerdo al Articulo venta (puede variar en los Combos, los custom cuentan como uno)
@@ -480,7 +512,7 @@ namespace BlackBox.Controls
         public void ArticuloOpcion(Articulo articuloOp, int locacionY, bool mas)
         {
             if (!((_articulo.ComboTipo.ToLower() == "combo" && _intercambiablesY.Count > 0)
-                || (_articulo.ComboTipo.ToLower().StartsWith("custom")))) // == "custom" || _articulo.ComboTipo.ToLower() == "customesp")))
+                || (_articulo.ComboTipo.ToLower().StartsWith("custom")))) 
                 return;
 
             int locacionYsoN = 0; // Locacion Y de la nueva opcion si se esta agregando.
@@ -490,32 +522,8 @@ namespace BlackBox.Controls
                 var ingrediente = _articulo.Opciones.Where(i => i.ArticuloOp.Producto == articuloOp.Producto).FirstOrDefault();
                 if (mas)
                 {
-                    //_articulo.Opciones.Find(o => o.ArticuloOp.Producto == articuloOp.Producto).Default = true;
                     ingrediente.Default = true;
-                    /*
-                    var nCtrl = new Label()
-                    {
-                        Size = lblOpcion.Size, //picBox.Size,
-                        Visible = true,
-                        Text = articuloOp.Producto,
-                        Font = fontCustom, // new Font(lblArticulo.Font.FontFamily, 12 , FontStyle.Regular),
-                        Location = new Point(0, _opcionAlturaInicial + (_renglonAlturaCustom * (_articulo.Opciones.Count(o => o.Default) -1))),
-                        BackColor = SystemColors.ControlDark,
-                        Padding = new Padding(_OpcionPaddin, 0, 0, 0),
-                        Name = locacionY.ToString() + "_" + articuloOp.Producto
-                    };
-                    //_articulo.Opciones.Find(o => o.ArticuloOp.Producto == articuloOp.Producto).Default = true;
-                    this.Size = new Size(309, _renglonAlturaNormal + (_renglonAlturaCustom * _articulo.Opciones.Count(o => o.Default) + _marginBottonCustom));
-                    nCtrl.Click += lblOpcion_Click;
 
-                    this.Controls.Add(nCtrl);
-                    this.Controls.SetChildIndex(nCtrl, 1);
-                    nCtrl.BringToFront();
-
-                    _precioAdicional += ingrediente.Costo;
-                    ArticuloYsChange(this.Location.Y, _renglonAlturaCustom, true);
-                    */
-                    //--
                     _precioAdicional += ingrediente.Costo;
                     locacionYsoN = _opcionAlturaInicial + (_renglonAlturaCustom * (_articulo.Opciones.Count(o => o.Default) -1));//locacionY + _renglonAlturaNormal - _marginBottonCustom + (_renglonAlturaCustom * (artOp.ArticuloOp.Opciones.Count(o => o.Default) - 1)); // locacionY + _renglonAlturaNormal + (_renglonAlturaCustom * (artOp.ArticuloOp.Opciones.Count(o => o.Default) - 1));                                                   
                     AddSubOpcionCtrl(articuloOp, locacionY, locacionYsoN, _OpcionPaddin);
@@ -547,6 +555,7 @@ namespace BlackBox.Controls
                 }
                 return;
             }
+
             // Si se trata de una SubOpcion de otra Opcion... Ejemplo Refresco en un Combo.
 
             // locacionY para las subOpciones tipo CustomEsp sera el LocationY del padre.
@@ -562,7 +571,6 @@ namespace BlackBox.Controls
                 {
                     if (artOp.ArticuloOp.Validar) // Si solo tiene un Hijo y require validacion
                     {
-                        
                         // Preguntar si existe alguno seleccionado antes
                         if (mas)
                         {
@@ -594,38 +602,9 @@ namespace BlackBox.Controls
 
                                 if(locacionYsOp == 0) // Si no se ha puesto ninguna subOpcion, hay que agregarla.
                                 {
-                                    /*
-                                    var nCtrl = new Label()
-                                    {
-                                        Size = lblOpcion.Size, 
-                                        Visible = true,
-                                        Text = articuloOp.Producto,
-                                        Font = fontCustom, // _opcionAlturaInicial + (_renglonAlturaCustom * (z - 1))
-                                        // Location = new Point(0, locacionY + _renglonAlturaNormal - _marginBottonCustom + (_renglonAlturaCustom * (artOp.ArticuloOp.Opciones.Count(o => o.Default) -1))),Location = new Point(0, locacionY + _renglonAlturaNormal - _marginBottonCustom + (_renglonAlturaCustom * (artOp.ArticuloOp.Opciones.Count(o => o.Default) -1))),
-                                        Location = new Point(0, locacionY + _renglonAlturaNormal - _marginBottonCustom + (_renglonAlturaCustom * (artOp.ArticuloOp.Opciones.Count(o => o.Default) - 1))),
-                                        BackColor = SystemColors.ControlDark,
-                                        Padding = new Padding(_SubOpcionPaddin, 0, 0, 0),
-                                        Name = locacionY.ToString() + "_" + articuloOp.Producto
-                                    };
-                                    nCtrl.CausesValidation = false;
-                                    this.Size = new Size(309,  this.Size.Height + _renglonAlturaCustom + _marginBottonCustom);
-                                    nCtrl.Click += lblOpcion_Click;
-
-                                    this.Controls.Add(nCtrl);
-                                    this.Controls.SetChildIndex(nCtrl, 1);
-                                    nCtrl.BringToFront();
-
-                                    cOp.BackColor = SystemColors.ControlDark;
-                                    cOp.ForeColor = SystemColors.ControlText;
-
-                                    // Aqui se debe de reacomodar los elementos internos tambien.
-                                    sOpAc.LocationY = locacionY; // Locacion del padre.
-                                    ArticuloYsChangeInterno(nCtrl.Location.Y, _renglonAlturaCustom, true);
-                                    ArticuloYsChange(this.Location.Y, _renglonAlturaCustom, true);
-                                    */
-                                    //--
                                     locacionYsoN = locacionY + _renglonAlturaNormal - _marginBottonCustom + (_renglonAlturaCustom * (artOp.ArticuloOp.Opciones.Count(o => o.Default) - 1)); // locacionY + _renglonAlturaNormal + (_renglonAlturaCustom * (artOp.ArticuloOp.Opciones.Count(o => o.Default) - 1));                                                   
                                     AddSubOpcionCtrl(articuloOp, locacionY, locacionYsoN, _SubOpcionPaddin);
+                                    
                                     sOpAc.LocationY = locacionY; // Locacion del padre.
                                     ArticuloYsChangeInterno(locacionYsoN, _renglonAlturaCustom, true);
 
@@ -683,34 +662,9 @@ namespace BlackBox.Controls
                             {
                                 sOpAc.Default = true;
                                 // Agregar el nuevo articulo
-                                /*
-                                var nCtrl = new Label()
-                                {
-                                    Size = lblOpcion.Size,
-                                    Visible = true,
-                                    Text = articuloOp.Producto,
-                                    Font = fontCustom,
-                                    Location = new Point(0, locacionY + _renglonAlturaNormal + (_renglonAlturaCustom * (artOp.ArticuloOp.Opciones.Count(o => o.Default) - 1))),
-                                    BackColor = SystemColors.ControlDark,
-                                    Padding = new Padding(_SubOpcionPaddin, 0, 0, 0),
-                                    Name = locacionY.ToString() + "_" + articuloOp.Producto
-                                };
-                                nCtrl.CausesValidation = false;
-                                this.Size = new Size(309, this.Size.Height + _renglonAlturaCustom + _marginBottonCustom);
-                                nCtrl.Click += lblOpcion_Click;
-
-                                this.Controls.Add(nCtrl);
-                                this.Controls.SetChildIndex(nCtrl, 1);
-                                nCtrl.BringToFront();
-
-                                // Aqui se debe de reacomodar los elementos internos tambien.
-                                sOpAc.LocationY = locacionY; // Locacion del padre.
-                                ArticuloYsChangeInterno(nCtrl.Location.Y, _renglonAlturaCustom, true);
-                                ArticuloYsChange(this.Location.Y, _renglonAlturaCustom, true);
-                                */
-
                                 locacionYsoN = locacionY + _renglonAlturaNormal + (_renglonAlturaCustom * (artOp.ArticuloOp.Opciones.Count(o => o.Default) - 1));
                                 AddSubOpcionCtrl(articuloOp, locacionY, locacionYsoN, _SubOpcionPaddin);
+
                                 sOpAc.LocationY = locacionY; // Locacion del padre.
                                 ArticuloYsChangeInterno(locacionYsoN, _renglonAlturaCustom, true);
                             }
@@ -767,11 +721,11 @@ namespace BlackBox.Controls
         {
             var nCtrl = new Label()
             {
-                Size = lblOpcion.Size, //picBox.Size,
+                Size = lblOpcion.Size, 
                 Visible = true,
                 Text = articuloOp.Producto,
-                Font = fontCustom, // new Font(lblArticulo.Font.FontFamily, 12 , FontStyle.Regular),
-                Location = new Point(0, locacionYso), // _opcionAlturaInicial + (_renglonAlturaCustom * (_articulo.Opciones.Count(o => o.Default)))),
+                Font = fontCustom, 
+                Location = new Point(0, locacionYso), 
                 BackColor = SystemColors.ControlDark,
                 Padding = new Padding(paddingLeft, 0, 0, 0),
                 Name = locacionY.ToString() + "_" + articuloOp.Producto,
