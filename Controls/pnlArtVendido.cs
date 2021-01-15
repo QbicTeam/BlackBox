@@ -457,7 +457,7 @@ namespace BlackBox.Controls
                 lblCantidad.Visible = false;
 
             lblCantidad.Text = string.Format("({0})", _cantidad);
-            lblPrecio.Text = string.Format("{0:C}", precio);
+            lblPrecio.Text = string.Format(_format, precio);
 
             CandidadLocationX();
             ArticuloMasMenosChange();
@@ -509,7 +509,8 @@ namespace BlackBox.Controls
         /// <param name="articuloOp">Opcion a Agregar/Quitar o intercambiar</param>
         /// <param name="locacionY">Posicion del articulo/Para los de tipo CustomEsp sera la LocacionY padre.</param>
         /// <param name="mas">Indica si se agrega/intercambio o quita.</param>        
-        public void ArticuloOpcion(Articulo articuloOp, int locacionY, bool mas)
+        /// <param name="mediaRacion">Indica si solo se esta agregando Media Racion y se manda 1 u 2, si es Cero = Racion completa</param>        
+        public void ArticuloOpcion(Articulo articuloOp, int locacionY, bool mas, int mediaRacion = 0)
         {
             if (!((_articulo.ComboTipo.ToLower() == "combo" && _intercambiablesY.Count > 0)
                 || (_articulo.ComboTipo.ToLower().StartsWith("custom")))) 
@@ -522,37 +523,58 @@ namespace BlackBox.Controls
                 var ingrediente = _articulo.Opciones.Where(i => i.ArticuloOp.Producto == articuloOp.Producto).FirstOrDefault();
                 if (mas)
                 {
-                    ingrediente.Default = true;
+                    ingrediente.MediaRacion = mediaRacion;
 
-                    _precioAdicional += ingrediente.Costo;
-                    locacionYsoN = _opcionAlturaInicial + (_renglonAlturaCustom * (_articulo.Opciones.Count(o => o.Default) -1));//locacionY + _renglonAlturaNormal - _marginBottonCustom + (_renglonAlturaCustom * (artOp.ArticuloOp.Opciones.Count(o => o.Default) - 1)); // locacionY + _renglonAlturaNormal + (_renglonAlturaCustom * (artOp.ArticuloOp.Opciones.Count(o => o.Default) - 1));                                                   
-                    AddSubOpcionCtrl(articuloOp, locacionY, locacionYsoN, _OpcionPaddin);
-                    ingrediente.LocationY = locacionY; // Locacion del padre.
-                    ArticuloYsChangeInterno(locacionYsoN, _renglonAlturaCustom, true);
+                    if (!ingrediente.Default)
+                    {
+                        // _articulo.Opciones.Find(o => o.ArticuloOp.Producto == articuloOp.Producto).Default = true;
+                        ingrediente.Default = true;                        
+
+                        // _precioAdicional += ingrediente.Costo;
+                        locacionYsoN = _opcionAlturaInicial + (_renglonAlturaCustom * (_articulo.Opciones.Count(o => o.Default) - 1)); //locacionY + _renglonAlturaNormal - _marginBottonCustom + (_renglonAlturaCustom * (artOp.ArticuloOp.Opciones.Count(o => o.Default) - 1)); // locacionY + _renglonAlturaNormal + (_renglonAlturaCustom * (artOp.ArticuloOp.Opciones.Count(o => o.Default) - 1));                                                   
+                        AddSubOpcionCtrl(articuloOp, locacionY, locacionYsoN, _OpcionPaddin, false, mediaRacion);
+                        ingrediente.LocationY = locacionY; // Locacion del padre.
+                        ArticuloYsChangeInterno(locacionYsoN, _renglonAlturaCustom, true);
+                    }
+                    else
+                    {
+                        foreach (Control child in this.Controls)
+                        {
+                            if (((Label)child).Text.StartsWith(articuloOp.Producto))
+                            {
+                                var locY = child.Location.Y;
+                                ((Label)child).Text = articuloOp.Producto + (mediaRacion != 0 ? mediaRacion.ToString() : string.Empty);
+                                break;
+                            }
+
+                        }
+                    }
                 }
                 else
                 {
-                    _precioAdicional -= ingrediente.Costo;
+                    // _precioAdicional -= ingrediente.Costo;
                     _articulo.Opciones.Find(o => o.ArticuloOp.Producto == articuloOp.Producto).Default = false;
                     foreach (Control child in this.Controls)
                     {
-                        if (((Label)child).Text == articuloOp.Producto)
+                        if (((Label)child).Text.StartsWith(articuloOp.Producto))
                         {
                             var locY = child.Location.Y;
                             this.Controls.Remove(child);
-                            foreach (Control childOp in this.Controls)
-                            {
-                                if (childOp.Location.Y > locY)
-                                    childOp.Location = new Point(childOp.Location.X, childOp.Location.Y - locY);
-                            }
-
-                            this.Size = new Size(309, _renglonAlturaNormal + (_renglonAlturaCustom * _articulo.Opciones.Count(o => o.Default) + _marginBottonCustom));
+                            ArticuloYsChangeInterno(locY, _renglonAlturaCustom, false);
+                            this.Size = new Size(309, this.Size.Height - _renglonAlturaCustom);
                             ArticuloYsChange(this.Location.Y, _renglonAlturaCustom, false);
                             break;
                         }
 
                     }
                 }
+                // Calcular el nuevo costo Adicional de acuerdo la aconfiguracion del Especial (Cantidad de Ingredientes Incluidos, Cantidad de Mitades)
+                if (_articulo.CostoIngredienteAdicional > 0)
+                {
+                    // _precioAdicional += ingrediente.Costo;                    
+                    CalculaCostoAdicional();                    
+                }
+
                 return;
             }
 
@@ -717,13 +739,94 @@ namespace BlackBox.Controls
                 }
             }
         }
-        private void AddSubOpcionCtrl(Articulo articuloOp, int locacionY, int locacionYso, int paddingLeft, bool causesValidation = false)
+        /// <summary>
+        /// Calcula el costo por los Ingredientes extras de acuerdo a la configuracion del Articulo Padre (debe de ser de tipo 'Custom') 
+        /// </summary>
+        private void CalculaCostoAdicional()
+        {
+            var precioAdicionalOrg = _precioAdicional;
+            var ingRacionCompleta = _articulo.Opciones.Where(i => i.Default && i.MediaRacion == 0).Count(); // Cantidad ingredientes con Racion Completa.
+            var mediasRaciones = _articulo.Opciones.Where(i => i.Default && i.MediaRacion > 0).Count(); // Cantidad total de ingredientes a Media Racion.
+            var ingTotales = ingRacionCompleta + (mediasRaciones / 2); 
+            if (mediasRaciones > 0)
+                if ((mediasRaciones % 2) != 0)
+                    ingTotales++; // Si la divicion termina en fraccion se agrega un ingrediente
+            if (ingTotales > _articulo.IngredientesSinCosto)
+                _precioAdicional = _articulo.CostoIngredienteAdicional * (ingTotales - _articulo.IngredientesSinCosto);
+            else
+                _precioAdicional = 0;
+
+            if (precioAdicionalOrg == 0 && _precioAdicional > 0) // Si se recien tiene costo extra (Agregar la leyenda)
+            {
+
+                // Agregar la leyenda de Costo por Ingredientes Extras.
+                var locacionYCA = _opcionAlturaInicial + (_renglonAlturaCustom * (_articulo.Opciones.Count(o => o.Default))) + 1;
+                var nCtrl = new Label()
+                {
+                    Size = lblOpcion.Size,
+                    Visible = true,
+                    Text = string.Format("Costo de Ingrediente " + _format, _precioAdicional),
+                    Font = fontCustom,
+                    Location = new Point(0, locacionYCA),
+                    BackColor = SystemColors.ControlDark,
+                    TextAlign = ContentAlignment.MiddleRight,
+                    Name = "CostoAdicional"
+                };                
+                this.Size = new Size(309, this.Size.Height + _renglonAlturaCustom + _marginBottonCustom);
+                nCtrl.Click += lblOpcion_Click;
+
+                this.Controls.Add(nCtrl);
+                this.Controls.SetChildIndex(nCtrl, 1);
+                nCtrl.BringToFront();
+
+                ArticuloYsChange(this.Location.Y, _renglonAlturaCustom, true);
+            }
+            if (precioAdicionalOrg != 0 && _precioAdicional == 0) // Si se recien NO tiene costo extra (Quitar la leyenda)
+            {
+                foreach (Control child in this.Controls)
+                {
+                    if (((Label)child).Name == "CostoAdicional")
+                    {
+                        var locY = child.Location.Y;
+                        this.Controls.Remove(child);
+                        ArticuloYsChangeInterno(locY, _renglonAlturaCustom, false);
+                        this.Size = new Size(309, this.Size.Height - _renglonAlturaCustom);
+                        ArticuloYsChange(this.Location.Y, _renglonAlturaCustom, false);
+                        break;
+                    }
+
+                }
+            }
+            if (precioAdicionalOrg != 0 && _precioAdicional != 0) // Si se recien tiene costo extra (Actualizar el precio)
+            {
+                foreach (Control child in this.Controls)
+                {
+                    if (((Label)child).Name == "CostoAdicional")
+                    {
+                        var locY = child.Location.Y;
+                        ((Label)child).Text = string.Format("Costo de Ingrediente " + _format, _precioAdicional);
+                        break;
+                    }
+                }
+            }
+            
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="articuloOp">Sub Articulo (articulo opcion) agregado</param>
+        /// <param name="locacionY">PosicionY del producto Padre</param>
+        /// <param name="locacionYso">PosicionY del subproducto</param>
+        /// <param name="paddingLeft">Padding del subproducto</param>
+        /// <param name="causesValidation">Para los casos de ""CustomEsp" como Refrescos</param>
+        /// <param name="mediaRacion">Indica la cantidad de la racion donde 0 = Racion comprela, 1.- Media Racion 1, 2.- Media Racion 2</param>
+        private void AddSubOpcionCtrl(Articulo articuloOp, int locacionY, int locacionYso, int paddingLeft, bool causesValidation = false, int mediaRacion = 0)
         {
             var nCtrl = new Label()
             {
                 Size = lblOpcion.Size, 
                 Visible = true,
-                Text = articuloOp.Producto,
+                Text = articuloOp.Producto + (mediaRacion != 0 ? mediaRacion.ToString() : string.Empty),
                 Font = fontCustom, 
                 Location = new Point(0, locacionYso), 
                 BackColor = SystemColors.ControlDark,
@@ -749,7 +852,14 @@ namespace BlackBox.Controls
                 if (ctrl.Location.Y > locationY)
                 {
                     if (mas)
+                    {
                         ctrl.Location = new Point(ctrl.Location.X, ctrl.Location.Y + altura);
+                        if (((Label)ctrl).Name == "CostoAdicional")
+                        {
+                            this.Controls.SetChildIndex(ctrl, 1);
+                            ctrl.BringToFront();
+                        }
+                    }
                     else
                         ctrl.Location = new Point(ctrl.Location.X, ctrl.Location.Y - altura);
                 }

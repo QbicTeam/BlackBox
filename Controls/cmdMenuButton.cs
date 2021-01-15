@@ -24,19 +24,24 @@ namespace BlackBox.Controls
             InitializeComponent();
         }
 
-        public cmdMenuButton(string description, decimal price, Image backImg, int cols)
+        public cmdMenuButton(Articulo art, Image backImg, int cols) // string description, decimal price, Image backImg, int cols)
         {
             InitializeComponent();
             pnlButton.BackgroundImage = backImg;
 
-            lblTitle.Text = description;
+            /*lblTitle.Text = description;
             lblPrice.Text = string.Format("{0:C}", price);
-
+            
             item = new Articulo();
             item.Producto = description;
             item.Precio = price;
+            */
 
-            if(cols == 3)
+            item = art;
+            lblTitle.Text = item.Producto;
+            lblPrice.Text = string.Format("{0:C}", item.Precio);
+
+            if (cols == 3)
             {
                 lblTitle.Width = 255;
                 lblPrice.Width = 255;
