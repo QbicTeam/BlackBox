@@ -138,6 +138,8 @@ namespace BlackBox.Controls
                     break;
                 case "customesp":
                     this.Size = new Size(309, _renglonAlturaNormal + (_renglonAlturaCustom * articulo.Opciones.Count(o => o.Default) + _marginBottonCustom));
+                    if (_articulo.Validar)
+                        _sinAsignar.Add(2);
                     break;
                 default:  // Los Normales... si no esta definido es tratado como Normal
                     this.Size = new Size(309, _renglonAlturaNormal); // 27 Altura base Normal
@@ -268,6 +270,17 @@ namespace BlackBox.Controls
                 foreColor = SystemColors.ControlText;
             }
 
+            if (_articulo.ComboTipo != null
+                && _articulo.ComboTipo.ToLower() == "customesp"
+                && _articulo.Validar)
+            {
+                if (_articulo.Opciones.Count > 0
+                    && _articulo.Opciones.Where(o => o.Default).ToList().Count() == 0)
+                {
+                    foreColor = _rojo;
+                }
+            }
+
             lblArticulo.ForeColor = foreColor;
             lblPrecio.ForeColor = foreColor;
             lblCantidad.ForeColor = foreColor;
@@ -299,24 +312,52 @@ namespace BlackBox.Controls
         public void ToSelected(int locationY = -1, bool init = false)
         {
             /* Normal, Combo, Custom, CustomEst */
-            Color backColor;
+            Color backColor = Color.White;
+            Color foreColor = SystemColors.ControlText; 
             Control ForeInWhite = null;
+            var customEspN1 = false;
 
             Console.WriteLine("LocationY: " + locationY.ToString() );
 
 
-            backColor = Color.White;
+            // backColor = Color.White;
 
             // Encabezado Articulo Venta
-            if (_articulo.ComboTipo.ToLower() != "combo")
-                backColor = SystemColors.ControlDark;
 
+            if (_articulo.ComboTipo != null
+                && _articulo.ComboTipo.ToLower() == "customesp"
+                && _articulo.Validar)
+            {
+                if (_articulo.Opciones.Count > 0
+                    && _articulo.Opciones.Where(o => o.Default).ToList().Count() == 0)
+                {
+                    backColor = _rojo;
+                    foreColor = Color.White;
+                    customEspN1 = true;
+                }
+            }
+            /*
             lblPrecio.Font = new Font(lblPrecio.Font, FontStyle.Bold);
             lblPrecio.ForeColor = SystemColors.ControlText;
             lblCantidad.Font = new Font(lblPrecio.Font, FontStyle.Bold);
             lblCantidad.ForeColor = SystemColors.ControlText;
             lblArticulo.Font = new Font(lblArticulo.Font, FontStyle.Bold);
             lblArticulo.ForeColor = SystemColors.ControlText;
+            */
+            lblPrecio.Font = new Font(lblPrecio.Font, FontStyle.Bold);
+            lblPrecio.ForeColor = foreColor;
+            lblPrecio.BackColor = backColor;
+            lblCantidad.Font = new Font(lblPrecio.Font, FontStyle.Bold);
+            lblCantidad.ForeColor = foreColor;
+            lblCantidad.BackColor = backColor;
+            lblArticulo.Font = new Font(lblArticulo.Font, FontStyle.Bold);
+            lblArticulo.ForeColor = foreColor;
+            lblArticulo.BackColor = backColor;
+
+            backColor = Color.White;
+
+            if (_articulo.ComboTipo.ToLower() != "combo")
+                backColor = SystemColors.ControlDark;
 
             // Investigar si es necesario validar el "ComboTipo"
             Console.WriteLine("--- Controles I ---");
@@ -326,31 +367,42 @@ namespace BlackBox.Controls
                 if (child.ForeColor == Color.White)
                     ForeInWhite = child;
 
-                //if (_articulo.ComboTipo.ToLower() == "combo" &&  i < 0 && child.Location.Y < _opcionAlturaInicial)
-                if (_articulo.ComboTipo.ToLower() == "combo" // && child.Name.StartsWith(locationY.ToString()) )
-                    && (child.Name.StartsWith(locationY.ToString()) 
-                        || (locationY < _opcionAlturaInicial && child.Location.Y < _opcionAlturaInicial )
+                if (!customEspN1)
+                {
+                    //if (_articulo.ComboTipo.ToLower() == "combo" &&  i < 0 && child.Location.Y < _opcionAlturaInicial)
+                    if (_articulo.ComboTipo.ToLower() == "combo" // && child.Name.StartsWith(locationY.ToString()) )
+                        && (child.Name.StartsWith(locationY.ToString())
+                            || (locationY < _opcionAlturaInicial && child.Location.Y < _opcionAlturaInicial)
+                            )
                         )
-                    ) 
-                    child.BackColor = SystemColors.ControlDark;
+                        child.BackColor = SystemColors.ControlDark;
+                    else
+                        child.BackColor = backColor;
+                }
                 else
-                    child.BackColor = backColor;
-                
+                {
+                    if (child.Location.Y < _opcionAlturaInicial)
+                    {
+                        child.BackColor = _rojo;
+                        child.ForeColor = Color.White;
+                    }
+                }
 
                 if (locationY >= 0 && child.Location.Y == locationY)
                 {
 
                     var op = _articulo.Opciones.Where(o => o.LocationY == locationY).FirstOrDefault();
-                    if (op == null)
-                    {
-                        child.BackColor = SystemColors.ControlDark;
-                        if (_articulo.ComboTipo.ToLower() == "customesp" && _articulo.Validar)
-                        {
-                            child.BackColor = _rojo;
-                            child.ForeColor = Color.White;
-                        }
-                    }
-                    else
+                    //if (op == null)
+                    //{
+                    //    child.BackColor = SystemColors.ControlDark;
+                    //    if (_articulo.ComboTipo.ToLower() == "customesp" && _articulo.Validar)
+                    //    {
+                    //        child.BackColor = _rojo;
+                    //        child.ForeColor = Color.White;
+                    //    }
+                    //}
+                    //else
+                    if (op != null)
                     {
                         if (op.Intercambiable)
                         {
@@ -399,11 +451,11 @@ namespace BlackBox.Controls
         }       
         private void ForecolorInWhite (Control ForeInWhite)
         {
-            if (ForeInWhite != null)
+            if (ForeInWhite != null && ForeInWhite.Location.Y > _opcionAlturaInicial)
             {
                 ForeInWhite.BackColor = Color.White;
                 var op = _articulo.Opciones.Where(o => o.LocationY == ForeInWhite.Location.Y).FirstOrDefault();
-                if (op.ArticuloOp.ComboTipo != null
+                if (op != null && op.ArticuloOp.ComboTipo != null
                     && op.ArticuloOp.ComboTipo.ToLower() == "customesp"
                     && op.ArticuloOp.Validar)
                 {
@@ -504,6 +556,46 @@ namespace BlackBox.Controls
             
         }
         /// <summary>
+        /// Da el formato Rojo al fondo si la validacion aun no tiene una opcion seleccionada, esto para la opcion principal (N1)
+        /// </summary>
+        private void CustomValidarFormatoN1()
+        {
+            Color backColor = SystemColors.ControlDark;// Color.White;
+            Color foreColor = SystemColors.ControlText;
+
+            _sinAsignar.Clear(); // Esto funciona para los que solo para N1
+
+
+            if (_articulo.ComboTipo != null
+                && _articulo.ComboTipo.ToLower() == "customesp"
+                && _articulo.Validar)
+            {
+                if (_articulo.Opciones.Count > 0
+                    && _articulo.Opciones.Where(o => o.Default).ToList().Count() == 0)
+                {
+                    backColor = _rojo;
+                    foreColor = Color.White;
+                    _sinAsignar.Add(2);
+                }
+            }
+
+            lblPrecio.Font = new Font(lblPrecio.Font, FontStyle.Bold);
+            lblPrecio.ForeColor = foreColor;
+            lblPrecio.BackColor = backColor;
+            lblCantidad.Font = new Font(lblPrecio.Font, FontStyle.Bold);
+            lblCantidad.ForeColor = foreColor;
+            lblCantidad.BackColor = backColor;
+            lblArticulo.Font = new Font(lblArticulo.Font, FontStyle.Bold);
+            lblArticulo.ForeColor = foreColor;
+            lblArticulo.BackColor = backColor;
+
+            lblFondo.BackColor = backColor;
+            //if (backColor == _rojo )
+            //{
+                
+            //}
+        }
+        /// <summary>
         /// Agrega/Quita Articulos En Custom o Intercambiables.
         /// </summary>
         /// <param name="articuloOp">Opcion a Agregar/Quitar o intercambiar</param>
@@ -535,6 +627,7 @@ namespace BlackBox.Controls
                         AddSubOpcionCtrl(articuloOp, locacionY, locacionYsoN, _OpcionPaddin, false, mediaRacion);
                         ingrediente.LocationY = locacionY; // Locacion del padre.
                         ArticuloYsChangeInterno(locacionYsoN, _renglonAlturaCustom, true);
+                        CustomValidarFormatoN1();
                     }
                     else
                     {
@@ -567,6 +660,7 @@ namespace BlackBox.Controls
                         }
 
                     }
+                    CustomValidarFormatoN1();
                 }
                 // Calcular el nuevo costo Adicional de acuerdo la aconfiguracion del Especial (Cantidad de Ingredientes Incluidos, Cantidad de Mitades)
                 if (_articulo.CostoIngredienteAdicional > 0)
