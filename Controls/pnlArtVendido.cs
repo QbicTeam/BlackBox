@@ -590,10 +590,7 @@ namespace BlackBox.Controls
             lblArticulo.BackColor = backColor;
 
             lblFondo.BackColor = backColor;
-            //if (backColor == _rojo )
-            //{
-                
-            //}
+            
         }
         /// <summary>
         /// Agrega/Quita Articulos En Custom o Intercambiables.
@@ -983,7 +980,8 @@ namespace BlackBox.Controls
             locationY = Convert.ToInt32(((Label)sender).Name.Split('_')[0]);
             
             var optInter = _articulo.Opciones.Where(op =>
-                (op.LocationY == locationY && op.ArticuloOp.Opciones.Count > 0
+                (op.LocationY == locationY 
+                  && op.ArticuloOp.Opciones != null && op.ArticuloOp.Opciones.Count > 0
                 )).FirstOrDefault();
 
 

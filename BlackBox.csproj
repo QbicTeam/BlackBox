@@ -108,6 +108,7 @@
     <Compile Include="Model\Login.cs" />
     <Compile Include="Model\Mesajeria.cs" />
     <Compile Include="Model\Pantalla1.cs" />
+    <Compile Include="Model\MMenu.cs" />
     <Compile Include="Model\PantallaVentas.cs" />
     <Compile Include="Model\RelojMarcador.cs" />
     <Compile Include="Model\TrabajandoHoy.cs" />
@@ -147,6 +148,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="appConfigM.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="appSettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

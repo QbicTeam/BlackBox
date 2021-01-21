@@ -477,6 +477,7 @@
             // 
             // pnlComanda
             // 
+            this.pnlComanda.AutoScroll = true;
             this.pnlComanda.BackColor = System.Drawing.Color.Transparent;
             this.pnlComanda.Location = new System.Drawing.Point(1058, 62);
             this.pnlComanda.Name = "pnlComanda";

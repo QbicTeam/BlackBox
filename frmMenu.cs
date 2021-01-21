@@ -25,6 +25,7 @@ namespace BlackBox
         private Form _entryForm;
         private pnlArtVendido _artVendidoSeleccionado;
         private int _opcionLocationY;
+        private MMenu _menu;
 
         private int caracteresMaximos = 56;
         private string[] dias = { "Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab" };
@@ -50,6 +51,9 @@ namespace BlackBox
             // Lectura de Datos.
             var json = File.ReadAllText("appSettings.json");
             _datos = JsonConvert.DeserializeObject<ObjBlackBox>(json);
+
+            var jsonMenu = File.ReadAllText("appConfigM.json");
+            _menu = JsonConvert.DeserializeObject<MMenu>(jsonMenu);
 
             LoadSideMenu();
             cmdHnr.Image = imgSHnr.Image;
@@ -204,7 +208,7 @@ namespace BlackBox
 
         private void LoadSideMenu()
         {
-            var arts = _datos.PantallaVentas.Especiales;
+            var arts = _menu.Especiales; // _datos.PantallaVentas.Especiales;
             // Definir la imagen a utilizar.
             var img = imgSidebarButton.Image;
 
@@ -679,11 +683,11 @@ namespace BlackBox
         {
             var result = new List<Articulo>();
             
-            foreach (PropertyInfo prop in _datos.PantallaVentas.GetType().GetProperties())
+            foreach (PropertyInfo prop in _menu.GetType().GetProperties()) // _datos.PantallaVentas.GetType().GetProperties())
             {
                 if (prop.Name.ToLower() == nombre.ToLower())
                 {
-                    result = (List<Articulo>) prop.GetValue(_datos.PantallaVentas);
+                    result = (List<Articulo>)prop.GetValue(_menu); //_datos.PantallaVentas);
                     return result;
                 }
             }
