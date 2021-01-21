@@ -538,6 +538,10 @@ namespace BlackBox.Controls
             }
             lblCantidad.Location = new Point(cX, -1);
         }
+        public int Cantidad()
+        {
+            return _cantidad;
+        }
         /// <summary>
         /// Numero total de Articulos de acuerdo al Articulo venta (puede variar en los Combos, los custom cuentan como uno)
         /// </summary>

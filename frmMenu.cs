@@ -69,6 +69,7 @@ namespace BlackBox
             lblArticulosPie.Text = _datos.PantallaVentas.ArticulosVencidosPie;
 
             comanda = new Comanda();
+            BotonesMasMenosBorrar();
         }
 
         private void SetMenuSettings()
@@ -540,7 +541,7 @@ namespace BlackBox
             _artVendidoSeleccionado.ToSelected(_artVendidoSeleccionado._opAutoSelectLocationY, true);
 
             CalcularTotal();
-
+            BotonesMasMenosBorrar();
             /*
             comanda.Total += itm.Precio;
             comanda.SubTotal = comanda.Total / taza;
@@ -921,31 +922,18 @@ namespace BlackBox
         private void cmdEspeciales_Click(object sender, EventArgs e)
         {
             pnlTabs.BackgroundImage = imgEspeciales.Image;
-            if (_artVendidoSeleccionado != null)
-                _artVendidoSeleccionado.MasUno();
         }
 
         private void cmdEnEspera_Click(object sender, EventArgs e)
         {
             pnlTabs.BackgroundImage = imgEnEspera.Image;
-            if (_artVendidoSeleccionado != null)
-                _artVendidoSeleccionado.MenosUno();
 
         }
 
         private void cmdOnline_Click(object sender, EventArgs e)
         {
             pnlTabs.BackgroundImage = imgOnline.Image;
-            if (_artVendidoSeleccionado != null)
-            {
-                var altura = _artVendidoSeleccionado.Height;
-                var locationY = _artVendidoSeleccionado.Location.Y;
-                pnlComanda.Controls.Remove(_artVendidoSeleccionado);
-                _artVendidoSeleccionado = null;
 
-                ArticuloYsChange(locationY, altura, false);
-                CalcularTotal();
-            }
         }
 
         private void cmdReciente_Click(object sender, EventArgs e)
@@ -966,6 +954,8 @@ namespace BlackBox
                 if (((pnlArtVendido)ctrl).Location.Y == articuloPadreLocacionY) 
                     _artVendidoSeleccionado = ((pnlArtVendido)ctrl);
             }
+            BotonesMasMenosBorrar();
+
             _artVendidoSeleccionado.ToSelected(intercambiableLocacionY);
             if (intercambiableLocacionY > 0)
                 _opcionLocationY = intercambiableLocacionY;
@@ -1014,6 +1004,7 @@ namespace BlackBox
         private void ArticuloMasMenosChange()
         {
             CalcularTotal();
+            BotonesMasMenosBorrar();
         }
         private void ArticuloYsChange(int y, int altura, bool mas)
         {
@@ -1060,6 +1051,52 @@ namespace BlackBox
             Console.WriteLine("- - - - - ");
 
 
+        }
+
+        private void BotonesMasMenosBorrar()
+        {
+            if (_artVendidoSeleccionado == null)
+            {
+                cmdMas.Visible = false;
+                cmdMenos.Visible = false;
+                cmdBorrar.Visible = false;
+                return;
+            }
+            cmdMas.Visible = true;
+            cmdBorrar.Visible = true;
+
+            if (_artVendidoSeleccionado.Cantidad() > 1)
+                cmdMenos.Visible = true;
+            else
+                cmdMenos.Visible = false;
+        }
+
+        private void cmdMas_Click(object sender, EventArgs e)
+        {
+            if (_artVendidoSeleccionado != null)
+                _artVendidoSeleccionado.MasUno();
+        }
+
+        private void cmdMenos_Click(object sender, EventArgs e)
+        {
+            if (_artVendidoSeleccionado != null)
+                _artVendidoSeleccionado.MenosUno();
+
+        }
+
+        private void cmdBorrar_Click(object sender, EventArgs e)
+        {
+            if (_artVendidoSeleccionado != null)
+            {
+                var altura = _artVendidoSeleccionado.Height;
+                var locationY = _artVendidoSeleccionado.Location.Y;
+                pnlComanda.Controls.Remove(_artVendidoSeleccionado);
+                _artVendidoSeleccionado = null;
+
+                ArticuloYsChange(locationY, altura, false);
+                CalcularTotal();
+                BotonesMasMenosBorrar();
+            }
         }
     }
 }
