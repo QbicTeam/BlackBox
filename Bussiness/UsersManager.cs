@@ -111,7 +111,7 @@ namespace BlackBox.Bussiness
         {
             bool result = false;
 
-            SqlCommand cmd = new SqlCommand(SP_SAVE, this._conn);
+            SqlCommand cmd = new SqlCommand(SP_UPDATE, this._conn);
             cmd.CommandType = CommandType.StoredProcedure;
 
             SqlParameter prm = new SqlParameter();
@@ -291,6 +291,11 @@ namespace BlackBox.Bussiness
             }
 
             if (!VerifyPasswordHash(userPwd, user.PasswordHash, user.PasswordSalt))
+            {
+                return null;
+            }
+
+            if (user.Status != "Activo")
             {
                 return null;
             }

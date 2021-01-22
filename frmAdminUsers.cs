@@ -1,6 +1,9 @@
-﻿using System;
+﻿using BlackBox.Bussiness;
+using BlackBox.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -13,6 +16,7 @@ namespace BlackBox
     public partial class frmAdminUsers : Form
     {
 
+        UsersManager um = new UsersManager(ConfigurationManager.ConnectionStrings["FBBCS"].ConnectionString);
 
         public frmAdminUsers()
         {
@@ -30,6 +34,7 @@ namespace BlackBox
             txtName.Text = string.Empty;
             txtPassword.Text = string.Empty;
             txtConfirmPassword.Text = string.Empty;
+            txtUserName.Text = string.Empty;
 
             cboUsers.SelectedIndex = 0;
             cboRole.SelectedIndex = 0;
@@ -45,25 +50,32 @@ namespace BlackBox
 
         private void InsertUser()
         {
-            string pwdSalt = string.Empty;
-            string pwdHash = string.Empty;
+            User user = new User
+            {
+                Nombre = txtName.Text,
+                Password = txtPassword.Text,
+                Puesto = cboRole.Text,
+                Status = cboStatus.Text,
+                UserName = txtUserName.Text
+            };
 
-            // this.EncryptPwd(txtPassword.Text, out pwdSalt, out pwdHash);
-
-            string sql = "insert users(nombre, puesto, activo, pwdhash, pwdsalt) values("
-                + "'" + txtName.Text + "', "
-                + "'" + cboRole.Text + "', "
-                + "'" + cboStatus.Text + "', "
-                + "'" + pwdHash + "', "
-                + "'" + pwdSalt + "')";
-
+            this.um.Save(user);
             
-
         }
 
         private void UpdateUser()
         {
+            User user = new User
+            {
+                Id = Convert.ToInt32(lblId.Text),
+                Nombre = txtName.Text,
+                Password = txtPassword.Text,
+                Puesto = cboRole.Text,
+                Status = cboStatus.Text,
+                UserName = txtUserName.Text
+            };
 
+            this.um.Update(user);
         }
 
         private void LoadUsers()
