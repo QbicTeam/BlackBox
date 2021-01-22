@@ -89,7 +89,7 @@
             this.txtName.Location = new System.Drawing.Point(15, 102);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(264, 20);
-            this.txtName.TabIndex = 4;
+            this.txtName.TabIndex = 3;
             // 
             // label2
             // 
@@ -137,7 +137,7 @@
             this.cboStatus.Location = new System.Drawing.Point(15, 152);
             this.cboStatus.Name = "cboStatus";
             this.cboStatus.Size = new System.Drawing.Size(121, 21);
-            this.cboStatus.TabIndex = 9;
+            this.cboStatus.TabIndex = 4;
             // 
             // cboRole
             // 
@@ -148,7 +148,7 @@
             this.cboRole.Location = new System.Drawing.Point(158, 152);
             this.cboRole.Name = "cboRole";
             this.cboRole.Size = new System.Drawing.Size(121, 21);
-            this.cboRole.TabIndex = 10;
+            this.cboRole.TabIndex = 5;
             // 
             // label6
             // 
@@ -163,15 +163,17 @@
             // 
             this.txtPassword.Location = new System.Drawing.Point(15, 233);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(121, 20);
-            this.txtPassword.TabIndex = 12;
+            this.txtPassword.TabIndex = 7;
             // 
             // txtConfirmPassword
             // 
             this.txtConfirmPassword.Location = new System.Drawing.Point(158, 233);
             this.txtConfirmPassword.Name = "txtConfirmPassword";
+            this.txtConfirmPassword.PasswordChar = '*';
             this.txtConfirmPassword.Size = new System.Drawing.Size(121, 20);
-            this.txtConfirmPassword.TabIndex = 13;
+            this.txtConfirmPassword.TabIndex = 8;
             // 
             // lblId
             // 
@@ -196,7 +198,7 @@
             this.txtUserName.Location = new System.Drawing.Point(64, 185);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(215, 20);
-            this.txtUserName.TabIndex = 16;
+            this.txtUserName.TabIndex = 6;
             // 
             // frmAdminUsers
             // 

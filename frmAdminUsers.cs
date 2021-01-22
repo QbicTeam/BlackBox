@@ -26,19 +26,20 @@ namespace BlackBox
 
         private void PrepareForm()
         {
-
+            this.Reset();
         }
 
         private void Reset()
         {
+            lblId.Text = string.Empty;
             txtName.Text = string.Empty;
             txtPassword.Text = string.Empty;
             txtConfirmPassword.Text = string.Empty;
             txtUserName.Text = string.Empty;
 
-            cboUsers.SelectedIndex = 0;
-            cboRole.SelectedIndex = 0;
-            cboStatus.SelectedIndex = 0;
+            cboUsers.SelectedIndex = -1;
+            cboRole.SelectedIndex = -1;
+            cboStatus.SelectedIndex = -1;
 
         }
 
@@ -85,7 +86,18 @@ namespace BlackBox
 
         private bool Sanitize()
         {
-            return false;
+            if (txtName.Text == string.Empty ||
+                txtUserName.Text == string.Empty ||
+                txtPassword.Text == string.Empty ||
+                txtConfirmPassword.Text == string.Empty ||
+                cboRole.Text == string.Empty ||
+                cboStatus.Text == string.Empty)
+                return false;
+
+            if (txtConfirmPassword.Text != txtPassword.Text)
+                return false;
+
+            return true;
         }
 
         private void cmdSave_Click(object sender, EventArgs e)

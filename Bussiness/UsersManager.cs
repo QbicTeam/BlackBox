@@ -18,8 +18,8 @@ namespace BlackBox.Bussiness
         private const string FLD_NOMBRE = "nombre";
         private const string FLD_PUESTO = "puesto";
         private const string FLD_STATUS = "status";
-        private const string FLD_PASSWORD_SALT = "passwordsalt";
-        private const string FLD_PASSWORD_HASH = "passwordhash";
+        private const string FLD_PASSWORD_SALT = "pwdSalt";
+        private const string FLD_PASSWORD_HASH = "pwdHash";
 
         private const string SP_SAVE = "users_save";
         private const string SP_UPDATE = "users_update";
@@ -80,22 +80,22 @@ namespace BlackBox.Bussiness
             prm = new SqlParameter();
             prm.ParameterName = FLD_PASSWORD_SALT;
             prm.Direction = ParameterDirection.Input;
-            prm.SqlDbType = SqlDbType.VarChar;
-            prm.Size = 250;
+            prm.SqlDbType = SqlDbType.VarBinary;
+            // prm.Size = 250;
             prm.Value = passwordSalt;
             cmd.Parameters.Add(prm);
 
             prm = new SqlParameter();
             prm.ParameterName = FLD_PASSWORD_HASH;
             prm.Direction = ParameterDirection.Input;
-            prm.SqlDbType = SqlDbType.VarChar;
-            prm.Size = 250;
+            prm.SqlDbType = SqlDbType.VarBinary;
+            // prm.Size = 250;
             prm.Value = passwordHash;
             cmd.Parameters.Add(prm);
 
             this._conn.Open();
 
-            int userId = (int) cmd.ExecuteScalar();
+            int userId = Convert.ToInt32(cmd.ExecuteScalar());
 
             if (userId > 0)
             {
