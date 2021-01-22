@@ -138,6 +138,8 @@ namespace BlackBox.Controls
                     break;
                 case "customesp":
                     this.Size = new Size(309, _renglonAlturaNormal + (_renglonAlturaCustom * articulo.Opciones.Count(o => o.Default) + _marginBottonCustom));
+                    if (_articulo.Validar)
+                        _sinAsignar.Add(2);
                     break;
                 default:  // Los Normales... si no esta definido es tratado como Normal
                     this.Size = new Size(309, _renglonAlturaNormal); // 27 Altura base Normal
@@ -268,6 +270,17 @@ namespace BlackBox.Controls
                 foreColor = SystemColors.ControlText;
             }
 
+            if (_articulo.ComboTipo != null
+                && _articulo.ComboTipo.ToLower() == "customesp"
+                && _articulo.Validar)
+            {
+                if (_articulo.Opciones.Count > 0
+                    && _articulo.Opciones.Where(o => o.Default).ToList().Count() == 0)
+                {
+                    foreColor = _rojo;
+                }
+            }
+
             lblArticulo.ForeColor = foreColor;
             lblPrecio.ForeColor = foreColor;
             lblCantidad.ForeColor = foreColor;
@@ -299,24 +312,52 @@ namespace BlackBox.Controls
         public void ToSelected(int locationY = -1, bool init = false)
         {
             /* Normal, Combo, Custom, CustomEst */
-            Color backColor;
+            Color backColor = Color.White;
+            Color foreColor = SystemColors.ControlText; 
             Control ForeInWhite = null;
+            var customEspN1 = false;
 
             Console.WriteLine("LocationY: " + locationY.ToString() );
 
 
-            backColor = Color.White;
+            // backColor = Color.White;
 
             // Encabezado Articulo Venta
-            if (_articulo.ComboTipo.ToLower() != "combo")
-                backColor = SystemColors.ControlDark;
 
+            if (_articulo.ComboTipo != null
+                && _articulo.ComboTipo.ToLower() == "customesp"
+                && _articulo.Validar)
+            {
+                if (_articulo.Opciones.Count > 0
+                    && _articulo.Opciones.Where(o => o.Default).ToList().Count() == 0)
+                {
+                    backColor = _rojo;
+                    foreColor = Color.White;
+                    customEspN1 = true;
+                }
+            }
+            /*
             lblPrecio.Font = new Font(lblPrecio.Font, FontStyle.Bold);
             lblPrecio.ForeColor = SystemColors.ControlText;
             lblCantidad.Font = new Font(lblPrecio.Font, FontStyle.Bold);
             lblCantidad.ForeColor = SystemColors.ControlText;
             lblArticulo.Font = new Font(lblArticulo.Font, FontStyle.Bold);
             lblArticulo.ForeColor = SystemColors.ControlText;
+            */
+            lblPrecio.Font = new Font(lblPrecio.Font, FontStyle.Bold);
+            lblPrecio.ForeColor = foreColor;
+            lblPrecio.BackColor = backColor;
+            lblCantidad.Font = new Font(lblPrecio.Font, FontStyle.Bold);
+            lblCantidad.ForeColor = foreColor;
+            lblCantidad.BackColor = backColor;
+            lblArticulo.Font = new Font(lblArticulo.Font, FontStyle.Bold);
+            lblArticulo.ForeColor = foreColor;
+            lblArticulo.BackColor = backColor;
+
+            backColor = Color.White;
+
+            if (_articulo.ComboTipo.ToLower() != "combo")
+                backColor = SystemColors.ControlDark;
 
             // Investigar si es necesario validar el "ComboTipo"
             Console.WriteLine("--- Controles I ---");
@@ -326,31 +367,42 @@ namespace BlackBox.Controls
                 if (child.ForeColor == Color.White)
                     ForeInWhite = child;
 
-                //if (_articulo.ComboTipo.ToLower() == "combo" &&  i < 0 && child.Location.Y < _opcionAlturaInicial)
-                if (_articulo.ComboTipo.ToLower() == "combo" // && child.Name.StartsWith(locationY.ToString()) )
-                    && (child.Name.StartsWith(locationY.ToString()) 
-                        || (locationY < _opcionAlturaInicial && child.Location.Y < _opcionAlturaInicial )
+                if (!customEspN1)
+                {
+                    //if (_articulo.ComboTipo.ToLower() == "combo" &&  i < 0 && child.Location.Y < _opcionAlturaInicial)
+                    if (_articulo.ComboTipo.ToLower() == "combo" // && child.Name.StartsWith(locationY.ToString()) )
+                        && (child.Name.StartsWith(locationY.ToString())
+                            || (locationY < _opcionAlturaInicial && child.Location.Y < _opcionAlturaInicial)
+                            )
                         )
-                    ) 
-                    child.BackColor = SystemColors.ControlDark;
+                        child.BackColor = SystemColors.ControlDark;
+                    else
+                        child.BackColor = backColor;
+                }
                 else
-                    child.BackColor = backColor;
-                
+                {
+                    if (child.Location.Y < _opcionAlturaInicial)
+                    {
+                        child.BackColor = _rojo;
+                        child.ForeColor = Color.White;
+                    }
+                }
 
                 if (locationY >= 0 && child.Location.Y == locationY)
                 {
 
                     var op = _articulo.Opciones.Where(o => o.LocationY == locationY).FirstOrDefault();
-                    if (op == null)
-                    {
-                        child.BackColor = SystemColors.ControlDark;
-                        if (_articulo.ComboTipo.ToLower() == "customesp" && _articulo.Validar)
-                        {
-                            child.BackColor = _rojo;
-                            child.ForeColor = Color.White;
-                        }
-                    }
-                    else
+                    //if (op == null)
+                    //{
+                    //    child.BackColor = SystemColors.ControlDark;
+                    //    if (_articulo.ComboTipo.ToLower() == "customesp" && _articulo.Validar)
+                    //    {
+                    //        child.BackColor = _rojo;
+                    //        child.ForeColor = Color.White;
+                    //    }
+                    //}
+                    //else
+                    if (op != null)
                     {
                         if (op.Intercambiable)
                         {
@@ -399,11 +451,11 @@ namespace BlackBox.Controls
         }       
         private void ForecolorInWhite (Control ForeInWhite)
         {
-            if (ForeInWhite != null)
+            if (ForeInWhite != null && ForeInWhite.Location.Y > _opcionAlturaInicial)
             {
                 ForeInWhite.BackColor = Color.White;
                 var op = _articulo.Opciones.Where(o => o.LocationY == ForeInWhite.Location.Y).FirstOrDefault();
-                if (op.ArticuloOp.ComboTipo != null
+                if (op != null && op.ArticuloOp.ComboTipo != null
                     && op.ArticuloOp.ComboTipo.ToLower() == "customesp"
                     && op.ArticuloOp.Validar)
                 {
@@ -457,7 +509,7 @@ namespace BlackBox.Controls
                 lblCantidad.Visible = false;
 
             lblCantidad.Text = string.Format("({0})", _cantidad);
-            lblPrecio.Text = string.Format("{0:C}", precio);
+            lblPrecio.Text = string.Format(_format, precio);
 
             CandidadLocationX();
             ArticuloMasMenosChange();
@@ -486,6 +538,10 @@ namespace BlackBox.Controls
             }
             lblCantidad.Location = new Point(cX, -1);
         }
+        public int Cantidad()
+        {
+            return _cantidad;
+        }
         /// <summary>
         /// Numero total de Articulos de acuerdo al Articulo venta (puede variar en los Combos, los custom cuentan como uno)
         /// </summary>
@@ -504,12 +560,50 @@ namespace BlackBox.Controls
             
         }
         /// <summary>
+        /// Da el formato Rojo al fondo si la validacion aun no tiene una opcion seleccionada, esto para la opcion principal (N1)
+        /// </summary>
+        private void CustomValidarFormatoN1()
+        {
+            Color backColor = SystemColors.ControlDark;// Color.White;
+            Color foreColor = SystemColors.ControlText;
+
+            _sinAsignar.Clear(); // Esto funciona para los que solo para N1
+
+
+            if (_articulo.ComboTipo != null
+                && _articulo.ComboTipo.ToLower() == "customesp"
+                && _articulo.Validar)
+            {
+                if (_articulo.Opciones.Count > 0
+                    && _articulo.Opciones.Where(o => o.Default).ToList().Count() == 0)
+                {
+                    backColor = _rojo;
+                    foreColor = Color.White;
+                    _sinAsignar.Add(2);
+                }
+            }
+
+            lblPrecio.Font = new Font(lblPrecio.Font, FontStyle.Bold);
+            lblPrecio.ForeColor = foreColor;
+            lblPrecio.BackColor = backColor;
+            lblCantidad.Font = new Font(lblPrecio.Font, FontStyle.Bold);
+            lblCantidad.ForeColor = foreColor;
+            lblCantidad.BackColor = backColor;
+            lblArticulo.Font = new Font(lblArticulo.Font, FontStyle.Bold);
+            lblArticulo.ForeColor = foreColor;
+            lblArticulo.BackColor = backColor;
+
+            lblFondo.BackColor = backColor;
+            
+        }
+        /// <summary>
         /// Agrega/Quita Articulos En Custom o Intercambiables.
         /// </summary>
         /// <param name="articuloOp">Opcion a Agregar/Quitar o intercambiar</param>
         /// <param name="locacionY">Posicion del articulo/Para los de tipo CustomEsp sera la LocacionY padre.</param>
         /// <param name="mas">Indica si se agrega/intercambio o quita.</param>        
-        public void ArticuloOpcion(Articulo articuloOp, int locacionY, bool mas)
+        /// <param name="mediaRacion">Indica si solo se esta agregando Media Racion y se manda 1 u 2, si es Cero = Racion completa</param>        
+        public void ArticuloOpcion(Articulo articuloOp, int locacionY, bool mas, int mediaRacion = 0)
         {
             if (!((_articulo.ComboTipo.ToLower() == "combo" && _intercambiablesY.Count > 0)
                 || (_articulo.ComboTipo.ToLower().StartsWith("custom")))) 
@@ -522,37 +616,60 @@ namespace BlackBox.Controls
                 var ingrediente = _articulo.Opciones.Where(i => i.ArticuloOp.Producto == articuloOp.Producto).FirstOrDefault();
                 if (mas)
                 {
-                    ingrediente.Default = true;
+                    ingrediente.MediaRacion = mediaRacion;
 
-                    _precioAdicional += ingrediente.Costo;
-                    locacionYsoN = _opcionAlturaInicial + (_renglonAlturaCustom * (_articulo.Opciones.Count(o => o.Default) -1));//locacionY + _renglonAlturaNormal - _marginBottonCustom + (_renglonAlturaCustom * (artOp.ArticuloOp.Opciones.Count(o => o.Default) - 1)); // locacionY + _renglonAlturaNormal + (_renglonAlturaCustom * (artOp.ArticuloOp.Opciones.Count(o => o.Default) - 1));                                                   
-                    AddSubOpcionCtrl(articuloOp, locacionY, locacionYsoN, _OpcionPaddin);
-                    ingrediente.LocationY = locacionY; // Locacion del padre.
-                    ArticuloYsChangeInterno(locacionYsoN, _renglonAlturaCustom, true);
+                    if (!ingrediente.Default)
+                    {
+                        // _articulo.Opciones.Find(o => o.ArticuloOp.Producto == articuloOp.Producto).Default = true;
+                        ingrediente.Default = true;                        
+
+                        // _precioAdicional += ingrediente.Costo;
+                        locacionYsoN = _opcionAlturaInicial + (_renglonAlturaCustom * (_articulo.Opciones.Count(o => o.Default) - 1)); //locacionY + _renglonAlturaNormal - _marginBottonCustom + (_renglonAlturaCustom * (artOp.ArticuloOp.Opciones.Count(o => o.Default) - 1)); // locacionY + _renglonAlturaNormal + (_renglonAlturaCustom * (artOp.ArticuloOp.Opciones.Count(o => o.Default) - 1));                                                   
+                        AddSubOpcionCtrl(articuloOp, locacionY, locacionYsoN, _OpcionPaddin, false, mediaRacion);
+                        ingrediente.LocationY = locacionY; // Locacion del padre.
+                        ArticuloYsChangeInterno(locacionYsoN, _renglonAlturaCustom, true);
+                        CustomValidarFormatoN1();
+                    }
+                    else
+                    {
+                        foreach (Control child in this.Controls)
+                        {
+                            if (((Label)child).Text.StartsWith(articuloOp.Producto))
+                            {
+                                var locY = child.Location.Y;
+                                ((Label)child).Text = articuloOp.Producto + (mediaRacion != 0 ? mediaRacion.ToString() : string.Empty);
+                                break;
+                            }
+
+                        }
+                    }
                 }
                 else
                 {
-                    _precioAdicional -= ingrediente.Costo;
+                    // _precioAdicional -= ingrediente.Costo;
                     _articulo.Opciones.Find(o => o.ArticuloOp.Producto == articuloOp.Producto).Default = false;
                     foreach (Control child in this.Controls)
                     {
-                        if (((Label)child).Text == articuloOp.Producto)
+                        if (((Label)child).Text.StartsWith(articuloOp.Producto))
                         {
                             var locY = child.Location.Y;
                             this.Controls.Remove(child);
-                            foreach (Control childOp in this.Controls)
-                            {
-                                if (childOp.Location.Y > locY)
-                                    childOp.Location = new Point(childOp.Location.X, childOp.Location.Y - locY);
-                            }
-
-                            this.Size = new Size(309, _renglonAlturaNormal + (_renglonAlturaCustom * _articulo.Opciones.Count(o => o.Default) + _marginBottonCustom));
+                            ArticuloYsChangeInterno(locY, _renglonAlturaCustom, false);
+                            this.Size = new Size(309, this.Size.Height - _renglonAlturaCustom);
                             ArticuloYsChange(this.Location.Y, _renglonAlturaCustom, false);
                             break;
                         }
 
                     }
+                    CustomValidarFormatoN1();
                 }
+                // Calcular el nuevo costo Adicional de acuerdo la aconfiguracion del Especial (Cantidad de Ingredientes Incluidos, Cantidad de Mitades)
+                if (_articulo.CostoIngredienteAdicional > 0)
+                {
+                    // _precioAdicional += ingrediente.Costo;                    
+                    CalculaCostoAdicional();                    
+                }
+
                 return;
             }
 
@@ -717,13 +834,94 @@ namespace BlackBox.Controls
                 }
             }
         }
-        private void AddSubOpcionCtrl(Articulo articuloOp, int locacionY, int locacionYso, int paddingLeft, bool causesValidation = false)
+        /// <summary>
+        /// Calcula el costo por los Ingredientes extras de acuerdo a la configuracion del Articulo Padre (debe de ser de tipo 'Custom') 
+        /// </summary>
+        private void CalculaCostoAdicional()
+        {
+            var precioAdicionalOrg = _precioAdicional;
+            var ingRacionCompleta = _articulo.Opciones.Where(i => i.Default && i.MediaRacion == 0).Count(); // Cantidad ingredientes con Racion Completa.
+            var mediasRaciones = _articulo.Opciones.Where(i => i.Default && i.MediaRacion > 0).Count(); // Cantidad total de ingredientes a Media Racion.
+            var ingTotales = ingRacionCompleta + (mediasRaciones / 2); 
+            if (mediasRaciones > 0)
+                if ((mediasRaciones % 2) != 0)
+                    ingTotales++; // Si la divicion termina en fraccion se agrega un ingrediente
+            if (ingTotales > _articulo.IngredientesSinCosto)
+                _precioAdicional = _articulo.CostoIngredienteAdicional * (ingTotales - _articulo.IngredientesSinCosto);
+            else
+                _precioAdicional = 0;
+
+            if (precioAdicionalOrg == 0 && _precioAdicional > 0) // Si se recien tiene costo extra (Agregar la leyenda)
+            {
+
+                // Agregar la leyenda de Costo por Ingredientes Extras.
+                var locacionYCA = _opcionAlturaInicial + (_renglonAlturaCustom * (_articulo.Opciones.Count(o => o.Default))) + 1;
+                var nCtrl = new Label()
+                {
+                    Size = lblOpcion.Size,
+                    Visible = true,
+                    Text = string.Format("Costo de Ingrediente " + _format, _precioAdicional),
+                    Font = fontCustom,
+                    Location = new Point(0, locacionYCA),
+                    BackColor = SystemColors.ControlDark,
+                    TextAlign = ContentAlignment.MiddleRight,
+                    Name = "CostoAdicional"
+                };                
+                this.Size = new Size(309, this.Size.Height + _renglonAlturaCustom + _marginBottonCustom);
+                nCtrl.Click += lblOpcion_Click;
+
+                this.Controls.Add(nCtrl);
+                this.Controls.SetChildIndex(nCtrl, 1);
+                nCtrl.BringToFront();
+
+                ArticuloYsChange(this.Location.Y, _renglonAlturaCustom, true);
+            }
+            if (precioAdicionalOrg != 0 && _precioAdicional == 0) // Si se recien NO tiene costo extra (Quitar la leyenda)
+            {
+                foreach (Control child in this.Controls)
+                {
+                    if (((Label)child).Name == "CostoAdicional")
+                    {
+                        var locY = child.Location.Y;
+                        this.Controls.Remove(child);
+                        ArticuloYsChangeInterno(locY, _renglonAlturaCustom, false);
+                        this.Size = new Size(309, this.Size.Height - _renglonAlturaCustom);
+                        ArticuloYsChange(this.Location.Y, _renglonAlturaCustom, false);
+                        break;
+                    }
+
+                }
+            }
+            if (precioAdicionalOrg != 0 && _precioAdicional != 0) // Si se recien tiene costo extra (Actualizar el precio)
+            {
+                foreach (Control child in this.Controls)
+                {
+                    if (((Label)child).Name == "CostoAdicional")
+                    {
+                        var locY = child.Location.Y;
+                        ((Label)child).Text = string.Format("Costo de Ingrediente " + _format, _precioAdicional);
+                        break;
+                    }
+                }
+            }
+            
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="articuloOp">Sub Articulo (articulo opcion) agregado</param>
+        /// <param name="locacionY">PosicionY del producto Padre</param>
+        /// <param name="locacionYso">PosicionY del subproducto</param>
+        /// <param name="paddingLeft">Padding del subproducto</param>
+        /// <param name="causesValidation">Para los casos de ""CustomEsp" como Refrescos</param>
+        /// <param name="mediaRacion">Indica la cantidad de la racion donde 0 = Racion comprela, 1.- Media Racion 1, 2.- Media Racion 2</param>
+        private void AddSubOpcionCtrl(Articulo articuloOp, int locacionY, int locacionYso, int paddingLeft, bool causesValidation = false, int mediaRacion = 0)
         {
             var nCtrl = new Label()
             {
                 Size = lblOpcion.Size, 
                 Visible = true,
-                Text = articuloOp.Producto,
+                Text = articuloOp.Producto + (mediaRacion != 0 ? mediaRacion.ToString() : string.Empty),
                 Font = fontCustom, 
                 Location = new Point(0, locacionYso), 
                 BackColor = SystemColors.ControlDark,
@@ -749,7 +947,14 @@ namespace BlackBox.Controls
                 if (ctrl.Location.Y > locationY)
                 {
                     if (mas)
+                    {
                         ctrl.Location = new Point(ctrl.Location.X, ctrl.Location.Y + altura);
+                        if (((Label)ctrl).Name == "CostoAdicional")
+                        {
+                            this.Controls.SetChildIndex(ctrl, 1);
+                            ctrl.BringToFront();
+                        }
+                    }
                     else
                         ctrl.Location = new Point(ctrl.Location.X, ctrl.Location.Y - altura);
                 }
@@ -779,7 +984,8 @@ namespace BlackBox.Controls
             locationY = Convert.ToInt32(((Label)sender).Name.Split('_')[0]);
             
             var optInter = _articulo.Opciones.Where(op =>
-                (op.LocationY == locationY && op.ArticuloOp.Opciones.Count > 0
+                (op.LocationY == locationY 
+                  && op.ArticuloOp.Opciones != null && op.ArticuloOp.Opciones.Count > 0
                 )).FirstOrDefault();
 
 

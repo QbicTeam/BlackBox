@@ -1,85 +1,4 @@
 {
-  "Login": {
-    "version": "17.1.2.0.1827",
-    "fechaVersion": "03 Sep 2020",
-    "sitio": "QZ7-A1U-HHA-80U",
-    "Computadora": "L2A6-PHONE1",
-    "Taza": 0.08,
-    "Cajero": "Omar Carranza Garcia"
-  },
-  "Pantalla1": {
-    "RelojMarcador": [
-      {
-        "Fecha": "20201026T00:00:00",
-        "Entrada": "",
-        "Salida": "",
-        "Horas": ""
-      }
-    ],
-    "Horario": [
-      {
-        "Fecha": "20201026T00:00:00",
-        "Entrada": "",
-        "Salida": "",
-        "Horas": ""
-      }
-    ],
-    "TrabajandoHoy": [
-      {
-        "Nombre": "EMMAN...",
-        "Trabajo": "Ast Gere...",
-        "Horas": "** 9:56a-??..."
-      },
-      {
-        "Nombre": "Fatima C.",
-        "Trabajo": "Cajero",
-        "Horas": "** 11:28a-?..."
-      }
-    ],
-    "Mesajeria": [
-      {
-        "De": "Caesar Visi...",
-        "Asunto": "Close Day Warning...",
-        "Fecha": "Hoy, 2:00a"
-      },
-      {
-        "De": "Caesar Visi...",
-        "Asunto": "Close Day Warning...",
-        "Fecha": "Ayer, (%s), 2:..."
-      },
-      {
-        "De": "Caesar Visi...",
-        "Asunto": "Close Day Warning...",
-        "Fecha": "Sáb, 2:00a"
-      },
-      {
-        "De": "Caesar Visi...",
-        "Asunto": "Close Day Warning...",
-        "Fecha": "Vie, 2:00a"
-      },
-      {
-        "De": "Caesar Visi...",
-        "Asunto": "Close Day Warning...",
-        "Fecha": "Jue, 2:00a"
-      }
-    ],
-    "Eventos": [
-      {
-        "Comienza": "10/31",
-        "NombreEvento": "Haloween"
-      },
-      {
-        "Comienza": "11/01",
-        "NombreEvento": "Día de Todos los Santos"
-      },
-      {
-        "Comienza": "11/02",
-        "NombreEvento": "Día de los Muertos"
-      }
-    ]
-  },
-  "PantallaVentas": {
-    "ArticulosVencidosPie": "Articulos Vencidos: Un chingo...",
     "HNR": [
       {
         "Producto": "Classic Pepperoni",
@@ -1699,5 +1618,4 @@
         "Tipo": ""
       }
     ]
-  }
 }

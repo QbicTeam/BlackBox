@@ -20,7 +20,19 @@ namespace BlackBox.Model
         /// Va con la opcion de CustomEsp
         /// </summary>
         public bool Validar { get; set; }
-        public string Grupo { get; set; }
+        /// <summary>
+        /// Va con la opcion de Custom. Indica la cantidad de ingredientes incluidos en el Precio 
+        /// </summary>
+        public int IngredientesSinCosto { get; set; }
+        /// <summary>
+        /// Va con la opcion de Custom. Costo por Ingrediente Extra
+        /// </summary>
+        public decimal CostoIngredienteAdicional { get; set; }
+        /// <summary>
+        /// Va con la opcion de Custom. Indica si se despliega 0 Checks, 1 Check, 2 Checks. Esto en relacion a que un Ingrediente puede ser administrado a media Racion.
+        /// </summary>
+        public int Raciones_Checks { get; set; }
+        // public string Grupo { get; set; }
         public List<ArticuloOpcion> Opciones { get; set; }
         /// <summary>
         /// Posicion asignada al momento del despliegue. (no asignable en BD).

@@ -25,10 +25,12 @@ namespace BlackBox
         private Form _entryForm;
         private pnlArtVendido _artVendidoSeleccionado;
         private int _opcionLocationY;
+        private MMenu _menu;
 
         private int caracteresMaximos = 56;
         private string[] dias = { "Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab" };
         private string[] meses = { "Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic" };
+        private string _format = "{0:$#######.00}";
 
         public frmMenu()
         {
@@ -50,6 +52,9 @@ namespace BlackBox
             var json = File.ReadAllText("appSettings.json");
             _datos = JsonConvert.DeserializeObject<ObjBlackBox>(json);
 
+            var jsonMenu = File.ReadAllText("appConfigM.json");
+            _menu = JsonConvert.DeserializeObject<MMenu>(jsonMenu);
+
             LoadSideMenu();
             cmdHnr.Image = imgSHnr.Image;
             FillMenus();
@@ -64,6 +69,7 @@ namespace BlackBox
             lblArticulosPie.Text = _datos.PantallaVentas.ArticulosVencidosPie;
 
             comanda = new Comanda();
+            BotonesMasMenosBorrar();
         }
 
         private void SetMenuSettings()
@@ -203,7 +209,7 @@ namespace BlackBox
 
         private void LoadSideMenu()
         {
-            var arts = _datos.PantallaVentas.Especiales;
+            var arts = _menu.Especiales; // _datos.PantallaVentas.Especiales;
             // Definir la imagen a utilizar.
             var img = imgSidebarButton.Image;
 
@@ -231,7 +237,7 @@ namespace BlackBox
             // decimal taza = _datos.Login.Taza + 1;
 
             // TODO Remover, es temporal
-            if (itm.Producto.ToLower() == "combo crazy crunsh")
+            /*if (itm.Producto.ToLower() == "combo crazy crunsh")
             {
                 itm.Cantidad = 2;
                 itm.Opciones = new List<ArticuloOpcion>();
@@ -245,8 +251,8 @@ namespace BlackBox
                     Intercambiable = false
                 });
                 itm.ComboTipo = "Combo";
-            }
-            if (itm.Producto.ToLower() == "combo cu4tro2.0")
+            }*/
+            /*if (itm.Producto.ToLower() == "combo cu4tro2.0")
             {
                 itm.Cantidad = 2;
                 itm.Opciones = new List<ArticuloOpcion>();
@@ -261,8 +267,8 @@ namespace BlackBox
                     Intercambiable = false
                 });
                 itm.ComboTipo = "Combo";
-            }
-            if (itm.Producto.ToLower() == "italian pack")
+            }*/
+            /*if (itm.Producto.ToLower() == "italian pack")
             {
                 itm.Cantidad = 3;
                 itm.Opciones = new List<ArticuloOpcion>();
@@ -299,8 +305,8 @@ namespace BlackBox
                     Intercambiable = true
                 });
                 itm.ComboTipo = "Combo";
-            }
-            if (itm.Producto.ToLower() == "2x15 aderezos")
+            }*/
+            /*if (itm.Producto.ToLower() == "2x15 aderezos")
             {
                 itm.Opciones = new List<ArticuloOpcion>();
                 itm.Opciones.Add(new ArticuloOpcion()
@@ -334,8 +340,8 @@ namespace BlackBox
                     Default = false
                 });
                 itm.ComboTipo = "Combo";
-            }
-            if (itm.Producto.ToLower() == "3x20 aderezos")
+            }*/
+            /*if (itm.Producto.ToLower() == "3x20 aderezos")
             {
                 itm.Opciones = new List<ArticuloOpcion>();
                 itm.Opciones.Add(new ArticuloOpcion()
@@ -384,8 +390,8 @@ namespace BlackBox
                     Default = false
                 });
                 itm.ComboTipo = "Combo";
-            }
-            if (itm.Producto.ToLower() == "custom pizza")
+            }*/
+            /*if (itm.Producto.ToLower() == "custom pizza")
             {
                 itm.Cantidad = 1;
                 itm.Opciones = new List<ArticuloOpcion>();
@@ -468,8 +474,8 @@ namespace BlackBox
                     Default = false
                 });
                 itm.ComboTipo = "Custom";
-            }
-            if (itm.Producto.ToLower() == "caesar wings")
+            }*/
+            /*if (itm.Producto.ToLower() == "caesar wings")
             {
                 itm.Cantidad = 1;
                 itm.Opciones = new List<ArticuloOpcion>();
@@ -498,13 +504,15 @@ namespace BlackBox
                     Default = false
                 });
                 itm.ComboTipo = "Custom";
-            }
+            }*/
             //--
 
 
             if (_artVendidoSeleccionado != null && _opcionLocationY > 0 && pnlSubMenu.Visible) // Aqui validar que se trate de un sub Menu
             {
-                _artVendidoSeleccionado.ArticuloOpcion(itm, _opcionLocationY, true);
+                var mas = true;
+                var racion = 0;
+                _artVendidoSeleccionado.ArticuloOpcion(itm, _opcionLocationY, mas, racion); // true);
                 // TODO: Validar si se sale o no.
                 return;
             }
@@ -533,7 +541,7 @@ namespace BlackBox
             _artVendidoSeleccionado.ToSelected(_artVendidoSeleccionado._opAutoSelectLocationY, true);
 
             CalcularTotal();
-
+            BotonesMasMenosBorrar();
             /*
             comanda.Total += itm.Precio;
             comanda.SubTotal = comanda.Total / taza;
@@ -589,7 +597,7 @@ namespace BlackBox
                     imagenF = GetImagen(art.Tipo + tamano);
                 }
                 // cmdMenuButton btn = new cmdMenuButton("Pizza " + x.ToString(), 135, imgMenuHnr.Image);
-                cmdMenuButton btn = new cmdMenuButton(art.Producto, art.Precio, imagenF, tamanoN);
+                cmdMenuButton btn = new cmdMenuButton(art, imagenF, tamanoN); // art.Producto, art.Precio, imagenF, tamanoN);
                 imagenF = imagen;
 
                 //if (x < 13)
@@ -676,11 +684,11 @@ namespace BlackBox
         {
             var result = new List<Articulo>();
             
-            foreach (PropertyInfo prop in _datos.PantallaVentas.GetType().GetProperties())
+            foreach (PropertyInfo prop in _menu.GetType().GetProperties()) // _datos.PantallaVentas.GetType().GetProperties())
             {
                 if (prop.Name.ToLower() == nombre.ToLower())
                 {
-                    result = (List<Articulo>) prop.GetValue(_datos.PantallaVentas);
+                    result = (List<Articulo>)prop.GetValue(_menu); //_datos.PantallaVentas);
                     return result;
                 }
             }
@@ -709,9 +717,9 @@ namespace BlackBox
             comanda = new Comanda();
 
             lblNumArts.Text = comanda.Articulos.Count().ToString();
-            lblSubTotal.Text = string.Format("{0:C}", comanda.SubTotal);
-            lblImpu.Text = string.Format("{0:C}", comanda.Impuesto);
-            lblTotal.Text = string.Format("{0:C}", comanda.Total);
+            lblSubTotal.Text = string.Format(_format, comanda.SubTotal);
+            lblImpu.Text = string.Format(_format, comanda.Impuesto);
+            lblTotal.Text = string.Format(_format, comanda.Total);
 
         }
 
@@ -889,7 +897,7 @@ namespace BlackBox
 
         private string RenglonProductoRecibo(string nombre, decimal precio, int tipo = 0)
         {
-            var precioS = string.Format("{0:C}", precio);
+            var precioS = string.Format(_format, precio);
             var cUsados = precioS.Length + nombre.Length;
             var espacios = caracteresMaximos - cUsados;
 
@@ -914,31 +922,18 @@ namespace BlackBox
         private void cmdEspeciales_Click(object sender, EventArgs e)
         {
             pnlTabs.BackgroundImage = imgEspeciales.Image;
-            if (_artVendidoSeleccionado != null)
-                _artVendidoSeleccionado.MasUno();
         }
 
         private void cmdEnEspera_Click(object sender, EventArgs e)
         {
             pnlTabs.BackgroundImage = imgEnEspera.Image;
-            if (_artVendidoSeleccionado != null)
-                _artVendidoSeleccionado.MenosUno();
 
         }
 
         private void cmdOnline_Click(object sender, EventArgs e)
         {
             pnlTabs.BackgroundImage = imgOnline.Image;
-            if (_artVendidoSeleccionado != null)
-            {
-                var altura = _artVendidoSeleccionado.Height;
-                var locationY = _artVendidoSeleccionado.Location.Y;
-                pnlComanda.Controls.Remove(_artVendidoSeleccionado);
-                _artVendidoSeleccionado = null;
 
-                ArticuloYsChange(locationY, altura, false);
-                CalcularTotal();
-            }
         }
 
         private void cmdReciente_Click(object sender, EventArgs e)
@@ -959,6 +954,8 @@ namespace BlackBox
                 if (((pnlArtVendido)ctrl).Location.Y == articuloPadreLocacionY) 
                     _artVendidoSeleccionado = ((pnlArtVendido)ctrl);
             }
+            BotonesMasMenosBorrar();
+
             _artVendidoSeleccionado.ToSelected(intercambiableLocacionY);
             if (intercambiableLocacionY > 0)
                 _opcionLocationY = intercambiableLocacionY;
@@ -1007,6 +1004,7 @@ namespace BlackBox
         private void ArticuloMasMenosChange()
         {
             CalcularTotal();
+            BotonesMasMenosBorrar();
         }
         private void ArticuloYsChange(int y, int altura, bool mas)
         {
@@ -1042,9 +1040,9 @@ namespace BlackBox
             comanda.Impuesto = comanda.Total - comanda.SubTotal;
 
             lblNumArts.Text = cantArts.ToString();
-            lblSubTotal.Text = string.Format("{0:C}", comanda.SubTotal);
-            lblImpu.Text = string.Format("{0:C}", comanda.Impuesto);
-            lblTotal.Text = string.Format("{0:C}", comanda.Total);
+            lblSubTotal.Text = string.Format(_format, comanda.SubTotal);
+            lblImpu.Text = string.Format(_format, comanda.Impuesto);
+            lblTotal.Text = string.Format(_format, comanda.Total);
 
             Console.WriteLine("NumArt " + lblNumArts.Text);
             Console.WriteLine("SubTotal " + lblSubTotal.Text);
@@ -1053,6 +1051,52 @@ namespace BlackBox
             Console.WriteLine("- - - - - ");
 
 
+        }
+
+        private void BotonesMasMenosBorrar()
+        {
+            if (_artVendidoSeleccionado == null)
+            {
+                cmdMas.Visible = false;
+                cmdMenos.Visible = false;
+                cmdBorrar.Visible = false;
+                return;
+            }
+            cmdMas.Visible = true;
+            cmdBorrar.Visible = true;
+
+            if (_artVendidoSeleccionado.Cantidad() > 1)
+                cmdMenos.Visible = true;
+            else
+                cmdMenos.Visible = false;
+        }
+
+        private void cmdMas_Click(object sender, EventArgs e)
+        {
+            if (_artVendidoSeleccionado != null)
+                _artVendidoSeleccionado.MasUno();
+        }
+
+        private void cmdMenos_Click(object sender, EventArgs e)
+        {
+            if (_artVendidoSeleccionado != null)
+                _artVendidoSeleccionado.MenosUno();
+
+        }
+
+        private void cmdBorrar_Click(object sender, EventArgs e)
+        {
+            if (_artVendidoSeleccionado != null)
+            {
+                var altura = _artVendidoSeleccionado.Height;
+                var locationY = _artVendidoSeleccionado.Location.Y;
+                pnlComanda.Controls.Remove(_artVendidoSeleccionado);
+                _artVendidoSeleccionado = null;
+
+                ArticuloYsChange(locationY, altura, false);
+                CalcularTotal();
+                BotonesMasMenosBorrar();
+            }
         }
     }
 }
