@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bussiness\UsersManager.cs" />
     <Compile Include="Controls\cmdMenuButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -73,6 +74,12 @@
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdminUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdminUsers.Designer.cs">
+      <DependentUpon>frmAdminUsers.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
@@ -111,6 +118,7 @@
     <Compile Include="Model\PantallaVentas.cs" />
     <Compile Include="Model\RelojMarcador.cs" />
     <Compile Include="Model\TrabajandoHoy.cs" />
+    <Compile Include="Model\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Controls\cmdMenuButton.resx">
@@ -124,6 +132,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAdminUsers.resx">
+      <DependentUpon>frmAdminUsers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
@@ -147,7 +158,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="appSettings.json" />
+    <None Include="appSettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
