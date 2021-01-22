@@ -337,5 +337,12 @@ namespace BlackBox
             menu.Show();
             this.Close();
         }
+
+        private void cmdEmpleados_Click(object sender, EventArgs e)
+        {
+            frmAdminUsers adminUsers = new frmAdminUsers();
+            adminUsers.ShowDialog();
+
+        }
     }
 }

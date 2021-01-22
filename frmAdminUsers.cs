@@ -45,10 +45,10 @@ namespace BlackBox
 
         private void InsertUser()
         {
-            string pwdSalt;
-            string pwdHash;
+            string pwdSalt = string.Empty;
+            string pwdHash = string.Empty;
 
-            this.EncryptPwd(txtPassword.Text, out pwdSalt, out pwdHash);
+            // this.EncryptPwd(txtPassword.Text, out pwdSalt, out pwdHash);
 
             string sql = "insert users(nombre, puesto, activo, pwdhash, pwdsalt) values("
                 + "'" + txtName.Text + "', "
