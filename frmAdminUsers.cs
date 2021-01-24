@@ -27,6 +27,7 @@ namespace BlackBox
         private void PrepareForm()
         {
             this.Reset();
+            this.LoadUsers();
         }
 
         private void Reset()
@@ -81,6 +82,18 @@ namespace BlackBox
 
         private void LoadUsers()
         {
+            cboUsers.Items.Clear();
+            List<User> users = this.um.GetUsersList();
+
+            cboUsers.Items.Add(new User { Id = 0, Nombre = "" });
+
+            foreach(var itm in users)
+            {
+                cboUsers.Items.Add(itm);
+            }
+
+            cboUsers.DisplayMember = "Nombre";
+            cboUsers.ValueMember = "Id";
 
         }
 
@@ -113,6 +126,30 @@ namespace BlackBox
             {
                 this.InsertUser();
             }
+        }
+
+        private void cboUsers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            User user = (User)sender;
+
+            if (user.Id > 0)
+            {
+                User loadedUser = this.um.GetUserById(user.Id);
+
+                if (loadedUser != null)
+                {
+                    this.DisplayUser(loadedUser);
+                }
+            }
+        }
+
+        private void DisplayUser(User user)
+        {
+            lblId.Text = user.Id.ToString();
+            txtName.Text = user.Nombre;
+            cboRole.Text = user.Puesto;
+            cboStatus.Text = user.Status;
+            txtUserName.Text = user.UserName;
         }
     }
 }
