@@ -1,6 +1,9 @@
-﻿using System;
+﻿using BlackBox.Bussiness;
+using BlackBox.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -48,8 +51,19 @@ namespace BlackBox
 
         private void cmdLogin_Click(object sender, EventArgs e)
         {
-            frmMain frmMain = new frmMain();
-            frmMain.ShowMain(this._entryForm, this);
+            UsersManager um = new UsersManager(ConfigurationManager.ConnectionStrings["FBBDB"].ConnectionString);
+
+            User user = um.Login(txtUser.Text, txtPassword.Text);
+
+            if (user != null)
+            {
+                frmMain frmMain = new frmMain();
+                frmMain.ShowMain(this._entryForm, this);
+            }
+            else
+            {
+                MessageBox.Show("Lo siento pero no tiene acceso a esta apliacion PIRATA!");
+            }
         }
 
         public void ShowLogin(Form entryForm)

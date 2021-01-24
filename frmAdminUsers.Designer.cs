@@ -54,6 +54,7 @@
             this.cboUsers.Name = "cboUsers";
             this.cboUsers.Size = new System.Drawing.Size(267, 21);
             this.cboUsers.TabIndex = 0;
+            this.cboUsers.SelectedIndexChanged += new System.EventHandler(this.cboUsers_SelectedIndexChanged);
             // 
             // cmdNew
             // 

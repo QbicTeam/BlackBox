@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtUser = new System.Windows.Forms.TextBox();
             this.cmdClose = new System.Windows.Forms.Button();
             this.cmdCancel = new System.Windows.Forms.Button();
@@ -41,7 +41,7 @@
             // 
             this.panel1.BackgroundImage = global::BlackBox.Properties.Resources.LoginTemplate;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.txtPassword);
             this.panel1.Controls.Add(this.txtUser);
             this.panel1.Controls.Add(this.cmdClose);
             this.panel1.Controls.Add(this.cmdCancel);
@@ -51,15 +51,15 @@
             this.panel1.Size = new System.Drawing.Size(279, 193);
             this.panel1.TabIndex = 0;
             // 
-            // textBox2
+            // txtPassword
             // 
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(114, 111);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PasswordChar = '*';
-            this.textBox2.Size = new System.Drawing.Size(134, 23);
-            this.textBox2.TabIndex = 4;
+            this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPassword.Location = new System.Drawing.Point(114, 111);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(134, 23);
+            this.txtPassword.TabIndex = 4;
             // 
             // txtUser
             // 
@@ -129,6 +129,6 @@
         private System.Windows.Forms.Button cmdClose;
         private System.Windows.Forms.Button cmdCancel;
         private System.Windows.Forms.Button cmdLogin;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtPassword;
     }
 }
