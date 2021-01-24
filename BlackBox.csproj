@@ -121,6 +121,8 @@
     <Compile Include="Model\RelojMarcador.cs" />
     <Compile Include="Model\TrabajandoHoy.cs" />
     <Compile Include="Model\User.cs" />
+    <Compile Include="Model\Venta.cs" />
+    <Compile Include="Model\VentaDT.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Controls\cmdMenuButton.resx">

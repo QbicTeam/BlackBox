@@ -14,5 +14,11 @@ namespace BlackBox.Model
         public string Computadora { get; set; }
         public decimal Taza { get; set; }
         public string Cajero { get; set; }
+        public string Empresa { get; set; }
+        public string RFC { get; set; }
+        public string DireccionR1 { get; set; }
+        public string DireccionR2 { get; set; }
+        public string Caja { get; set; }
+        public int NoRecibo { get; set; }
     }
 }

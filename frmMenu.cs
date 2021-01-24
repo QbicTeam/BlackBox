@@ -26,6 +26,7 @@ namespace BlackBox
         private pnlArtVendido _artVendidoSeleccionado;
         private int _opcionLocationY;
         private MMenu _menu;
+        private int _noRecibo;
 
         private int caracteresMaximos = 56;
         private string[] dias = { "Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab" };
@@ -54,6 +55,8 @@ namespace BlackBox
 
             var jsonMenu = File.ReadAllText("appConfigM.json");
             _menu = JsonConvert.DeserializeObject<MMenu>(jsonMenu);
+
+            _noRecibo = _datos.Login.NoRecibo;
 
             LoadSideMenu();
             cmdHnr.Image = imgSHnr.Image;
@@ -824,6 +827,26 @@ namespace BlackBox
             Font font1 = new Font("Courier New", 11, FontStyle.Regular, GraphicsUnit.Point);
             Font font2 = new Font("Courier New", 12, FontStyle.Regular, GraphicsUnit.Point);
 
+            var vta = new Venta();
+            vta.Productos = new List<VentaDT>();
+            var vDT = new VentaDT();
+
+            vta.FechaHora = DateTime.Now;
+            vta.Cajero = _datos.Login.Cajero;
+            vta.Recibo = _noRecibo.ToString();
+            vta.CantidadArticulos = Convert.ToInt32(lblNumArts.Text);
+            vta.SubTotal = comanda.SubTotal;
+            vta.Impuestos = comanda.Impuesto;
+            vta.Total = comanda.Total;
+            vta.EnCorte = 0;
+            vta.Cancelado = false;
+
+            // TODO: Mandar a grabar la venta.
+
+            var nivelP = 0;
+            var espaciosTap = 5;
+
+
             // int caracteresMaximos = 56;
             int width = 490;
             int y = 20;
@@ -837,18 +860,20 @@ namespace BlackBox
 
             var hoy = string.Format("{0}, {1} {2}, {3} {4}{5}",dia,mes, DateTime.Today.Day, DateTime.Today.Year, DateTime.Now.ToString("hh:mm"), (DateTime.Now.Hour <= 12 ? "am" : "pm"));  // dia + " " + DateTime.Now.ToString("hh:mm") + (DateTime.Now.Hour <= 12 ? "am" : "pm"); // "Lun 11:57 am";  spa-es ddd
 
+            _noRecibo++;
+
             // e.Graphics.DrawString("12345678901234567890123456789012345678901234567890123456XXX", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
             txt = "Store ID 04122 - 00007";
             e.Graphics.DrawString(CentrarRenglonRecibo(txt), font, Brushes.Black, new RectangleF(0, y += 20, width, 20)); // Centrar.
             e.Graphics.DrawString(CentrarRenglonRecibo("Phone"), font, Brushes.Black, new RectangleF(0, y += 21, width, 20));// Centrar
             e.Graphics.DrawString("", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
             e.Graphics.DrawString("LITTLE CAESARS PIZZA", font1, Brushes.Black, new RectangleF(0, y += 20, width, 20));
-            e.Graphics.DrawString("GRUPO LICA BAJA S.A DE C.V", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
-            e.Graphics.DrawString("RFC GLB150904CU1", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
-            e.Graphics.DrawString("BLCD. DIAZ ORDAZ #12678 EL PRADO", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
-            e.Graphics.DrawString("TIJUANA BAJA CALIFORNIA C.P. 22105", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString(_datos.Login.Empresa, font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString(_datos.Login.RFC, font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString(_datos.Login.DireccionR1, font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString(_datos.Login.DireccionR2, font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
             e.Graphics.DrawString("", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
-            e.Graphics.DrawString(CentrarRenglonRecibo("Orden #13 121 "), font, Brushes.Black, new RectangleF(0, y += 20, width, 20)); // Centrar
+            e.Graphics.DrawString(CentrarRenglonRecibo("Orden " + _datos.Login.Caja + " " + _noRecibo.ToString()), font, Brushes.Black, new RectangleF(0, y += 20, width, 20)); // Centrar
             e.Graphics.DrawString(CentrarRenglonRecibo("nombre cliente pelon"), font, Brushes.Black, new RectangleF(0, y += 20, width, 20)); // Centrar
             e.Graphics.DrawString(CentrarRenglonRecibo(hoy), font, Brushes.Black, new RectangleF(0, y += 20, width, 20)); // "Vie. Oct. 30. 2020 08:11pm"
             e.Graphics.DrawString(CentrarRenglonRecibo("Estimado para " + hoy, 2), font2, Brushes.Black, new RectangleF(0, y += 22, width, 20)); // Vie, Oct 30, 2020 08:11pm"
@@ -862,7 +887,59 @@ namespace BlackBox
             
             foreach (Articulo art in comanda.Articulos)
             {
+                
                 e.Graphics.DrawString(RenglonProductoRecibo(art.Producto, art.Precio), font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+
+                nivelP = 0;
+                vDT = new VentaDT();
+                vDT.VentaId = vta.VentaId;
+                vDT.Producto = art.Producto;
+                vDT.Cantidad = art.Cantidad;
+                vDT.Precio = art.Precio;
+                vDT.Nivel = nivelP;
+                vDT.ProductoPadre = string.Empty;
+                vta.Productos.Add(vDT);
+
+                if (art.Opciones != null && art.Opciones.Count() > 0)
+                {
+                    foreach(ArticuloOpcion artOp in art.Opciones)
+                    {
+                        nivelP = 1;
+                        vDT = new VentaDT();
+                        vDT.VentaId = vta.VentaId;
+                        vDT.Producto = artOp.ArticuloOp.Producto;
+                        //vDT.Cantidad = art.Cantidad;
+                        //vDT.Precio = art.Precio;
+                        vDT.Nivel = nivelP;
+                        vDT.ProductoPadre = art.Producto;
+
+                        vta.Productos.Add(vDT);
+
+                        e.Graphics.DrawString(RenglonProductoRecibo(new string(' ', espaciosTap * nivelP) + artOp.ArticuloOp.Producto, 0), font_1, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+
+                        if (artOp.Opciones != null && artOp.Opciones.Count() > 0)
+                        {
+                            foreach (ArticuloOpcion artOpN2 in artOp.Opciones)
+                            {
+                                nivelP = 2;
+                                vDT = new VentaDT();
+                                vDT.VentaId = vta.VentaId;
+                                vDT.Producto = artOpN2.Articulo.Producto;
+                                //vDT.Cantidad = art.Cantidad;
+                                //vDT.Precio = art.Precio;
+                                vDT.Nivel = nivelP;
+                                vDT.ProductoPadre = artOp.ArticuloOp.Producto;
+
+                                vta.Productos.Add(vDT);
+
+                                e.Graphics.DrawString(RenglonProductoRecibo(new string(' ', espaciosTap * nivelP) + artOpN2.ArticuloOp.Producto, 0), font_1, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+
+                            }
+                        }
+
+                    }
+                }
+                //new string(' ', espacios)
             }
 
             e.Graphics.DrawString(new string('_', caracteresMaximos), font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
@@ -876,6 +953,10 @@ namespace BlackBox
             e.Graphics.DrawString(RenglonProductoTextosRecibo("2334" , "000033", -1), font_1, Brushes.Black, new RectangleF(0, y += 20, width, 20));
             // e.Graphics.DrawString("12345678901234567890123456789012345678901234567890123456XXX", fontBold, Brushes.Black, new RectangleF(0, y += 20, width, 20));
             // e.Graphics.DrawString("123456789012345678901234567890123456789012345678901234567890123456789", font_1, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+
+
+            // TODO: Mandar a grabar el detalle de la venta.
+
         }
 
         private string CentrarRenglonRecibo(string text, int tipo = 0)
@@ -897,14 +978,17 @@ namespace BlackBox
 
         private string RenglonProductoRecibo(string nombre, decimal precio, int tipo = 0)
         {
-            var precioS = string.Format(_format, precio);
+            var precioS = string.Empty;
+            if (precio > 0)
+                precioS = string.Format(_format, precio);
+
             var cUsados = precioS.Length + nombre.Length;
             var espacios = caracteresMaximos - cUsados;
 
             if (tipo == 1)
                 espacios = espacios - (caracteresMaximos - 51);
 
-            return nombre + new string(' ', espacios) + precioS;
+            return nombre + (precio > 0 ? new string(' ', espacios) + precioS : "");
         }
         private string RenglonProductoTextosRecibo(string texto1, string texto2, int tipo = 0)
         {
