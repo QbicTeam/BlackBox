@@ -132,6 +132,12 @@ namespace BlackBox
             {
                 this.InsertUser();
             }
+
+            this.Reset();
+            this.LoadUsers();
+
+            MessageBox.Show("Usuario grabado.");
+
         }
 
         private void cboUsers_SelectedIndexChanged(object sender, EventArgs e)
