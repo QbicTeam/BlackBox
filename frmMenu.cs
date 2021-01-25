@@ -1,11 +1,14 @@
-﻿using BlackBox.Controls;
+﻿using BlackBox.Bussiness;
+using BlackBox.Controls;
 using BlackBox.Helper;
 using BlackBox.Model;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Printing;
@@ -15,6 +18,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace BlackBox
 {
@@ -32,6 +36,9 @@ namespace BlackBox
         private string[] dias = { "Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab" };
         private string[] meses = { "Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic" };
         private string _format = "{0:$#######.00}";
+
+        
+        private VentasManager vtasManager = new VentasManager(ConfigurationManager.ConnectionStrings["FBBCS"].ConnectionString);
 
         public frmMenu()
         {
@@ -57,6 +64,8 @@ namespace BlackBox
             _menu = JsonConvert.DeserializeObject<MMenu>(jsonMenu);
 
             _noRecibo = _datos.Login.NoRecibo;
+
+            // this._conn = new SqlConnection(ConfigurationManager.ConnectionStrings["FBBCS"].ConnectionString);
 
             LoadSideMenu();
             cmdHnr.Image = imgSHnr.Image;
@@ -843,6 +852,8 @@ namespace BlackBox
             vta.Cancelado = false;
 
             // TODO: Mandar a grabar la venta.
+
+            // vta.VentaId = vtasManager.SaveVenta(vta); 
 
             var nivelP = 0;
             var espaciosTap = 5;

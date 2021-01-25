@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bussiness\VentasManager.cs" />
     <Compile Include="Bussiness\UsersManager.cs" />
     <Compile Include="Controls\cmdMenuButton.cs">
       <SubType>UserControl</SubType>
