@@ -824,6 +824,7 @@ namespace BlackBox
             Font fontBold = new Font("Courier New", 11, FontStyle.Bold, GraphicsUnit.Point);
             Font fontS = new Font("Courier New", 10, FontStyle.Underline, GraphicsUnit.Point);
             Font font_1 = new Font("Courier New", 9, FontStyle.Regular, GraphicsUnit.Point);
+            Font font_2 = new Font("Courier New", 8, FontStyle.Regular, GraphicsUnit.Point);
             Font font1 = new Font("Courier New", 11, FontStyle.Regular, GraphicsUnit.Point);
             Font font2 = new Font("Courier New", 12, FontStyle.Regular, GraphicsUnit.Point);
 
@@ -904,6 +905,9 @@ namespace BlackBox
                 {
                     foreach(ArticuloOpcion artOp in art.Opciones)
                     {
+                        if (art.ComboTipo.ToLower().StartsWith("custom") && !artOp.Default)
+                            continue;
+                        
                         nivelP = 1;
                         vDT = new VentaDT();
                         vDT.VentaId = vta.VentaId;
@@ -915,12 +919,16 @@ namespace BlackBox
 
                         vta.Productos.Add(vDT);
 
-                        e.Graphics.DrawString(RenglonProductoRecibo(new string(' ', espaciosTap * nivelP) + artOp.ArticuloOp.Producto, 0), font_1, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+                        e.Graphics.DrawString(RenglonProductoRecibo(new string(' ', espaciosTap * nivelP) + artOp.ArticuloOp.Producto, 0), font_2, Brushes.Black, new RectangleF(0, y += 15, width, 20));
 
-                        if (artOp.Opciones != null && artOp.Opciones.Count() > 0)
+                        if (!string.IsNullOrEmpty(artOp.ArticuloOp.ComboTipo) && artOp.ArticuloOp.ComboTipo.ToLower() == "customesp" 
+                            && artOp.ArticuloOp.Opciones != null && artOp.ArticuloOp.Opciones.Count() > 0)
                         {
-                            foreach (ArticuloOpcion artOpN2 in artOp.Opciones)
+                            foreach (ArticuloOpcion artOpN2 in artOp.ArticuloOp.Opciones)
                             {
+                                if (!artOpN2.Default)
+                                    continue;
+
                                 nivelP = 2;
                                 vDT = new VentaDT();
                                 vDT.VentaId = vta.VentaId;
@@ -932,7 +940,7 @@ namespace BlackBox
 
                                 vta.Productos.Add(vDT);
 
-                                e.Graphics.DrawString(RenglonProductoRecibo(new string(' ', espaciosTap * nivelP) + artOpN2.ArticuloOp.Producto, 0), font_1, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+                                e.Graphics.DrawString(RenglonProductoRecibo(new string(' ', espaciosTap * nivelP) + artOpN2.Articulo.Producto, 0), font_2, Brushes.Black, new RectangleF(0, y += 15, width, 20));
 
                             }
                         }
