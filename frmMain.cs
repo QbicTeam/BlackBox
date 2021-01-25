@@ -15,12 +15,16 @@ namespace BlackBox
 {
     public partial class frmMain : Form
     {
+        User _currentUser;
         Form _entryForm;
         private string[] dias = { "Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab" };
 
-        public frmMain()
+        public frmMain(User loggedUser)
         {
+            this._currentUser = loggedUser;
             InitializeComponent();
+
+            lblName.Text = this._currentUser.Nombre;
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -51,7 +55,7 @@ namespace BlackBox
 
             cmdEntrada.Image = imgEntrada.Image;
             cmdImprimir.Image = imgImprimir.Image;
-            cmdDisponibilidad.Image = imgEmpleados.Image;
+            cmdDisponibilidad.Image = imgDisponibilidad.Image;
             cmdEmpleados.Image = imgEmpleados.Image;
             cmdHorarioV2.Image = imgHorario.Image;
             cmdResumen.Image = imgResumen.Image;
@@ -340,9 +344,12 @@ namespace BlackBox
 
         private void cmdEmpleados_Click(object sender, EventArgs e)
         {
-            frmAdminUsers adminUsers = new frmAdminUsers();
-            adminUsers.ShowDialog();
+            if (this._currentUser.Puesto == "Administrador")
+            {
+                frmAdminUsers adminUsers = new frmAdminUsers();
+                adminUsers.ShowDialog();
 
+            }
         }
     }
 }
