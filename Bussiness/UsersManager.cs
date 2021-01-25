@@ -156,16 +156,16 @@ namespace BlackBox.Bussiness
             prm = new SqlParameter();
             prm.ParameterName = FLD_PASSWORD_SALT;
             prm.Direction = ParameterDirection.Input;
-            prm.SqlDbType = SqlDbType.VarChar;
-            prm.Size = 250;
+            prm.SqlDbType = SqlDbType.VarBinary;
+            //prm.Size = 250;
             prm.Value = user.PasswordSalt;
             cmd.Parameters.Add(prm);
 
             prm = new SqlParameter();
             prm.ParameterName = FLD_PASSWORD_HASH;
             prm.Direction = ParameterDirection.Input;
-            prm.SqlDbType = SqlDbType.VarChar;
-            prm.Size = 250;
+            prm.SqlDbType = SqlDbType.VarBinary;
+            //prm.Size = 250;
             prm.Value = user.PasswordHash;
             cmd.Parameters.Add(prm);
 
@@ -237,8 +237,9 @@ namespace BlackBox.Bussiness
                         Id = Convert.ToInt32(reader[FLD_ID]),
                         Nombre = reader[FLD_NOMBRE].ToString(),
                         Puesto = reader[FLD_PUESTO].ToString(),
-                        Status = reader[FLD_STATUS].ToString()
-                    };
+                        Status = reader[FLD_STATUS].ToString(),
+                        UserName = reader[FLD_USER_NAME].ToString(),
+                };
             }
 
             this._conn.Close();
@@ -256,7 +257,8 @@ namespace BlackBox.Bussiness
             SqlParameter prm = new SqlParameter();
             prm.ParameterName = FLD_USER_NAME;
             prm.Direction = ParameterDirection.Input;
-            prm.SqlDbType = SqlDbType.Int;
+            prm.SqlDbType = SqlDbType.VarChar;
+            prm.Size = 255;
             prm.Value = username;
             cmd.Parameters.Add(prm);
 
@@ -271,7 +273,9 @@ namespace BlackBox.Bussiness
                     Id = Convert.ToInt32(reader[FLD_ID]),
                     Nombre = reader[FLD_NOMBRE].ToString(),
                     Puesto = reader[FLD_PUESTO].ToString(),
-                    Status = reader[FLD_STATUS].ToString()
+                    Status = reader[FLD_STATUS].ToString(),
+                    PasswordSalt = (byte[])reader[FLD_PASSWORD_SALT],
+                    PasswordHash = (byte[])reader[FLD_PASSWORD_HASH]
                 };
             }
 

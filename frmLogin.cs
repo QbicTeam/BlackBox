@@ -51,7 +51,7 @@ namespace BlackBox
 
         private void cmdLogin_Click(object sender, EventArgs e)
         {
-            UsersManager um = new UsersManager(ConfigurationManager.ConnectionStrings["FBBDB"].ConnectionString);
+            UsersManager um = new UsersManager(ConfigurationManager.ConnectionStrings["FBBCS"].ConnectionString);
 
             User user = um.Login(txtUser.Text, txtPassword.Text);
 

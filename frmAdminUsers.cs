@@ -99,14 +99,20 @@ namespace BlackBox
 
         private bool Sanitize()
         {
+
+
             if (txtName.Text == string.Empty ||
                 txtUserName.Text == string.Empty ||
-                txtPassword.Text == string.Empty ||
-                txtConfirmPassword.Text == string.Empty ||
                 cboRole.Text == string.Empty ||
                 cboStatus.Text == string.Empty)
                 return false;
 
+            if (string.IsNullOrEmpty(lblId.Text))
+            {
+                if (txtPassword.Text == string.Empty || txtConfirmPassword.Text == string.Empty)
+                    return false;
+
+            }
             if (txtConfirmPassword.Text != txtPassword.Text)
                 return false;
 
@@ -130,7 +136,10 @@ namespace BlackBox
 
         private void cboUsers_SelectedIndexChanged(object sender, EventArgs e)
         {
-            User user = (User)sender;
+            User user = (User)cboUsers.SelectedItem; // (User)sender;
+
+            if (user == null)
+                return;
 
             if (user.Id > 0)
             {
