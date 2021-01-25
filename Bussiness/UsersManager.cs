@@ -111,6 +111,11 @@ namespace BlackBox.Bussiness
         {
             bool result = false;
 
+            byte[] passwordHash;
+            byte[] passwordSalt;
+
+            CreatePasswordHash(user.Password, out passwordHash, out passwordSalt);
+
             SqlCommand cmd = new SqlCommand(SP_UPDATE, this._conn);
             cmd.CommandType = CommandType.StoredProcedure;
 
@@ -153,22 +158,24 @@ namespace BlackBox.Bussiness
             prm.Value = user.Status;
             cmd.Parameters.Add(prm);
 
-            prm = new SqlParameter();
-            prm.ParameterName = FLD_PASSWORD_SALT;
-            prm.Direction = ParameterDirection.Input;
-            prm.SqlDbType = SqlDbType.VarBinary;
-            //prm.Size = 250;
-            prm.Value = user.PasswordSalt;
-            cmd.Parameters.Add(prm);
+            if (!string.IsNullOrEmpty(user.Password))
+            {
+                prm = new SqlParameter();
+                prm.ParameterName = FLD_PASSWORD_SALT;
+                prm.Direction = ParameterDirection.Input;
+                prm.SqlDbType = SqlDbType.VarBinary;
+                //prm.Size = 250;
+                prm.Value = passwordSalt;
+                cmd.Parameters.Add(prm);
 
-            prm = new SqlParameter();
-            prm.ParameterName = FLD_PASSWORD_HASH;
-            prm.Direction = ParameterDirection.Input;
-            prm.SqlDbType = SqlDbType.VarBinary;
-            //prm.Size = 250;
-            prm.Value = user.PasswordHash;
-            cmd.Parameters.Add(prm);
-
+                prm = new SqlParameter();
+                prm.ParameterName = FLD_PASSWORD_HASH;
+                prm.Direction = ParameterDirection.Input;
+                prm.SqlDbType = SqlDbType.VarBinary;
+                //prm.Size = 250;
+                prm.Value = passwordHash;
+                cmd.Parameters.Add(prm);
+            }
             this._conn.Open();
 
             int recordsUpdated = cmd.ExecuteNonQuery();
