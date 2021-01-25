@@ -65,8 +65,6 @@ namespace BlackBox
 
             _noRecibo = _datos.Login.NoRecibo;
 
-            // this._conn = new SqlConnection(ConfigurationManager.ConnectionStrings["FBBCS"].ConnectionString);
-
             LoadSideMenu();
             cmdHnr.Image = imgSHnr.Image;
             FillMenus();
@@ -807,24 +805,6 @@ namespace BlackBox
             prtdImprimir.PrinterSettings = ps;
             prtdImprimir.PrintPage += Imprimir;
             prtdImprimir.Print();
-
-           /* var e = PrinterSettings.InstalledPrinters[0];
-            var layoutArea = new SizeF(AvailableWidth, 0);
-            e.
-            Graphics g = e.Graphics;
-            SizeF stringSize = g.MeasureString(printText.Text, printText.Font, layoutArea, printText.StringFormat);
-
-            RectangleF rectf = new RectangleF(new PointF(), new SizeF(AvailableWidth, stringSize.Height));
-
-            g.DrawString(printText.Text, printText.Font, Brushes.Black, rectf, printText.StringFormat);
-
-
-            g.SmoothingMode = SmoothingMode.AntiAlias;
-            g.InterpolationMode = InterpolationMode.HighQualityBicubic;
-            g.PixelOffsetMode = PixelOffsetMode.HighQuality;
-
-
-            ComandaNueva();*/
         }
 
         private void Imprimir(object sender, PrintPageEventArgs e)
@@ -853,7 +833,7 @@ namespace BlackBox
 
             // TODO: Mandar a grabar la venta.
 
-            // vta.VentaId = vtasManager.SaveVenta(vta); 
+            vta.VentaId = vtasManager.SaveVenta(vta); 
 
             var nivelP = 0;
             var espaciosTap = 5;
@@ -923,8 +903,6 @@ namespace BlackBox
                         vDT = new VentaDT();
                         vDT.VentaId = vta.VentaId;
                         vDT.Producto = artOp.ArticuloOp.Producto;
-                        //vDT.Cantidad = art.Cantidad;
-                        //vDT.Precio = art.Precio;
                         vDT.Nivel = nivelP;
                         vDT.ProductoPadre = art.Producto;
 
@@ -944,8 +922,6 @@ namespace BlackBox
                                 vDT = new VentaDT();
                                 vDT.VentaId = vta.VentaId;
                                 vDT.Producto = artOpN2.Articulo.Producto;
-                                //vDT.Cantidad = art.Cantidad;
-                                //vDT.Precio = art.Precio;
                                 vDT.Nivel = nivelP;
                                 vDT.ProductoPadre = artOp.ArticuloOp.Producto;
 
@@ -957,8 +933,7 @@ namespace BlackBox
                         }
 
                     }
-                }
-                //new string(' ', espacios)
+                }                
             }
 
             e.Graphics.DrawString(new string('_', caracteresMaximos), font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
@@ -975,7 +950,8 @@ namespace BlackBox
 
 
             // TODO: Mandar a grabar el detalle de la venta.
-
+            if (vtasManager.SaveVentaDT(vta))
+                ComandaNueva();
         }
 
         private string CentrarRenglonRecibo(string text, int tipo = 0)

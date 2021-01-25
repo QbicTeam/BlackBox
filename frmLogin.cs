@@ -57,7 +57,7 @@ namespace BlackBox
 
             if (user != null)
             {
-                frmMain frmMain = new frmMain();
+                frmMain frmMain = new frmMain(user);
                 frmMain.ShowMain(this._entryForm, this);
             }
             else

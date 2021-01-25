@@ -51,7 +51,7 @@ namespace BlackBox.Bussiness
             using (var stringwriter = new System.IO.StringWriter())
             {
                 var serializer = new XmlSerializer(vta.GetType());
-                serializer.Serialize(stringwriter, this);
+                serializer.Serialize(stringwriter, vta);
                 xml = stringwriter.ToString();
             }
 
@@ -74,7 +74,42 @@ namespace BlackBox.Bussiness
 
             return id;
         }
-        
+        public bool SaveVentaDT(Venta vta)
+        {
+
+
+            SqlCommand cmd = new SqlCommand(SP_SAVE_VENTASDT, this._conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+
+            string xml;
+
+            using (var stringwriter = new System.IO.StringWriter())
+            {
+                var serializer = new XmlSerializer(vta.GetType());
+                serializer.Serialize(stringwriter, vta);
+                xml = stringwriter.ToString();
+            }
+
+            SqlParameter prm = new SqlParameter();
+            prm.ParameterName = FLD_VTA_DT;
+            prm.Direction = ParameterDirection.Input;
+            prm.SqlDbType = SqlDbType.Xml;
+            //prm.Size = 100;
+            prm.Value = xml;
+            cmd.Parameters.Add(prm);
+
+
+
+            this._conn.Open();
+
+            int id = Convert.ToInt32(cmd.ExecuteScalar());
+
+
+            this._conn.Close();
+
+            return id > 0 ? true : false;
+        }
 
     }
 }

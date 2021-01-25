@@ -24,12 +24,14 @@ namespace BlackBox
             this._currentUser = loggedUser;
             InitializeComponent();
 
-            lblName.Text = this._currentUser.Nombre;
+            
         }
 
         private void frmMain_Load(object sender, EventArgs e)
         {
             this.FormBorderStyle = FormBorderStyle.None;
+
+            
 
             pnlInicio.Location = new Point(15, 96);
             pnlAdmon.Location = new Point(15, 96);
@@ -123,7 +125,8 @@ namespace BlackBox
             var json = File.ReadAllText("appSettings.json");
             var datos = JsonConvert.DeserializeObject<ObjBlackBox>(json);
 
-            lblName.Text = datos.Login.Cajero;
+            // lblName.Text = datos.Login.Cajero;
+            lblName.Text = this._currentUser.Nombre;
 
             // Asignacion de Valores.
             grdRelojMarcador.DataSource = datos.Pantalla1.RelojMarcador;
@@ -208,7 +211,7 @@ namespace BlackBox
 
         private void cmdDisponibilidad_MouseEnter(object sender, EventArgs e)
         {
-            cmdDisponibilidad.Image = imgHEmpleados.Image;
+            cmdDisponibilidad.Image = imgHDisponibilidad.Image;
         }
 
         private void cmdDisponibilidad_MouseLeave(object sender, EventArgs e)
