@@ -1056,7 +1056,8 @@
             this.cmdMas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.cmdMas.FlatAppearance.BorderSize = 0;
             this.cmdMas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdMas.Location = new System.Drawing.Point(1096, 11);
+            this.cmdMas.Image = global::BlackBox.Properties.Resources.cmdAdd;
+            this.cmdMas.Location = new System.Drawing.Point(1119, 11);
             this.cmdMas.Name = "cmdMas";
             this.cmdMas.Size = new System.Drawing.Size(38, 38);
             this.cmdMas.TabIndex = 63;
@@ -1068,7 +1069,8 @@
             this.cmdMenos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.cmdMenos.FlatAppearance.BorderSize = 0;
             this.cmdMenos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdMenos.Location = new System.Drawing.Point(1187, 11);
+            this.cmdMenos.Image = global::BlackBox.Properties.Resources.cmdRemove;
+            this.cmdMenos.Location = new System.Drawing.Point(1168, 11);
             this.cmdMenos.Name = "cmdMenos";
             this.cmdMenos.Size = new System.Drawing.Size(38, 38);
             this.cmdMenos.TabIndex = 64;
@@ -1080,7 +1082,8 @@
             this.cmdBorrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.cmdBorrar.FlatAppearance.BorderSize = 0;
             this.cmdBorrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdBorrar.Location = new System.Drawing.Point(1334, 12);
+            this.cmdBorrar.Image = global::BlackBox.Properties.Resources.cmdTrash;
+            this.cmdBorrar.Location = new System.Drawing.Point(1317, 12);
             this.cmdBorrar.Name = "cmdBorrar";
             this.cmdBorrar.Size = new System.Drawing.Size(38, 38);
             this.cmdBorrar.TabIndex = 65;
