@@ -52,6 +52,7 @@ namespace BlackBox.Bussiness
         private const string SP_GET_VENTAS_CAJERO = "getVentasCajero";
         private const string SP_GET_VENTAS_SIN_CORTE = "getVentasSinCorte";
         private const string SP_GET_CORTEZ = "getCorteZ";
+        private const string SP_DELETE_VENTAS = "deleteVentas";
 
         /*
         -- getTicket](@noRecibo varchar(15))
@@ -321,6 +322,20 @@ namespace BlackBox.Bussiness
 
             return cortez;
         }
+        public void DeleteVentas()
+        {
 
+            SqlCommand cmd = new SqlCommand(SP_DELETE_VENTAS, this._conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            this._conn.Open();
+
+            cmd.ExecuteNonQuery();
+
+            this._conn.Close();
+
+            // TODO Fuera de aqui se debe crear el archivo JSON
+
+        }
     }
 }
