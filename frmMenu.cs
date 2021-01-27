@@ -24,6 +24,7 @@ namespace BlackBox
 {
     public partial class frmMenu : Form
     {
+        private User _currentUser;
         private ObjBlackBox _datos;
         private Comanda comanda;
         private Form _entryForm;
@@ -40,9 +41,11 @@ namespace BlackBox
         
         private VentasManager vtasManager = new VentasManager(ConfigurationManager.ConnectionStrings["FBBCS"].ConnectionString);
 
-        public frmMenu()
+        public frmMenu(User currentUser)
         {
             InitializeComponent();
+            this._currentUser = currentUser;
+            lblCajero.Text = this._currentUser.Nombre;
         }
 
         public void SetEntryForm(Form entryForm)
@@ -1180,6 +1183,8 @@ namespace BlackBox
 
         private void cmdBack_Click(object sender, EventArgs e)
         {
+            frmMain mainForm = new frmMain(this._currentUser);
+            mainForm.Show();
             this.Close();
         }
     }
