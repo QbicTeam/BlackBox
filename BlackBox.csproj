@@ -111,6 +111,7 @@
     <Compile Include="Model\Articulo.cs" />
     <Compile Include="Model\ArticuloOpcion.cs" />
     <Compile Include="Model\Comanda.cs" />
+    <Compile Include="Model\CorteZ.cs" />
     <Compile Include="Model\ObjBlackBox.cs" />
     <Compile Include="Model\Evento.cs" />
     <Compile Include="Model\Horario.cs" />
@@ -119,6 +120,7 @@
     <Compile Include="Model\Pantalla1.cs" />
     <Compile Include="Model\MMenu.cs" />
     <Compile Include="Model\PantallaVentas.cs" />
+    <Compile Include="Model\ProductoZ.cs" />
     <Compile Include="Model\RelojMarcador.cs" />
     <Compile Include="Model\TrabajandoHoy.cs" />
     <Compile Include="Model\User.cs" />
