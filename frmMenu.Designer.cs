@@ -121,6 +121,7 @@
             this.cmdMas = new System.Windows.Forms.Button();
             this.cmdMenos = new System.Windows.Forms.Button();
             this.cmdBorrar = new System.Windows.Forms.Button();
+            this.cmdBack = new System.Windows.Forms.Button();
             this.pnlTabs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgSidebarButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgMenuHnr)).BeginInit();
@@ -1090,6 +1091,20 @@
             this.cmdBorrar.UseVisualStyleBackColor = true;
             this.cmdBorrar.Click += new System.EventHandler(this.cmdBorrar_Click);
             // 
+            // cmdBack
+            // 
+            this.cmdBack.BackColor = System.Drawing.Color.Transparent;
+            this.cmdBack.FlatAppearance.BorderSize = 0;
+            this.cmdBack.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.cmdBack.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.cmdBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdBack.Location = new System.Drawing.Point(105, 15);
+            this.cmdBack.Name = "cmdBack";
+            this.cmdBack.Size = new System.Drawing.Size(35, 33);
+            this.cmdBack.TabIndex = 66;
+            this.cmdBack.UseVisualStyleBackColor = false;
+            this.cmdBack.Click += new System.EventHandler(this.cmdBack_Click);
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1097,6 +1112,7 @@
             this.BackgroundImage = global::BlackBox.Properties.Resources.MenuTemplateV7;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1366, 768);
+            this.Controls.Add(this.cmdBack);
             this.Controls.Add(this.cmdBorrar);
             this.Controls.Add(this.cmdMenos);
             this.Controls.Add(this.cmdMas);
@@ -1303,5 +1319,6 @@
         private System.Windows.Forms.Button cmdMas;
         private System.Windows.Forms.Button cmdMenos;
         private System.Windows.Forms.Button cmdBorrar;
+        private System.Windows.Forms.Button cmdBack;
     }
 }
