@@ -83,6 +83,18 @@
     <Compile Include="frmAdminUsers.Designer.cs">
       <DependentUpon>frmAdminUsers.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCancelSale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCancelSale.Designer.cs">
+      <DependentUpon>frmCancelSale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCortes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCortes.Designer.cs">
+      <DependentUpon>frmCortes.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,7 +123,6 @@
     <Compile Include="Model\Articulo.cs" />
     <Compile Include="Model\ArticuloOpcion.cs" />
     <Compile Include="Model\Comanda.cs" />
-    <Compile Include="Model\CorteZ.cs" />
     <Compile Include="Model\ObjBlackBox.cs" />
     <Compile Include="Model\Evento.cs" />
     <Compile Include="Model\Horario.cs" />
@@ -120,7 +131,6 @@
     <Compile Include="Model\Pantalla1.cs" />
     <Compile Include="Model\MMenu.cs" />
     <Compile Include="Model\PantallaVentas.cs" />
-    <Compile Include="Model\ProductoZ.cs" />
     <Compile Include="Model\RelojMarcador.cs" />
     <Compile Include="Model\TrabajandoHoy.cs" />
     <Compile Include="Model\User.cs" />
@@ -499,6 +509,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\PagoV2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdAdd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdRemove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cmdTrash.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

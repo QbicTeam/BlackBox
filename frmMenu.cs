@@ -1177,5 +1177,10 @@ namespace BlackBox
                 BotonesMasMenosBorrar();
             }
         }
+
+        private void cmdBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
