@@ -339,7 +339,7 @@ namespace BlackBox
 
         private void cmdOrdenes_Click(object sender, EventArgs e)
         {
-            frmMenu menu = new frmMenu();
+            frmMenu menu = new frmMenu(this._currentUser);
             menu.SetEntryForm(this._entryForm);
             menu.Show();
             this.Close();
@@ -351,6 +351,16 @@ namespace BlackBox
             {
                 frmAdminUsers adminUsers = new frmAdminUsers();
                 adminUsers.ShowDialog();
+
+            }
+        }
+
+        private void cmdResumen_Click(object sender, EventArgs e)
+        {
+            if (this._currentUser.Puesto == "Administrador")
+            {
+                frmCortes cortes = new frmCortes();
+                cortes.ShowDialog();
 
             }
         }
