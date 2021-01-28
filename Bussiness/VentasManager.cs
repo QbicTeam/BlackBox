@@ -41,6 +41,7 @@ namespace BlackBox.Bussiness
         private const string PRM_NORECIBO = "noRecibo";
         private const string PRM_VTAID = "vtaId";
         private const string PRM_CAJERO = "cajero";
+        private const string PRM_CORTE = "corte"; 
 
         private const string SP_SAVE_VENTAS = "ventas_save";
         private const string SP_UPDATE_VENTA = "ventas_update";
@@ -53,6 +54,7 @@ namespace BlackBox.Bussiness
         private const string SP_GET_VENTAS_SIN_CORTE = "getVentasSinCorte";
         private const string SP_GET_CORTEZ = "getCorteZ";
         private const string SP_DELETE_VENTAS = "deleteVentas";
+        private const string SP_CERRAR_CORTE_CAJERO = "cerrarCorteCajero";
 
         /*
         -- getTicket](@noRecibo varchar(15))
@@ -60,7 +62,8 @@ namespace BlackBox.Bussiness
  -- getVentas]
  -- getVentasCajero] (@cajero varchar(100))
  -- getVentasSinCorte]
- -- getCorteZ]*/
+ -- getCorteZ]
+        cerrarCorteCajero](@cajero varchar(100), @corte int)*/
 
         public VentasManager(string connectionString)
         {
@@ -170,18 +173,29 @@ namespace BlackBox.Bussiness
             {
                 if (vtaId != Convert.ToInt32(reader[FLD_VENTAID]))
                 {
-                    vta = new Venta()
-                    {
-                        VentaId = Convert.ToInt32(reader[FLD_VENTAID]),
-                        FechaHora = Convert.ToDateTime(reader[FLD_FECHAHORA]),
-                        Cajero = reader[FLD_CAJERO].ToString(),
-                        Recibo = reader[FLD_RECIBO].ToString(),
-                        CantidadArticulos = Convert.ToInt32(reader[FLD_CANTIDAD_ARTICULOS]),
-                        Total = Convert.ToDecimal(reader[FLD_TOTAL]),
-                        SubTotal = Convert.ToDecimal(reader[FLD_SUBTOTAL]),
-                        EnCorte = Convert.ToInt32(reader[FLD_EN_CORTE]),
-                        Cancelado = Convert.ToBoolean(reader[FLD_CANCELADO])
-                    };
+                    vta = new Venta();
+                    //{
+                    //    VentaId = Convert.ToInt32(reader[FLD_VENTAID]),
+                    //    FechaHora = Convert.ToDateTime(reader[FLD_FECHAHORA]),
+                    //    Cajero = reader[FLD_CAJERO].ToString(),
+                    //    Recibo = reader[FLD_RECIBO].ToString(),
+                    //    CantidadArticulos = Convert.ToInt32(reader[FLD_CANTIDAD_ARTICULOS]),
+                    //    Total = Convert.ToDecimal(reader[FLD_TOTAL]),
+                    //    SubTotal = Convert.ToDecimal(reader[FLD_SUBTOTAL]),
+                    //    EnCorte = Convert.ToInt32(reader[FLD_EN_CORTE]),
+                    //    Cancelado = Convert.ToBoolean(reader[FLD_CANCELADO])
+                    //};
+
+                    vta.VentaId = Convert.ToInt32(reader[FLD_VENTAID]);
+                    vta.FechaHora = Convert.ToDateTime(reader[FLD_FECHAHORA]);
+                    vta.Cajero = reader[FLD_CAJERO].ToString();
+                    vta.Recibo = reader[FLD_RECIBO].ToString();
+                    vta.CantidadArticulos = Convert.ToInt32(reader[FLD_CANTIDAD_ARTICULOS]);
+                    vta.Total = Convert.ToDecimal(reader[FLD_TOTAL]);
+                    vta.Impuestos = Convert.ToDecimal(reader[FLD_IMPUESTOS]);
+                    vta.EnCorte = Convert.ToInt32(reader[FLD_EN_CORTE]);
+                    vta.Cancelado = Convert.ToBoolean(reader[FLD_CANCELADO]);
+
                     vta.SubTotal = vta.Total - vta.Impuestos;
                     vta.Productos = new List<VentaDT>();
 
@@ -227,7 +241,7 @@ namespace BlackBox.Bussiness
             return result;
         }
 
-        public List<Venta> GetVentas()
+        public List<Venta> GetVentas(ref decimal ventaTotal)
         {
             var vtas = new List<Venta>();
 
@@ -240,11 +254,18 @@ namespace BlackBox.Bussiness
 
             vtas = FillVentas(reader);
 
+            reader.NextResult();
+
+            if (reader.Read())
+            {
+                ventaTotal = Convert.ToDecimal(reader[FLD_VENTA_TOTAL]);
+            }
+
             this._conn.Close();
             
             return vtas;
         }
-        public List<Venta> GetVentasCajero(string cajero)
+        public List<Venta> GetVentasCajero(string cajero, ref decimal ventaTotal)
         {
             var vtas = new List<Venta>();
 
@@ -265,11 +286,18 @@ namespace BlackBox.Bussiness
 
             vtas = FillVentas(reader);
 
+            reader.NextResult();
+
+            if (reader.Read())
+            {
+                ventaTotal = Convert.ToDecimal(reader[FLD_VENTA_TOTAL]);
+            }
+
             this._conn.Close();
 
             return vtas;
         }
-        public List<Venta> GetVentasSinCorte()
+        public List<Venta> GetVentasSinCorte(ref decimal ventaTotal)
         {
             var vtas = new List<Venta>();
 
@@ -281,6 +309,13 @@ namespace BlackBox.Bussiness
             SqlDataReader reader = cmd.ExecuteReader();
 
             vtas = FillVentas(reader);
+
+            reader.NextResult();
+
+            if (reader.Read())
+            {
+                ventaTotal = Convert.ToDecimal(reader[FLD_VENTA_TOTAL]);
+            }
 
             this._conn.Close();
 
@@ -336,6 +371,34 @@ namespace BlackBox.Bussiness
 
             // TODO Fuera de aqui se debe crear el archivo JSON
 
+        }
+
+        public void CerrarCorteCajero(string cajero, int corte)
+        {
+            SqlCommand cmd = new SqlCommand(SP_CERRAR_CORTE_CAJERO, this._conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            SqlParameter prm = new SqlParameter();
+            prm.ParameterName = PRM_CAJERO;
+            prm.Direction = ParameterDirection.Input;
+            prm.SqlDbType = SqlDbType.VarChar;
+            prm.Size = 100;
+            prm.Value = cajero;
+            cmd.Parameters.Add(prm);
+
+            prm = new SqlParameter();
+            prm.ParameterName = PRM_CORTE;
+            prm.Direction = ParameterDirection.Input;
+            prm.SqlDbType = SqlDbType.Int;
+            //prm.Size = 100;
+            prm.Value = corte;
+            cmd.Parameters.Add(prm);
+
+            this._conn.Open();
+
+            cmd.ExecuteNonQuery();
+
+            this._conn.Close();
         }
     }
 }

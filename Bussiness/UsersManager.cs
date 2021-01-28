@@ -209,7 +209,8 @@ namespace BlackBox.Bussiness
                     users.Add(new User
                     {
                         Id = Convert.ToInt32(reader[FLD_ID]),
-                        Nombre = reader[FLD_NOMBRE].ToString()
+                        Nombre = reader[FLD_NOMBRE].ToString(),
+                        Status = reader[FLD_STATUS].ToString()
                     });
                 }
             }
