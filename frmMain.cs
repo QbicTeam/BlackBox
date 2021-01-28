@@ -186,7 +186,10 @@ namespace BlackBox
 
         private void cmdClose_Click(object sender, EventArgs e)
         {
-            this._entryForm.Close();
+            if (this._entryForm != null)
+            {
+                this._entryForm.Close();
+            }
         }
 
         private void cmdEntrada_MouseEnter(object sender, EventArgs e)
