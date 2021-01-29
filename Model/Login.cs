@@ -20,5 +20,7 @@ namespace BlackBox.Model
         public string DireccionR2 { get; set; }
         public string Caja { get; set; }
         public int NoRecibo { get; set; }
+        public string Sucursal { get; set; }
+        public string CodSucursal { get; set; }
     }
 }

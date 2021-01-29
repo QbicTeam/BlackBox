@@ -1,11 +1,13 @@
 ﻿using BlackBox.Bussiness;
 using BlackBox.Model;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +19,8 @@ namespace BlackBox
     {
         UsersManager userM = new UsersManager(ConfigurationManager.ConnectionStrings["FBBCS"].ConnectionString);
         VentasManager vtaM = new VentasManager(ConfigurationManager.ConnectionStrings["FBBCS"].ConnectionString);
+        ObjBlackBox _datos;
+        CorteZ _corteZ;
 
         public frmCortes()
         {
@@ -50,7 +54,7 @@ namespace BlackBox
                 grdCorteZ.Visible = false;
 
             List<Venta> vtas;
-            CorteZ cortez;
+            //CorteZ cortez;
             switch (cboReportes.Text)
             {
                 case "Ventas (Todas)":
@@ -69,9 +73,9 @@ namespace BlackBox
                     //lblTotalVentas.Text = cortez.VentaTotal.ToString("C");
                     break;
                 case "Corte Z":
-                    cortez = vtaM.GetCorteZ();
-                    grdCorteZ.DataSource = cortez.Productos;
-                    ventaTotal = cortez.VentaTotal;
+                    _corteZ = vtaM.GetCorteZ();
+                    grdCorteZ.DataSource = _corteZ.Productos;
+                    ventaTotal = _corteZ.VentaTotal;
                     
                     break;
             }
@@ -82,6 +86,11 @@ namespace BlackBox
 
             if (cboReportes.Text.ToLower() == "por cajero (corte)" || cboReportes.Text.ToLower() == "corte z")
                 cmdCerrar.Visible = true;
+
+            if (cboReportes.Text.ToLower() == "corte z")
+                setRowNumber(grdCorteZ);
+            else
+                setRowNumber(grdVentas);
         }
 
         private void cmdCerrar_Click(object sender, EventArgs e)
@@ -94,11 +103,23 @@ namespace BlackBox
 
             if (cboReportes.Text.ToLower() == "corte z")
             {
-                vtaM.DeleteVentas();
-                // Crear JSON, Mandar el JSON por FTP
-            }
+                _corteZ.CodSucursal = _datos.Login.CodSucursal;
+                _corteZ.Fecha = DateTime.Now;
+                _corteZ.Sucursal = _datos.Login.Sucursal;
+                _corteZ.Supervisor = _datos.Login.Cajero;
                 
+                var cortZJson = JsonConvert.SerializeObject(_corteZ);
 
+                // string path = @"c:\product.json";
+                // Crear JSON, Mandar el JSON por FTP
+                System.IO.File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + "//CorteZ_" + _corteZ.CodSucursal + "_" + _corteZ.Fecha.ToString("yyyyMMdd") + ".json", cortZJson);
+
+                //vtaM.DeleteVentas();
+                
+            }
+
+            MessageBox.Show("Corte Cerrado");
+            Reset();
 
         }
 
@@ -115,6 +136,8 @@ namespace BlackBox
             cboCajeros.Enabled = false;
             cmdEjecutarRep.Enabled = false;
             cmdCerrar.Visible = false;
+            grdCorteZ.Visible = false;
+            lblTotalVentas.Text = "";
 
             if (string.IsNullOrEmpty(cboReportes.Text))
                 return;
@@ -123,18 +146,13 @@ namespace BlackBox
                 cboCajeros.Enabled = true;
             else
                 cmdEjecutarRep.Enabled = true;
-
-            Reset();
-            cboCajeros.Enabled = false;
-            cmdEjecutarRep.Enabled = false;
-            cmdCerrar.Visible = false;
-            grdCorteZ.Visible = false;
-            lblTotalVentas.Text = "";
-
         }
 
         private void LoadInitialData()
         {
+            var json = File.ReadAllText("appSettings.json");
+            _datos = JsonConvert.DeserializeObject<ObjBlackBox>(json);
+
             var colorEncabezado = Color.FromArgb(254, 159, 49); // 255, 148, 0
             var colorFondoGrid = Color.FromArgb(254, 200, 132);
 
@@ -169,13 +187,14 @@ namespace BlackBox
             grdVentas.Columns[3].Width = 100;
             grdVentas.Columns[4].Width = 100;
             grdVentas.Columns[5].Width = 100;
-            
+            grdVentas.Columns[3].DefaultCellStyle.Format = "c";
 
             AplicarFormato(grdCorteZ, colorEncabezado, colorFondoGrid);
 
             grdCorteZ.Columns[0].Width = 400;
             grdCorteZ.Columns[1].Width = 150;
             grdCorteZ.Columns[2].Width = 150;
+            grdCorteZ.Columns[2].DefaultCellStyle.Format = "c";
 
         }
 
@@ -187,6 +206,7 @@ namespace BlackBox
 
             grd.RowsDefaultCellStyle.BackColor = colorFondoGrid;
             grd.RowHeadersDefaultCellStyle.SelectionBackColor = colorFondoGrid;
+            grd.RowHeadersDefaultCellStyle.BackColor = colorEncabezado;
             grd.ColumnHeadersDefaultCellStyle.SelectionBackColor = colorFondoGrid;
             //grd.ColumnHeadersDefaultCellStyle.Font = new Font(grd.Font.FontFamily.Name, 7, FontStyle.Regular);
             //grd.DefaultCellStyle.Font = new Font(grd.Font.FontFamily.Name, 7, FontStyle.Regular);
@@ -199,7 +219,7 @@ namespace BlackBox
 
             grd.ScrollBars = ScrollBars.None;
             grd.ReadOnly = true;
-            grd.RowHeadersVisible = false;
+            //grd.RowHeadersVisible = false;
             //grd.ColumnHeadersVisible = false;
             grd.DefaultCellStyle.SelectionBackColor = colorFondoGrid;
             grd.DefaultCellStyle.SelectionForeColor = SystemColors.ControlText;
@@ -209,9 +229,17 @@ namespace BlackBox
             grd.AllowUserToResizeRows = false;
             grd.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             grd.RowHeadersDefaultCellStyle.SelectionBackColor = Color.Empty;
-
+            
             //grd.BorderStyle = BorderStyle.None;
         }
 
+        private void setRowNumber(DataGridView dgv)
+        {
+            foreach (DataGridViewRow row in dgv.Rows)
+            {
+                //row.HeaderCell.Value = row.Index + 1;
+                row.HeaderCell.Value = String.Format("{0}", row.Index + 1);
+            }
+        }
     }
 }

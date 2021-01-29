@@ -169,51 +169,55 @@ namespace BlackBox.Bussiness
             var dt = new VentaDT();
 
             var vtaId = 0;
-            if (reader.Read())
+            if (reader.HasRows)
             {
-                if (vtaId != Convert.ToInt32(reader[FLD_VENTAID]))
+                while (reader.Read())
                 {
-                    vta = new Venta();
-                    //{
-                    //    VentaId = Convert.ToInt32(reader[FLD_VENTAID]),
-                    //    FechaHora = Convert.ToDateTime(reader[FLD_FECHAHORA]),
-                    //    Cajero = reader[FLD_CAJERO].ToString(),
-                    //    Recibo = reader[FLD_RECIBO].ToString(),
-                    //    CantidadArticulos = Convert.ToInt32(reader[FLD_CANTIDAD_ARTICULOS]),
-                    //    Total = Convert.ToDecimal(reader[FLD_TOTAL]),
-                    //    SubTotal = Convert.ToDecimal(reader[FLD_SUBTOTAL]),
-                    //    EnCorte = Convert.ToInt32(reader[FLD_EN_CORTE]),
-                    //    Cancelado = Convert.ToBoolean(reader[FLD_CANCELADO])
-                    //};
+                    if (vtaId != Convert.ToInt32(reader[FLD_VENTAID]))
+                    {
+                        vtaId = Convert.ToInt32(reader[FLD_VENTAID]);
+                        vta = new Venta();
+                        //{
+                        //    VentaId = Convert.ToInt32(reader[FLD_VENTAID]),
+                        //    FechaHora = Convert.ToDateTime(reader[FLD_FECHAHORA]),
+                        //    Cajero = reader[FLD_CAJERO].ToString(),
+                        //    Recibo = reader[FLD_RECIBO].ToString(),
+                        //    CantidadArticulos = Convert.ToInt32(reader[FLD_CANTIDAD_ARTICULOS]),
+                        //    Total = Convert.ToDecimal(reader[FLD_TOTAL]),
+                        //    SubTotal = Convert.ToDecimal(reader[FLD_SUBTOTAL]),
+                        //    EnCorte = Convert.ToInt32(reader[FLD_EN_CORTE]),
+                        //    Cancelado = Convert.ToBoolean(reader[FLD_CANCELADO])
+                        //};
 
-                    vta.VentaId = Convert.ToInt32(reader[FLD_VENTAID]);
-                    vta.FechaHora = Convert.ToDateTime(reader[FLD_FECHAHORA]);
-                    vta.Cajero = reader[FLD_CAJERO].ToString();
-                    vta.Recibo = reader[FLD_RECIBO].ToString();
-                    vta.CantidadArticulos = Convert.ToInt32(reader[FLD_CANTIDAD_ARTICULOS]);
-                    vta.Total = Convert.ToDecimal(reader[FLD_TOTAL]);
-                    vta.Impuestos = Convert.ToDecimal(reader[FLD_IMPUESTOS]);
-                    vta.EnCorte = Convert.ToInt32(reader[FLD_EN_CORTE]);
-                    vta.Cancelado = Convert.ToBoolean(reader[FLD_CANCELADO]);
+                        vta.VentaId = vtaId; // Convert.ToInt32(reader[FLD_VENTAID]);
+                        vta.FechaHora = Convert.ToDateTime(reader[FLD_FECHAHORA]);
+                        vta.Cajero = reader[FLD_CAJERO].ToString();
+                        vta.Recibo = reader[FLD_RECIBO].ToString();
+                        vta.CantidadArticulos = Convert.ToInt32(reader[FLD_CANTIDAD_ARTICULOS]);
+                        vta.Total = Convert.ToDecimal(reader[FLD_TOTAL]);
+                        vta.Impuestos = Convert.ToDecimal(reader[FLD_IMPUESTOS]);
+                        vta.EnCorte = Convert.ToInt32(reader[FLD_EN_CORTE]);
+                        vta.Cancelado = Convert.ToBoolean(reader[FLD_CANCELADO]);
 
-                    vta.SubTotal = vta.Total - vta.Impuestos;
-                    vta.Productos = new List<VentaDT>();
+                        vta.SubTotal = vta.Total - vta.Impuestos;
+                        vta.Productos = new List<VentaDT>();
 
-                    vtas.Add(vta);
+                        vtas.Add(vta);
+                    }
+
+                    dt = new VentaDT()
+                    {
+                        Id = Convert.ToInt32(reader[FLD_ID]),
+                        VentaId = Convert.ToInt32(reader[FLD_VENTAID]),
+                        Producto = reader[FLD_PRODUCTO].ToString(),
+                        Cantidad = Convert.ToInt32(reader[FLD_CANTIDAD]),
+                        Precio = Convert.ToDecimal(reader[FLD_PRECIO]),
+                        Nivel = Convert.ToInt32(reader[FLD_NIVEL]),
+                        ProductoPadre = reader[FLD_PRODUCTO_PADRE].ToString()
+                    };
+
+                    vta.Productos.Add(dt);
                 }
-
-                dt = new VentaDT()
-                {
-                    Id = Convert.ToInt32(reader[FLD_ID]),
-                    VentaId = Convert.ToInt32(reader[FLD_VENTAID]),
-                    Producto = reader[FLD_PRODUCTO].ToString(),
-                    Cantidad = Convert.ToInt32(reader[FLD_CANTIDAD]),
-                    Precio = Convert.ToDecimal(reader[FLD_PRECIO]),
-                    Nivel = Convert.ToInt32(reader[FLD_NIVEL]),
-                    ProductoPadre = reader[FLD_PRODUCTO_PADRE].ToString()
-                };
-
-                vta.Productos.Add(dt);
             }
 
             return vtas;
@@ -333,17 +337,20 @@ namespace BlackBox.Bussiness
             this._conn.Open();
 
             SqlDataReader reader = cmd.ExecuteReader();
-            
-            if (reader.Read())
-            {
-                prodz = new ProductoZ()
-                { 
-                    Producto = reader[FLD_PRODUCTO].ToString(),
-                    NoProductos = Convert.ToInt32(reader[FLD_NOPRODUCTOS]),
-                    Venta = Convert.ToDecimal(reader[FLD_VENTA])
-                };
 
-                cortez.Productos.Add(prodz);
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    prodz = new ProductoZ()
+                    {
+                        Producto = reader[FLD_PRODUCTO].ToString(),
+                        NoProductos = Convert.ToInt32(reader[FLD_NOPRODUCTOS]),
+                        Venta = Convert.ToDecimal(reader[FLD_VENTA])
+                    };
+
+                    cortez.Productos.Add(prodz);
+                }
             }
 
             reader.NextResult();
