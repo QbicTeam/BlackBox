@@ -757,7 +757,7 @@ namespace BlackBox
 
             if (!valido)
             {
-                MessageBox.Show("No se han asignado todos los articulos");
+                MessageBox.Show("Esta orden no está completa. Por favor completar el pedido antes de tratar de aceptar el pago.");
                 return;
             }
 
