@@ -9,6 +9,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -112,11 +113,36 @@ namespace BlackBox
 
                 // string path = @"c:\product.json";
                 // Crear JSON, Mandar el JSON por FTP
-                System.IO.File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + "//CorteZ_" + _corteZ.CodSucursal + "_" + _corteZ.Fecha.ToString("yyyyMMdd") + ".json", cortZJson);
+                var fileJsonName = "CorteZ_" + _corteZ.CodSucursal + "_" + _corteZ.Fecha.ToString("yyyyMMdd") + ".json";
+                System.IO.File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + "//" + fileJsonName, cortZJson);
 
-                //vtaM.DeleteVentas();
-                
-            }
+
+                var FTP_Server = "ftp://FTP.SITE4NOW.NET"; //"ftp://localhost"; // /lesfemmesftp  //ftp://ftp.site4now.net/lesfammesindex/wwwroot/data/profile
+                var FTP_User = "majahide-001"; // "majahide"; //xpesdcompany-001
+                var FTP_Password = "An@kin75"; // "H!p0campo"; //"anakin"; //An@kin75
+                var Server_Images_Root_Path = "/prometheus/releasecandidates/documentsmanagerapi/prometheusdocs/siqbicdocs/lc_cortesz"; //sites/femmes/assets/ProfilesMedia";
+
+                // string fname = img.Substring(img.LastIndexOf('\\') + 1);
+                //string fn = ConfigVariables.FTP_Server + ConfigVariables.Server_Images_Root_Path + "/P_" + profileId.ToString() + "/vg_" + vgId + "/" + fileJsonName;
+                string fn = FTP_Server + Server_Images_Root_Path + "/" + fileJsonName;
+                FtpWebRequest req = (FtpWebRequest)WebRequest.Create(fn);
+                req.UseBinary = true;
+                req.Method = WebRequestMethods.Ftp.UploadFile;
+                //req.Credentials = new NetworkCredential(ConfigVariables.FTP_User, ConfigVariables.FTP_Password);
+                req.Credentials = new NetworkCredential(FTP_User, FTP_Password);
+                byte[] fileData = File.ReadAllBytes(fileJsonName);
+
+                req.ContentLength = fileData.Length;
+                Stream requestStream = req.GetRequestStream();
+                requestStream.Write(fileData, 0, fileData.Length);
+                requestStream.Close();
+
+                req.GetResponse();
+
+
+        //vtaM.DeleteVentas();
+
+    }
 
             MessageBox.Show("Corte Cerrado");
             Reset();
