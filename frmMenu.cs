@@ -743,6 +743,24 @@ namespace BlackBox
 
         private void cmdPagos_Click(object sender, EventArgs e)
         {
+            pnlArtVendido art;
+            var valido = true;
+
+            foreach (Control ctrl in pnlComanda.Controls)
+            {
+                art = (pnlArtVendido)ctrl;
+                if (valido)
+                    valido = !art.OpcionesSinAsignar();
+                else
+                    break;
+            }
+
+            if (!valido)
+            {
+                MessageBox.Show("No se han asignado todos los articulos");
+                return;
+            }
+
             frmPagos pagos = new frmPagos();
             if (pagos.PaySale())
             {
