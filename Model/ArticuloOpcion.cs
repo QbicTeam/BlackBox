@@ -28,6 +28,10 @@ namespace BlackBox.Model
         /// Indica si se esta usando Media Racion. Se Manda 1 u 2 segun el tipo, esto se pone como sufijo, 0 cuando es completo (en este caso no se pone como sufijo)
         /// </summary>
         public int MediaRacion { get; set; }
+        /// <summary>
+        /// Debe Concatenar: MenuId: Nombre del Panel(Ej: Pan); Tamano (Num.Cols): "" Normal, 3, 4
+        /// </summary>
+        public string TipoOpciones { get; set; }
         public List<ArticuloOpcion> Opciones { get; set; }
         /// <summary>
         /// Posicion asignada al momento del despliegue. (no asignable en BD).

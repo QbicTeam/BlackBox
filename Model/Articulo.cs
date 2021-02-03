@@ -33,6 +33,10 @@ namespace BlackBox.Model
         /// </summary>
         public int Raciones_Checks { get; set; }
         // public string Grupo { get; set; }
+        /// <summary>
+        /// Debe Concatenar: MenuId: Nombre del Panel(Ej: Pan); Tamano (Num.Cols): "" Normal, 3, 4
+        /// </summary>
+        public string TipoOpciones { get; set; }
         public List<ArticuloOpcion> Opciones { get; set; }
         /// <summary>
         /// Posicion asignada al momento del despliegue. (no asignable en BD).

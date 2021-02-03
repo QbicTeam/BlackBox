@@ -174,6 +174,7 @@
         "IngredientesSinCosto": 4,
         "CostoIngredienteAdicional": 30,
         "Raciones_Checks": 2,
+        "TipoOpciones": "Hnr",
         "Opciones": [
           {
             "Intercambiable": true,
@@ -278,6 +279,7 @@
         "IngredientesSinCosto": 3,
         "CostoIngredienteAdicional": 30,
         "Raciones_Checks": 1,
+        "TipoOpciones": "Hnr",
         "Opciones": [
           {
             "Intercambiable": true,
@@ -382,6 +384,7 @@
         "IngredientesSinCosto": 3,
         "CostoIngredienteAdicional": 30,
         "Raciones_Checks": 2,
+        "TipoOpciones": "Hnr",
         "Opciones": [
           {
             "Intercambiable": true,
@@ -486,6 +489,7 @@
         "IngredientesSinCosto": 1,
         "CostoIngredienteAdicional": 0,
         "Raciones_Checks": 1,
+        "TipoOpciones": "Hnr",
         "Opciones": [
           {
             "Intercambiable": true,
@@ -627,6 +631,7 @@
         "Tipo": "",
         "ComboTipo": "CustomEsp",
         "Validar": true,
+        "TipoOpciones": "Bebidas3",
         "Opciones": [
           {
             "ArticuloOp": { "Producto": "Pepsi" }
@@ -658,6 +663,7 @@
         "Tipo": "",
         "ComboTipo": "CustomEsp",
         "Validar": true,
+        "TipoOpciones": "Bebidas3",
         "Opciones": [
           {
             "ArticuloOp": { "Producto": "Pepsi" }
@@ -689,6 +695,7 @@
         "Tipo": "",
         "ComboTipo": "CustomEsp",
         "Validar": true,
+        "TipoOpciones": "Bebidas3",
         "Opciones": [
           {
             "ArticuloOp": { "Producto": "Pepsi" }
@@ -720,6 +727,7 @@
         "Tipo": "",
         "ComboTipo": "CustomEsp",
         "Validar": true,
+        "TipoOpciones": "Bebidas3",
         "Opciones": [
           {
             "ArticuloOp": { "Producto": "Pepsi" }
@@ -758,6 +766,7 @@
         "Pendientes": 2,
         "Tipo": "",
         "ComboTipo": "Custom",
+        "TipoOpciones": "Alas3",
         "Opciones": [
           {
             "Intercambiable": false,
@@ -833,6 +842,7 @@
             "Default":  false,
             "ArticuloOp": {
               "Producto": "[ADEREZOS]",
+              "TipoOpciones": "Complementos3",
               "Opciones": [
                 {
                   "Default": false,
@@ -862,6 +872,7 @@
             "Default": false,
             "ArticuloOp": {
               "Producto": "[ADEREZOS]",
+              "TipoOpciones": "Complementos3",
               "Opciones": [
                 {
                   "Default": false,
@@ -900,6 +911,7 @@
             "Default": false,
             "ArticuloOp": {
               "Producto": "[ADEREZOS]",
+              "TipoOpciones": "Complementos3",
               "Opciones": [
                 {
                   "Default": false,
@@ -929,6 +941,7 @@
             "Default": false,
             "ArticuloOp": {
               "Producto": "[ADEREZOS]",
+              "TipoOpciones": "Complementos3",
               "Opciones": [
                 {
                   "Default": false,
@@ -958,6 +971,7 @@
             "Default": false,
             "ArticuloOp": {
               "Producto": "[ADEREZOS]",
+              "TipoOpciones": "Complementos3",
               "Opciones": [
                 {
                   "Default": false,
@@ -1025,6 +1039,7 @@
             "Default": true,
             "ArticuloOp": {
               "Producto": "Classic Pepperoni",
+              "TipoOpciones": "Pizza3",
               "Opciones": [
                 {
                   "Default": false,
@@ -1054,6 +1069,7 @@
               "Producto": "Refresco 2L",
               "ComboTipo": "CustomEsp",
               "Validar": true,
+              "TipoOpciones": "Bebidas3",
               "Opciones": [
                 {
                   "Articulo": { "Producto": "Pepsi" }

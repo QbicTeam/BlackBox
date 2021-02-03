@@ -35,6 +35,7 @@
             // 
             // lblPrice
             // 
+            this.lblPrice.BackColor = System.Drawing.Color.Transparent;
             this.lblPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPrice.Image = global::BlackBox.Properties.Resources.lblSideBarPrice;
             this.lblPrice.Location = new System.Drawing.Point(3, 30);
@@ -61,6 +62,7 @@
             // 
             // cmdOption
             // 
+            this.cmdOption.BackColor = System.Drawing.Color.Transparent;
             this.cmdOption.BackgroundImage = global::BlackBox.Properties.Resources.cmdSidebarTemplate;
             this.cmdOption.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.cmdOption.FlatAppearance.BorderSize = 0;
@@ -69,7 +71,7 @@
             this.cmdOption.Name = "cmdOption";
             this.cmdOption.Size = new System.Drawing.Size(219, 50);
             this.cmdOption.TabIndex = 2;
-            this.cmdOption.UseVisualStyleBackColor = true;
+            this.cmdOption.UseVisualStyleBackColor = false;
             this.cmdOption.Click += new System.EventHandler(this.cmdOption_Click);
             // 
             // cmdSideBarButton

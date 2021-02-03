@@ -1080,7 +1080,21 @@ namespace BlackBox
 
                 // var arts = _datos.PantallaVentas.Especiales;
                 // Definir la imagen a utilizar.
-                var img = imgSidebarButton.Image;
+                //var img = imgSidebarButton.Image;
+
+                Image img = null;
+                if (arts != null)
+                {
+                    if (!string.IsNullOrEmpty(artVdo.TipoOpciones))
+                        img = GetImagen(artVdo.TipoOpciones); // menuId + tamano); // MenuId: Nombre del Panel; Tamano (Num.Cols): "" Normal, 3, 4
+
+                    if (artOp != null && !string.IsNullOrEmpty(artOp.TipoOpciones))
+                        img = GetImagen(artOp.TipoOpciones);
+
+                    if (img == null)
+                        img = imgSidebarButton.Image;
+                }
+                
 
                 for (int x = 0; x < arts.Count; x++)
                 {
