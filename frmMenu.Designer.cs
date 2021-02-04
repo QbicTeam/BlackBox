@@ -1111,6 +1111,8 @@
             this.cmdCancelSale.BackColor = System.Drawing.Color.Transparent;
             this.cmdCancelSale.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.cmdCancelSale.FlatAppearance.BorderSize = 0;
+            this.cmdCancelSale.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.cmdCancelSale.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.cmdCancelSale.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmdCancelSale.Location = new System.Drawing.Point(1218, 11);
             this.cmdCancelSale.Name = "cmdCancelSale";
