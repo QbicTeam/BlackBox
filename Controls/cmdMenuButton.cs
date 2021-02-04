@@ -48,9 +48,9 @@ namespace BlackBox.Controls
                 this.Width = 255;
             }
 
-            CustomCheckBox ccb = new CustomCheckBox();
-            ccb.Top = 5;
-            ccb.Left = 5;
+            CustomCheckBox ccb = new CustomCheckBox(this.Height);
+            ccb.Top = 10;
+            ccb.Left = this.Width - this.Height;
 
             this.Controls.Add(ccb);
             this.Controls.SetChildIndex(ccb, 1);
