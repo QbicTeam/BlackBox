@@ -1081,20 +1081,28 @@ namespace BlackBox
                 // var arts = _datos.PantallaVentas.Especiales;
                 // Definir la imagen a utilizar.
                 //var img = imgSidebarButton.Image;
-
+                
+                int nCols = 2;
+                var lastChar = "2";
                 Image img = null;
                 if (arts != null)
                 {
                     if (!string.IsNullOrEmpty(artVdo.TipoOpciones))
+                    {
                         img = GetImagen(artVdo.TipoOpciones); // menuId + tamano); // MenuId: Nombre del Panel; Tamano (Num.Cols): "" Normal, 3, 4
-
+                        lastChar = artVdo.TipoOpciones.Substring(artVdo.TipoOpciones.Length - 1);
+                    }
                     if (artOp != null && !string.IsNullOrEmpty(artOp.TipoOpciones))
+                    {
                         img = GetImagen(artOp.TipoOpciones);
-
+                        lastChar = artOp.TipoOpciones.Substring(artOp.TipoOpciones.Length - 1);
+                    }
                     if (img == null)
                         img = imgSidebarButton.Image;
                 }
-                
+
+                if (lastChar == "3" || lastChar == "4")
+                    nCols = Convert.ToInt32(lastChar);
 
                 for (int x = 0; x < arts.Count; x++)
                 {
@@ -1102,7 +1110,8 @@ namespace BlackBox
                     //btn.Text = "sample " + x.ToString();
                     //btn.Top = x * 100;
 
-                    cmdSideBarButton btn = new cmdSideBarButton(arts[x].Producto, arts[x].Precio, img);
+                    // cmdSideBarButton btn = new cmdSideBarButton(arts[x].Producto, arts[x].Precio, img);
+                    cmdMenuButton btn = new cmdMenuButton(arts[x], img, nCols);
                     btn.Top = x * 50;
                     btn.MenuClicked += Btn_MenuClicked;
 
