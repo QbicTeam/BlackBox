@@ -72,6 +72,7 @@
             this.cmdBuscar.TabIndex = 2;
             this.cmdBuscar.Text = "Buscar";
             this.cmdBuscar.UseVisualStyleBackColor = true;
+            this.cmdBuscar.Click += new System.EventHandler(this.cmdBuscar_Click);
             // 
             // label2
             // 
@@ -87,7 +88,7 @@
             // txtCajero
             // 
             this.txtCajero.Enabled = false;
-            this.txtCajero.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCajero.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCajero.Location = new System.Drawing.Point(6, 61);
             this.txtCajero.Name = "txtCajero";
             this.txtCajero.Size = new System.Drawing.Size(208, 21);
@@ -96,7 +97,7 @@
             // txtFecha
             // 
             this.txtFecha.Enabled = false;
-            this.txtFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFecha.Location = new System.Drawing.Point(220, 61);
             this.txtFecha.Name = "txtFecha";
             this.txtFecha.Size = new System.Drawing.Size(136, 21);
@@ -116,11 +117,12 @@
             // txtVentaTotal
             // 
             this.txtVentaTotal.Enabled = false;
-            this.txtVentaTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtVentaTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtVentaTotal.Location = new System.Drawing.Point(92, 327);
             this.txtVentaTotal.Name = "txtVentaTotal";
             this.txtVentaTotal.Size = new System.Drawing.Size(83, 21);
             this.txtVentaTotal.TabIndex = 8;
+            this.txtVentaTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label4
             // 
@@ -136,11 +138,12 @@
             // txtNumArt
             // 
             this.txtNumArt.Enabled = false;
-            this.txtNumArt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNumArt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNumArt.Location = new System.Drawing.Point(281, 327);
             this.txtNumArt.Name = "txtNumArt";
             this.txtNumArt.Size = new System.Drawing.Size(75, 21);
             this.txtNumArt.TabIndex = 10;
+            this.txtNumArt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label5
             // 
@@ -157,10 +160,10 @@
             // 
             this.chkCancelado.AutoSize = true;
             this.chkCancelado.Enabled = false;
-            this.chkCancelado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkCancelado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkCancelado.Location = new System.Drawing.Point(25, 359);
             this.chkCancelado.Name = "chkCancelado";
-            this.chkCancelado.Size = new System.Drawing.Size(85, 19);
+            this.chkCancelado.Size = new System.Drawing.Size(94, 19);
             this.chkCancelado.TabIndex = 11;
             this.chkCancelado.Text = "Cancelado";
             this.chkCancelado.UseVisualStyleBackColor = true;
@@ -169,10 +172,10 @@
             // 
             this.chkEnCorte.AutoSize = true;
             this.chkEnCorte.Enabled = false;
-            this.chkEnCorte.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkEnCorte.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkEnCorte.Location = new System.Drawing.Point(129, 359);
             this.chkEnCorte.Name = "chkEnCorte";
-            this.chkEnCorte.Size = new System.Drawing.Size(73, 19);
+            this.chkEnCorte.Size = new System.Drawing.Size(81, 19);
             this.chkEnCorte.TabIndex = 12;
             this.chkEnCorte.Text = "En Corte";
             this.chkEnCorte.UseVisualStyleBackColor = true;
@@ -187,6 +190,7 @@
             this.cmdCancelar.TabIndex = 13;
             this.cmdCancelar.Text = "Cancelar";
             this.cmdCancelar.UseVisualStyleBackColor = true;
+            this.cmdCancelar.Click += new System.EventHandler(this.cmdCancelar_Click);
             // 
             // lstArticulos
             // 
