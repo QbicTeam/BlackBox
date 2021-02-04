@@ -29,7 +29,7 @@ namespace BlackBox.Controls
 
             this.Height = this._size - 20;
             this.Width = this._size - 20;
-            int squareSide = 80;
+            int squareSide = this._size - 20;
 
             Rectangle rect = new Rectangle(new Point(0, 1), new Size(squareSide, squareSide));
 
