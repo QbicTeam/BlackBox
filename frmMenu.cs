@@ -45,7 +45,6 @@ namespace BlackBox
         {
             InitializeComponent();
             this._currentUser = currentUser;
-            lblCajero.Text = this._currentUser.Nombre;
         }
 
         public void SetEntryForm(Form entryForm)
@@ -78,6 +77,7 @@ namespace BlackBox
             pnlPie.Location = new Point(44, 729);
             pnlPie.Size = new Size(1321, 39);
 
+            _datos.Login.Cajero = this._currentUser.Nombre;
             lblCajero.Text = _datos.Login.Cajero;
             lblArticulosPie.Text = _datos.PantallaVentas.ArticulosVencidosPie;
 
@@ -1227,6 +1227,12 @@ namespace BlackBox
             frmMain mainForm = new frmMain(this._currentUser);
             mainForm.Show();
             this.Close();
+        }
+
+        private void cmdCancelSale_Click(object sender, EventArgs e)
+        {
+            frmCancelSale cancelSale = new frmCancelSale();
+            cancelSale.ShowDialog();
         }
     }
 }

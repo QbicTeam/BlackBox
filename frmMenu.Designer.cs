@@ -122,6 +122,7 @@
             this.cmdMenos = new System.Windows.Forms.Button();
             this.cmdBorrar = new System.Windows.Forms.Button();
             this.cmdBack = new System.Windows.Forms.Button();
+            this.cmdCancelSale = new System.Windows.Forms.Button();
             this.pnlTabs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgSidebarButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgMenuHnr)).BeginInit();
@@ -1105,6 +1106,19 @@
             this.cmdBack.UseVisualStyleBackColor = false;
             this.cmdBack.Click += new System.EventHandler(this.cmdBack_Click);
             // 
+            // cmdCancelSale
+            // 
+            this.cmdCancelSale.BackColor = System.Drawing.Color.Transparent;
+            this.cmdCancelSale.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.cmdCancelSale.FlatAppearance.BorderSize = 0;
+            this.cmdCancelSale.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdCancelSale.Location = new System.Drawing.Point(1218, 11);
+            this.cmdCancelSale.Name = "cmdCancelSale";
+            this.cmdCancelSale.Size = new System.Drawing.Size(38, 38);
+            this.cmdCancelSale.TabIndex = 67;
+            this.cmdCancelSale.UseVisualStyleBackColor = false;
+            this.cmdCancelSale.Click += new System.EventHandler(this.cmdCancelSale_Click);
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1112,6 +1126,7 @@
             this.BackgroundImage = global::BlackBox.Properties.Resources.MenuTemplateV7;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1673, 768);
+            this.Controls.Add(this.cmdCancelSale);
             this.Controls.Add(this.cmdBack);
             this.Controls.Add(this.cmdBorrar);
             this.Controls.Add(this.cmdMenos);
@@ -1320,5 +1335,6 @@
         private System.Windows.Forms.Button cmdMenos;
         private System.Windows.Forms.Button cmdBorrar;
         private System.Windows.Forms.Button cmdBack;
+        private System.Windows.Forms.Button cmdCancelSale;
     }
 }
