@@ -55,6 +55,16 @@ namespace BlackBox.Controls
             this.Controls.Add(ccb);
             this.Controls.SetChildIndex(ccb, 1);
             ccb.BringToFront();
+
+            CustomCheckBox ccb2 = new CustomCheckBox(this.Height);
+            ccb2.Top = 10;
+            ccb2.Left = ccb.Left - ccb.Width - 5;
+
+            this.Controls.Add(ccb2);
+            this.Controls.SetChildIndex(ccb2, 2);
+            ccb2.BringToFront();
+
+
         }
 
         private void lblTitle_Click(object sender, EventArgs e)
