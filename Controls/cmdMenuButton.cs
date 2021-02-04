@@ -53,6 +53,8 @@ namespace BlackBox.Controls
             ccb.Left = 5;
 
             this.Controls.Add(ccb);
+            this.Controls.SetChildIndex(ccb, 1);
+            ccb.BringToFront();
         }
 
         private void lblTitle_Click(object sender, EventArgs e)
