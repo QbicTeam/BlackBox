@@ -47,6 +47,12 @@ namespace BlackBox.Controls
                 lblPrice.Width = 255;
                 this.Width = 255;
             }
+
+            CustomCheckBox ccb = new CustomCheckBox();
+            ccb.Top = 5;
+            ccb.Left = 5;
+
+            this.Controls.Add(ccb);
         }
 
         private void lblTitle_Click(object sender, EventArgs e)

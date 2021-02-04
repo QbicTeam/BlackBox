@@ -64,6 +64,9 @@
     <Compile Include="Controls\cmdSideBarButton.Designer.cs">
       <DependentUpon>cmdSideBarButton.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\CustomCheckBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\pnlArtVendido.cs">
       <SubType>UserControl</SubType>
     </Compile>
