@@ -50,7 +50,7 @@ namespace BlackBox.Controls
 
             CustomCheckBox ccb = new CustomCheckBox(this.Height);
             ccb.Top = 10;
-            ccb.Left = this.Width - this.Height;
+            ccb.Left = this.Width - this.Height + 15;
 
             this.Controls.Add(ccb);
             this.Controls.SetChildIndex(ccb, 1);
@@ -58,7 +58,7 @@ namespace BlackBox.Controls
 
             CustomCheckBox ccb2 = new CustomCheckBox(this.Height);
             ccb2.Top = 10;
-            ccb2.Left = ccb.Left - ccb.Width - 5;
+            ccb2.Left = ccb.Left - this.Height + 15;
 
             this.Controls.Add(ccb2);
             this.Controls.SetChildIndex(ccb2, 2);

@@ -34,7 +34,7 @@ namespace BlackBox
 
             vta = vtasManager.GetTicket(txtRecibo.Text);
             txtCajero.Text = vta.Cajero;
-            txtFecha.Text = vta.FechaHora.ToShortDateString(); ;
+            txtFecha.Text = vta.FechaHora.ToString("dd/MMM/yyyy   HH:mm");
             txtVentaTotal.Text = string.Format("{0:C}", vta.Total);
             txtNumArt.Text = vta.CantidadArticulos.ToString();
             chkCancelado.Checked = vta.Cancelado;

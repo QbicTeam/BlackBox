@@ -113,7 +113,7 @@ namespace BlackBox
 
                 // string path = @"c:\product.json";
                 // Crear JSON, Mandar el JSON por FTP
-                var fileJsonName = "CorteZ_" + _corteZ.CodSucursal + "_" + _corteZ.Fecha.ToString("yyyyMMdd") + ".json";
+                var fileJsonName = "CorteZ_" + _corteZ.CodSucursal + "_" + _corteZ.Fecha.ToString("yyyyMMdd_HHmm") + ".json";
                 System.IO.File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + "//" + fileJsonName, cortZJson);
 
 
