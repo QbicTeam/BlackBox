@@ -10,6 +10,13 @@ namespace BlackBox.Controls
 {
     public class CustomCheckBox: CheckBox
     {
+        int _size = 0;
+
+        public CustomCheckBox(int size)
+        {
+            this._size = size;
+        }
+
         public override bool AutoSize
         {
             set { base.AutoSize = false; }
@@ -20,8 +27,8 @@ namespace BlackBox.Controls
         {
             base.OnPaint(e);
 
-            this.Height = 100;
-            this.Width = 200;
+            this.Height = this._size - 20;
+            this.Width = this._size - 20;
             int squareSide = 80;
 
             Rectangle rect = new Rectangle(new Point(0, 1), new Size(squareSide, squareSide));
