@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -366,6 +367,31 @@ namespace BlackBox
                 cortes.ShowDialog();
 
             }
+        }
+        private void AbrirCajon()
+        {
+            prtdImprimir = new PrintDocument();
+            var ps = new PrinterSettings();
+            prtdImprimir.PrinterSettings = ps;
+            prtdImprimir.PrintPage += Imprimir;
+            prtdImprimir.Print();
+        }
+
+        private void Imprimir(object sender, PrintPageEventArgs e)
+        {
+            Font font = new Font("Courier New", 10, FontStyle.Regular, GraphicsUnit.Point);
+            int width = 490;
+            int y = 20;
+
+
+            e.Graphics.DrawString("Apertura de Cajon: " + _currentUser.Nombre, font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("Fecha: " + DateTime.Now.ToString("dd/MMM/yyyy   HH:mm"), font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+
+        }
+
+        private void cmdImprimir_Click(object sender, EventArgs e)
+        {
+            AbrirCajon();
         }
     }
 }

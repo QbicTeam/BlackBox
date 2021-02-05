@@ -43,6 +43,7 @@
             this.chkEnCorte = new System.Windows.Forms.CheckBox();
             this.cmdCancelar = new System.Windows.Forms.Button();
             this.lstArticulos = new System.Windows.Forms.ListBox();
+            this.prtdImprimir = new System.Drawing.Printing.PrintDocument();
             this.SuspendLayout();
             // 
             // label1
@@ -245,5 +246,6 @@
         private System.Windows.Forms.CheckBox chkEnCorte;
         private System.Windows.Forms.Button cmdCancelar;
         private System.Windows.Forms.ListBox lstArticulos;
+        private System.Drawing.Printing.PrintDocument prtdImprimir;
     }
 }

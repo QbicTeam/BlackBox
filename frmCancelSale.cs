@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -70,8 +71,29 @@ namespace BlackBox
         {
             vtasManager.CancelTicket(vta.VentaId);
             // TODO: Abrir Cajon.
-
+            AbrirCajon(); // Se abre imprimirndo, para abrirlo se configura en la impresora en settings
             MessageBox.Show("El recibo fue cancelado.");
+        }
+
+        private void AbrirCajon()
+        { 
+            prtdImprimir = new PrintDocument();
+            var ps = new PrinterSettings();
+            prtdImprimir.PrinterSettings = ps;
+            prtdImprimir.PrintPage += Imprimir;
+            prtdImprimir.Print();
+        }
+
+        private void Imprimir(object sender, PrintPageEventArgs e)
+        {
+            Font font = new Font("Courier New", 10, FontStyle.Regular, GraphicsUnit.Point);
+            int width = 490;
+            int y = 20;
+
+
+            e.Graphics.DrawString("Cancelacion del Recibo: " + txtRecibo.Text, font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("Fecha: " + DateTime.Now.ToString("dd/MMM/yyyy   HH:mm"), font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+
         }
     }
 }

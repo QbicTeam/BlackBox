@@ -30,23 +30,24 @@
         {
             this.cboReportes = new System.Windows.Forms.ComboBox();
             this.grdVentas = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cmdEjecutarRep = new System.Windows.Forms.Button();
-            this.cmdCerrar = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cboCajeros = new System.Windows.Forms.ComboBox();
             this.Cajero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Recibo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CantArt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EnCorte = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cancelado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmdEjecutarRep = new System.Windows.Forms.Button();
+            this.cmdCerrar = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cboCajeros = new System.Windows.Forms.ComboBox();
             this.grdCorteZ = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.lblTotalVentas = new System.Windows.Forms.Label();
+            this.prtdImprimir = new System.Drawing.Printing.PrintDocument();
             ((System.ComponentModel.ISupportInitialize)(this.grdVentas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdCorteZ)).BeginInit();
             this.SuspendLayout();
@@ -81,6 +82,48 @@
             this.grdVentas.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.grdVentas.Size = new System.Drawing.Size(703, 428);
             this.grdVentas.TabIndex = 1;
+            // 
+            // Cajero
+            // 
+            this.Cajero.DataPropertyName = "Cajero";
+            this.Cajero.HeaderText = "Cajero";
+            this.Cajero.Name = "Cajero";
+            this.Cajero.ReadOnly = true;
+            // 
+            // Recibo
+            // 
+            this.Recibo.DataPropertyName = "Recibo";
+            this.Recibo.HeaderText = "Recibo";
+            this.Recibo.Name = "Recibo";
+            this.Recibo.ReadOnly = true;
+            // 
+            // CantArt
+            // 
+            this.CantArt.DataPropertyName = "CantidadArticulos";
+            this.CantArt.HeaderText = "Cant. Art.";
+            this.CantArt.Name = "CantArt";
+            this.CantArt.ReadOnly = true;
+            // 
+            // Total
+            // 
+            this.Total.DataPropertyName = "Total";
+            this.Total.HeaderText = "Total";
+            this.Total.Name = "Total";
+            this.Total.ReadOnly = true;
+            // 
+            // EnCorte
+            // 
+            this.EnCorte.DataPropertyName = "EnCorte";
+            this.EnCorte.HeaderText = "Corte";
+            this.EnCorte.Name = "EnCorte";
+            this.EnCorte.ReadOnly = true;
+            // 
+            // Cancelado
+            // 
+            this.Cancelado.DataPropertyName = "Cancelado";
+            this.Cancelado.HeaderText = "Cancelado";
+            this.Cancelado.Name = "Cancelado";
+            this.Cancelado.ReadOnly = true;
             // 
             // label1
             // 
@@ -132,48 +175,6 @@
             this.cboCajeros.Size = new System.Drawing.Size(164, 21);
             this.cboCajeros.TabIndex = 6;
             this.cboCajeros.SelectedIndexChanged += new System.EventHandler(this.cboCajeros_SelectedIndexChanged);
-            // 
-            // Cajero
-            // 
-            this.Cajero.DataPropertyName = "Cajero";
-            this.Cajero.HeaderText = "Cajero";
-            this.Cajero.Name = "Cajero";
-            this.Cajero.ReadOnly = true;
-            // 
-            // Recibo
-            // 
-            this.Recibo.DataPropertyName = "Recibo";
-            this.Recibo.HeaderText = "Recibo";
-            this.Recibo.Name = "Recibo";
-            this.Recibo.ReadOnly = true;
-            // 
-            // CantArt
-            // 
-            this.CantArt.DataPropertyName = "CantidadArticulos";
-            this.CantArt.HeaderText = "Cant. Art.";
-            this.CantArt.Name = "CantArt";
-            this.CantArt.ReadOnly = true;
-            // 
-            // Total
-            // 
-            this.Total.DataPropertyName = "Total";
-            this.Total.HeaderText = "Total";
-            this.Total.Name = "Total";
-            this.Total.ReadOnly = true;
-            // 
-            // EnCorte
-            // 
-            this.EnCorte.DataPropertyName = "EnCorte";
-            this.EnCorte.HeaderText = "Corte";
-            this.EnCorte.Name = "EnCorte";
-            this.EnCorte.ReadOnly = true;
-            // 
-            // Cancelado
-            // 
-            this.Cancelado.DataPropertyName = "Cancelado";
-            this.Cancelado.HeaderText = "Cancelado";
-            this.Cancelado.Name = "Cancelado";
-            this.Cancelado.ReadOnly = true;
             // 
             // grdCorteZ
             // 
@@ -274,5 +275,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblTotalVentas;
+        private System.Drawing.Printing.PrintDocument prtdImprimir;
     }
 }
