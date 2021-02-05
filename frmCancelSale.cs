@@ -24,13 +24,18 @@ namespace BlackBox
 
         private void frmCancelSale_Load(object sender, EventArgs e)
         {
-
+            var colorFondoGrid = Color.FromArgb(254, 200, 132);
+            this.BackColor = colorFondoGrid;
         }
 
         private void cmdBuscar_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtRecibo.Text))
                 return;
+            
+            lstArticulos.Items.Clear();
+            cmdCancelar.Enabled = false;
+            
 
             vta = vtasManager.GetTicket(txtRecibo.Text);
             txtCajero.Text = vta.Cajero;
@@ -39,12 +44,34 @@ namespace BlackBox
             txtNumArt.Text = vta.CantidadArticulos.ToString();
             chkCancelado.Checked = vta.Cancelado;
             chkEnCorte.Checked = vta.EnCorte > 0 ? true : false;
+
+            if (vta.VentaId == 0)
+            {
+                MessageBox.Show("Numero de Recibo inexistente, favor de confirmar.");
+                return;
+            }
+                
+
+            if (!chkCancelado.Checked && !chkEnCorte.Checked)
+                cmdCancelar.Enabled = true; 
+
+
+            if (vta.Productos == null)
+                return;
+
+            foreach(VentaDT vdt in vta.Productos)
+            {
+                lstArticulos.Items.Add(new string(' ', 5 * vdt.Nivel) + vdt.Producto);
+            }
             
         }
 
         private void cmdCancelar_Click(object sender, EventArgs e)
         {
+            vtasManager.CancelTicket(vta.VentaId);
+            // TODO: Abrir Cajon.
 
+            MessageBox.Show("El recibo fue cancelado.");
         }
     }
 }
