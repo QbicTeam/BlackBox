@@ -54,6 +54,7 @@ namespace BlackBox
             UsersManager um = new UsersManager(ConfigurationManager.ConnectionStrings["FBBCS"].ConnectionString);
 
             User user = um.Login(txtUser.Text, txtPassword.Text);
+            //User user = new User();
 
             if (user != null)
             {
