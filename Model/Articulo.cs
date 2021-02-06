@@ -41,7 +41,18 @@ namespace BlackBox.Model
         /// <summary>
         /// Posicion asignada al momento del despliegue. (no asignable en BD).
         /// </summary>
+        /// 
         //[NotMapped]
         public int LocationY { get; set; }
+        //[NotMapped]
+        /// <summary>
+        /// Usado para indicar si la SubOpcion esta siendo agregada o eliminada. (Solo para SubMenus de retorno)
+        /// </summary>
+        public bool AddSubOpcion { get; set; }
+        //[NotMapped]
+        /// <summary>
+        /// Usado para indicar si la SubOpcion indica si se usa Medias Raciones. 0 = Racion Completa, 1 = Media Racion 1, 2 = Media Racion 2. (Solo para SubMenus de retorno)
+        /// </summary>
+        public int MediaRacion { get; set; }
     }
 }

@@ -764,8 +764,11 @@ namespace BlackBox.Controls
                                     ArticuloYsChangeInterno(locacionYsOp, _renglonAlturaCustom, false);
                                     ArticuloYsChange(this.Location.Y, _renglonAlturaCustom, false);
 
-                                    cOp.BackColor = _rojo;
-                                    cOp.ForeColor = Color.White;
+                                    if (cOp != null)
+                                    {
+                                        cOp.BackColor = _rojo;
+                                        cOp.ForeColor = Color.White;
+                                    }
                                 }
                             }
                         }

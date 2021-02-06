@@ -31,12 +31,14 @@
             this.pnlButton = new System.Windows.Forms.Panel();
             this.lblPrice = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.lblSubOpcion = new System.Windows.Forms.Label();
             this.pnlButton.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlButton
             // 
             this.pnlButton.BackColor = System.Drawing.Color.Transparent;
+            this.pnlButton.Controls.Add(this.lblSubOpcion);
             this.pnlButton.Controls.Add(this.lblPrice);
             this.pnlButton.Controls.Add(this.lblTitle);
             this.pnlButton.Location = new System.Drawing.Point(0, 0);
@@ -67,6 +69,16 @@
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.lblTitle.Click += new System.EventHandler(this.lblTitle_Click);
             // 
+            // lblSubOpcion
+            // 
+            this.lblSubOpcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSubOpcion.Location = new System.Drawing.Point(3, 16);
+            this.lblSubOpcion.Name = "lblSubOpcion";
+            this.lblSubOpcion.Size = new System.Drawing.Size(370, 19);
+            this.lblSubOpcion.TabIndex = 2;
+            this.lblSubOpcion.Text = "Pizza Clasica";
+            this.lblSubOpcion.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // cmdMenuButton
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -84,5 +96,6 @@
         private System.Windows.Forms.Panel pnlButton;
         private System.Windows.Forms.Label lblPrice;
         private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Label lblSubOpcion;
     }
 }

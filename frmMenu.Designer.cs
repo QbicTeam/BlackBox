@@ -1127,7 +1127,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::BlackBox.Properties.Resources.MenuTemplateV7;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(1673, 768);
+            this.ClientSize = new System.Drawing.Size(1365, 768);
             this.Controls.Add(this.cmdCancelSale);
             this.Controls.Add(this.cmdBack);
             this.Controls.Add(this.cmdBorrar);

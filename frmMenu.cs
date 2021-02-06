@@ -30,6 +30,7 @@ namespace BlackBox
         private Form _entryForm;
         private pnlArtVendido _artVendidoSeleccionado;
         private int _opcionLocationY;
+        private bool _opcionValidar;
         private MMenu _menu;
         private int _noRecibo;
 
@@ -66,6 +67,7 @@ namespace BlackBox
             _menu = JsonConvert.DeserializeObject<MMenu>(jsonMenu);
 
             _noRecibo = _datos.Login.NoRecibo;
+            _opcionValidar = false;
 
             LoadSideMenu();
             cmdHnr.Image = imgSHnr.Image;
@@ -523,10 +525,18 @@ namespace BlackBox
 
             if (_artVendidoSeleccionado != null && _opcionLocationY > 0 && pnlSubMenu.Visible) // Aqui validar que se trate de un sub Menu
             {
-                var mas = true;
-                var racion = 0;
-                _artVendidoSeleccionado.ArticuloOpcion(itm, _opcionLocationY, mas, racion); // true);
+                // var mas = true;
+                // var racion = 0;
+                // _artVendidoSeleccionado.ArticuloOpcion(itm, _opcionLocationY, mas, racion); // true);
+                _artVendidoSeleccionado.ArticuloOpcion(itm, _opcionLocationY, itm.AddSubOpcion, itm.MediaRacion); // true);
+
                 // TODO: Validar si se sale o no.
+
+                if (_opcionValidar)
+                {
+                    foreach (Control ctrl in pnlSubMenu.Controls)
+                        ((cmdMenuButton)ctrl).UnCheck(itm.Producto);
+                }
                 return;
             }
 
@@ -1046,6 +1056,8 @@ namespace BlackBox
             Console.WriteLine("Click en opcion Comanda - frmMenu");
             var artVdo = (Articulo)sender;
             pnlSubMenu.Visible = false;
+            int numChecks = 0;
+            _opcionValidar = false;
 
             foreach (Control ctrl in pnlComanda.Controls)
             {
@@ -1065,17 +1077,23 @@ namespace BlackBox
             if (_opcionLocationY > 0)
             {
                 pnlSubMenu.Controls.Clear(); // TODO: esto debe de ser el panel del submenu.
-                List<Articulo> arts;
+                List<ArticuloOpcion> arts;
                 if (artVdo.ComboTipo.ToLower().StartsWith("custom")) // Si es un Custom
                 {
-                    arts = artVdo.Opciones.Select(ar => ar.ArticuloOp).ToList();
+                    // arts = artVdo.Opciones.Select(ar => ar.ArticuloOp).ToList();
+                    arts = artVdo.Opciones; //.Select(ar => ar.ArticuloOp).ToList();
+                    numChecks = artVdo.Raciones_Checks;
+                    _opcionValidar = artVdo.Validar;
                 }
                 else // Si es un Intercambiable
                 {
                     if (artOp == null)
                         return;
 
-                    arts = artOp.Opciones.Select(ar => ar.Articulo).ToList();
+                    // arts = artOp.Opciones.Select(ar => ar.Articulo).ToList();
+                    arts = artOp.Opciones; //.Select(ar => ar.Articulo).ToList();
+                    numChecks = artOp.Raciones_Checks;
+                    _opcionValidar = artOp.Validar;
                 }
 
                 // var arts = _datos.PantallaVentas.Especiales;
@@ -1111,7 +1129,11 @@ namespace BlackBox
                     //btn.Top = x * 100;
 
                     // cmdSideBarButton btn = new cmdSideBarButton(arts[x].Producto, arts[x].Precio, img);
-                    cmdMenuButton btn = new cmdMenuButton(arts[x], img, nCols);
+                    cmdMenuButton btn = null;
+                    if (arts[x].Articulo != null)
+                        btn = new cmdMenuButton(arts[x].Articulo, img, nCols, numChecks, arts[x].MediaRacion, arts[x].Default);
+                    else
+                        btn = new cmdMenuButton(arts[x].ArticuloOp, img, nCols, numChecks, arts[x].MediaRacion, arts[x].Default);
                     btn.Top = x * 50;
                     btn.MenuClicked += Btn_MenuClicked;
 

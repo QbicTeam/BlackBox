@@ -630,8 +630,9 @@
         "Pendientes": 0,
         "Tipo": "",
         "ComboTipo": "CustomEsp",
+        "Raciones_Checks": 1,
         "Validar": true,
-        "TipoOpciones": "Bebidas3",
+        "TipoOpciones": "Hnr",
         "Opciones": [
           {
             "ArticuloOp": { "Producto": "Pepsi" }
@@ -662,8 +663,9 @@
         "Pendientes": 0,
         "Tipo": "",
         "ComboTipo": "CustomEsp",
+        "Raciones_Checks": 1,
         "Validar": true,
-        "TipoOpciones": "Bebidas3",
+        "TipoOpciones": "Hnr",
         "Opciones": [
           {
             "ArticuloOp": { "Producto": "Pepsi" }
@@ -694,8 +696,9 @@
         "Pendientes": 0,
         "Tipo": "",
         "ComboTipo": "CustomEsp",
+        "Raciones_Checks": 1,
         "Validar": true,
-        "TipoOpciones": "Bebidas3",
+        "TipoOpciones": "Hnr",
         "Opciones": [
           {
             "ArticuloOp": { "Producto": "Pepsi" }
@@ -726,8 +729,9 @@
         "Pendientes": 0,
         "Tipo": "",
         "ComboTipo": "CustomEsp",
+        "Raciones_Checks": 1,
         "Validar": true,
-        "TipoOpciones": "Bebidas3",
+        "TipoOpciones": "Hnr",
         "Opciones": [
           {
             "ArticuloOp": { "Producto": "Pepsi" }
@@ -766,7 +770,8 @@
         "Pendientes": 2,
         "Tipo": "",
         "ComboTipo": "Custom",
-        "TipoOpciones": "Alas3",
+        "Raciones_Checks": 1,
+        "TipoOpciones": "Hnr",
         "Opciones": [
           {
             "Intercambiable": false,
@@ -1068,8 +1073,9 @@
             "ArticuloOp": {
               "Producto": "Refresco 2L",
               "ComboTipo": "CustomEsp",
+              "Raciones_Checks": 1,
               "Validar": true,
-              "TipoOpciones": "Bebidas3",
+              "TipoOpciones": "Hnr",
               "Opciones": [
                 {
                   "Articulo": { "Producto": "Pepsi" }
