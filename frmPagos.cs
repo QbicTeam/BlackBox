@@ -12,14 +12,14 @@ namespace BlackBox
 {
     public partial class frmPagos : Form
     {
-        bool result = false;
+        string result = "";
 
         public frmPagos()
         {
             InitializeComponent();
         }
 
-        public bool PaySale()
+        public string PaySale()
         {
 
             this.ShowDialog();
@@ -48,7 +48,7 @@ namespace BlackBox
 
         private void cmdPagar_Click(object sender, EventArgs e)
         {
-            result = true;
+            result = "true|" + txtCliente.Text ;
             this.Close();
         }
     }
